@@ -31,24 +31,29 @@ export default function About() {
       {/* Company Story */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-forillon-navy">
+              Our Story
+            </h2>
+            <p className="text-xl text-gray-700 max-w-4xl mx-auto">
+              Every great journey begins with a spark — a moment of clarity where passion meets purpose.
+            </p>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-forillon-navy">
-                Our Story
-              </h2>
               <p className="text-lg text-gray-700 mb-6">
-                Founded on the principle that intelligence should become infrastructure, 
-                Forillon Technologies emerged from a vision to transform how enterprises 
-                approach digital transformation.
+                Forillon Technologies was born from exactly that: a vision to create technology that truly makes a difference. 
+                Not just for businesses, but for people. For communities. For a future that's smarter, more connected, and more human.
               </p>
               <p className="text-lg text-gray-700 mb-6">
-                We believe that the future belongs to organizations that can seamlessly 
-                integrate artificial intelligence into their core operations, creating 
-                intelligent systems that adapt, learn, and evolve.
+                We started as a small group of dreamers and doers who believed that technology could be more than just code and hardware. 
+                It could be a force for good — solving real problems, opening new possibilities, and empowering everyone to reach their full potential.
               </p>
-              <Button className="bg-electric-teal hover:bg-electric-teal/90 text-white">
-                Learn More <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              <p className="text-lg text-gray-700">
+                In a world flooded with noise and complexity, we chose a different path: to build solutions that are simple to use, 
+                yet powerful in impact. That's the heartbeat of Forillon — creating technology that feels effortless but drives extraordinary change.
+              </p>
             </div>
             <div className="relative">
               <img 
@@ -57,6 +62,79 @@ export default function About() {
                 className="rounded-lg shadow-lg"
               />
             </div>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+            <div className="relative lg:order-2">
+              <img 
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80"
+                alt="Innovation and technology"
+                className="rounded-lg shadow-lg"
+              />
+            </div>
+            <div className="lg:order-1">
+              <h3 className="text-2xl font-bold mb-4 text-forillon-navy">Why We Do What We Do</h3>
+              <p className="text-lg text-gray-700 mb-6">
+                Technology is everywhere — but not everywhere does technology truly work for people. 
+                We saw too many products built without heart, without deep understanding of the people who use them. 
+                So we set out to do it differently.
+              </p>
+              <p className="text-lg text-gray-700 mb-6">
+                Our mission is to blend innovation with empathy. To listen closely to the challenges faced by our partners and users. 
+                To create tools that don't just work — but inspire confidence, spark creativity, and open doors.
+              </p>
+              <p className="text-lg text-gray-700">
+                Because at the end of the day, technology is only as valuable as the lives it touches. 
+                And we want to touch lives in ways that matter.
+              </p>
+            </div>
+          </div>
+          
+          <div className="bg-silver-mist rounded-lg p-8 mb-16">
+            <h3 className="text-2xl font-bold mb-6 text-forillon-navy text-center">Our Culture: Bold, Collaborative, Curious</h3>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <p className="text-lg text-gray-700 mb-4">
+                  At Forillon, we are builders, creators, and lifelong learners. We embrace big ideas and the messy process of making them real. 
+                  We know innovation requires courage — to question the usual, to take risks, and to keep pushing when the road gets tough.
+                </p>
+              </div>
+              <div>
+                <p className="text-lg text-gray-700">
+                  We celebrate diversity of thought and background, because it makes us stronger and fuels creativity. 
+                  Every voice matters, every perspective counts — and together we create something far greater than the sum of its parts.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="text-center mb-16">
+            <h3 className="text-2xl font-bold mb-6 text-forillon-navy">Partnerships That Propel Us Forward</h3>
+            <p className="text-lg text-gray-700 mb-6 max-w-4xl mx-auto">
+              We believe the best technology emerges from genuine collaboration. That's why we work hand-in-hand with visionary clients 
+              and industry leaders who share our values and hunger for impact. Together, we turn challenges into opportunities and ideas into breakthroughs.
+            </p>
+            <p className="text-lg text-gray-700 mb-8 max-w-4xl mx-auto">
+              Our success is measured not just in products shipped, but in lasting relationships built on trust, transparency, and shared ambition.
+            </p>
+            <Button className="bg-electric-teal hover:bg-electric-teal/90 text-white">
+              Partner With Us <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+          
+          <div className="bg-forillon-navy rounded-lg p-8 text-center text-white">
+            <h3 className="text-2xl font-bold mb-6">The Road Ahead</h3>
+            <p className="text-lg mb-6 max-w-4xl mx-auto">
+              The future is full of promise — new technologies, new possibilities, new ways to improve how we live and work. 
+              Forillon Technologies is excited to be at the forefront, leading with integrity, passion, and a relentless drive to make a difference.
+            </p>
+            <p className="text-lg mb-8 max-w-4xl mx-auto">
+              This is just the beginning. We invite you to join us — as partners, collaborators, or simply believers — 
+              in shaping a world where technology serves humanity, elevates potential, and inspires hope.
+            </p>
+            <p className="text-xl font-semibold text-electric-teal">
+              Forillon Technologies — Where Innovation Meets Heart.
+            </p>
           </div>
         </div>
       </section>
