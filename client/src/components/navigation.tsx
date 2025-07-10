@@ -20,16 +20,16 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link href="/">
-              <div className="flex-shrink-0 flex items-center cursor-pointer">
+              <a className="flex-shrink-0 flex items-center cursor-pointer">
                 <img 
-                  src="/assets/images/logo.svg" 
+                  src="/assets/images/logo.png" 
                   alt="Forillon Technologies" 
-                  className="w-8 h-8 mr-3"
+                  className="h-8 w-auto mr-3"
                 />
                 <span className="text-xl font-semibold text-forillon-navy">
                   Forillon Technologies
                 </span>
-              </div>
+              </a>
             </Link>
           </div>
           

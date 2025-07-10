@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
+import { useQuery } from "@tanstack/react-query";
 
 interface BlogPost {
   slug: string;
@@ -15,41 +15,10 @@ interface BlogPost {
 }
 
 export default function Blog() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // In a real implementation, this would fetch from your CMS or markdown files
-    const samplePosts: BlogPost[] = [
-      {
-        slug: "ai-trends-2024",
-        title: "The Future of Enterprise AI: Trends to Watch in 2024",
-        description: "Explore the latest developments in enterprise AI and how they're reshaping business operations across industries.",
-        category: "AI & Machine Learning",
-        date: "2024-03-15",
-        featured_image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
-      },
-      {
-        slug: "cloud-architectures",
-        title: "Building Resilient Cloud Architectures for Scale",
-        description: "Learn the essential principles and best practices for designing cloud infrastructure that grows with your business.",
-        category: "Cloud Infrastructure",
-        date: "2024-03-10",
-        featured_image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
-      },
-      {
-        slug: "digital-transformation-roi",
-        title: "Digital Transformation ROI: Measuring Success",
-        description: "Discover key metrics and frameworks for evaluating the return on investment of your digital transformation initiatives.",
-        category: "Digital Transformation",
-        date: "2024-03-05",
-        featured_image: "https://images.unsplash.com/photo-1518186233392-c232efbf2373?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
-      }
-    ];
-    
-    setPosts(samplePosts);
-    setLoading(false);
-  }, []);
+  const { data: posts = [], isLoading: loading } = useQuery({
+    queryKey: ['/api/blog'],
+    queryFn: () => fetch('/api/blog').then(res => res.json())
+  });
 
   if (loading) {
     return (
