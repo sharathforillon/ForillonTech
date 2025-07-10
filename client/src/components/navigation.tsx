@@ -28,9 +28,14 @@ export default function Navigation() {
                 alt="Forillon Technologies" 
                 className="h-8 w-auto mr-3 brightness-0 invert"
               />
-              <span className="text-xl font-semibold text-white">
-                Forillon Technologies
-              </span>
+              <div className="flex flex-col">
+                <span className="text-xl font-semibold text-white">
+                  Forillon Technologies
+                </span>
+                <span className="text-xs text-electric-teal font-medium">
+                  Trusted to Transform
+                </span>
+              </div>
             </Link>
           </div>
           
