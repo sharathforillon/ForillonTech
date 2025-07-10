@@ -16,7 +16,9 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative bg-silver-mist py-20 lg:py-32">
+    <section className="relative bg-silver-mist py-20 lg:py-32 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/20 to-transparent"></div>
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80')] bg-cover bg-center opacity-10"></div>
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-forillon-navy">
