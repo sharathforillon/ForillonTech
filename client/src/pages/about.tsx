@@ -5,27 +5,50 @@ export default function About() {
   return (
     <div className="min-h-screen bg-ice-white">
       {/* Hero Section */}
-      <section className="relative bg-forillon-navy py-20 lg:py-32 overflow-hidden">
+      <section className="relative bg-forillon-navy py-24 lg:py-40 overflow-hidden">
         <video 
           autoPlay 
           muted 
           loop 
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-10"
+          className="absolute inset-0 w-full h-full object-cover opacity-15"
         >
+          <source src="https://videos.pexels.com/video-files/3195394/3195394-uhd_3840_2160_25fps.mp4" type="video/mp4" />
           <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_3840_2160_30fps.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-forillon-navy/90 to-forillon-navy/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/85 via-forillon-navy/80 to-electric-teal/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-forillon-navy/60 to-transparent"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-white">
-              About Forillon
+            <div className="mb-8">
+              <span className="inline-block px-4 py-2 bg-electric-teal/20 text-electric-teal rounded-full text-sm font-medium border border-electric-teal/30">
+                Where Innovation Meets Heart
+              </span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight text-white leading-tight">
+              Every Great Journey<br />
+              <span className="text-electric-teal">Begins with a Spark</span>
             </h1>
-            <p className="text-xl md:text-2xl text-silver-mist max-w-3xl mx-auto">
-              Pioneering the future of enterprise technology through intelligent transformation
+            <p className="text-xl md:text-2xl text-silver-mist max-w-4xl mx-auto mb-12 leading-relaxed">
+              At Forillon Technologies, we believe technology should be more than code and hardware. 
+              It should be a force for good — solving real problems, opening possibilities, and empowering everyone to reach their potential.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button className="bg-electric-teal hover:bg-electric-teal/90 text-white px-8 py-3 text-lg font-semibold">
+                Discover Our Story <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-forillon-navy px-8 py-3 text-lg font-semibold">
+                Join Our Mission
+              </Button>
+            </div>
           </div>
         </div>
+        
+        {/* Floating elements for visual interest */}
+        <div className="absolute top-20 left-10 w-2 h-2 bg-electric-teal rounded-full opacity-60 animate-pulse"></div>
+        <div className="absolute top-32 right-20 w-3 h-3 bg-white rounded-full opacity-40 animate-pulse" style={{animationDelay: '1s'}}></div>
+        <div className="absolute bottom-20 left-20 w-1 h-1 bg-electric-teal rounded-full opacity-80 animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-40 right-10 w-2 h-2 bg-white rounded-full opacity-50 animate-pulse" style={{animationDelay: '0.5s'}}></div>
       </section>
 
       {/* Company Story */}
