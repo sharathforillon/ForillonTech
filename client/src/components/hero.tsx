@@ -17,9 +17,18 @@ export default function Hero() {
 
   return (
     <section className="relative bg-silver-mist py-20 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/20 to-transparent"></div>
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80')] bg-cover bg-center opacity-15 animate-pulse"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-silver-mist/50 to-transparent"></div>
+      <video 
+        autoPlay 
+        muted 
+        loop 
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-20"
+      >
+        <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_3840_2160_30fps.mp4" type="video/mp4" />
+        <source src="https://videos.pexels.com/video-files/2278095/2278095-uhd_3840_2160_25fps.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/30 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-silver-mist/40 to-transparent"></div>
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-forillon-navy">
