@@ -51,6 +51,40 @@ export default function About() {
         <div className="absolute bottom-40 right-10 w-2 h-2 bg-white rounded-full opacity-50 animate-pulse" style={{animationDelay: '0.5s'}}></div>
       </section>
 
+      {/* Vision & Mission */}
+      <section className="py-20 bg-gradient-to-br from-silver-mist to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Vision */}
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-electric-teal rounded-full mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+              </div>
+              <h3 className="text-3xl font-bold mb-6 text-forillon-navy">Our Vision</h3>
+              <p className="text-xl text-gray-700 leading-relaxed">
+                To build technology that deeply understands, empowers, and uplifts the human experience—everywhere it's used.
+              </p>
+            </div>
+            
+            {/* Mission */}
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-forillon-navy rounded-full mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 className="text-3xl font-bold mb-6 text-forillon-navy">Our Mission</h3>
+              <p className="text-xl text-gray-700 leading-relaxed">
+                We craft intelligent, intuitive solutions that solve real-world problems, enhance lives, and drive meaningful progress—by putting people at the heart of every innovation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Company Story */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
