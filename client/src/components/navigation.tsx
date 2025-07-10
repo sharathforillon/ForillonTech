@@ -22,17 +22,15 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Link href="/">
-              <a className="flex-shrink-0 flex items-center cursor-pointer">
-                <img 
-                  src={F_nobackground} 
-                  alt="Forillon Technologies" 
-                  className="h-8 w-auto mr-3 brightness-0 invert"
-                />
-                <span className="text-xl font-semibold text-white">
-                  Forillon Technologies
-                </span>
-              </a>
+            <Link href="/" className="flex-shrink-0 flex items-center cursor-pointer">
+              <img 
+                src={F_nobackground} 
+                alt="Forillon Technologies" 
+                className="h-8 w-auto mr-3 brightness-0 invert"
+              />
+              <span className="text-xl font-semibold text-white">
+                Forillon Technologies
+              </span>
             </Link>
           </div>
           
@@ -56,10 +54,8 @@ export default function Navigation() {
               >
                 Why Forillon
               </button>
-              <Link href="/blog">
-                <a className="text-white hover:text-electric-teal px-3 py-2 text-sm font-semibold transition-colors">
-                  Blog
-                </a>
+              <Link href="/blog" className="text-white hover:text-electric-teal px-3 py-2 text-sm font-semibold transition-colors">
+                Blog
               </Link>
               <button 
                 onClick={() => scrollToSection('contact')}
@@ -104,10 +100,8 @@ export default function Navigation() {
             >
               Why Forillon
             </button>
-            <Link href="/blog">
-              <a className="text-white hover:text-electric-teal block px-3 py-2 text-base font-semibold">
-                Blog
-              </a>
+            <Link href="/blog" className="text-white hover:text-electric-teal block px-3 py-2 text-base font-semibold">
+              Blog
             </Link>
             <button 
               onClick={() => scrollToSection('contact')}

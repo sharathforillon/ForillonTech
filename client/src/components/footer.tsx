@@ -70,10 +70,8 @@ export default function Footer() {
               {company.map((item, index) => (
                 <li key={index}>
                   {item === "Blog" ? (
-                    <Link href="/blog">
-                      <a className="hover:text-electric-teal transition-colors">
-                        {item}
-                      </a>
+                    <Link href="/blog" className="hover:text-electric-teal transition-colors">
+                      {item}
                     </Link>
                   ) : (
                     <a href="#" className="hover:text-electric-teal transition-colors">
