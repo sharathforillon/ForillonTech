@@ -27,12 +27,12 @@
   --radius: 0.5rem;
   
   /* Forillon Brand Colors - Exact HEX to HSL conversion */
-  --forillon-navy: 196 93% 12%; /* #032D3C */
-  --slate-gray: 215 19% 35%; /* #475569 */
-  --silver-mist: 214 32% 91%; /* #E2E8F0 */
-  --electric-teal: 173 80% 40%; /* #14B8A6 */
-  --ice-white: 214 32% 98%; /* #F8FAFC */
-  --jet-black: 0 0% 12%; /* #1E1E1E */
+  --forillon-navy: hsl(196, 93%, 12%); /* #032D3C */
+  --slate-gray: hsl(215, 19%, 35%); /* #475569 */
+  --silver-mist: hsl(214, 32%, 91%); /* #E2E8F0 */
+  --electric-teal: hsl(173, 80%, 40%); /* #14B8A6 */
+  --ice-white: hsl(214, 32%, 98%); /* #F8FAFC */
+  --jet-black: hsl(0, 0%, 12%); /* #1E1E1E */
 }
 
 .dark {
