@@ -61,6 +61,13 @@ export default {
           border: "var(--sidebar-border)",
           ring: "var(--sidebar-ring)",
         },
+        // Forillon Brand Colors
+        "forillon-navy": "var(--forillon-navy)",
+        "slate-gray": "var(--slate-gray)",
+        "silver-mist": "var(--silver-mist)",
+        "electric-teal": "var(--electric-teal)",
+        "ice-white": "var(--ice-white)",
+        "jet-black": "var(--jet-black)",
       },
       keyframes: {
         "accordion-down": {

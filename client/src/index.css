@@ -26,13 +26,13 @@
   --ring: hsl(185, 84%, 39%);
   --radius: 0.5rem;
   
-  /* Forillon Brand Colors */
-  --forillon-navy: hsl(196, 92%, 12%);
-  --slate-gray: hsl(210, 17%, 44%);
-  --silver-mist: hsl(214, 32%, 91%);
-  --electric-teal: hsl(173, 80%, 40%);
-  --ice-white: hsl(214, 32%, 98%);
-  --jet-black: hsl(0, 0%, 12%);
+  /* Forillon Brand Colors - Exact HEX to HSL conversion */
+  --forillon-navy: 196 93% 12%; /* #032D3C */
+  --slate-gray: 215 19% 35%; /* #475569 */
+  --silver-mist: 214 32% 91%; /* #E2E8F0 */
+  --electric-teal: 173 80% 40%; /* #14B8A6 */
+  --ice-white: 214 32% 98%; /* #F8FAFC */
+  --jet-black: 0 0% 12%; /* #1E1E1E */
 }
 
 .dark {
@@ -91,6 +91,38 @@
   
   .bg-silver-mist {
     background-color: var(--silver-mist);
+  }
+  
+  .bg-electric-teal {
+    background-color: var(--electric-teal);
+  }
+  
+  .bg-ice-white {
+    background-color: var(--ice-white);
+  }
+  
+  .bg-jet-black {
+    background-color: var(--jet-black);
+  }
+  
+  .text-ice-white {
+    color: var(--ice-white);
+  }
+  
+  .text-jet-black {
+    color: var(--jet-black);
+  }
+  
+  .border-forillon-navy {
+    border-color: var(--forillon-navy);
+  }
+  
+  .border-silver-mist {
+    border-color: var(--silver-mist);
+  }
+  
+  .border-electric-teal {
+    border-color: var(--electric-teal);
   }
   
   .bg-electric-teal {
