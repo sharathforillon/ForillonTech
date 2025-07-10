@@ -9,13 +9,7 @@ import F_nobackground from "@assets/F-nobackground.png";
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMenuOpen(false);
-  };
+
 
   return (
     <nav className="sticky top-0 z-50 bg-forillon-navy border-b border-forillon-navy">
@@ -41,33 +35,21 @@ export default function Navigation() {
           
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <button 
-                onClick={() => scrollToSection('about')}
-                className="text-white hover:text-electric-teal px-3 py-2 text-sm font-semibold transition-colors"
-              >
+              <Link href="/about" className="text-white hover:text-electric-teal px-3 py-2 text-sm font-semibold transition-colors">
                 About
-              </button>
-              <button 
-                onClick={() => scrollToSection('solutions')}
-                className="text-white hover:text-electric-teal px-3 py-2 text-sm font-semibold transition-colors"
-              >
+              </Link>
+              <Link href="/solutions" className="text-white hover:text-electric-teal px-3 py-2 text-sm font-semibold transition-colors">
                 Solutions
-              </button>
-              <button 
-                onClick={() => scrollToSection('why-forillon')}
-                className="text-white hover:text-electric-teal px-3 py-2 text-sm font-semibold transition-colors"
-              >
+              </Link>
+              <Link href="/why-forillon" className="text-white hover:text-electric-teal px-3 py-2 text-sm font-semibold transition-colors">
                 Why Forillon
-              </button>
+              </Link>
               <Link href="/blog" className="text-white hover:text-electric-teal px-3 py-2 text-sm font-semibold transition-colors">
                 Blog
               </Link>
-              <button 
-                onClick={() => scrollToSection('contact')}
-                className="bg-electric-teal text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-transparent hover:text-electric-teal border-2 border-electric-teal transition-all"
-              >
+              <Link href="/contact" className="bg-electric-teal text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-transparent hover:text-electric-teal border-2 border-electric-teal transition-all">
                 Contact
-              </button>
+              </Link>
             </div>
           </div>
           
@@ -87,33 +69,21 @@ export default function Navigation() {
       {isMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-forillon-navy border-t border-electric-teal">
-            <button 
-              onClick={() => scrollToSection('about')}
-              className="text-white hover:text-electric-teal block px-3 py-2 text-base font-semibold w-full text-left"
-            >
+            <Link href="/about" className="text-white hover:text-electric-teal block px-3 py-2 text-base font-semibold" onClick={() => setIsMenuOpen(false)}>
               About
-            </button>
-            <button 
-              onClick={() => scrollToSection('solutions')}
-              className="text-white hover:text-electric-teal block px-3 py-2 text-base font-semibold w-full text-left"
-            >
+            </Link>
+            <Link href="/solutions" className="text-white hover:text-electric-teal block px-3 py-2 text-base font-semibold" onClick={() => setIsMenuOpen(false)}>
               Solutions
-            </button>
-            <button 
-              onClick={() => scrollToSection('why-forillon')}
-              className="text-white hover:text-electric-teal block px-3 py-2 text-base font-semibold w-full text-left"
-            >
+            </Link>
+            <Link href="/why-forillon" className="text-white hover:text-electric-teal block px-3 py-2 text-base font-semibold" onClick={() => setIsMenuOpen(false)}>
               Why Forillon
-            </button>
-            <Link href="/blog" className="text-white hover:text-electric-teal block px-3 py-2 text-base font-semibold">
+            </Link>
+            <Link href="/blog" className="text-white hover:text-electric-teal block px-3 py-2 text-base font-semibold" onClick={() => setIsMenuOpen(false)}>
               Blog
             </Link>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="text-white hover:text-electric-teal block px-3 py-2 text-base font-semibold w-full text-left"
-            >
+            <Link href="/contact" className="text-white hover:text-electric-teal block px-3 py-2 text-base font-semibold" onClick={() => setIsMenuOpen(false)}>
               Contact
-            </button>
+            </Link>
           </div>
         </div>
       )}
