@@ -5,50 +5,80 @@ export default function About() {
   return (
     <div className="min-h-screen bg-ice-white">
       {/* Hero Section */}
-      <section className="relative bg-forillon-navy py-24 lg:py-40 overflow-hidden">
-        <video 
-          autoPlay 
-          muted 
-          loop 
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-15"
-        >
-          <source src="https://videos.pexels.com/video-files/3195394/3195394-uhd_3840_2160_25fps.mp4" type="video/mp4" />
-          <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_3840_2160_30fps.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/85 via-forillon-navy/80 to-electric-teal/20"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-forillon-navy/60 to-transparent"></div>
+      <section className="relative bg-gradient-to-br from-forillon-navy via-forillon-navy to-electric-teal/20 py-20 lg:py-32">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80')] bg-cover bg-center opacity-5"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="mb-8">
-              <span className="inline-block px-4 py-2 bg-electric-teal/20 text-electric-teal rounded-full text-sm font-medium border border-electric-teal/30">
-                Where Innovation Meets Heart
-              </span>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-left">
+              <div className="mb-6">
+                <span className="inline-flex items-center px-3 py-1 bg-electric-teal text-white text-sm font-medium rounded-full">
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  Where Innovation Meets Heart
+                </span>
+              </div>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight">
+                Building Technology<br />
+                <span className="text-electric-teal">That Transforms Lives</span>
+              </h1>
+              <p className="text-xl text-silver-mist mb-8 leading-relaxed">
+                We don't just create software — we craft solutions that understand, 
+                empower, and uplift the human experience. Every line of code, every interface, 
+                every innovation is designed with one purpose: to make life better.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button 
+                  className="bg-electric-teal hover:bg-electric-teal/90 text-white px-6 py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                  onClick={() => {
+                    const element = document.getElementById('our-story');
+                    element?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Discover Our Story <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="border-2 border-white text-white hover:bg-white hover:text-forillon-navy px-6 py-3 text-lg font-semibold rounded-lg transition-all duration-300"
+                >
+                  Our Impact
+                </Button>
+              </div>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight text-white leading-tight">
-              Every Great Journey<br />
-              <span className="text-electric-teal">Begins with a Spark</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-silver-mist max-w-4xl mx-auto mb-12 leading-relaxed">
-              At Forillon Technologies, we believe technology should be more than code and hardware. 
-              It should be a force for good — solving real problems, opening possibilities, and empowering everyone to reach their potential.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button className="bg-electric-teal hover:bg-electric-teal/90 text-white px-8 py-3 text-lg font-semibold">
-                Discover Our Story <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-forillon-navy px-8 py-3 text-lg font-semibold">
-                Join Our Mission
-              </Button>
+            
+            <div className="relative">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-electric-teal mb-2">500+</div>
+                    <div className="text-silver-mist text-sm">Lives Transformed</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-electric-teal mb-2">15+</div>
+                    <div className="text-silver-mist text-sm">Years of Innovation</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-electric-teal mb-2">98%</div>
+                    <div className="text-silver-mist text-sm">Client Satisfaction</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-electric-teal mb-2">∞</div>
+                    <div className="text-silver-mist text-sm">Possibilities</div>
+                  </div>
+                </div>
+                <div className="mt-6 pt-6 border-t border-white/20">
+                  <blockquote className="text-white italic text-center">
+                    "Technology is only as valuable as the lives it touches."
+                  </blockquote>
+                </div>
+              </div>
+              
+              {/* Decorative elements */}
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-electric-teal rounded-full opacity-60 animate-bounce"></div>
+              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-white rounded-full opacity-40 animate-pulse"></div>
             </div>
           </div>
         </div>
-        
-        {/* Floating elements for visual interest */}
-        <div className="absolute top-20 left-10 w-2 h-2 bg-electric-teal rounded-full opacity-60 animate-pulse"></div>
-        <div className="absolute top-32 right-20 w-3 h-3 bg-white rounded-full opacity-40 animate-pulse" style={{animationDelay: '1s'}}></div>
-        <div className="absolute bottom-20 left-20 w-1 h-1 bg-electric-teal rounded-full opacity-80 animate-pulse" style={{animationDelay: '2s'}}></div>
-        <div className="absolute bottom-40 right-10 w-2 h-2 bg-white rounded-full opacity-50 animate-pulse" style={{animationDelay: '0.5s'}}></div>
       </section>
 
       {/* Vision & Mission */}
@@ -86,7 +116,7 @@ export default function About() {
       </section>
 
       {/* Company Story */}
-      <section className="py-20 bg-white">
+      <section id="our-story" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-forillon-navy">
