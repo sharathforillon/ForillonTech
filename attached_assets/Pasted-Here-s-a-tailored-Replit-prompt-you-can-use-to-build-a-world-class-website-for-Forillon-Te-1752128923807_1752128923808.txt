@@ -1,0 +1,71 @@
+Here's a tailored **Replit prompt** you can use to build a **world-class website** for **Forillon Technologies**, aligned with your logo and elite brand guidelines. This prompt is written for **AI builders**, Replit Ghostwriter, or for a dev team you might hire via Replit Bounties:
+
+---
+
+### 🚀 Replit Prompt:
+
+> **Build a world-class, enterprise-grade website for “Forillon Technologies” based on the following brand guidelines:**
+>
+> **1. Brand Essence:**
+>
+> * Name: *Forillon Technologies*
+> * Tagline: *Trusted to Transform*
+> * Mission: Build intelligent, scalable digital infrastructure for the future
+> * Industry: Enterprise Tech, Digital Transformation, AI Consulting
+>
+> **2. Visual Branding:**
+>
+> * Use the uploaded logo (`assets/images/logo.png`)
+> * Primary font: **IBM Plex Sans** from Google Fonts
+> * Color palette:
+>
+>   * Forillon Navy: `#032D3C` (Core brand color)
+>   * Slate Gray: `#475569` (Body text)
+>   * Silver Mist: `#E2E8F0` (Section backgrounds)
+>   * Electric Teal: `#14B8A6` (CTA & Accent)
+>   * Ice White: `#F8FAFC` (Page background)
+>
+> **3. Design System Requirements:**
+>
+> * Elegant navigation bar with logo on the left and 4 links (About, Solutions, Why Forillon, Contact)
+> * Hero section with impactful title: “Trusted to Transform” + subtext
+> * Responsive layout (mobile, tablet, desktop)
+> * Modular components for:
+>
+>   * **About Us**
+>   * **Solutions**
+>   * **Why Forillon**
+>   * **Contact Info**
+> * Smooth scrolling between sections
+> * Clean card layouts for listing solutions
+> * Sticky header, elegant footer
+> * Responsive hover effects on buttons
+>
+> **4. UI Style Direction:**
+>
+> * Layout must feel clean, premium, minimal
+> * Use lots of whitespace for clarity
+> * Apply alternating background colors to sections
+> * Use shadow and elevation subtly
+> * Use animated scroll effects if light
+>
+> **5. Deliverables:**
+>
+> * Fully working HTML/CSS/JS frontend
+> * Placeholders for future form integration
+> * Deployed and viewable directly in Replit
+> * Logo and fonts embedded or linked properly
+>
+> **Goal:**
+> The site should *reek trust, intelligence, and modern enterprise class.* It must be simple, fast-loading, and feel like a million-dollar consulting brand website.
+
+---
+
+Let me know if you want to include:
+
+* Tailwind CSS
+* React version
+* Contact form using Formspree / Replit DB
+* Blog/News CMS integration
+
+I can adapt this further for the specific stack or use-case you want.

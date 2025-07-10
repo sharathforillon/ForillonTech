@@ -1,0 +1,107 @@
+🔤 Font
+Primary Font: IBM Plex Sans
+
+Source: Google Fonts
+
+html
+Copy
+Edit
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+Use:
+
+700 for Headlines (Bold)
+
+600 for Subheadings (Semi-bold)
+
+400 for Body text (Regular)
+
+🎨 Color Palette
+Name	HEX	Usage
+Forillon Navy	#032D3C	Primary header, nav, buttons
+Slate Gray	#475569	Paragraphs, muted text
+Silver Mist	#E2E8F0	Backgrounds, section breaks
+Electric Teal	#14B8A6	CTAs, hover states, highlights
+Jet Black	#1E1E1E	Footer, text emphasis
+Ice White	#F8FAFC	Overall page background
+
+🔲 Layout & Spacing
+Grid System: Use max width of 1200px, center aligned
+
+Section Padding: 60px top/bottom, 20px sides
+
+Whitespace: Generous whitespace between sections for elegance
+
+🖼️ Logo Usage
+Use your logo image at:
+
+180px width on web
+
+Height auto
+
+Positioned on the left of navbar
+
+Place inside /assets/images/logo.png
+
+Maintain minimum 24px margin from other nav elements
+
+🧩 Components
+1. Navigation Bar
+Background: #032D3C
+
+Text: White
+
+Sticky on scroll
+
+Font weight: 600
+
+2. Hero Section
+Background: #E2E8F0
+
+Heading: "Trusted to Transform" in IBM Plex Sans 700, color #032D3C
+
+Subheading: "Where Intelligence Becomes Infrastructure", weight 400, color #475569
+
+Center-aligned text
+
+3. Buttons
+css
+Copy
+Edit
+.button {
+  background-color: #032D3C;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.button:hover {
+  background-color: transparent;
+  color: #032D3C;
+  border: 2px solid #14B8A6;
+}
+4. Sections
+Alternate background: #F8FAFC and #E2E8F0
+
+Heading font size: 32px, color: #032D3C
+
+Body text font size: 18px, line-height: 1.6, color: #475569
+
+5. Footer
+Background: #032D3C
+
+Text: white, centered, small font
+
+Padding: 20px 0
+
+🧠 Tone & Content Style
+Clear, confident, minimalistic
+
+Use powerful, benefit-driven language:
+
+"We engineer intelligent infrastructure that adapts, scales, and empowers the future."
+
+Avoid fluff, focus on trust, transformation, and enterprise strength
+
