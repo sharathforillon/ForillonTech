@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import forilonLogo from "@assets/Untitled design (2)_1752132662612.png";
 
 export default function Footer() {
   const services = [
@@ -22,7 +23,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
               <img 
-                src="/assets/forillon-logo-no-bg.png" 
+                src={forilonLogo} 
                 alt="Forillon Technologies" 
                 className="h-8 w-auto mr-3"
               />

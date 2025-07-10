@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import forilonLogo from "@assets/Untitled design (2)_1752132662612.png";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,7 +23,7 @@ export default function Navigation() {
             <Link href="/">
               <a className="flex-shrink-0 flex items-center cursor-pointer">
                 <img 
-                  src="/assets/forillon-logo-no-bg.png" 
+                  src={forilonLogo} 
                   alt="Forillon Technologies" 
                   className="h-8 w-auto mr-3"
                 />
