@@ -27,7 +27,7 @@ export default function Navigation() {
                 <img 
                   src={F_nobackground} 
                   alt="Forillon Technologies" 
-                  className="h-8 w-auto mr-3"
+                  className="h-8 w-auto mr-3 brightness-0 invert"
                 />
                 <span className="text-xl font-semibold text-white">
                   Forillon Technologies

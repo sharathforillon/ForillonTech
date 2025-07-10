@@ -25,7 +25,7 @@ export default function Footer() {
               <img 
                 src={forilonLogo} 
                 alt="Forillon Technologies" 
-                className="h-8 w-auto mr-3"
+                className="h-8 w-auto mr-3 brightness-0 invert"
               />
               <span className="text-xl font-semibold">Forillon Technologies</span>
             </div>
