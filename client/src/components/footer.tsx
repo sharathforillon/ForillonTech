@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import forilonLogo from "@assets/Untitled design (2)_1752132662612.png";
+import F_nobackground from "@assets/F-nobackground.png";
 
 export default function Footer() {
   const services = [
@@ -23,11 +23,18 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
               <img 
-                src={forilonLogo} 
+                src={F_nobackground} 
                 alt="Forillon Technologies" 
                 className="h-8 w-auto mr-3 brightness-0 invert"
               />
-              <span className="text-xl font-semibold">Forillon Technologies</span>
+              <div className="flex flex-col">
+                <span className="text-xl font-semibold text-white">
+                  Forillon Technologies
+                </span>
+                <span className="text-xs text-electric-teal font-medium">
+                  Trusted to Transform
+                </span>
+              </div>
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
               Trusted to transform. We build intelligent, scalable digital infrastructure for the future.
