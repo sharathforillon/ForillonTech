@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --background: hsl(222, 84%, 98%);
+  --foreground: hsl(210, 17%, 34%);
+  --muted: hsl(210, 40%, 92%);
+  --muted-foreground: hsl(210, 17%, 44%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(210, 17%, 34%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(210, 17%, 34%);
+  --border: hsl(210, 40%, 92%);
+  --input: hsl(210, 40%, 92%);
+  --primary: hsl(185, 84%, 39%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(210, 40%, 92%);
+  --secondary-foreground: hsl(210, 17%, 34%);
+  --accent: hsl(210, 40%, 92%);
+  --accent-foreground: hsl(210, 17%, 34%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(60, 9%, 98%);
+  --ring: hsl(185, 84%, 39%);
+  --radius: 0.5rem;
+  
+  /* Forillon Brand Colors */
+  --forillon-navy: hsl(196, 92%, 12%);
+  --slate-gray: hsl(210, 17%, 44%);
+  --silver-mist: hsl(214, 32%, 91%);
+  --electric-teal: hsl(173, 80%, 40%);
+  --ice-white: hsl(214, 32%, 98%);
+  --jet-black: hsl(0, 0%, 12%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 4%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 4%, 16%);
+  --muted-foreground: hsl(240, 5%, 65%);
+  --popover: hsl(240, 10%, 4%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 4%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 4%, 16%);
+  --input: hsl(240, 4%, 16%);
+  --primary: hsl(185, 84%, 39%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(240, 4%, 16%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 4%, 16%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 63%, 31%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 5%, 84%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-forillon-navy {
+    color: var(--forillon-navy);
+  }
+  
+  .text-slate-gray {
+    color: var(--slate-gray);
+  }
+  
+  .text-electric-teal {
+    color: var(--electric-teal);
+  }
+  
+  .bg-forillon-navy {
+    background-color: var(--forillon-navy);
+  }
+  
+  .bg-slate-gray {
+    background-color: var(--slate-gray);
+  }
+  
+  .bg-silver-mist {
+    background-color: var(--silver-mist);
+  }
+  
+  .bg-electric-teal {
+    background-color: var(--electric-teal);
+  }
+  
+  .bg-ice-white {
+    background-color: var(--ice-white);
+  }
+  
+  .border-electric-teal {
+    border-color: var(--electric-teal);
+  }
+  
+  .hover\:bg-electric-teal:hover {
+    background-color: var(--electric-teal);
+  }
+  
+  .hover\:text-electric-teal:hover {
+    color: var(--electric-teal);
+  }
+  
+  .hover\:text-forillon-navy:hover {
+    color: var(--forillon-navy);
+  }
+}

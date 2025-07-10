@@ -1,0 +1,40 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+
+media_folder: public/images/uploads # Media files will be stored in the repo under public/images/uploads
+public_folder: /images/uploads # The src attribute for uploaded media will begin with /images/uploads
+
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog" # Used in the UI
+    folder: "client/public/blog" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Description", name: "description", widget: "string"}
+      - {label: "Category", name: "category", widget: "select", options: ["AI & Machine Learning", "Cloud Infrastructure", "Digital Transformation", "Enterprise Architecture", "Security & Compliance", "Performance Optimization"]}
+      - {label: "Featured Image", name: "featured_image", widget: "image", required: false}
+      - {label: "Author", name: "author", widget: "string", default: "Forillon Technologies Team"}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Homepage"
+        name: "homepage"
+        file: "client/public/content/homepage.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Hero Title", name: "hero_title", widget: "string"}
+          - {label: "Hero Subtitle", name: "hero_subtitle", widget: "text"}
+          - {label: "About Section", name: "about_section", widget: "markdown"}
+          - {label: "Contact Email", name: "contact_email", widget: "string"}
+          - {label: "Contact Phone", name: "contact_phone", widget: "string"}
+
+site_url: https://forillon.tech
+display_url: https://forillon.tech
+logo_url: https://forillon.tech/assets/images/logo.svg
