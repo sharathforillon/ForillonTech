@@ -22,7 +22,7 @@ export default function Navigation() {
             <Link href="/">
               <a className="flex-shrink-0 flex items-center cursor-pointer">
                 <img 
-                  src="/assets/forillon-logo.png" 
+                  src="/assets/forillon-logo-no-bg.png" 
                   alt="Forillon Technologies" 
                   className="h-8 w-auto mr-3"
                 />

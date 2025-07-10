@@ -22,7 +22,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
               <img 
-                src="/assets/forillon-logo.png" 
+                src="/assets/forillon-logo-no-bg.png" 
                 alt="Forillon Technologies" 
                 className="h-8 w-auto mr-3"
               />
