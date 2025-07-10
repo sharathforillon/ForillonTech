@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import forilonLogo from "@assets/Untitled design (2)_1752132662612.png";
 
+import F_nobackground from "@assets/F-nobackground.png";
+
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -23,7 +25,7 @@ export default function Navigation() {
             <Link href="/">
               <a className="flex-shrink-0 flex items-center cursor-pointer">
                 <img 
-                  src={forilonLogo} 
+                  src={F_nobackground} 
                   alt="Forillon Technologies" 
                   className="h-8 w-auto mr-3"
                 />
@@ -80,7 +82,6 @@ export default function Navigation() {
           </div>
         </div>
       </div>
-
       {/* Mobile menu */}
       {isMenuOpen && (
         <div className="md:hidden">
