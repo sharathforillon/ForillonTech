@@ -54,7 +54,7 @@ export default function About() {
                     <div className="text-silver-mist text-sm">Lives Transformed</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-electric-teal mb-2">15+</div>
+                    <div className="text-3xl font-bold text-electric-teal mb-2">16</div>
                     <div className="text-silver-mist text-sm">Years of Innovation</div>
                   </div>
                   <div className="text-center">
