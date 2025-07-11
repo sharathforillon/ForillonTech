@@ -269,60 +269,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Leadership */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-forillon-navy">
-              Leadership Team
-            </h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              Visionary leaders driving innovation in enterprise technology
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80"
-                alt="CEO"
-                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
-              />
-              <h3 className="text-xl font-semibold mb-2 text-forillon-navy">John Smith</h3>
-              <p className="text-electric-teal font-medium mb-2">Chief Executive Officer</p>
-              <p className="text-gray-600 text-sm">
-                20+ years in enterprise technology and digital transformation
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <img 
-                src="https://images.unsplash.com/photo-1494790108755-2616b612b647?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80"
-                alt="CTO"
-                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
-              />
-              <h3 className="text-xl font-semibold mb-2 text-forillon-navy">Sarah Johnson</h3>
-              <p className="text-electric-teal font-medium mb-2">Chief Technology Officer</p>
-              <p className="text-gray-600 text-sm">
-                AI research pioneer with expertise in machine learning and infrastructure
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <img 
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80"
-                alt="COO"
-                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
-              />
-              <h3 className="text-xl font-semibold mb-2 text-forillon-navy">Michael Chen</h3>
-              <p className="text-electric-teal font-medium mb-2">Chief Operating Officer</p>
-              <p className="text-gray-600 text-sm">
-                Operations excellence leader with focus on scalable business transformation
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+
     </div>
   );
 }
