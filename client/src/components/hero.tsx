@@ -33,20 +33,21 @@ export default function Hero() {
 
   return (
     <section className="relative bg-gradient-to-br from-forillon-navy via-forillon-navy to-slate-gray py-20 lg:py-32 overflow-hidden min-h-screen flex items-center">
-      {/* Working Video Background */}
+      {/* Hero Video Background */}
       <video 
         autoPlay 
         muted 
         loop 
         playsInline
-        className="absolute inset-0 w-full h-full object-cover opacity-20"
+        className="absolute inset-0 w-full h-full object-cover opacity-40"
       >
+        <source src="https://videos.pexels.com/video-files/3195394/3195394-uhd_3840_2160_25fps.mp4" type="video/mp4" />
+        <source src="https://videos.pexels.com/video-files/6153354/6153354-uhd_3840_2160_30fps.mp4" type="video/mp4" />
         <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_3840_2160_30fps.mp4" type="video/mp4" />
-        <source src="https://videos.pexels.com/video-files/2278095/2278095-uhd_3840_2160_25fps.mp4" type="video/mp4" />
       </video>
       
       {/* Professional Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/60 via-forillon-navy/70 to-slate-gray/80"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/50 via-forillon-navy/60 to-slate-gray/70"></div>
       
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
