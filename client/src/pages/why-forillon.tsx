@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, CheckCircle, Star, Award, Users, Lightbulb } from "lucide-react";
+import Navigation from "@/components/navigation";
+import Footer from "@/components/footer";
 
 export default function WhyForillon() {
   const advantages = [
@@ -56,6 +58,7 @@ export default function WhyForillon() {
 
   return (
     <div className="min-h-screen bg-ice-white">
+      <Navigation />
       {/* Hero Section */}
       <section className="relative bg-forillon-navy py-20 lg:py-32 overflow-hidden">
         <video 
@@ -225,6 +228,8 @@ export default function WhyForillon() {
           </Button>
         </div>
       </section>
+      
+      <Footer />
     </div>
   );
 }

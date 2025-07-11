@@ -6,6 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { MapPin, Phone, Mail, Clock, ArrowRight } from "lucide-react";
+import Navigation from "@/components/navigation";
+import Footer from "@/components/footer";
 
 export default function Contact() {
   const { toast } = useToast();
@@ -66,6 +68,7 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-ice-white">
+      <Navigation />
       {/* Hero Section */}
       <section className="relative bg-forillon-navy py-20 lg:py-32 overflow-hidden">
         <video 
@@ -270,6 +273,8 @@ export default function Contact() {
           </div>
         </div>
       </section>
+      
+      <Footer />
     </div>
   );
 }

@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Brain, Cloud, Shield, Zap, Database, Cpu } from "lucide-react";
+import Navigation from "@/components/navigation";
+import Footer from "@/components/footer";
 
 export default function Solutions() {
   const solutions = [
@@ -51,6 +53,7 @@ export default function Solutions() {
 
   return (
     <div className="min-h-screen bg-ice-white">
+      <Navigation />
       {/* Hero Section */}
       <section className="relative bg-forillon-navy py-20 lg:py-32 overflow-hidden">
         <video 
@@ -190,6 +193,8 @@ export default function Solutions() {
           </Button>
         </div>
       </section>
+      
+      <Footer />
     </div>
   );
 }

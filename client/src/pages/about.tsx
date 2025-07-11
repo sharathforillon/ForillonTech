@@ -1,9 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, Target, Award } from "lucide-react";
+import Navigation from "@/components/navigation";
+import Footer from "@/components/footer";
 
 export default function About() {
   return (
     <div className="min-h-screen bg-ice-white">
+      <Navigation />
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-forillon-navy via-forillon-navy to-electric-teal/20 py-20 lg:py-32">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80')] bg-cover bg-center opacity-5"></div>
@@ -330,6 +333,7 @@ export default function About() {
         </div>
       </section>
 
+      <Footer />
     </div>
   );
 }
