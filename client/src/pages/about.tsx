@@ -263,6 +263,72 @@ export default function About() {
         </div>
       </section>
 
+      {/* Global Presence */}
+      <section className="py-20 bg-gradient-to-br from-forillon-navy to-electric-teal/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+              Global Presence, Local Impact
+            </h2>
+            <p className="text-xl text-silver-mist max-w-3xl mx-auto">
+              Serving clients across North America with deep local expertise and global perspective
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start mb-6">
+                <div className="bg-white/10 backdrop-blur-sm rounded-full p-4 mr-4">
+                  <svg className="w-8 h-8 text-electric-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">Canadian Operations</h3>
+                  <p className="text-electric-teal font-medium">Toronto, Ontario</p>
+                </div>
+              </div>
+              <p className="text-lg text-silver-mist leading-relaxed mb-6">
+                Forillon Technologies maintains a strong presence in Canada's technology hub. 
+                Our Toronto operations serve as a gateway to the Canadian market, bringing 
+                our innovative solutions to businesses across the country.
+              </p>
+              <p className="text-lg text-silver-mist leading-relaxed">
+                From AI consulting to digital transformation, we're helping Canadian enterprises 
+                harness the power of technology to drive growth and competitive advantage.
+              </p>
+            </div>
+            
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+              <div className="text-center">
+                <div className="mb-6">
+                  <svg className="w-16 h-16 text-electric-teal mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  </svg>
+                  <h4 className="text-xl font-bold text-white mb-2">North American Reach</h4>
+                  <p className="text-silver-mist">Serving clients coast to coast</p>
+                </div>
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-electric-teal mb-1">2</div>
+                    <div className="text-silver-mist text-sm">Countries</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-electric-teal mb-1">50+</div>
+                    <div className="text-silver-mist text-sm">Canadian Clients</div>
+                  </div>
+                </div>
+                <div className="pt-6 border-t border-white/20">
+                  <p className="text-white italic">
+                    "Bridging innovation across borders"
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
     </div>
   );
