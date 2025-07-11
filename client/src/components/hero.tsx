@@ -103,17 +103,36 @@ export default function Hero() {
             </div>
           </div>
           
-          {/* Right Column - Stats Grid */}
-          <div className="grid grid-cols-2 gap-6">
-            {stats.map((stat, index) => (
-              <div key={index} className="bg-white/80 backdrop-blur-sm rounded-xl p-6 text-center transform hover:scale-105 transition-all duration-300 hover:bg-white/90 border border-forillon-navy/10 shadow-lg">
-                <div className="w-12 h-12 bg-electric-teal/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <stat.icon className="w-6 h-6 text-electric-teal" />
+          {/* Right Column - Enterprise Visual */}
+          <div className="relative">
+            {/* Hero Enterprise Image */}
+            <div className="relative mb-8">
+              <img 
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80"
+                alt="Enterprise Technology Solutions"
+                className="w-full h-80 object-cover rounded-2xl shadow-2xl"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-forillon-navy/20 to-transparent rounded-2xl"></div>
+              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3">
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                  <span className="text-sm font-medium text-forillon-navy">Live Enterprise Systems</span>
                 </div>
-                <div className="text-2xl md:text-3xl font-bold text-forillon-navy mb-2">{stat.number}</div>
-                <div className="text-sm text-slate-gray">{stat.label}</div>
               </div>
-            ))}
+            </div>
+            
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 gap-4">
+              {stats.map((stat, index) => (
+                <div key={index} className="bg-white/80 backdrop-blur-sm rounded-xl p-4 text-center transform hover:scale-105 transition-all duration-300 hover:bg-white/90 border border-forillon-navy/10 shadow-lg">
+                  <div className="w-10 h-10 bg-electric-teal/20 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <stat.icon className="w-5 h-5 text-electric-teal" />
+                  </div>
+                  <div className="text-xl md:text-2xl font-bold text-forillon-navy mb-1">{stat.number}</div>
+                  <div className="text-xs text-slate-gray">{stat.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         
