@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import forilonLogo from "@assets/Untitled design (2)_1752132662612.png";
 
 import F_nobackground from "@assets/F-nobackground.png";
@@ -38,9 +44,43 @@ export default function Navigation() {
               <Link href="/about" className="text-white hover:text-electric-teal px-3 py-2 text-sm font-semibold transition-colors">
                 About
               </Link>
-              <Link href="/solutions" className="text-white hover:text-electric-teal px-3 py-2 text-sm font-semibold transition-colors">
-                Solutions
-              </Link>
+              <DropdownMenu>
+                <DropdownMenuTrigger className="text-white hover:text-electric-teal px-3 py-2 text-sm font-semibold transition-colors flex items-center">
+                  Solutions <ChevronDown className="ml-1 h-4 w-4" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg">
+                  <DropdownMenuItem asChild>
+                    <Link href="/solutions/ai-transformation" className="w-full px-4 py-2 text-forillon-navy hover:bg-electric-teal/10">
+                      AI & Digital Transformation
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/solutions/infrastructure" className="w-full px-4 py-2 text-forillon-navy hover:bg-electric-teal/10">
+                      Technology Infrastructure
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/solutions/cloud-migration" className="w-full px-4 py-2 text-forillon-navy hover:bg-electric-teal/10">
+                      Cloud Migration & Modernization
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/solutions/security" className="w-full px-4 py-2 text-forillon-navy hover:bg-electric-teal/10">
+                      Enterprise Security
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/solutions/performance" className="w-full px-4 py-2 text-forillon-navy hover:bg-electric-teal/10">
+                      Performance Engineering
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/solutions" className="w-full px-4 py-2 text-electric-teal font-semibold hover:bg-electric-teal/10">
+                      View All Solutions
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
               <Link href="/why-forillon" className="text-white hover:text-electric-teal px-3 py-2 text-sm font-semibold transition-colors">
                 Why Forillon
               </Link>

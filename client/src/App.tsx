@@ -11,6 +11,11 @@ import Contact from "@/pages/contact";
 import Blog from "@/pages/blog";
 import BlogPost from "@/pages/blog-post";
 import NotFound from "@/pages/not-found";
+import AITransformation from "@/pages/solutions/ai-transformation";
+import Infrastructure from "@/pages/solutions/infrastructure";
+import CloudMigration from "@/pages/solutions/cloud-migration";
+import Security from "@/pages/solutions/security";
+import Performance from "@/pages/solutions/performance";
 
 function Router() {
   return (
@@ -18,6 +23,11 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/solutions" component={Solutions} />
+      <Route path="/solutions/ai-transformation" component={AITransformation} />
+      <Route path="/solutions/infrastructure" component={Infrastructure} />
+      <Route path="/solutions/cloud-migration" component={CloudMigration} />
+      <Route path="/solutions/security" component={Security} />
+      <Route path="/solutions/performance" component={Performance} />
       <Route path="/why-forillon" component={WhyForillon} />
       <Route path="/contact" component={Contact} />
       <Route path="/blog" component={Blog} />
