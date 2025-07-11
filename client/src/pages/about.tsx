@@ -37,12 +37,6 @@ export default function About() {
                 >
                   Discover Our Story <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <Button 
-                  variant="outline" 
-                  className="border-2 border-white text-white hover:bg-white hover:text-forillon-navy px-6 py-3 text-lg font-semibold rounded-lg transition-all duration-300"
-                >
-                  Our Impact
-                </Button>
               </div>
             </div>
             
