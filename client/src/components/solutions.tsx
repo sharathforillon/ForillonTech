@@ -1,30 +1,87 @@
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, Calendar, ExternalLink, Users, Building, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
-const expertiseAreas = [
+const serviceCards = [
   {
-    category: "Strategic Consulting",
+    icon: "🤖",
     title: "AI & Digital Transformation",
-    description: "We architect intelligent systems that fundamentally reshape how your organization operates, thinks, and competes.",
-    outcomes: ["30% operational efficiency gains", "AI-driven decision making", "Future-ready architecture"],
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80"
+    description: "Architect intelligent systems that fundamentally reshape how your organization operates and competes.",
+    keyBenefits: ["30% operational efficiency gains", "AI-driven decision making"],
+    cta: "Explore AI Solutions",
+    link: "/solutions/ai-transformation",
+    hover: "from-blue-50 to-indigo-50"
   },
   {
-    category: "Enterprise Architecture",
+    icon: "🏗️",
     title: "Technology Infrastructure",
     description: "Enterprise-grade infrastructure that scales with your ambitions while maintaining security and performance.",
-    outcomes: ["99.9% uptime guarantee", "Scalable cloud architecture", "Zero-compromise security"],
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80"
+    keyBenefits: ["99.9% uptime guarantee", "Scalable cloud architecture"],
+    cta: "Build Infrastructure",
+    link: "/solutions/infrastructure",
+    hover: "from-teal-50 to-cyan-50"
+  },
+  {
+    icon: "☁️",
+    title: "Cloud Migration & Modernization",
+    description: "Strategic cloud migration that modernizes your infrastructure while ensuring zero business disruption.",
+    keyBenefits: ["40% cost reduction", "Zero-downtime migration"],
+    cta: "Start Migration",
+    link: "/solutions/cloud-migration",
+    hover: "from-purple-50 to-violet-50"
+  },
+  {
+    icon: "🛡️",
+    title: "Enterprise Security",
+    description: "Comprehensive security frameworks and compliance solutions that protect your digital assets.",
+    keyBenefits: ["99.99% threat detection", "Zero-trust architecture"],
+    cta: "Secure Enterprise",
+    link: "/solutions/security",
+    hover: "from-red-50 to-pink-50"
+  },
+  {
+    icon: "⚡",
+    title: "Performance Engineering",
+    description: "Data-driven optimization strategies to maximize efficiency and ROI across your technology investments.",
+    keyBenefits: ["70% performance improvement", "Proactive monitoring"],
+    cta: "Optimize Performance",
+    link: "/solutions/performance",
+    hover: "from-yellow-50 to-orange-50"
+  },
+  {
+    icon: "🔧",
+    title: "Digital Innovation Consulting",
+    description: "Strategic consulting to identify and implement cutting-edge technologies that drive competitive advantage.",
+    keyBenefits: ["Innovation roadmap", "Future-ready solutions"],
+    cta: "Innovate with Us",
+    link: "/solutions",
+    hover: "from-green-50 to-emerald-50"
   }
 ];
 
-const capabilities = [
-  "Strategic Technology Planning",
-  "AI Implementation & Optimization",
-  "Cloud Migration & Modernization",
-  "Enterprise Security Architecture",
-  "Performance & Scalability Engineering",
-  "Digital Innovation Consulting"
+const socialProof = [
+  {
+    company: "Fortune 500 Financial Services",
+    project: "AI-Powered Risk Assessment Platform",
+    result: "40% reduction in processing time, 99.7% accuracy",
+    industry: "Financial Services",
+    icon: Building
+  },
+  {
+    company: "Global Manufacturing Corp",
+    project: "Enterprise Cloud Migration",
+    result: "60% infrastructure cost savings, zero downtime",
+    industry: "Manufacturing",
+    icon: TrendingUp
+  },
+  {
+    company: "Healthcare Innovation Group",
+    project: "HIPAA-Compliant Security Framework",
+    result: "100% compliance, 50% faster deployment",
+    industry: "Healthcare",
+    icon: Users
+  }
 ];
 
 export default function Solutions() {
@@ -45,81 +102,101 @@ export default function Solutions() {
           </p>
         </div>
 
-        {/* Main Solutions */}
-        <div className="space-y-16 mb-20">
-          {expertiseAreas.map((area, index) => (
-            <div key={index} className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
-              <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                <div className="inline-flex items-center justify-center px-3 py-1 bg-forillon-navy/10 rounded-full mb-4">
-                  <span className="text-forillon-navy font-medium text-sm">{area.category}</span>
-                </div>
-                <h3 className="text-3xl md:text-4xl font-bold text-forillon-navy mb-6">
-                  {area.title}
-                </h3>
-                <p className="text-lg text-gray-600 mb-8">
-                  {area.description}
+        {/* Services Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {serviceCards.map((service, index) => (
+            <Card key={index} className="group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border-0 bg-white">
+              <CardHeader className="pb-4">
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <CardTitle className="text-xl text-forillon-navy group-hover:text-electric-teal transition-colors">
+                  {service.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {service.description}
                 </p>
                 
-                <div className="space-y-4 mb-8">
-                  {area.outcomes.map((outcome, outcomeIndex) => (
-                    <div key={outcomeIndex} className="flex items-start">
-                      <CheckCircle className="h-6 w-6 text-electric-teal mr-3 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 font-medium">{outcome}</span>
+                <div className="space-y-2">
+                  {service.keyBenefits.map((benefit, benefitIndex) => (
+                    <div key={benefitIndex} className="flex items-start text-sm">
+                      <CheckCircle className="h-4 w-4 text-electric-teal mr-2 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700">{benefit}</span>
                     </div>
                   ))}
                 </div>
                 
-                <Button className="bg-electric-teal hover:bg-electric-teal/90 text-white">
-                  Explore Solutions <ArrowRight className="ml-2 h-4 w-4" />
+                <Button 
+                  className="w-full bg-electric-teal hover:bg-electric-teal/90 text-white mt-4"
+                  onClick={() => window.location.href = service.link}
+                >
+                  {service.cta} <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-              </div>
-              
-              <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
-                <div className="relative">
-                  <img 
-                    src={area.image}
-                    alt={area.title}
-                    className="rounded-lg shadow-2xl w-full h-80 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-forillon-navy/20 to-transparent rounded-lg"></div>
-                </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
-        {/* Capabilities Grid */}
-        <div className="bg-silver-mist rounded-2xl p-12">
+        {/* Social Proof Section */}
+        <div className="bg-silver-mist rounded-2xl p-12 mb-20">
           <div className="text-center mb-12">
             <h3 className="text-2xl md:text-3xl font-bold text-forillon-navy mb-4">
-              Core Capabilities
+              Trusted by Industry Leaders
             </h3>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Our comprehensive expertise spans the full spectrum of enterprise technology challenges.
+              Sample engagements showcasing our expertise across diverse industries and complex challenges.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {capabilities.map((capability, index) => (
-              <div key={index} className="flex items-center p-4 bg-white rounded-lg shadow-sm">
-                <div className="w-2 h-2 bg-electric-teal rounded-full mr-4"></div>
-                <span className="text-forillon-navy font-medium">{capability}</span>
-              </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {socialProof.map((proof, index) => (
+              <Card key={index} className="bg-white border-0 shadow-lg">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    <proof.icon className="h-8 w-8 text-electric-teal mr-3" />
+                    <Badge variant="secondary" className="text-xs">
+                      {proof.industry}
+                    </Badge>
+                  </div>
+                  <h4 className="font-semibold text-forillon-navy mb-2">
+                    {proof.company}
+                  </h4>
+                  <p className="text-sm text-gray-600 mb-3">
+                    {proof.project}
+                  </p>
+                  <p className="text-sm font-medium text-electric-teal">
+                    {proof.result}
+                  </p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="text-center mt-20">
-          <h3 className="text-2xl md:text-3xl font-bold text-forillon-navy mb-6">
+        {/* CTA Section */}
+        <div className="text-center bg-forillon-navy rounded-2xl p-12 text-white">
+          <h3 className="text-2xl md:text-3xl font-bold mb-6">
             Ready to transform your enterprise?
           </h3>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-silver-mist mb-8 max-w-2xl mx-auto">
             Let's discuss how our strategic technology solutions can drive your organization's next phase of growth.
           </p>
-          <Button className="bg-forillon-navy hover:bg-forillon-navy/90 text-white text-lg px-8 py-3">
-            Schedule Strategic Consultation <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              className="bg-electric-teal hover:bg-electric-teal/90 text-white text-lg px-8 py-3"
+              onClick={() => window.open('https://calendly.com/forillon-technologies', '_blank')}
+            >
+              <Calendar className="mr-2 h-5 w-5" />
+              Book a Consultation
+            </Button>
+            <Button 
+              variant="outline" 
+              className="border-electric-teal text-electric-teal hover:bg-electric-teal hover:text-white text-lg px-8 py-3"
+              onClick={() => window.location.href = '/contact'}
+            >
+              Contact Us <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
         </div>
       </div>
     </section>

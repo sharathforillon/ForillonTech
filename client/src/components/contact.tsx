@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Phone, Mail, MapPin, CheckCircle } from "lucide-react";
+import { Phone, Mail, MapPin, CheckCircle, Calendar } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export default function Contact() {
@@ -56,9 +56,28 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Get Started Today</h2>
-          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-200 max-w-3xl mx-auto mb-8">
             Ready to transform your business? Let's discuss your technology challenges and create a roadmap for success.
           </p>
+          
+          {/* Quick Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <Button 
+              className="bg-electric-teal hover:bg-electric-teal/90 text-white text-lg px-8 py-3"
+              onClick={() => window.open('https://calendly.com/forillon-technologies/consultation', '_blank')}
+            >
+              <Calendar className="mr-2 h-5 w-5" />
+              Book a Consultation
+            </Button>
+            <Button 
+              variant="outline" 
+              className="border-electric-teal text-electric-teal hover:bg-electric-teal hover:text-white text-lg px-8 py-3"
+              onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              <Mail className="mr-2 h-5 w-5" />
+              Send Message
+            </Button>
+          </div>
         </div>
         
         <div className="grid lg:grid-cols-2 gap-16">

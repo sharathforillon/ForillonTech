@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import forilonLogo from "@assets/Untitled design (2)_1752132662612.png";
+import forilonLogo from "@assets/logo_nobackground_1752130704893.png";
 
 import F_nobackground from "@assets/F-nobackground.png";
 
