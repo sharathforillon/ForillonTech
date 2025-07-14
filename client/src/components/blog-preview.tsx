@@ -62,10 +62,8 @@ export default function BlogPreview() {
                 <p className="text-slate-gray mb-4">
                   {post.description}
                 </p>
-                <Link href={`/blog/${post.slug}`}>
-                  <a className="text-electric-teal font-semibold hover:text-teal-600 transition-colors">
-                    Read More →
-                  </a>
+                <Link href={`/blog/${post.slug}`} className="text-electric-teal font-semibold hover:text-teal-600 transition-colors">
+                  Read More →
                 </Link>
               </CardContent>
             </Card>
@@ -74,9 +72,11 @@ export default function BlogPreview() {
         
         <div className="text-center">
           <Link href="/blog">
-            <Button className="bg-electric-teal text-white px-8 py-3 rounded-md font-semibold hover:bg-teal-600 transition-colors shadow-lg">
-              View All Posts
-            </Button>
+            <div className="inline-block">
+              <Button className="bg-electric-teal text-white px-8 py-3 rounded-md font-semibold hover:bg-teal-600 transition-colors shadow-lg">
+                View All Posts
+              </Button>
+            </div>
           </Link>
         </div>
       </div>
