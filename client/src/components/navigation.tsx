@@ -18,7 +18,7 @@ export default function Navigation() {
 
 
   return (
-    <nav className="sticky top-0 z-50 bg-forillon-navy border-b border-forillon-navy">
+    <nav className="sticky top-0 z-50 bg-forillon-navy/95 backdrop-blur-md border-b border-electric-teal/30 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
