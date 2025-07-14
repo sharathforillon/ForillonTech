@@ -32,27 +32,23 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-forillon-navy via-forillon-navy to-slate-gray py-20 lg:py-32 overflow-hidden min-h-screen flex items-center">
-      {/* Beautiful Hero Video Background */}
+    <section className="relative bg-black py-20 lg:py-32 overflow-hidden min-h-screen flex items-center">
+      {/* Beautiful Hero Video Background - High Visibility */}
       <video 
         autoPlay 
         muted 
         loop 
         playsInline
-        className="absolute inset-0 w-full h-full object-cover opacity-60"
+        className="absolute inset-0 w-full h-full object-cover opacity-80 z-0"
+        style={{ filter: 'brightness(1.1) contrast(1.1)' }}
       >
         <source src="https://videos.pexels.com/video-files/3195394/3195394-uhd_3840_2160_25fps.mp4" type="video/mp4" />
-        <source src="https://videos.pexels.com/video-files/6772080/6772080-uhd_3840_2160_30fps.mp4" type="video/mp4" />
         <source src="https://videos.pexels.com/video-files/6153354/6153354-uhd_3840_2160_30fps.mp4" type="video/mp4" />
-        <source src="https://videos.pexels.com/video-files/7688336/7688336-uhd_3840_2160_30fps.mp4" type="video/mp4" />
         <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_3840_2160_30fps.mp4" type="video/mp4" />
       </video>
       
-      {/* Elegant Overlay for Text Readability */}
-      <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/40 via-forillon-navy/50 to-slate-gray/60"></div>
-      
-      {/* Dynamic Glow Effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-electric-teal/5 to-transparent animate-pulse"></div>
+      {/* Light Overlay for Text Readability */}
+      <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/30 via-forillon-navy/40 to-slate-gray/50 z-10"></div>
       
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -61,7 +57,7 @@ export default function Hero() {
         <div className="absolute bottom-0 left-1/3 w-64 h-64 bg-electric-teal/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
       </div>
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Main Content */}
           <div className="text-center lg:text-left">
