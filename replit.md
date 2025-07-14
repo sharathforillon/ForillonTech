@@ -12,6 +12,7 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 - **January 11, 2025**: Complete brand styling implementation with IBM Plex Sans font and full color palette
 - **January 11, 2025**: Hero banner dramatically enhanced with AI/technology-focused video background and sophisticated design
 - **January 11, 2025**: Updated global presence messaging to include Dubai, UAE alongside Toronto, Canada operations
+- **January 11, 2025**: Updated contact information with Dubai (+971 558627601) and Toronto (+1 6475648494) phone numbers and contact@forillontech.com email
 - **January 11, 2025**: Professional dropdown navigation with dedicated service pages implemented
 - **January 11, 2025**: Solutions section redesigned with enterprise-focused layout (eliminated amateur thumbnails)
 - **January 11, 2025**: Created 5 dedicated service pages with professional design and content

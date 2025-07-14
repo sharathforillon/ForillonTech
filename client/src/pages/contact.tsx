@@ -46,23 +46,23 @@ export default function Contact() {
   const contactInfo = [
     {
       icon: MapPin,
-      title: "Our Location",
-      details: ["123 Innovation Drive", "Tech Hub City, TC 12345", "United States"]
+      title: "Our Locations",
+      details: ["Dubai Silicon Oasis", "Dubai, UAE", "Toronto, Ontario, Canada"]
     },
     {
       icon: Phone,
       title: "Phone",
-      details: ["+1 (555) 123-4567", "Mon-Fri 9AM-6PM EST"]
+      details: ["+971 558627601 (Dubai)", "+1 6475648494 (Toronto)"]
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["hello@forillon.com", "support@forillon.com"]
+      details: ["contact@forillontech.com", "Available 24/7 for inquiries"]
     },
     {
       icon: Clock,
       title: "Business Hours",
-      details: ["Monday - Friday: 9AM - 6PM", "Saturday: 10AM - 2PM", "Sunday: Closed"]
+      details: ["Dubai: Sunday - Thursday 9AM - 6PM GST", "Toronto: Monday - Friday 9AM - 6PM EST"]
     }
   ];
 

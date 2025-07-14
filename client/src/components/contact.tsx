@@ -91,7 +91,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <div className="font-semibold">Phone</div>
-                    <div className="text-gray-200">+1 (555) 123-4567</div>
+                    <div className="text-gray-200">+971 558627601 (Dubai)</div>
+                    <div className="text-gray-200">+1 6475648494 (Toronto)</div>
                   </div>
                 </div>
                 
@@ -101,7 +102,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <div className="font-semibold">Email</div>
-                    <div className="text-gray-200">contact@forillon.tech</div>
+                    <div className="text-gray-200">contact@forillontech.com</div>
                   </div>
                 </div>
                 
@@ -110,8 +111,9 @@ export default function Contact() {
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <div className="font-semibold">Office</div>
-                    <div className="text-gray-200">Toronto, ON, Canada</div>
+                    <div className="font-semibold">Offices</div>
+                    <div className="text-gray-200">Dubai Silicon Oasis, Dubai, UAE</div>
+                    <div className="text-gray-200">Toronto, Ontario, Canada</div>
                   </div>
                 </div>
               </div>

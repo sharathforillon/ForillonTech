@@ -36,9 +36,15 @@ export default function Footer() {
                 </span>
               </div>
             </div>
-            <p className="text-gray-300 mb-6 max-w-md">
+            <p className="text-gray-300 mb-4 max-w-md">
               Trusted to transform. We build intelligent, scalable digital infrastructure for the future.
             </p>
+            <div className="text-gray-300 text-sm space-y-1 mb-6">
+              <p>📍 Dubai Silicon Oasis, Dubai, UAE</p>
+              <p>📍 Toronto, Ontario, Canada</p>
+              <p>📞 +971 558627601 • +1 6475648494</p>
+              <p>✉️ contact@forillontech.com</p>
+            </div>
             <div className="flex space-x-4">
               <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-electric-teal transition-colors">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
