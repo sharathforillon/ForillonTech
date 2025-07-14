@@ -10,7 +10,7 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 
 - **January 11, 2025**: Successfully deployed to custom domain forillontech.com
 - **January 11, 2025**: Complete brand styling implementation with IBM Plex Sans font and full color palette
-- **January 11, 2025**: Hero banner dramatically enhanced with professional video background and sophisticated design
+- **January 11, 2025**: Hero banner dramatically enhanced with AI/technology-focused video background and sophisticated design
 - **January 11, 2025**: Updated global presence messaging to include Dubai, UAE alongside Toronto, Canada operations
 - **January 11, 2025**: Professional dropdown navigation with dedicated service pages implemented
 - **January 11, 2025**: Solutions section redesigned with enterprise-focused layout (eliminated amateur thumbnails)

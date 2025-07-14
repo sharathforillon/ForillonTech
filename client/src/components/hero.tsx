@@ -33,22 +33,27 @@ export default function Hero() {
 
   return (
     <section className="relative bg-black py-20 lg:py-32 overflow-hidden min-h-screen flex items-center">
-      {/* Beautiful Hero Video Background - High Visibility */}
+      {/* AI & Technology Hero Video Background */}
       <video 
         autoPlay 
         muted 
         loop 
         playsInline
-        className="absolute inset-0 w-full h-full object-cover opacity-80 z-0"
-        style={{ filter: 'brightness(1.1) contrast(1.1)' }}
+        className="absolute inset-0 w-full h-full object-cover opacity-75 z-0"
+        style={{ filter: 'brightness(1.2) contrast(1.15) saturate(1.1)' }}
       >
-        <source src="https://videos.pexels.com/video-files/3195394/3195394-uhd_3840_2160_25fps.mp4" type="video/mp4" />
+        <source src="https://videos.pexels.com/video-files/3183197/3183197-uhd_4096_2160_25fps.mp4" type="video/mp4" />
+        <source src="https://videos.pexels.com/video-files/8063874/8063874-uhd_3840_2160_30fps.mp4" type="video/mp4" />
+        <source src="https://videos.pexels.com/video-files/3130284/3130284-uhd_3840_2160_30fps.mp4" type="video/mp4" />
         <source src="https://videos.pexels.com/video-files/6153354/6153354-uhd_3840_2160_30fps.mp4" type="video/mp4" />
-        <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_3840_2160_30fps.mp4" type="video/mp4" />
+        <source src="https://videos.pexels.com/video-files/7688336/7688336-uhd_3840_2160_30fps.mp4" type="video/mp4" />
       </video>
       
-      {/* Light Overlay for Text Readability */}
-      <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/30 via-forillon-navy/40 to-slate-gray/50 z-10"></div>
+      {/* Technology-focused Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/35 via-black/30 to-slate-gray/45 z-10"></div>
+      
+      {/* AI Particle Effect Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-electric-teal/3 to-transparent animate-pulse z-15"></div>
       
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
