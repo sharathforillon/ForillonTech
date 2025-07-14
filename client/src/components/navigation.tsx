@@ -20,13 +20,13 @@ export default function Navigation() {
   return (
     <nav className="sticky top-0 z-50 bg-forillon-navy backdrop-blur-md border-b border-electric-teal/50 shadow-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0 flex items-center cursor-pointer">
               <img 
                 src={F_nobackground} 
                 alt="Forillon Technologies" 
-                className="h-8 w-auto mr-3 filter brightness-0 invert"
+                className="h-10 w-auto mr-3 filter brightness-0 invert"
               />
               <div className="flex flex-col">
                 <span className="text-xl font-bold text-white">
