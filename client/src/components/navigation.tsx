@@ -18,7 +18,7 @@ export default function Navigation() {
 
 
   return (
-    <nav className="sticky top-0 z-50 bg-forillon-navy/95 backdrop-blur-md border-b border-electric-teal/30 shadow-lg">
+    <nav className="sticky top-0 z-50 bg-forillon-navy backdrop-blur-md border-b border-electric-teal/50 shadow-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
@@ -26,13 +26,13 @@ export default function Navigation() {
               <img 
                 src={F_nobackground} 
                 alt="Forillon Technologies" 
-                className="h-8 w-auto mr-3 brightness-0 invert"
+                className="h-8 w-auto mr-3 filter brightness-0 invert"
               />
               <div className="flex flex-col">
-                <span className="text-xl font-semibold text-white">
+                <span className="text-xl font-bold text-white">
                   Forillon Technologies
                 </span>
-                <span className="text-xs text-electric-teal font-medium">
+                <span className="text-xs text-electric-teal font-semibold">
                   Trusted to Transform
                 </span>
               </div>
@@ -41,11 +41,11 @@ export default function Navigation() {
           
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <Link href="/about" className="text-white hover:text-electric-teal px-3 py-2 text-sm font-semibold transition-colors">
+              <Link href="/about" className="text-white hover:text-electric-teal px-3 py-2 text-sm font-bold transition-colors">
                 About
               </Link>
               <DropdownMenu>
-                <DropdownMenuTrigger className="text-white hover:text-electric-teal px-3 py-2 text-sm font-semibold transition-colors flex items-center">
+                <DropdownMenuTrigger className="text-white hover:text-electric-teal px-3 py-2 text-sm font-bold transition-colors flex items-center">
                   Solutions <ChevronDown className="ml-1 h-4 w-4" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg">
@@ -81,13 +81,13 @@ export default function Navigation() {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-              <Link href="/why-forillon" className="text-white hover:text-electric-teal px-3 py-2 text-sm font-semibold transition-colors">
+              <Link href="/why-forillon" className="text-white hover:text-electric-teal px-3 py-2 text-sm font-bold transition-colors">
                 Why Forillon
               </Link>
-              <Link href="/blog" className="text-white hover:text-electric-teal px-3 py-2 text-sm font-semibold transition-colors">
+              <Link href="/blog" className="text-white hover:text-electric-teal px-3 py-2 text-sm font-bold transition-colors">
                 Blog
               </Link>
-              <Link href="/contact" className="bg-electric-teal text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-transparent hover:text-electric-teal border-2 border-electric-teal transition-all">
+              <Link href="/contact" className="bg-electric-teal text-white px-4 py-2 rounded-md text-sm font-bold hover:bg-white hover:text-forillon-navy border-2 border-electric-teal transition-all">
                 Contact
               </Link>
             </div>
