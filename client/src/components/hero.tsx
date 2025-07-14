@@ -123,7 +123,7 @@ export default function Hero() {
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="text-center md:text-left mb-4 md:mb-0">
               <p className="text-silver-mist text-sm">
-                Trusted by Fortune 500 companies • Based in Toronto, Canada • Serving North America
+                Trusted by Fortune 500 companies • Based in Dubai, UAE & Toronto, Canada • Serving Globally
               </p>
             </div>
             <div className="flex items-center space-x-2">
