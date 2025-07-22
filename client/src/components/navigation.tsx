@@ -41,11 +41,11 @@ export default function Navigation() {
           
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
-              <Link href="/about" className="text-slate-gray hover:text-forillon-navy px-3 py-2 text-body-md font-medium transition-colors focus-enterprise">
+              <Link href="/about" className="text-slate-gray hover:text-forillon-navy px-3 py-2 text-body-md font-bold transition-colors focus-enterprise">
                 About
               </Link>
               <DropdownMenu>
-                <DropdownMenuTrigger className="text-slate-gray hover:text-forillon-navy px-3 py-2 text-body-md font-medium transition-colors flex items-center focus-enterprise">
+                <DropdownMenuTrigger className="text-slate-gray hover:text-forillon-navy px-3 py-2 text-body-md font-bold transition-colors flex items-center focus-enterprise">
                   Solutions <ChevronDown className="ml-1 h-4 w-4" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-white border border-gray-100 shadow-lg rounded-lg p-2">
@@ -81,13 +81,13 @@ export default function Navigation() {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-              <Link href="/why-forillon" className="text-forillon-navy hover:text-electric-teal px-3 py-2 text-sm font-bold transition-colors">
+              <Link href="/why-forillon" className="text-slate-gray hover:text-forillon-navy px-3 py-2 text-body-md font-bold transition-colors focus-enterprise">
                 Why Forillon
               </Link>
-              <Link href="/blog" className="text-forillon-navy hover:text-electric-teal px-3 py-2 text-sm font-bold transition-colors">
+              <Link href="/blog" className="text-slate-gray hover:text-forillon-navy px-3 py-2 text-body-md font-bold transition-colors focus-enterprise">
                 Blog
               </Link>
-              <Link href="/contact" className="bg-electric-teal text-white px-4 py-2 rounded-md text-sm font-bold hover:bg-white hover:text-forillon-navy border-2 border-electric-teal transition-all">
+              <Link href="/contact" className="btn-primary px-4 py-2 font-bold focus-enterprise">
                 Contact
               </Link>
             </div>
@@ -109,19 +109,19 @@ export default function Navigation() {
       {isMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 border-t border-electric-teal">
-            <Link href="/about" className="text-forillon-navy hover:text-electric-teal block px-3 py-2 text-base font-semibold" onClick={() => setIsMenuOpen(false)}>
+            <Link href="/about" className="text-forillon-navy hover:text-electric-teal block px-3 py-2 text-base font-bold" onClick={() => setIsMenuOpen(false)}>
               About
             </Link>
-            <Link href="/solutions" className="text-forillon-navy hover:text-electric-teal block px-3 py-2 text-base font-semibold" onClick={() => setIsMenuOpen(false)}>
+            <Link href="/solutions" className="text-forillon-navy hover:text-electric-teal block px-3 py-2 text-base font-bold" onClick={() => setIsMenuOpen(false)}>
               Solutions
             </Link>
-            <Link href="/why-forillon" className="text-forillon-navy hover:text-electric-teal block px-3 py-2 text-base font-semibold" onClick={() => setIsMenuOpen(false)}>
+            <Link href="/why-forillon" className="text-forillon-navy hover:text-electric-teal block px-3 py-2 text-base font-bold" onClick={() => setIsMenuOpen(false)}>
               Why Forillon
             </Link>
-            <Link href="/blog" className="text-forillon-navy hover:text-electric-teal block px-3 py-2 text-base font-semibold" onClick={() => setIsMenuOpen(false)}>
+            <Link href="/blog" className="text-forillon-navy hover:text-electric-teal block px-3 py-2 text-base font-bold" onClick={() => setIsMenuOpen(false)}>
               Blog
             </Link>
-            <Link href="/contact" className="text-forillon-navy hover:text-electric-teal block px-3 py-2 text-base font-semibold" onClick={() => setIsMenuOpen(false)}>
+            <Link href="/contact" className="text-forillon-navy hover:text-electric-teal block px-3 py-2 text-base font-bold" onClick={() => setIsMenuOpen(false)}>
               Contact
             </Link>
           </div>
