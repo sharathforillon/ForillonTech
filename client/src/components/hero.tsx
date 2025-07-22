@@ -112,15 +112,39 @@ export default function Hero() {
           
           {/* Right Column - Enterprise Intelligence Visual */}
           <div className="relative">
-            {/* Background Tech Image */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500">
-              <img 
-                src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="AI and machine learning visualization representing enterprise intelligence" 
-                className="w-full h-auto" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-electric-teal/30 to-forillon-navy/20"></div>
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-forillon-navy/40"></div>
+            {/* Enterprise Intelligence Visual */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 h-96">
+              {/* Clean IBM-inspired Background */}
+              <div className="w-full h-full bg-gradient-to-br from-electric-teal/5 via-white to-forillon-navy/5"></div>
+              
+              {/* Geometric Patterns */}
+              <div className="absolute inset-0">
+                <div 
+                  className="w-full h-full opacity-20"
+                  style={{
+                    backgroundImage: `
+                      linear-gradient(45deg, rgba(20, 184, 166, 0.1) 25%, transparent 25%),
+                      linear-gradient(-45deg, rgba(20, 184, 166, 0.1) 25%, transparent 25%),
+                      linear-gradient(45deg, transparent 75%, rgba(20, 184, 166, 0.1) 75%),
+                      linear-gradient(-45deg, transparent 75%, rgba(20, 184, 166, 0.1) 75%)
+                    `,
+                    backgroundSize: '40px 40px',
+                    backgroundPosition: '0 0, 0 20px, 20px -20px, -20px 0px'
+                  }}
+                ></div>
+              </div>
+              
+              {/* AI/Tech Icons Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-24 h-24 mx-auto mb-4 bg-electric-teal/10 rounded-2xl flex items-center justify-center">
+                    <Sparkles className="w-12 h-12 text-electric-teal" />
+                  </div>
+                  <p className="text-forillon-navy font-medium text-lg">Artificial Intelligence</p>
+                </div>
+              </div>
+              
+              <div className="absolute inset-0 bg-gradient-to-tr from-electric-teal/10 to-forillon-navy/10"></div>
             </div>
             
             {/* Overlay Stats */}
