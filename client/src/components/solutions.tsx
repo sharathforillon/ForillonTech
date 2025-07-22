@@ -86,8 +86,16 @@ const socialProof = [
 
 export default function Solutions() {
   return (
-    <section id="solutions" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="solutions" className="py-24 bg-gradient-to-br from-ice-white via-white to-silver-mist/5 relative overflow-hidden">
+      {/* Subtle Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-10 left-10 w-32 h-32 border border-electric-teal/20 rounded-full"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 bg-electric-teal/10 rounded-full"></div>
+        <div className="absolute bottom-40 left-1/4 w-28 h-28 border border-forillon-navy/10 rotate-45"></div>
+        <div className="absolute bottom-20 right-1/3 w-20 h-20 bg-forillon-navy/5 rounded-full"></div>
+      </div>
+      
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center justify-center px-4 py-2 bg-electric-teal/10 rounded-full mb-6">
@@ -105,7 +113,7 @@ export default function Solutions() {
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {serviceCards.map((service, index) => (
-            <Card key={index} className="group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border-0 bg-white">
+            <Card key={index} className="group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 border border-electric-teal/10 bg-white/80 backdrop-blur-sm">
               <CardHeader className="pb-4">
                 <div className="text-4xl mb-4">{service.icon}</div>
                 <CardTitle className="text-xl text-forillon-navy group-hover:text-electric-teal transition-colors">
