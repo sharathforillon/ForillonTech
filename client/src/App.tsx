@@ -16,6 +16,7 @@ import Infrastructure from "@/pages/solutions/infrastructure";
 import CloudMigration from "@/pages/solutions/cloud-migration";
 import Security from "@/pages/solutions/security";
 import Performance from "@/pages/solutions/performance";
+import DatabaseExport from "@/pages/database-export";
 
 function Router() {
   return (
@@ -32,6 +33,7 @@ function Router() {
       <Route path="/contact" component={Contact} />
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:slug" component={BlogPost} />
+      <Route path="/database-export" component={DatabaseExport} />
       <Route component={NotFound} />
     </Switch>
   );
