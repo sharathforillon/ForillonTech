@@ -32,7 +32,7 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative bg-gradient-hero section-padding-xl overflow-hidden min-h-screen flex items-center">
+    <section className="relative bg-gradient-to-br from-forillon-navy via-forillon-navy/95 to-electric-teal/20 section-padding-xl overflow-hidden min-h-screen flex items-center">
       {/* IBM-inspired Clean Background */}
       <div className="absolute inset-0 z-0">
         {/* Minimal Grid Pattern */}
@@ -49,44 +49,46 @@ export default function Hero() {
           ></div>
         </div>
         
-        {/* Subtle Ambient Elements */}
+        {/* Enhanced Ambient Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-32 -left-32 w-64 h-64 bg-electric-teal/3 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/4 -right-16 w-48 h-48 bg-electric-teal/2 rounded-full blur-2xl"></div>
+          <div className="absolute -top-32 -left-32 w-80 h-80 bg-electric-teal/15 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-1/4 -right-16 w-64 h-64 bg-white/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
+          <div className="absolute bottom-1/3 left-1/2 w-56 h-56 bg-electric-teal/20 rounded-full blur-xl animate-pulse delay-2000"></div>
         </div>
       </div>
       
-      {/* Animated Background Elements */}
+      {/* Enhanced Dynamic Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-0 w-72 h-72 bg-electric-teal/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-40 right-0 w-96 h-96 bg-electric-teal/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute bottom-0 left-1/3 w-64 h-64 bg-electric-teal/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-electric-teal/25 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-20 right-0 w-80 h-80 bg-white/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-electric-teal/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+        <div className="absolute top-1/2 right-1/4 w-56 h-56 bg-electric-teal/30 rounded-full blur-2xl animate-pulse delay-500"></div>
       </div>
       
       <div className="relative max-w-6xl mx-auto px-6 lg:px-8 z-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Column - Main Content */}
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center justify-center px-4 py-2 bg-electric-teal/10 rounded-lg mb-8">
+            <div className="inline-flex items-center justify-center px-4 py-2 bg-electric-teal/20 border border-electric-teal/30 rounded-lg mb-8">
               <Sparkles className="w-4 h-4 text-electric-teal mr-2" />
               <span className="text-electric-teal font-medium text-label-lg">ENTERPRISE AI & DIGITAL TRANSFORMATION</span>
             </div>
             
-            <h1 className="text-display-lg md:text-display-xl tracking-tight text-forillon-navy leading-none mb-8">
+            <h1 className="text-display-lg md:text-display-xl tracking-tight text-white leading-none mb-8">
               The science of
               <span className="block text-electric-teal">transformation</span>
             </h1>
             
-            <p className="text-body-lg text-slate-gray mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-body-lg text-white/90 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
               Where trusted expertise meets powerful technology. We drive high-impact outcomes using advanced AI and data-driven approaches to tackle your most critical challenges.
             </p>
             
             {/* Achievement Badges */}
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-10">
               {achievements.map((achievement, index) => (
-                <div key={index} className="flex items-center px-3 py-2 bg-electric-teal/8 rounded-lg border border-electric-teal/20">
+                <div key={index} className="flex items-center px-3 py-2 bg-white/10 rounded-lg border border-electric-teal/30">
                   <CheckCircle className="w-4 h-4 mr-2 text-electric-teal" />
-                  <span className="text-label-lg text-forillon-navy font-medium">{achievement}</span>
+                  <span className="text-label-lg text-white font-medium">{achievement}</span>
                 </div>
               ))}
             </div>
@@ -112,39 +114,43 @@ export default function Hero() {
           
           {/* Right Column - Enterprise Intelligence Visual */}
           <div className="relative">
-            {/* Enterprise Intelligence Visual */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 h-96">
-              {/* Clean IBM-inspired Background */}
-              <div className="w-full h-full bg-gradient-to-br from-electric-teal/5 via-white to-forillon-navy/5"></div>
+            {/* Enhanced Enterprise Intelligence Visual */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 h-96 border border-electric-teal/30">
+              {/* Dynamic Dark Background */}
+              <div className="w-full h-full bg-gradient-to-br from-forillon-navy/80 via-electric-teal/10 to-forillon-navy/60"></div>
               
-              {/* Geometric Patterns */}
+              {/* Enhanced Geometric Patterns */}
               <div className="absolute inset-0">
                 <div 
-                  className="w-full h-full opacity-20"
+                  className="w-full h-full opacity-30 animate-pulse"
                   style={{
                     backgroundImage: `
-                      linear-gradient(45deg, rgba(20, 184, 166, 0.1) 25%, transparent 25%),
-                      linear-gradient(-45deg, rgba(20, 184, 166, 0.1) 25%, transparent 25%),
-                      linear-gradient(45deg, transparent 75%, rgba(20, 184, 166, 0.1) 75%),
-                      linear-gradient(-45deg, transparent 75%, rgba(20, 184, 166, 0.1) 75%)
+                      linear-gradient(45deg, rgba(20, 184, 166, 0.3) 25%, transparent 25%),
+                      linear-gradient(-45deg, rgba(20, 184, 166, 0.3) 25%, transparent 25%),
+                      linear-gradient(45deg, transparent 75%, rgba(20, 184, 166, 0.3) 75%),
+                      linear-gradient(-45deg, transparent 75%, rgba(20, 184, 166, 0.3) 75%)
                     `,
-                    backgroundSize: '40px 40px',
-                    backgroundPosition: '0 0, 0 20px, 20px -20px, -20px 0px'
+                    backgroundSize: '60px 60px',
+                    backgroundPosition: '0 0, 0 30px, 30px -30px, -30px 0px'
                   }}
                 ></div>
               </div>
               
-              {/* AI/Tech Icons Overlay */}
+              {/* Enhanced AI/Tech Icons Overlay */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="w-24 h-24 mx-auto mb-4 bg-electric-teal/10 rounded-2xl flex items-center justify-center">
-                    <Sparkles className="w-12 h-12 text-electric-teal" />
+                  <div className="w-28 h-28 mx-auto mb-4 bg-electric-teal/20 border border-electric-teal/40 rounded-2xl flex items-center justify-center animate-pulse">
+                    <Sparkles className="w-14 h-14 text-electric-teal" />
                   </div>
-                  <p className="text-forillon-navy font-medium text-lg">Artificial Intelligence</p>
+                  <p className="text-white font-bold text-xl">Artificial Intelligence</p>
+                  <p className="text-electric-teal font-medium text-sm mt-2">Enterprise Solutions</p>
                 </div>
               </div>
               
-              <div className="absolute inset-0 bg-gradient-to-tr from-electric-teal/10 to-forillon-navy/10"></div>
+              {/* Dynamic Overlay Effects */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-electric-teal/20 to-transparent"></div>
+              <div className="absolute top-4 right-4 w-16 h-16 bg-electric-teal/20 rounded-full blur-xl animate-pulse delay-1000"></div>
+              <div className="absolute bottom-4 left-4 w-12 h-12 bg-white/20 rounded-full blur-lg animate-pulse delay-2000"></div>
             </div>
             
             {/* Overlay Stats */}
