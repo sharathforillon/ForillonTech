@@ -86,7 +86,7 @@ const socialProof = [
 
 export default function Solutions() {
   return (
-    <section id="solutions" className="py-24 bg-white relative overflow-hidden">
+    <section id="solutions" className="section-padding-lg bg-white relative overflow-hidden">
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-32 h-32 border border-electric-teal/20 rounded-full"></div>
@@ -95,17 +95,17 @@ export default function Solutions() {
         <div className="absolute bottom-20 right-1/3 w-20 h-20 bg-forillon-navy/5 rounded-full"></div>
       </div>
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-6xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center justify-center px-4 py-2 bg-electric-teal/10 rounded-full mb-6">
-            <span className="text-electric-teal font-semibold text-sm">ENTERPRISE SOLUTIONS</span>
+          <div className="inline-flex items-center justify-center px-4 py-2 bg-electric-teal/8 rounded-lg mb-8">
+            <span className="text-electric-teal font-medium text-label-lg">ENTERPRISE SOLUTIONS</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-forillon-navy mb-6">
+          <h2 className="text-heading-xl md:text-display-lg text-forillon-navy mb-8 leading-tight">
             Technology that transforms<br />
             <span className="text-electric-teal">business outcomes</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-body-lg text-slate-gray max-w-3xl mx-auto leading-relaxed">
             We don't just implement technology—we architect strategic advantages that position your organization for sustained competitive leadership.
           </p>
         </div>
@@ -113,15 +113,15 @@ export default function Solutions() {
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {serviceCards.map((service, index) => (
-            <Card key={index} className="group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 border border-electric-teal/10 bg-white/80 backdrop-blur-sm">
+            <Card key={index} className="group card-elevated">
               <CardHeader className="pb-4">
                 <div className="text-4xl mb-4">{service.icon}</div>
-                <CardTitle className="text-xl text-forillon-navy group-hover:text-electric-teal transition-colors">
+                <CardTitle className="text-heading-md text-forillon-navy group-hover:text-electric-teal transition-colors">
                   {service.title}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-slate-gray text-sm leading-relaxed">
+                <p className="text-slate-gray text-body-md leading-relaxed">
                   {service.description}
                 </p>
                 

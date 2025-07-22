@@ -18,9 +18,9 @@ export default function Navigation() {
 
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-electric-teal/30 shadow-xl">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+    <nav className="sticky top-0 z-50 bg-white/98 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0 flex items-center cursor-pointer">
               <img 
@@ -29,10 +29,10 @@ export default function Navigation() {
                 className="h-10 w-auto mr-3"
               />
               <div className="flex flex-col">
-                <span className="text-xl font-bold text-forillon-navy">
+                <span className="text-lg font-semibold text-forillon-navy">
                   Forillon Technologies
                 </span>
-                <span className="text-xs text-electric-teal font-semibold">
+                <span className="text-xs text-electric-teal font-medium">
                   Trusted to Transform
                 </span>
               </div>
@@ -40,15 +40,15 @@ export default function Navigation() {
           </div>
           
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              <Link href="/about" className="text-forillon-navy hover:text-electric-teal px-3 py-2 text-sm font-bold transition-colors">
+            <div className="ml-10 flex items-center space-x-8">
+              <Link href="/about" className="text-slate-gray hover:text-forillon-navy px-3 py-2 text-body-md font-medium transition-colors focus-enterprise">
                 About
               </Link>
               <DropdownMenu>
-                <DropdownMenuTrigger className="text-forillon-navy hover:text-electric-teal px-3 py-2 text-sm font-bold transition-colors flex items-center">
+                <DropdownMenuTrigger className="text-slate-gray hover:text-forillon-navy px-3 py-2 text-body-md font-medium transition-colors flex items-center focus-enterprise">
                   Solutions <ChevronDown className="ml-1 h-4 w-4" />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg">
+                <DropdownMenuContent className="bg-white border border-gray-100 shadow-lg rounded-lg p-2">
                   <DropdownMenuItem asChild>
                     <Link href="/solutions/ai-transformation" className="w-full px-4 py-2 text-forillon-navy hover:bg-electric-teal/10">
                       AI & Digital Transformation
