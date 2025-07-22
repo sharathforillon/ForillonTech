@@ -64,7 +64,7 @@ export default function Contact() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button 
               className="bg-electric-teal hover:bg-electric-teal/90 text-white text-lg px-8 py-3"
-              onClick={() => window.open('https://calendly.com/sreddy-forillontech', '_blank')}
+              onClick={() => window.open('https://calendly.com/sreddy-forillontech/30min', '_blank')}
             >
               <Calendar className="mr-2 h-5 w-5" />
               Book a Consultation
