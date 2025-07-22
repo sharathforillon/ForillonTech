@@ -192,7 +192,7 @@ export default function Solutions() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               className="bg-electric-teal hover:bg-electric-teal/90 text-white text-lg px-8 py-3"
-              onClick={() => window.open('https://calendly.com/forillon-technologies', '_blank')}
+              onClick={() => window.open('https://calendly.com/sreddy-forillontech', '_blank')}
             >
               <Calendar className="mr-2 h-5 w-5" />
               Book a Consultation
