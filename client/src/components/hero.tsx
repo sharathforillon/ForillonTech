@@ -32,10 +32,10 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-forillon-navy via-slate-900 to-black py-20 lg:py-32 overflow-hidden min-h-screen flex items-center">
+    <section className="relative bg-gradient-to-br from-white via-ice-white to-silver-mist/30 py-20 lg:py-32 overflow-hidden min-h-screen flex items-center">
       {/* Modern Geometric Background Pattern */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/90 via-slate-900/95 to-black/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-ice-white/90 to-silver-mist/10"></div>
         
         {/* Animated Grid Pattern */}
         <div className="absolute inset-0 opacity-20">
@@ -43,8 +43,8 @@ export default function Hero() {
             className="w-full h-full"
             style={{
               backgroundImage: `
-                linear-gradient(rgba(49, 216, 185, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(49, 216, 185, 0.1) 1px, transparent 1px)
+                linear-gradient(rgba(49, 216, 185, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(49, 216, 185, 0.3) 1px, transparent 1px)
               `,
               backgroundSize: '60px 60px',
               animation: 'gridMove 20s linear infinite'
@@ -84,12 +84,12 @@ export default function Hero() {
               <span className="text-electric-teal font-semibold text-sm">ENTERPRISE AI & DIGITAL TRANSFORMATION</span>
             </div>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight text-white leading-tight">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight text-forillon-navy leading-tight">
               Trusted to
               <span className="block text-electric-teal">Transform</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-silver-mist mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-xl md:text-2xl text-slate-gray mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
               Where <span className="text-electric-teal font-semibold">Intelligence</span> becomes <span className="text-electric-teal font-semibold">Infrastructure</span>. 
               We architect enterprise-grade solutions that scale with your ambitions.
             </p>
@@ -97,7 +97,7 @@ export default function Hero() {
             {/* Achievement Badges */}
             <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-8">
               {achievements.map((achievement, index) => (
-                <Badge key={index} variant="secondary" className="bg-white/10 text-white border-electric-teal/30">
+                <Badge key={index} variant="secondary" className="bg-electric-teal/10 text-forillon-navy border-electric-teal/30">
                   <CheckCircle className="w-3 h-3 mr-1 text-electric-teal" />
                   {achievement}
                 </Badge>
@@ -126,22 +126,22 @@ export default function Hero() {
           {/* Right Column - Stats Grid */}
           <div className="grid grid-cols-2 gap-6">
             {stats.map((stat, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center transform hover:scale-105 transition-all duration-300 hover:bg-white/20">
+              <div key={index} className="bg-white/80 backdrop-blur-sm rounded-xl p-6 text-center transform hover:scale-105 transition-all duration-300 hover:bg-white/90 border border-electric-teal/20">
                 <div className="w-12 h-12 bg-electric-teal/20 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <stat.icon className="w-6 h-6 text-electric-teal" />
                 </div>
-                <div className="text-2xl md:text-3xl font-bold text-white mb-2">{stat.number}</div>
-                <div className="text-sm text-silver-mist">{stat.label}</div>
+                <div className="text-2xl md:text-3xl font-bold text-forillon-navy mb-2">{stat.number}</div>
+                <div className="text-sm text-slate-gray">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
         
         {/* Bottom Trust Indicators */}
-        <div className="mt-16 pt-8 border-t border-white/20">
+        <div className="mt-16 pt-8 border-t border-electric-teal/20">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="text-center md:text-left mb-4 md:mb-0">
-              <p className="text-silver-mist text-sm">
+              <p className="text-slate-gray text-sm">
                 Trusted by Fortune 500 companies • Based in Dubai, UAE & Toronto, Canada • Serving Globally
               </p>
             </div>

@@ -86,7 +86,7 @@ const socialProof = [
 
 export default function Solutions() {
   return (
-    <section id="solutions" className="py-24 bg-gradient-to-br from-ice-white via-white to-silver-mist/5 relative overflow-hidden">
+    <section id="solutions" className="py-24 bg-white relative overflow-hidden">
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-32 h-32 border border-electric-teal/20 rounded-full"></div>

@@ -2,7 +2,7 @@ import { Zap, CheckCircle, Users } from "lucide-react";
 
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-gradient-to-br from-ice-white via-white to-silver-mist/10 relative overflow-hidden">
+    <section id="about" className="py-20 bg-gradient-to-br from-white to-ice-white relative overflow-hidden">
       {/* Elegant Background Elements */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-20 right-20 w-32 h-32 border border-electric-teal/20 rounded-full animate-pulse"></div>

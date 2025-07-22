@@ -52,11 +52,11 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-forillon-navy text-white">
+    <section id="contact" className="py-20 bg-gradient-to-br from-ice-white to-white text-forillon-navy">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Get Started Today</h2>
-          <p className="text-xl text-gray-200 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-slate-gray max-w-3xl mx-auto mb-8">
             Ready to transform your business? Let's discuss your technology challenges and create a roadmap for success.
           </p>
           
@@ -91,8 +91,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <div className="font-semibold">Phone</div>
-                    <div className="text-gray-200">+971 558627601 (Dubai)</div>
-                    <div className="text-gray-200">+1 6475648494 (Toronto)</div>
+                    <div className="text-slate-gray">+971 558627601 (Dubai)</div>
+                    <div className="text-slate-gray">+1 6475648494 (Toronto)</div>
                   </div>
                 </div>
                 
@@ -102,7 +102,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <div className="font-semibold">Email</div>
-                    <div className="text-gray-200">contact@forillontech.com</div>
+                    <div className="text-slate-gray">contact@forillontech.com</div>
                   </div>
                 </div>
                 
@@ -112,8 +112,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <div className="font-semibold">Offices</div>
-                    <div className="text-gray-200">Dubai Silicon Oasis, Dubai, UAE</div>
-                    <div className="text-gray-200">Toronto, Ontario, Canada</div>
+                    <div className="text-slate-gray">Dubai Silicon Oasis, Dubai, UAE</div>
+                    <div className="text-slate-gray">Toronto, Ontario, Canada</div>
                   </div>
                 </div>
               </div>
