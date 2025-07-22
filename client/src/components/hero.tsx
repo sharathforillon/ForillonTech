@@ -151,7 +151,7 @@ export default function Hero() {
                   <Star key={i} className="w-4 h-4 text-electric-teal fill-current" />
                 ))}
               </div>
-              <span className="text-white text-sm font-medium">Client Satisfaction</span>
+              <span className="text-forillon-navy text-sm font-medium">Client Satisfaction</span>
             </div>
           </div>
         </div>

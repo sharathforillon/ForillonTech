@@ -121,7 +121,7 @@ export default function Contact() {
             
             <div>
               <h3 className="text-xl font-semibold mb-4">Why Choose Forillon?</h3>
-              <ul className="space-y-2 text-gray-200">
+              <ul className="space-y-2 text-slate-gray">
                 {benefits.map((benefit, index) => (
                   <li key={index} className="flex items-center">
                     <CheckCircle className="w-5 h-5 text-electric-teal mr-3" />
@@ -132,7 +132,7 @@ export default function Contact() {
             </div>
           </div>
           
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8">
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-8 border border-electric-teal/20">
             <h3 className="text-2xl font-semibold mb-6">Send us a Message</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
@@ -147,7 +147,7 @@ export default function Contact() {
                     value={formData.firstName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-md text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-electric-teal focus:border-transparent"
+                    className="w-full px-4 py-3 bg-white border border-electric-teal/30 rounded-md text-forillon-navy placeholder-slate-gray focus:outline-none focus:ring-2 focus:ring-electric-teal focus:border-electric-teal"
                     placeholder="John"
                   />
                 </div>
@@ -162,7 +162,7 @@ export default function Contact() {
                     value={formData.lastName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-md text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-electric-teal focus:border-transparent"
+                    className="w-full px-4 py-3 bg-white border border-electric-teal/30 rounded-md text-forillon-navy placeholder-slate-gray focus:outline-none focus:ring-2 focus:ring-electric-teal focus:border-electric-teal"
                     placeholder="Doe"
                   />
                 </div>
@@ -179,7 +179,7 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-md text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-electric-teal focus:border-transparent"
+                  className="w-full px-4 py-3 bg-white border border-electric-teal/30 rounded-md text-forillon-navy placeholder-slate-gray focus:outline-none focus:ring-2 focus:ring-electric-teal focus:border-electric-teal"
                   placeholder="john@company.com"
                 />
               </div>
@@ -194,7 +194,7 @@ export default function Contact() {
                   name="company"
                   value={formData.company}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-md text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-electric-teal focus:border-transparent"
+                  className="w-full px-4 py-3 bg-white border border-electric-teal/30 rounded-md text-forillon-navy placeholder-slate-gray focus:outline-none focus:ring-2 focus:ring-electric-teal focus:border-electric-teal"
                   placeholder="Your Company"
                 />
               </div>
@@ -210,7 +210,7 @@ export default function Contact() {
                   onChange={handleInputChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-md text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-electric-teal focus:border-transparent resize-none"
+                  className="w-full px-4 py-3 bg-white border border-electric-teal/30 rounded-md text-forillon-navy placeholder-slate-gray focus:outline-none focus:ring-2 focus:ring-electric-teal focus:border-electric-teal resize-none"
                   placeholder="Tell us about your project..."
                 />
               </div>

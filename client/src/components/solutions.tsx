@@ -121,7 +121,7 @@ export default function Solutions() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-slate-gray text-sm leading-relaxed">
                   {service.description}
                 </p>
                 
@@ -129,7 +129,7 @@ export default function Solutions() {
                   {service.keyBenefits.map((benefit, benefitIndex) => (
                     <div key={benefitIndex} className="flex items-start text-sm">
                       <CheckCircle className="h-4 w-4 text-electric-teal mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700">{benefit}</span>
+                      <span className="text-slate-gray">{benefit}</span>
                     </div>
                   ))}
                 </div>
@@ -151,7 +151,7 @@ export default function Solutions() {
             <h3 className="text-2xl md:text-3xl font-bold text-forillon-navy mb-4">
               Trusted by Industry Leaders
             </h3>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-gray max-w-2xl mx-auto">
               Sample engagements showcasing our expertise across diverse industries and complex challenges.
             </p>
           </div>
@@ -169,7 +169,7 @@ export default function Solutions() {
                   <h4 className="font-semibold text-forillon-navy mb-2">
                     {proof.company}
                   </h4>
-                  <p className="text-sm text-gray-600 mb-3">
+                  <p className="text-sm text-slate-gray mb-3">
                     {proof.project}
                   </p>
                   <p className="text-sm font-medium text-electric-teal">
@@ -182,11 +182,11 @@ export default function Solutions() {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center bg-forillon-navy rounded-2xl p-12 text-white">
+        <div className="text-center bg-gradient-to-br from-electric-teal to-electric-teal/80 rounded-2xl p-12 text-white shadow-2xl">
           <h3 className="text-2xl md:text-3xl font-bold mb-6">
             Ready to transform your enterprise?
           </h3>
-          <p className="text-lg text-silver-mist mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
             Let's discuss how our strategic technology solutions can drive your organization's next phase of growth.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
