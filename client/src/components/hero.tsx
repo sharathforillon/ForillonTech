@@ -123,17 +123,33 @@ export default function Hero() {
             </div>
           </div>
           
-          {/* Right Column - Stats Grid */}
-          <div className="grid grid-cols-2 gap-6">
-            {stats.map((stat, index) => (
-              <div key={index} className="bg-white/80 backdrop-blur-sm rounded-xl p-6 text-center transform hover:scale-105 transition-all duration-300 hover:bg-white/90 border border-electric-teal/20">
-                <div className="w-12 h-12 bg-electric-teal/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <stat.icon className="w-6 h-6 text-electric-teal" />
-                </div>
-                <div className="text-2xl md:text-3xl font-bold text-forillon-navy mb-2">{stat.number}</div>
-                <div className="text-sm text-slate-gray">{stat.label}</div>
+          {/* Right Column - Enterprise Intelligence Visual */}
+          <div className="relative">
+            {/* Background Tech Image */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500">
+              <img 
+                src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                alt="AI and machine learning visualization representing enterprise intelligence" 
+                className="w-full h-auto" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-electric-teal/30 to-forillon-navy/20"></div>
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-forillon-navy/40"></div>
+            </div>
+            
+            {/* Overlay Stats */}
+            <div className="absolute bottom-6 left-6 right-6">
+              <div className="grid grid-cols-2 gap-4">
+                {stats.map((stat, index) => (
+                  <div key={index} className="bg-white/90 backdrop-blur-sm rounded-lg p-4 text-center transform hover:scale-105 transition-all duration-300 border border-electric-teal/20">
+                    <div className="w-8 h-8 bg-electric-teal/20 rounded-lg flex items-center justify-center mx-auto mb-2">
+                      <stat.icon className="w-4 h-4 text-electric-teal" />
+                    </div>
+                    <div className="text-xl font-bold text-forillon-navy mb-1">{stat.number}</div>
+                    <div className="text-xs text-slate-gray">{stat.label}</div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
         
