@@ -30,7 +30,7 @@ export default function Navigation() {
               />
               <div className="flex flex-col">
                 <span className="text-lg font-semibold text-forillon-navy">
-                  Forillon Technologies
+                  Forillon Technologies test
                 </span>
                 <span className="text-xs text-electric-teal font-medium">
                   Trusted to Transform
