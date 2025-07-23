@@ -114,10 +114,10 @@ export default function Hero() {
           <div className="relative">
             {/* Enterprise Intelligence Visual */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 h-96">
-              {/* Enterprise Background Image */}
+              {/* Futuristic Enterprise Technology Image */}
               <img 
-                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Modern enterprise office building representing digital transformation and technology consulting" 
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                alt="Futuristic data center and cloud computing visualization representing cutting-edge enterprise AI technology" 
                 className="w-full h-full object-cover" 
               />
               
