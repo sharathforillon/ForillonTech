@@ -114,37 +114,27 @@ export default function Hero() {
           <div className="relative">
             {/* Enterprise Intelligence Visual */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 h-96">
-              {/* Clean IBM-inspired Background */}
-              <div className="w-full h-full bg-gradient-to-br from-electric-teal/5 via-white to-forillon-navy/5"></div>
+              {/* Enterprise Background Image */}
+              <img 
+                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                alt="Modern enterprise office building representing digital transformation and technology consulting" 
+                className="w-full h-full object-cover" 
+              />
               
-              {/* Geometric Patterns */}
-              <div className="absolute inset-0">
-                <div 
-                  className="w-full h-full opacity-20"
-                  style={{
-                    backgroundImage: `
-                      linear-gradient(45deg, rgba(20, 184, 166, 0.1) 25%, transparent 25%),
-                      linear-gradient(-45deg, rgba(20, 184, 166, 0.1) 25%, transparent 25%),
-                      linear-gradient(45deg, transparent 75%, rgba(20, 184, 166, 0.1) 75%),
-                      linear-gradient(-45deg, transparent 75%, rgba(20, 184, 166, 0.1) 75%)
-                    `,
-                    backgroundSize: '40px 40px',
-                    backgroundPosition: '0 0, 0 20px, 20px -20px, -20px 0px'
-                  }}
-                ></div>
-              </div>
+              {/* Professional Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-forillon-navy/60 via-forillon-navy/40 to-electric-teal/30"></div>
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-forillon-navy/50"></div>
               
-              {/* AI/Tech Icons Overlay */}
+              {/* Enterprise Tech Icons Overlay */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-24 h-24 mx-auto mb-4 bg-electric-teal/10 rounded-2xl flex items-center justify-center">
-                    <Sparkles className="w-12 h-12 text-electric-teal" />
+                <div className="text-center text-white">
+                  <div className="w-20 h-20 mx-auto mb-4 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20">
+                    <Sparkles className="w-10 h-10 text-white" />
                   </div>
-                  <p className="text-forillon-navy font-medium text-lg">Artificial Intelligence</p>
+                  <p className="text-white font-semibold text-lg mb-2">Enterprise AI</p>
+                  <p className="text-white/80 text-sm">Transformation</p>
                 </div>
               </div>
-              
-              <div className="absolute inset-0 bg-gradient-to-tr from-electric-teal/10 to-forillon-navy/10"></div>
             </div>
             
             {/* Overlay Stats */}
