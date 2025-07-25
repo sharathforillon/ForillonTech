@@ -65,13 +65,13 @@ export default function Solutions() {
         >
           <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_3840_2160_30fps.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-forillon-navy/90 to-forillon-navy/70"></div>
+        <div className="absolute inset-0 bg-forillon-navy/85"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-white">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-white drop-shadow-lg">
               Our Solutions
             </h1>
-            <p className="text-xl md:text-2xl text-silver-mist max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto drop-shadow-md">
               Comprehensive technology solutions designed to transform your enterprise
             </p>
           </div>
