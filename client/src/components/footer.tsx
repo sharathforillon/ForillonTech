@@ -3,11 +3,12 @@ import F_nobackground from "@assets/F-nobackground.png";
 
 export default function Footer() {
   const services = [
-    "AI & Digital Transformation",
-    "Technology Infrastructure", 
-    "Cloud Migration & Modernization",
-    "Enterprise Security",
-    "Performance Engineering"
+    "AI Consulting & Strategy",
+    "Digital Transformation",
+    "Enterprise Architecture",
+    "AI Security & Governance",
+    "Intelligent Automation",
+    "Custom AI Development"
   ];
 
   const company = [
