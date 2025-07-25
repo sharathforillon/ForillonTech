@@ -32,7 +32,7 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative section-padding-xl overflow-hidden min-h-screen flex items-center bg-forillon-navy">
+    <section className="relative section-padding-xl overflow-hidden min-h-screen flex items-center bg-gray-900">
       {/* Clean Background with Professional Gradient */}
       <div className="absolute inset-0 z-0">
         {/* Enterprise Technology Background */}
@@ -44,7 +44,7 @@ export default function Hero() {
         ></div>
         
         {/* Professional Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/85 via-forillon-navy/75 to-slate-gray/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/95 via-forillon-navy/90 to-forillon-navy/95"></div>
         
         {/* Subtle Grid Pattern */}
         <div className="absolute inset-0 opacity-10">
@@ -76,19 +76,19 @@ export default function Hero() {
               <span className="text-electric-teal font-medium text-label-lg">ENTERPRISE AI & DIGITAL TRANSFORMATION</span>
             </div>
             
-            <h1 className="text-display-lg md:text-display-xl tracking-tight text-white leading-none mb-8">
+            <h1 className="text-display-lg md:text-display-xl tracking-tight text-white leading-none mb-8 drop-shadow-lg">
               The science of
               <span className="block text-electric-teal">transformation</span>
             </h1>
             
-            <p className="text-body-lg text-silver-mist mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-body-lg text-gray-100 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed drop-shadow-md">
               Where trusted expertise meets powerful technology. We drive high-impact outcomes using advanced AI and data-driven approaches to tackle your most critical challenges.
             </p>
             
             {/* Achievement Badges */}
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-10">
               {achievements.map((achievement, index) => (
-                <div key={index} className="flex items-center px-3 py-2 bg-electric-teal/10 rounded-lg border border-electric-teal/20">
+                <div key={index} className="flex items-center px-3 py-2 bg-gray-800/80 backdrop-blur-sm rounded-lg border border-electric-teal/30">
                   <CheckCircle className="w-4 h-4 mr-2 text-electric-teal" />
                   <span className="text-label-lg text-white font-medium">{achievement}</span>
                 </div>
