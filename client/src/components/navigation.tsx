@@ -51,42 +51,54 @@ export default function Navigation() {
                 <DropdownMenuTrigger className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-forillon-navy transition-colors duration-200 flex items-center rounded-md hover:bg-gray-50">
                   Solutions <ChevronDown className="ml-1 h-4 w-4" />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-72 bg-white border border-gray-200 shadow-xl rounded-xl p-3 mt-2">
-                  <div className="space-y-1">
-                    <DropdownMenuItem asChild>
-                      <Link href="/solutions/ai-transformation" className="flex flex-col px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
-                        <span className="text-sm font-semibold text-forillon-navy">AI & Digital Transformation</span>
-                        <span className="text-xs text-gray-500 mt-1">Intelligent automation and AI strategy</span>
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link href="/solutions/infrastructure" className="flex flex-col px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
-                        <span className="text-sm font-semibold text-forillon-navy">Technology Infrastructure</span>
-                        <span className="text-xs text-gray-500 mt-1">Scalable enterprise systems</span>
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link href="/solutions/cloud-migration" className="flex flex-col px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
-                        <span className="text-sm font-semibold text-forillon-navy">Cloud Migration & Modernization</span>
-                        <span className="text-xs text-gray-500 mt-1">Cloud-native transformation</span>
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link href="/solutions/security" className="flex flex-col px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
-                        <span className="text-sm font-semibold text-forillon-navy">Enterprise Security</span>
-                        <span className="text-xs text-gray-500 mt-1">Comprehensive security solutions</span>
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link href="/solutions/performance" className="flex flex-col px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
-                        <span className="text-sm font-semibold text-forillon-navy">Performance Engineering</span>
-                        <span className="text-xs text-gray-500 mt-1">Optimization and reliability</span>
-                      </Link>
-                    </DropdownMenuItem>
+                <DropdownMenuContent className="w-80 bg-white border border-gray-200 shadow-xl rounded-xl p-4 mt-2">
+                  <div className="space-y-2">
+                    {/* Featured Solutions */}
+                    <div className="mb-4">
+                      <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Key Services</h4>
+                      <DropdownMenuItem asChild>
+                        <Link href="/solutions/ai-consulting" className="flex flex-col px-4 py-3 rounded-lg hover:bg-electric-teal/5 transition-colors border border-transparent hover:border-electric-teal/20">
+                          <span className="text-sm font-bold text-electric-teal">🤖 AI Consulting & Strategy</span>
+                          <span className="text-xs text-gray-500 mt-1">Strategic AI implementation and transformation</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link href="/solutions/digital-transformation" className="flex flex-col px-4 py-3 rounded-lg hover:bg-electric-teal/5 transition-colors border border-transparent hover:border-electric-teal/20">
+                          <span className="text-sm font-bold text-electric-teal">⚡ Digital Transformation</span>
+                          <span className="text-xs text-gray-500 mt-1">End-to-end business modernization</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link href="/solutions/enterprise-architecture" className="flex flex-col px-4 py-3 rounded-lg hover:bg-electric-teal/5 transition-colors border border-transparent hover:border-electric-teal/20">
+                          <span className="text-sm font-bold text-electric-teal">🏗️ Enterprise Architecture</span>
+                          <span className="text-xs text-gray-500 mt-1">Scalable technology frameworks</span>
+                        </Link>
+                      </DropdownMenuItem>
+                    </div>
+                    
+                    {/* Additional Solutions */}
+                    <div className="border-t border-gray-100 pt-3">
+                      <DropdownMenuItem asChild>
+                        <Link href="/solutions/ai-security" className="flex items-center px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors">
+                          <span className="text-sm font-medium text-forillon-navy">AI Security & Governance</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link href="/solutions/intelligent-automation" className="flex items-center px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors">
+                          <span className="text-sm font-medium text-forillon-navy">Intelligent Automation</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link href="/solutions/custom-ai-development" className="flex items-center px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors">
+                          <span className="text-sm font-medium text-forillon-navy">Custom AI Development</span>
+                        </Link>
+                      </DropdownMenuItem>
+                    </div>
+                    
                     <div className="border-t border-gray-100 mt-3 pt-3">
                       <DropdownMenuItem asChild>
-                        <Link href="/solutions" className="flex items-center px-4 py-3 rounded-lg hover:bg-electric-teal/5 transition-colors">
-                          <span className="text-sm font-semibold text-electric-teal">View All Solutions →</span>
+                        <Link href="/solutions" className="flex items-center px-4 py-3 rounded-lg hover:bg-electric-teal/10 transition-colors">
+                          <span className="text-sm font-bold text-electric-teal">View All Solutions →</span>
                         </Link>
                       </DropdownMenuItem>
                     </div>
