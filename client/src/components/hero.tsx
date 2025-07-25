@@ -39,13 +39,13 @@ export default function Hero() {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=85')`
+            backgroundImage: `url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=85')`
           }}
         ></div>
         
-        {/* Dark Overlay for Maximum Text Readability */}
-        <div className="absolute inset-0 bg-black/80"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-gray-900/90"></div>
+        {/* Professional Dark Overlay for Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/85 via-gray-900/80 to-forillon-navy/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-gray-900/50"></div>
         
         {/* Subtle Grid Pattern */}
         <div className="absolute inset-0 opacity-10">
