@@ -32,43 +32,9 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative section-padding-xl overflow-hidden min-h-screen flex items-center bg-white">
-      {/* Clean Light Background */}
-      <div className="absolute inset-0 z-0">
-        {/* Clean Professional Office Background */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=85')`
-          }}
-        ></div>
-        
-        {/* Light Overlay for Clean Appearance */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-ice-white/85 to-silver-mist/90"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-white/60"></div>
-        
-        {/* Subtle Grid Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div 
-            className="w-full h-full"
-            style={{
-              backgroundImage: `
-                linear-gradient(rgba(30, 58, 95, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(30, 58, 95, 0.1) 1px, transparent 1px)
-              `,
-              backgroundSize: '40px 40px'
-            }}
-          ></div>
-        </div>
-        
-        {/* Subtle Ambient Lighting */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-electric-teal/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-forillon-navy/5 rounded-full blur-3xl"></div>
-        </div>
-      </div>
+    <section className="relative section-padding-xl min-h-screen flex items-center bg-white">
       
-      <div className="relative max-w-6xl mx-auto px-6 lg:px-8 z-20">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Column - Main Content */}
           <div className="text-center lg:text-left">
@@ -77,21 +43,21 @@ export default function Hero() {
               <span className="font-medium text-label-lg text-electric-teal">ENTERPRISE AI & DIGITAL TRANSFORMATION</span>
             </div>
             
-            <h1 className="text-display-lg md:text-display-xl tracking-tight leading-none mb-8 text-forillon-navy">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-none mb-8 text-gray-900">
               The science of
               <span className="block text-electric-teal">transformation</span>
             </h1>
             
-            <p className="text-body-lg mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed text-slate-gray">
+            <p className="text-xl mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed text-gray-700 font-medium">
               Where trusted expertise meets powerful technology. We drive high-impact outcomes using advanced AI and data-driven approaches to tackle your most critical challenges.
             </p>
             
             {/* Achievement Badges */}
-            <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-10">
+            <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-10">
               {achievements.map((achievement, index) => (
-                <div key={index} className="flex items-center px-3 py-2 bg-white/90 backdrop-blur-sm rounded-lg border border-electric-teal/20 shadow-sm">
-                  <CheckCircle className="w-4 h-4 mr-2 text-electric-teal" />
-                  <span className="text-label-lg font-medium text-forillon-navy">{achievement}</span>
+                <div key={index} className="flex items-center px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 hover:border-electric-teal/30 transition-all duration-300">
+                  <CheckCircle className="w-5 h-5 mr-3 text-electric-teal" />
+                  <span className="text-base font-semibold text-gray-900">{achievement}</span>
                 </div>
               ))}
             </div>
