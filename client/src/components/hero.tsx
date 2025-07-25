@@ -32,29 +32,29 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative section-padding-xl overflow-hidden min-h-screen flex items-center bg-gray-900">
-      {/* Clean Background with Professional Gradient */}
+    <section className="relative section-padding-xl overflow-hidden min-h-screen flex items-center bg-white">
+      {/* Clean Light Background */}
       <div className="absolute inset-0 z-0">
-        {/* Enterprise Technology Background */}
+        {/* Clean Professional Office Background */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=85')`
+            backgroundImage: `url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=85')`
           }}
         ></div>
         
-        {/* Professional Dark Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/85 via-gray-900/80 to-forillon-navy/90"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-gray-900/50"></div>
+        {/* Light Overlay for Clean Appearance */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-ice-white/85 to-silver-mist/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-white/60"></div>
         
         {/* Subtle Grid Pattern */}
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-5">
           <div 
             className="w-full h-full"
             style={{
               backgroundImage: `
-                linear-gradient(rgba(20, 184, 166, 0.3) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(20, 184, 166, 0.3) 1px, transparent 1px)
+                linear-gradient(rgba(30, 58, 95, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(30, 58, 95, 0.1) 1px, transparent 1px)
               `,
               backgroundSize: '40px 40px'
             }}
@@ -63,8 +63,8 @@ export default function Hero() {
         
         {/* Subtle Ambient Lighting */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-electric-teal/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-electric-teal/8 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-electric-teal/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-forillon-navy/5 rounded-full blur-3xl"></div>
         </div>
       </div>
       
@@ -72,26 +72,26 @@ export default function Hero() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Column - Main Content */}
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center justify-center px-4 py-2 bg-black/50 backdrop-blur-sm rounded-lg mb-8 border-2 border-electric-teal/60">
-              <Sparkles className="w-4 h-4 mr-2" style={{ color: '#14B8A6' }} />
-              <span className="font-medium text-label-lg" style={{ color: '#14B8A6' }}>ENTERPRISE AI & DIGITAL TRANSFORMATION</span>
+            <div className="inline-flex items-center justify-center px-4 py-2 bg-electric-teal/8 rounded-lg mb-8">
+              <Sparkles className="w-4 h-4 mr-2 text-electric-teal" />
+              <span className="font-medium text-label-lg text-electric-teal">ENTERPRISE AI & DIGITAL TRANSFORMATION</span>
             </div>
             
-            <h1 className="text-display-lg md:text-display-xl tracking-tight leading-none mb-8 drop-shadow-2xl" style={{ color: '#FFFFFF' }}>
+            <h1 className="text-display-lg md:text-display-xl tracking-tight leading-none mb-8 text-forillon-navy">
               The science of
-              <span className="block" style={{ color: '#14B8A6' }}>transformation</span>
+              <span className="block text-electric-teal">transformation</span>
             </h1>
             
-            <p className="text-body-lg mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed drop-shadow-xl" style={{ color: '#F1F5F9' }}>
+            <p className="text-body-lg mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed text-slate-gray">
               Where trusted expertise meets powerful technology. We drive high-impact outcomes using advanced AI and data-driven approaches to tackle your most critical challenges.
             </p>
             
             {/* Achievement Badges */}
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-10">
               {achievements.map((achievement, index) => (
-                <div key={index} className="flex items-center px-3 py-2 backdrop-blur-sm rounded-lg border-2" style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)', borderColor: '#14B8A6' }}>
-                  <CheckCircle className="w-4 h-4 mr-2" style={{ color: '#14B8A6' }} />
-                  <span className="text-label-lg font-medium" style={{ color: '#FFFFFF' }}>{achievement}</span>
+                <div key={index} className="flex items-center px-3 py-2 bg-white/90 backdrop-blur-sm rounded-lg border border-electric-teal/20 shadow-sm">
+                  <CheckCircle className="w-4 h-4 mr-2 text-electric-teal" />
+                  <span className="text-label-lg font-medium text-forillon-navy">{achievement}</span>
                 </div>
               ))}
             </div>
