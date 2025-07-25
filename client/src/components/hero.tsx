@@ -43,14 +43,10 @@ export default function Hero() {
               <span className="font-medium text-label-lg text-electric-teal">ENTERPRISE AI & DIGITAL TRANSFORMATION</span>
             </div>
             
-            <h1 className="text-6xl md:text-8xl font-black tracking-tight leading-none mb-6 text-gray-900">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-none mb-8 text-gray-900">
               The science of
               <span className="block text-electric-teal">transformation</span>
             </h1>
-
-            <p className="text-lg text-gray-600 mb-4 font-medium">
-              Powering enterprise AI adoption across finance, healthcare, manufacturing & retail
-            </p>
             
             <p className="text-xl mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed text-gray-700 font-medium">
               Where trusted expertise meets powerful technology. We drive high-impact outcomes using advanced AI and data-driven approaches to tackle your most critical challenges.
@@ -70,17 +66,17 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button 
                 onClick={() => window.open('https://calendly.com/sreddy-forillontech/30min', '_blank')}
-                className="bg-electric-teal hover:bg-electric-teal/90 text-white px-10 py-5 text-xl font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 h-16"
+                className="btn-primary px-8 py-4 text-body-lg font-medium focus-enterprise h-12"
               >
-                <Calendar className="mr-3 h-6 w-6" />
+                <Calendar className="mr-3 h-5 w-5" />
                 Book Free Consultation
               </Button>
               <Button 
                 variant="outline"
                 onClick={scrollToSolutions}
-                className="border-2 border-forillon-navy text-forillon-navy hover:bg-forillon-navy hover:text-white px-10 py-5 text-xl font-bold transition-all duration-200 h-16"
+                className="btn-secondary px-8 py-4 text-body-lg font-medium focus-enterprise h-12"
               >
-                Explore Solutions <ArrowRight className="ml-3 h-6 w-6" />
+                Explore Solutions <ArrowRight className="ml-3 h-5 w-5" />
               </Button>
             </div>
           </div>
@@ -112,9 +108,9 @@ export default function Hero() {
               </div>
             </div>
             
-            {/* Enhanced Stats Card with Color Variation */}
+            {/* Enhanced Stats Card */}
             <div className="absolute -bottom-12 left-2 right-2">
-              <div className="bg-gradient-to-br from-forillon-navy to-forillon-navy/90 rounded-3xl shadow-2xl border border-electric-teal/20 p-12 backdrop-blur-xl">
+              <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-12 backdrop-blur-xl">
                 <div className="grid grid-cols-2 gap-8">
                   {stats.map((stat, index) => (
                     <div key={index} className="text-center group hover:scale-105 transition-all duration-300">
@@ -123,10 +119,10 @@ export default function Hero() {
                           <stat.icon className="w-12 h-12 text-white" />
                         </div>
                       </div>
-                      <div className="text-4xl font-bold text-white mb-3">
+                      <div className="text-4xl font-bold text-gray-900 mb-3">
                         {stat.number}
                       </div>
-                      <div className="text-base text-gray-200 font-semibold leading-tight">
+                      <div className="text-base text-gray-700 font-semibold leading-tight">
                         {stat.label}
                       </div>
                     </div>
