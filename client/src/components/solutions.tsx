@@ -86,20 +86,12 @@ const socialProof = [
 
 export default function Solutions() {
   return (
-    <section id="solutions" className="section-padding-lg bg-white relative overflow-hidden">
-      {/* Subtle Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-10 left-10 w-32 h-32 border border-electric-teal/20 rounded-full"></div>
-        <div className="absolute top-40 right-20 w-24 h-24 bg-electric-teal/10 rounded-full"></div>
-        <div className="absolute bottom-40 left-1/4 w-28 h-28 border border-forillon-navy/10 rotate-45"></div>
-        <div className="absolute bottom-20 right-1/3 w-20 h-20 bg-forillon-navy/5 rounded-full"></div>
-      </div>
-      
-      <div className="relative max-w-6xl mx-auto px-6 lg:px-8">
+    <section id="solutions" className="section-padding-lg bg-white">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center justify-center px-4 py-2 bg-electric-teal/8 rounded-lg mb-8">
-            <span className="text-electric-teal font-medium text-label-lg">ENTERPRISE SOLUTIONS</span>
+            <span className="text-electric-teal font-medium text-label-lg">THE SCIENCE OF TRANSFORMATION</span>
           </div>
           <h2 className="text-heading-xl md:text-display-lg text-forillon-navy mb-8 leading-tight">
             Technology that transforms<br />
@@ -113,35 +105,31 @@ export default function Solutions() {
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {serviceCards.map((service, index) => (
-            <Card key={index} className="group card-elevated">
-              <CardHeader className="pb-4">
-                <div className="text-4xl mb-4">{service.icon}</div>
-                <CardTitle className="text-heading-md text-forillon-navy group-hover:text-electric-teal transition-colors">
-                  {service.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-slate-gray text-body-md leading-relaxed">
-                  {service.description}
-                </p>
-                
-                <div className="space-y-2">
-                  {service.keyBenefits.map((benefit, benefitIndex) => (
-                    <div key={benefitIndex} className="flex items-start text-sm">
-                      <CheckCircle className="h-4 w-4 text-electric-teal mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-gray">{benefit}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                <Button 
-                  className="w-full bg-electric-teal hover:bg-electric-teal/90 text-white mt-4"
-                  onClick={() => window.location.href = service.link}
-                >
-                  {service.cta} <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </CardContent>
-            </Card>
+            <div key={index} className="card-elevated p-8 text-center group hover:shadow-xl transition-all duration-300">
+              <div className="text-4xl mb-6">{service.icon}</div>
+              <h3 className="text-heading-md text-forillon-navy mb-4 group-hover:text-electric-teal transition-colors">
+                {service.title}
+              </h3>
+              <p className="text-slate-gray text-body-md leading-relaxed mb-6">
+                {service.description}
+              </p>
+              
+              <div className="space-y-3 mb-6">
+                {service.keyBenefits.map((benefit, benefitIndex) => (
+                  <div key={benefitIndex} className="flex items-center justify-center text-sm">
+                    <CheckCircle className="h-4 w-4 text-electric-teal mr-2 flex-shrink-0" />
+                    <span className="text-slate-gray">{benefit}</span>
+                  </div>
+                ))}
+              </div>
+              
+              <Button 
+                className="w-full bg-electric-teal hover:bg-electric-teal/90 text-white group-hover:scale-105 transition-transform duration-300"
+                onClick={() => window.location.href = service.link}
+              >
+                {service.cta} <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
           ))}
         </div>
 
