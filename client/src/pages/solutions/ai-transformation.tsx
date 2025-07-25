@@ -45,17 +45,17 @@ export default function AITransformation() {
         >
           <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_3840_2160_30fps.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-forillon-navy/90 to-forillon-navy/70"></div>
+        <div className="absolute inset-0 bg-forillon-navy/85"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-flex items-center justify-center px-4 py-2 bg-electric-teal/20 rounded-full mb-6">
                 <span className="text-electric-teal font-semibold text-sm">AI & DIGITAL TRANSFORMATION</span>
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-white">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-white drop-shadow-lg">
                 Intelligent Systems That Transform Business
               </h1>
-              <p className="text-xl md:text-2xl text-silver-mist mb-8">
+              <p className="text-xl md:text-2xl text-white/90 mb-8 drop-shadow-md">
                 We architect AI solutions that fundamentally reshape how your organization operates, thinks, and competes in the digital economy.
               </p>
               <Button className="bg-electric-teal hover:bg-electric-teal/90 text-white text-lg px-8 py-3">
