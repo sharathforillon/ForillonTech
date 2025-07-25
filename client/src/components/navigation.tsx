@@ -43,6 +43,10 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center">
             <div className="flex items-center space-x-1">
+              <Link href="/" className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-forillon-navy transition-colors duration-200 rounded-md hover:bg-gray-50">
+                Home
+              </Link>
+              
               <DropdownMenu>
                 <DropdownMenuTrigger className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-forillon-navy transition-colors duration-200 flex items-center rounded-md hover:bg-gray-50">
                   Solutions <ChevronDown className="ml-1 h-4 w-4" />
@@ -126,6 +130,13 @@ export default function Navigation() {
         <div className="lg:hidden border-t border-gray-100">
           <div className="px-4 py-6 space-y-4 bg-white">
             <div className="space-y-3">
+              <Link 
+                href="/" 
+                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-forillon-navy hover:bg-gray-50 rounded-md transition-colors" 
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Home
+              </Link>
               <Link 
                 href="/solutions" 
                 className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-forillon-navy hover:bg-gray-50 rounded-md transition-colors" 
