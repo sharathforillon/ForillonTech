@@ -41,6 +41,9 @@ export default function Navigation() {
           
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
+              <Link href="/" className="text-slate-gray hover:text-forillon-navy px-3 py-2 text-body-md font-bold transition-colors focus-enterprise">
+                Home
+              </Link>
               <Link href="/about" className="text-slate-gray hover:text-forillon-navy px-3 py-2 text-body-md font-bold transition-colors focus-enterprise">
                 About
               </Link>
@@ -109,6 +112,9 @@ export default function Navigation() {
       {isMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 border-t border-electric-teal">
+            <Link href="/" className="text-forillon-navy hover:text-electric-teal block px-3 py-2 text-base font-bold" onClick={() => setIsMenuOpen(false)}>
+              Home
+            </Link>
             <Link href="/about" className="text-forillon-navy hover:text-electric-teal block px-3 py-2 text-base font-bold" onClick={() => setIsMenuOpen(false)}>
               About
             </Link>
