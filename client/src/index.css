@@ -63,8 +63,49 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-gradient-to-b from-ice-white via-white to-ice-white text-foreground antialiased;
     font-family: 'IBM Plex Sans', sans-serif;
+    min-height: 100vh;
+  }
+  
+  /* Improved page structure */
+  .main-content {
+    @apply min-h-screen flex flex-col;
+  }
+  
+  .page-body {
+    @apply flex-1;
+  }
+  
+  /* Section improvements */
+  .section-clean {
+    @apply py-16 lg:py-24;
+  }
+  
+  .section-white {
+    @apply bg-white shadow-sm border-t border-b border-gray-50;
+  }
+  
+  .section-light {
+    @apply bg-gradient-to-b from-white to-ice-white;
+  }
+  
+  /* Enhanced visual hierarchy */
+  .section-separator {
+    @apply h-px bg-gradient-to-r from-transparent via-electric-teal/20 to-transparent my-12;
+  }
+  
+  .content-max-width {
+    @apply max-w-6xl mx-auto;
+  }
+  
+  /* Improved card shadows and elevation */
+  .card-elevated {
+    @apply bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-50 rounded-xl;
+  }
+  
+  .card-enterprise {
+    @apply bg-white/80 backdrop-blur-sm shadow-xl border-2 border-electric-teal/10 rounded-2xl p-8;
   }
 }
 
@@ -93,6 +134,32 @@
     background-color: var(--ice-white);
   }
   
+  /* Page Layout Improvements */
+  .page-section {
+    @apply py-20 px-6 lg:px-8;
+  }
+  
+  .section-divider {
+    @apply border-t border-gray-100 my-16;
+  }
+  
+  .content-container {
+    @apply max-w-7xl mx-auto;
+  }
+  
+  .clean-bg {
+    @apply bg-gradient-to-b from-ice-white to-white;
+  }
+  
+  /* Enhanced Header/Footer Distinction */
+  .header-enhanced {
+    @apply shadow-xl border-b-2 border-electric-teal/20 bg-white/98 backdrop-blur-lg;
+  }
+  
+  .footer-enhanced {
+    @apply bg-gradient-to-br from-forillon-navy via-slate-gray/20 to-electric-teal/10;
+  }
+
   /* Enterprise-grade typography scale */
   .text-display-xl {
     font-size: 3.75rem;

@@ -19,8 +19,14 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-forillon-navy text-white py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-gradient-to-br from-forillon-navy via-forillon-navy to-electric-teal/20 text-white py-16 border-t-4 border-electric-teal relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-10 right-20 w-40 h-40 border border-electric-teal/30 rounded-full"></div>
+        <div className="absolute bottom-20 left-10 w-32 h-32 bg-electric-teal/20 rounded-full"></div>
+        <div className="absolute top-1/2 right-1/4 w-24 h-24 bg-white/5 rotate-45"></div>
+      </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
