@@ -187,7 +187,7 @@ export default function Solutions() {
             </Button>
             <Button 
               variant="outline" 
-              className="border-2 border-white/70 text-white hover:bg-white hover:text-electric-teal text-lg px-8 py-4 backdrop-blur-sm"
+              className="border-2 border-white text-white hover:bg-white hover:text-electric-teal text-lg px-8 py-4 font-medium transition-all duration-200"
               onClick={() => window.location.href = '/contact'}
             >
               Contact Us <ArrowRight className="ml-2 h-5 w-5" />
