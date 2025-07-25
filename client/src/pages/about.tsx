@@ -288,17 +288,17 @@ export default function About() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white">Canadian Operations</h3>
-                  <p className="text-electric-teal font-medium">Toronto, Ontario</p>
+                  <h3 className="text-2xl font-bold text-white">American Operations</h3>
+                  <p className="text-electric-teal font-medium">New York, New York</p>
                 </div>
               </div>
               <p className="text-lg text-silver-mist leading-relaxed mb-6">
-                Forillon Technologies maintains a strong presence in Canada's technology hub. 
-                Our Toronto operations serve as a gateway to the Canadian market, bringing 
+                Forillon Technologies maintains a strong presence in America's financial and technology capital. 
+                Our New York operations serve as a gateway to the American market, bringing 
                 our innovative solutions to businesses across the country.
               </p>
               <p className="text-lg text-silver-mist leading-relaxed">
-                From AI consulting to digital transformation, we're helping Canadian enterprises 
+                From AI consulting to digital transformation, we're helping American enterprises 
                 harness the power of technology to drive growth and competitive advantage.
               </p>
             </div>
@@ -319,7 +319,7 @@ export default function About() {
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-bold text-electric-teal mb-1">50+</div>
-                    <div className="text-silver-mist text-sm">Canadian Clients</div>
+                    <div className="text-silver-mist text-sm">American Clients</div>
                   </div>
                 </div>
                 <div className="pt-6 border-t border-white/20">
