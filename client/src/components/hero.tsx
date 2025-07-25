@@ -109,37 +109,32 @@ export default function Hero() {
             </div>
             
             {/* Enhanced Stats Card */}
-            <div className="absolute -bottom-8 left-4 right-4">
-              <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 backdrop-blur-xl">
-                <div className="grid grid-cols-2 gap-6">
+            <div className="absolute -bottom-12 left-2 right-2">
+              <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-12 backdrop-blur-xl">
+                <div className="grid grid-cols-2 gap-8">
                   {stats.map((stat, index) => (
                     <div key={index} className="text-center group hover:scale-105 transition-all duration-300">
-                      <div className="relative mb-4">
-                        <div className="w-16 h-16 bg-gradient-to-br from-electric-teal to-electric-teal/80 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-electric-teal/30 transition-all duration-300">
-                          <stat.icon className="w-8 h-8 text-white" />
+                      <div className="mb-6">
+                        <div className="w-24 h-24 bg-electric-teal rounded-3xl flex items-center justify-center mx-auto shadow-xl group-hover:shadow-2xl transition-all duration-300">
+                          <stat.icon className="w-12 h-12 text-white" />
                         </div>
-                        <div className="absolute -top-1 -right-1 w-6 h-6 bg-electric-teal/20 rounded-full animate-ping"></div>
                       </div>
-                      <div className="text-3xl font-bold text-forillon-navy mb-2 bg-gradient-to-r from-forillon-navy to-slate-gray bg-clip-text text-transparent">
+                      <div className="text-4xl font-bold text-gray-900 mb-3">
                         {stat.number}
                       </div>
-                      <div className="text-sm text-slate-gray font-medium leading-tight">
+                      <div className="text-base text-gray-700 font-semibold leading-tight">
                         {stat.label}
                       </div>
                     </div>
                   ))}
                 </div>
-                
-                {/* Decorative Elements */}
-                <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-electric-teal/10 to-transparent rounded-full"></div>
-                <div className="absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-tr from-forillon-navy/5 to-transparent rounded-full"></div>
               </div>
             </div>
           </div>
         </div>
         
         {/* Bottom Trust Indicators */}
-        <div className="mt-24 pt-8 border-t border-electric-teal/20">
+        <div className="mt-32 pt-8 border-t border-electric-teal/20">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="text-center md:text-left mb-4 md:mb-0">
               <p className="text-slate-gray text-sm">
