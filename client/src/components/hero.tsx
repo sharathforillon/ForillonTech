@@ -43,8 +43,9 @@ export default function Hero() {
           }}
         ></div>
         
-        {/* Professional Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/95 via-forillon-navy/90 to-forillon-navy/95"></div>
+        {/* Dark Overlay for Maximum Text Readability */}
+        <div className="absolute inset-0 bg-black/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-gray-900/90"></div>
         
         {/* Subtle Grid Pattern */}
         <div className="absolute inset-0 opacity-10">
@@ -71,26 +72,26 @@ export default function Hero() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Column - Main Content */}
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center justify-center px-4 py-2 bg-electric-teal/15 rounded-lg mb-8 border border-electric-teal/30">
-              <Sparkles className="w-4 h-4 text-electric-teal mr-2" />
-              <span className="text-electric-teal font-medium text-label-lg">ENTERPRISE AI & DIGITAL TRANSFORMATION</span>
+            <div className="inline-flex items-center justify-center px-4 py-2 bg-black/50 backdrop-blur-sm rounded-lg mb-8 border-2 border-electric-teal/60">
+              <Sparkles className="w-4 h-4 mr-2" style={{ color: '#14B8A6' }} />
+              <span className="font-medium text-label-lg" style={{ color: '#14B8A6' }}>ENTERPRISE AI & DIGITAL TRANSFORMATION</span>
             </div>
             
-            <h1 className="text-display-lg md:text-display-xl tracking-tight text-white leading-none mb-8 drop-shadow-lg">
+            <h1 className="text-display-lg md:text-display-xl tracking-tight leading-none mb-8 drop-shadow-2xl" style={{ color: '#FFFFFF' }}>
               The science of
-              <span className="block text-electric-teal">transformation</span>
+              <span className="block" style={{ color: '#14B8A6' }}>transformation</span>
             </h1>
             
-            <p className="text-body-lg text-gray-100 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed drop-shadow-md">
+            <p className="text-body-lg mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed drop-shadow-xl" style={{ color: '#F1F5F9' }}>
               Where trusted expertise meets powerful technology. We drive high-impact outcomes using advanced AI and data-driven approaches to tackle your most critical challenges.
             </p>
             
             {/* Achievement Badges */}
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-10">
               {achievements.map((achievement, index) => (
-                <div key={index} className="flex items-center px-3 py-2 bg-gray-800/80 backdrop-blur-sm rounded-lg border border-electric-teal/30">
-                  <CheckCircle className="w-4 h-4 mr-2 text-electric-teal" />
-                  <span className="text-label-lg text-white font-medium">{achievement}</span>
+                <div key={index} className="flex items-center px-3 py-2 backdrop-blur-sm rounded-lg border-2" style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)', borderColor: '#14B8A6' }}>
+                  <CheckCircle className="w-4 h-4 mr-2" style={{ color: '#14B8A6' }} />
+                  <span className="text-label-lg font-medium" style={{ color: '#FFFFFF' }}>{achievement}</span>
                 </div>
               ))}
             </div>
