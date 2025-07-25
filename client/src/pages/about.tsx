@@ -288,7 +288,7 @@ export default function About() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white">American Operations</h3>
+                  <h3 className="text-2xl font-bold text-white">North American Operations</h3>
                   <p className="text-electric-teal font-medium">Toronto, Ontario, Canada</p>
                 </div>
               </div>
