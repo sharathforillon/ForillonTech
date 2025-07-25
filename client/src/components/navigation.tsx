@@ -44,9 +44,6 @@ export default function Navigation() {
               <Link href="/" className="text-slate-gray hover:text-forillon-navy px-3 py-2 text-body-md font-bold transition-colors focus-enterprise">
                 Home
               </Link>
-              <Link href="/about" className="text-slate-gray hover:text-forillon-navy px-3 py-2 text-body-md font-bold transition-colors focus-enterprise">
-                About
-              </Link>
               <DropdownMenu>
                 <DropdownMenuTrigger className="text-slate-gray hover:text-forillon-navy px-3 py-2 text-body-md font-bold transition-colors flex items-center focus-enterprise">
                   Solutions <ChevronDown className="ml-1 h-4 w-4" />
@@ -87,11 +84,11 @@ export default function Navigation() {
               <Link href="/why-forillon" className="text-slate-gray hover:text-forillon-navy px-3 py-2 text-body-md font-bold transition-colors focus-enterprise">
                 Why Forillon
               </Link>
-              <Link href="/blog" className="text-slate-gray hover:text-forillon-navy px-3 py-2 text-body-md font-bold transition-colors focus-enterprise">
-                Blog
-              </Link>
               <Link href="/contact" className="btn-primary px-4 py-2 font-bold focus-enterprise">
                 Contact
+              </Link>
+              <Link href="/about" className="text-slate-gray hover:text-forillon-navy px-3 py-2 text-body-md font-bold transition-colors focus-enterprise">
+                About
               </Link>
             </div>
           </div>
