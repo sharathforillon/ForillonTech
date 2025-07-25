@@ -84,11 +84,11 @@ export default function Navigation() {
               <Link href="/why-forillon" className="text-slate-gray hover:text-forillon-navy px-3 py-2 text-body-md font-bold transition-colors focus-enterprise">
                 Why Forillon
               </Link>
-              <Link href="/contact" className="btn-primary px-4 py-2 font-bold focus-enterprise">
-                Contact
-              </Link>
               <Link href="/about" className="text-slate-gray hover:text-forillon-navy px-3 py-2 text-body-md font-bold transition-colors focus-enterprise">
                 About
+              </Link>
+              <Link href="/contact" className="btn-primary px-4 py-2 font-bold focus-enterprise">
+                Contact
               </Link>
             </div>
           </div>
