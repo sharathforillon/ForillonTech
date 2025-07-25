@@ -33,16 +33,27 @@ export default function Hero() {
 
   return (
     <section className="relative bg-gradient-hero section-padding-xl overflow-hidden min-h-screen flex items-center">
-      {/* IBM-inspired Clean Background */}
+      {/* Futuristic Technology Background */}
       <div className="absolute inset-0 z-0">
-        {/* Minimal Grid Pattern */}
-        <div className="absolute inset-0 opacity-30">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&h=1200&q=80')`
+          }}
+        ></div>
+        
+        {/* Overlay for text readability and brand colors */}
+        <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/85 via-forillon-navy/80 to-slate-gray/85"></div>
+        
+        {/* Minimal Grid Pattern Overlay */}
+        <div className="absolute inset-0 opacity-20">
           <div 
             className="w-full h-full"
             style={{
               backgroundImage: `
-                linear-gradient(rgba(20, 184, 166, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(20, 184, 166, 0.02) 1px, transparent 1px)
+                linear-gradient(rgba(20, 184, 166, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(20, 184, 166, 0.1) 1px, transparent 1px)
               `,
               backgroundSize: '32px 32px'
             }}
@@ -51,16 +62,16 @@ export default function Hero() {
         
         {/* Subtle Ambient Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-32 -left-32 w-64 h-64 bg-electric-teal/3 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/4 -right-16 w-48 h-48 bg-electric-teal/2 rounded-full blur-2xl"></div>
+          <div className="absolute -top-32 -left-32 w-64 h-64 bg-electric-teal/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/4 -right-16 w-48 h-48 bg-electric-teal/8 rounded-full blur-2xl"></div>
         </div>
       </div>
       
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-0 w-72 h-72 bg-electric-teal/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-40 right-0 w-96 h-96 bg-electric-teal/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute bottom-0 left-1/3 w-64 h-64 bg-electric-teal/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      <div className="absolute inset-0 overflow-hidden z-10">
+        <div className="absolute top-0 left-0 w-72 h-72 bg-electric-teal/15 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-40 right-0 w-96 h-96 bg-electric-teal/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-0 left-1/3 w-64 h-64 bg-electric-teal/15 rounded-full blur-3xl animate-pulse delay-2000"></div>
       </div>
       
       <div className="relative max-w-6xl mx-auto px-6 lg:px-8 z-20">
@@ -72,21 +83,21 @@ export default function Hero() {
               <span className="text-electric-teal font-medium text-label-lg">ENTERPRISE AI & DIGITAL TRANSFORMATION</span>
             </div>
             
-            <h1 className="text-display-lg md:text-display-xl tracking-tight text-forillon-navy leading-none mb-8">
+            <h1 className="text-display-lg md:text-display-xl tracking-tight text-white leading-none mb-8">
               The science of
               <span className="block text-electric-teal">transformation</span>
             </h1>
             
-            <p className="text-body-lg text-slate-gray mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-body-lg text-gray-200 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
               Where trusted expertise meets powerful technology. We drive high-impact outcomes using advanced AI and data-driven approaches to tackle your most critical challenges.
             </p>
             
             {/* Achievement Badges */}
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-10">
               {achievements.map((achievement, index) => (
-                <div key={index} className="flex items-center px-3 py-2 bg-electric-teal/8 rounded-lg border border-electric-teal/20">
+                <div key={index} className="flex items-center px-3 py-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
                   <CheckCircle className="w-4 h-4 mr-2 text-electric-teal" />
-                  <span className="text-label-lg text-forillon-navy font-medium">{achievement}</span>
+                  <span className="text-label-lg text-white font-medium">{achievement}</span>
                 </div>
               ))}
             </div>
