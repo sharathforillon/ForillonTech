@@ -31,10 +31,10 @@ export default function Navigation() {
               />
               <div className="flex flex-col">
                 <span className="text-xl font-bold text-forillon-navy tracking-tight">
-                  Forillon
+                  ForillonTechnologies
                 </span>
                 <span className="text-xs text-electric-teal font-medium -mt-1">
-                  Technologies
+                  Trusted to transform
                 </span>
               </div>
             </Link>
