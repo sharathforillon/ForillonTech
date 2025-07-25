@@ -79,15 +79,17 @@ export default function About() {
               </div>
             </div>
             
-            <div className="flex items-start space-x-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-electric-teal rounded-lg flex items-center justify-center">
-                <Users className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-forillon-navy mb-2">Expert Team</h3>
-                <p className="text-slate-gray">
-                  Our consultants bring decades of experience in enterprise architecture, AI implementation, and digital strategy.
-                </p>
+            <div className="card-elevated p-6">
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-electric-teal rounded-lg flex items-center justify-center">
+                  <Users className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-heading-md text-forillon-navy mb-3">Expert Team</h3>
+                  <p className="text-body-md text-slate-gray">
+                    Our consultants bring decades of experience in enterprise architecture, AI implementation, and digital strategy.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
