@@ -32,73 +32,48 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative bg-gradient-hero section-padding-xl overflow-hidden min-h-screen flex items-center">
-      {/* Futuristic Technology Background */}
+    <section className="relative section-padding-xl overflow-hidden min-h-screen flex items-center bg-forillon-navy">
+      {/* Clean Background with Professional Gradient */}
       <div className="absolute inset-0 z-0">
-        {/* Background Image - Futuristic Data Center */}
+        {/* Enterprise Technology Background */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&h=1200&q=80'), 
-                             url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&h=1200&q=80'),
-                             linear-gradient(135deg, #1e293b 0%, #334155 50%, #1e293b 100%)`
+            backgroundImage: `url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=85')`
           }}
         ></div>
         
-        {/* Dynamic Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/90 via-slate-gray/85 to-forillon-navy/90"></div>
+        {/* Professional Overlay for Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-forillon-navy/85 via-forillon-navy/75 to-slate-gray/80"></div>
         
-        {/* Additional Tech Overlay for Depth */}
-        <div className="absolute inset-0 bg-gradient-to-t from-forillon-navy/95 via-transparent to-transparent"></div>
-        
-        {/* Enhanced Tech Grid Pattern */}
-        <div className="absolute inset-0 opacity-30">
+        {/* Subtle Grid Pattern */}
+        <div className="absolute inset-0 opacity-10">
           <div 
             className="w-full h-full"
             style={{
               backgroundImage: `
-                linear-gradient(rgba(20, 184, 166, 0.2) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(20, 184, 166, 0.2) 1px, transparent 1px),
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)
+                linear-gradient(rgba(20, 184, 166, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(20, 184, 166, 0.3) 1px, transparent 1px)
               `,
-              backgroundSize: '64px 64px, 64px 64px, 16px 16px, 16px 16px'
+              backgroundSize: '40px 40px'
             }}
           ></div>
         </div>
         
-        {/* Dynamic Light Elements */}
+        {/* Subtle Ambient Lighting */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-32 -left-32 w-96 h-96 bg-electric-teal/15 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute top-1/4 -right-16 w-72 h-72 bg-electric-teal/12 rounded-full blur-2xl animate-pulse delay-1000"></div>
-          <div className="absolute bottom-0 left-1/2 w-80 h-80 bg-white/5 rounded-full blur-3xl animate-pulse delay-2000"></div>
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-electric-teal/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-electric-teal/8 rounded-full blur-3xl"></div>
         </div>
-      </div>
-      
-      {/* Enhanced Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden z-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-electric-teal/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-40 right-0 w-80 h-80 bg-electric-teal/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-electric-teal/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-white/8 rounded-full blur-3xl animate-pulse delay-3000"></div>
-      </div>
-      
-      {/* Floating Tech Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-15">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-electric-teal rounded-full animate-ping"></div>
-        <div className="absolute top-40 right-20 w-1 h-1 bg-white/60 rounded-full animate-ping delay-1000"></div>
-        <div className="absolute bottom-32 left-20 w-1.5 h-1.5 bg-electric-teal/80 rounded-full animate-ping delay-2000"></div>
-        <div className="absolute top-60 left-1/2 w-1 h-1 bg-white/40 rounded-full animate-ping delay-3000"></div>
-        <div className="absolute bottom-20 right-32 w-2 h-2 bg-electric-teal/60 rounded-full animate-ping delay-4000"></div>
       </div>
       
       <div className="relative max-w-6xl mx-auto px-6 lg:px-8 z-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Column - Main Content */}
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center justify-center px-6 py-3 bg-electric-teal/20 backdrop-blur-sm border border-electric-teal/30 rounded-full mb-8 shadow-lg">
-              <Sparkles className="w-5 h-5 text-electric-teal mr-3 animate-pulse" />
-              <span className="text-electric-teal font-semibold text-label-lg tracking-wide">ENTERPRISE AI & DIGITAL TRANSFORMATION</span>
+            <div className="inline-flex items-center justify-center px-4 py-2 bg-electric-teal/15 rounded-lg mb-8 border border-electric-teal/30">
+              <Sparkles className="w-4 h-4 text-electric-teal mr-2" />
+              <span className="text-electric-teal font-medium text-label-lg">ENTERPRISE AI & DIGITAL TRANSFORMATION</span>
             </div>
             
             <h1 className="text-display-lg md:text-display-xl tracking-tight text-white leading-none mb-8">
@@ -106,14 +81,14 @@ export default function Hero() {
               <span className="block text-electric-teal">transformation</span>
             </h1>
             
-            <p className="text-body-lg text-gray-200 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-body-lg text-silver-mist mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
               Where trusted expertise meets powerful technology. We drive high-impact outcomes using advanced AI and data-driven approaches to tackle your most critical challenges.
             </p>
             
             {/* Achievement Badges */}
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-10">
               {achievements.map((achievement, index) => (
-                <div key={index} className="flex items-center px-3 py-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
+                <div key={index} className="flex items-center px-3 py-2 bg-electric-teal/10 rounded-lg border border-electric-teal/20">
                   <CheckCircle className="w-4 h-4 mr-2 text-electric-teal" />
                   <span className="text-label-lg text-white font-medium">{achievement}</span>
                 </div>
