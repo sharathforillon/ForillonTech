@@ -2,6 +2,7 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Brain, Zap, Target } from "lucide-react";
+import { Link } from "wouter";
 
 export default function AITransformation() {
   const benefits = [
@@ -58,9 +59,11 @@ export default function AITransformation() {
               <p className="text-xl md:text-2xl text-white/90 mb-8 drop-shadow-md">
                 We architect AI solutions that fundamentally reshape how your organization operates, thinks, and competes in the digital economy.
               </p>
-              <Button className="bg-electric-teal hover:bg-electric-teal/90 text-white text-lg px-8 py-3">
-                Start Your AI Journey <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+              <Link href="/contact#get-in-touch">
+                <Button className="bg-electric-teal hover:bg-electric-teal/90 text-white text-lg px-8 py-3">
+                  Start Your AI Journey <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
             </div>
             <div className="relative">
               <img 
