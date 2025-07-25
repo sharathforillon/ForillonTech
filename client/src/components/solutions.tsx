@@ -170,7 +170,7 @@ export default function Solutions() {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center bg-gradient-to-br from-electric-teal to-electric-teal/80 rounded-2xl p-12 text-white shadow-2xl">
+        <div className="text-center bg-electric-teal rounded-2xl p-12 text-white shadow-2xl">
           <h3 className="text-2xl md:text-3xl font-bold mb-6">
             Ready to transform your enterprise?
           </h3>
