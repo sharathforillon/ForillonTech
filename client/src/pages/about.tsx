@@ -289,7 +289,7 @@ export default function About() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-white">American Operations</h3>
-                  <p className="text-electric-teal font-medium">New York, New York</p>
+                  <p className="text-electric-teal font-medium">Toronto, Ontario, Canada</p>
                 </div>
               </div>
               <p className="text-lg text-silver-mist leading-relaxed mb-6">
