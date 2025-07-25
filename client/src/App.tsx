@@ -16,6 +16,16 @@ import Infrastructure from "@/pages/solutions/infrastructure";
 import CloudMigration from "@/pages/solutions/cloud-migration";
 import Security from "@/pages/solutions/security";
 import Performance from "@/pages/solutions/performance";
+import AIConsulting from "@/pages/solutions/ai-consulting";
+import DigitalTransformation from "@/pages/solutions/digital-transformation";
+import EnterpriseArchitecture from "@/pages/solutions/enterprise-architecture";
+import AISecurity from "@/pages/solutions/ai-security";
+import IntelligentAutomation from "@/pages/solutions/intelligent-automation";
+import CustomAIDevelopment from "@/pages/solutions/custom-ai-development";
+import Careers from "@/pages/careers";
+import PrivacyPolicy from "@/pages/privacy-policy";
+import TermsOfService from "@/pages/terms-of-service";
+import CookiePolicy from "@/pages/cookie-policy";
 import DatabaseExport from "@/pages/database-export";
 
 function Router() {
@@ -29,10 +39,20 @@ function Router() {
       <Route path="/solutions/cloud-migration" component={CloudMigration} />
       <Route path="/solutions/security" component={Security} />
       <Route path="/solutions/performance" component={Performance} />
+      <Route path="/solutions/ai-consulting" component={AIConsulting} />
+      <Route path="/solutions/digital-transformation" component={DigitalTransformation} />
+      <Route path="/solutions/enterprise-architecture" component={EnterpriseArchitecture} />
+      <Route path="/solutions/ai-security" component={AISecurity} />
+      <Route path="/solutions/intelligent-automation" component={IntelligentAutomation} />
+      <Route path="/solutions/custom-ai-development" component={CustomAIDevelopment} />
       <Route path="/why-forillon" component={WhyForillon} />
       <Route path="/contact" component={Contact} />
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:slug" component={BlogPost} />
+      <Route path="/careers" component={Careers} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/terms-of-service" component={TermsOfService} />
+      <Route path="/cookie-policy" component={CookiePolicy} />
       <Route path="/database-export" component={DatabaseExport} />
       <Route component={NotFound} />
     </Switch>

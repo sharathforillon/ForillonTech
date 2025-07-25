@@ -3,19 +3,19 @@ import F_nobackground from "@assets/F-nobackground.png";
 
 export default function Footer() {
   const services = [
-    "AI Consulting & Strategy",
-    "Digital Transformation",
-    "Enterprise Architecture",
-    "AI Security & Governance",
-    "Intelligent Automation",
-    "Custom AI Development"
+    { name: "AI Consulting & Strategy", path: "/solutions/ai-consulting" },
+    { name: "Digital Transformation", path: "/solutions/digital-transformation" },
+    { name: "Enterprise Architecture", path: "/solutions/enterprise-architecture" },
+    { name: "AI Security & Governance", path: "/solutions/ai-security" },
+    { name: "Intelligent Automation", path: "/solutions/intelligent-automation" },
+    { name: "Custom AI Development", path: "/solutions/custom-ai-development" }
   ];
 
   const company = [
-    "About Us",
-    "Blog", 
-    "Careers",
-    "Contact"
+    { name: "About Us", path: "/about" },
+    { name: "Blog", path: "/blog" }, 
+    { name: "Careers", path: "/careers" },
+    { name: "Contact", path: "/contact" }
   ];
 
   return (
@@ -71,9 +71,9 @@ export default function Footer() {
             <ul className="space-y-2 text-gray-600">
               {services.map((service, index) => (
                 <li key={index}>
-                  <a href="#" className="hover:text-electric-teal transition-colors">
-                    {service}
-                  </a>
+                  <Link href={service.path} className="hover:text-electric-teal transition-colors">
+                    {service.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -84,15 +84,9 @@ export default function Footer() {
             <ul className="space-y-2 text-gray-600">
               {company.map((item, index) => (
                 <li key={index}>
-                  {item === "Blog" ? (
-                    <Link href="/blog" className="hover:text-electric-teal transition-colors">
-                      {item}
-                    </Link>
-                  ) : (
-                    <a href="#" className="hover:text-electric-teal transition-colors">
-                      {item}
-                    </a>
-                  )}
+                  <Link href={item.path} className="hover:text-electric-teal transition-colors">
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -102,9 +96,9 @@ export default function Footer() {
         <div className="border-t border-gray-300 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-600 text-sm">© 2024 Forillon Technologies. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-gray-600 hover:text-electric-teal text-sm transition-colors">Privacy Policy</a>
-            <a href="#" className="text-gray-600 hover:text-electric-teal text-sm transition-colors">Terms of Service</a>
-            <a href="#" className="text-gray-600 hover:text-electric-teal text-sm transition-colors">Cookie Policy</a>
+            <Link href="/privacy-policy" className="text-gray-600 hover:text-electric-teal text-sm transition-colors">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="text-gray-600 hover:text-electric-teal text-sm transition-colors">Terms of Service</Link>
+            <Link href="/cookie-policy" className="text-gray-600 hover:text-electric-teal text-sm transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>
