@@ -11,10 +11,10 @@ export default function About() {
             backgroundImage: `url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=85')`
           }}
         ></div>
-        {/* Professional Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-white/90 to-white/95"></div>
-        {/* Additional subtle pattern overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-ice-white/50 via-transparent to-ice-white/30"></div>
+        {/* Lighter Overlay for More Background Visibility */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/75 via-white/60 to-white/75"></div>
+        {/* Subtle pattern overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-ice-white/30 via-transparent to-ice-white/20"></div>
       </div>
       
       {/* Elegant Background Elements */}
