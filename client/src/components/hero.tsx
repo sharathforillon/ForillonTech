@@ -142,25 +142,38 @@ export default function Hero() {
               </div>
             </div>
             
-            {/* Overlay Stats */}
-            <div className="absolute bottom-6 left-6 right-6">
-              <div className="grid grid-cols-2 gap-4">
-                {stats.map((stat, index) => (
-                  <div key={index} className="bg-white/90 backdrop-blur-sm rounded-lg p-4 text-center transform hover:scale-105 transition-all duration-300 border border-electric-teal/20">
-                    <div className="w-8 h-8 bg-electric-teal/20 rounded-lg flex items-center justify-center mx-auto mb-2">
-                      <stat.icon className="w-4 h-4 text-electric-teal" />
+            {/* Enhanced Stats Card */}
+            <div className="absolute -bottom-8 left-4 right-4">
+              <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 backdrop-blur-xl">
+                <div className="grid grid-cols-2 gap-6">
+                  {stats.map((stat, index) => (
+                    <div key={index} className="text-center group hover:scale-105 transition-all duration-300">
+                      <div className="relative mb-4">
+                        <div className="w-16 h-16 bg-gradient-to-br from-electric-teal to-electric-teal/80 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-electric-teal/30 transition-all duration-300">
+                          <stat.icon className="w-8 h-8 text-white" />
+                        </div>
+                        <div className="absolute -top-1 -right-1 w-6 h-6 bg-electric-teal/20 rounded-full animate-ping"></div>
+                      </div>
+                      <div className="text-3xl font-bold text-forillon-navy mb-2 bg-gradient-to-r from-forillon-navy to-slate-gray bg-clip-text text-transparent">
+                        {stat.number}
+                      </div>
+                      <div className="text-sm text-slate-gray font-medium leading-tight">
+                        {stat.label}
+                      </div>
                     </div>
-                    <div className="text-xl font-bold text-forillon-navy mb-1">{stat.number}</div>
-                    <div className="text-xs text-slate-gray">{stat.label}</div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+                
+                {/* Decorative Elements */}
+                <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-electric-teal/10 to-transparent rounded-full"></div>
+                <div className="absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-tr from-forillon-navy/5 to-transparent rounded-full"></div>
               </div>
             </div>
           </div>
         </div>
         
         {/* Bottom Trust Indicators */}
-        <div className="mt-16 pt-8 border-t border-electric-teal/20">
+        <div className="mt-24 pt-8 border-t border-electric-teal/20">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="text-center md:text-left mb-4 md:mb-0">
               <p className="text-slate-gray text-sm">
