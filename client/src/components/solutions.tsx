@@ -179,7 +179,7 @@ export default function Solutions() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
-              className="bg-electric-teal hover:bg-electric-teal/90 text-white text-lg px-8 py-3"
+              className="bg-white hover:bg-gray-50 text-electric-teal text-lg px-10 py-4 border-2 border-white shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 font-semibold"
               onClick={() => window.open('https://calendly.com/sreddy-forillontech/30min', '_blank')}
             >
               <Calendar className="mr-2 h-5 w-5" />
@@ -187,7 +187,7 @@ export default function Solutions() {
             </Button>
             <Button 
               variant="outline" 
-              className="border-electric-teal text-electric-teal hover:bg-electric-teal hover:text-white text-lg px-8 py-3"
+              className="border-2 border-white/70 text-white hover:bg-white hover:text-electric-teal text-lg px-8 py-4 backdrop-blur-sm"
               onClick={() => window.location.href = '/contact'}
             >
               Contact Us <ArrowRight className="ml-2 h-5 w-5" />
