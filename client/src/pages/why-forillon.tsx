@@ -70,13 +70,13 @@ export default function WhyForillon() {
         >
           <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_3840_2160_30fps.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-forillon-navy/90 to-forillon-navy/70"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-white">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-white drop-shadow-lg">
               Why Choose Forillon?
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto drop-shadow-md">
               The strategic advantages that make us your ideal technology transformation partner
             </p>
           </div>
