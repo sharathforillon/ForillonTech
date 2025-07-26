@@ -267,7 +267,7 @@ export default function About() {
       </section>
 
       {/* Global Presence */}
-      <section className="py-20 bg-gradient-to-br from-forillon-navy to-electric-teal/20">
+      <section className="py-20 bg-forillon-navy">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
