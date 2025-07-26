@@ -122,6 +122,10 @@
     color: var(--electric-teal);
   }
   
+  .text-silver-mist {
+    color: var(--silver-mist);
+  }
+  
   .bg-electric-teal {
     background-color: var(--electric-teal);
   }
