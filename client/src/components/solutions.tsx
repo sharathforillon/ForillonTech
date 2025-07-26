@@ -186,8 +186,7 @@ export default function Solutions() {
               Book a Consultation
             </Button>
             <Button 
-              variant="outline" 
-              className="border-2 border-white text-white hover:bg-white hover:text-electric-teal text-lg px-8 py-4 font-medium transition-all duration-200"
+              className="bg-white/10 hover:bg-white hover:text-electric-teal text-white border-2 border-white/70 hover:border-white text-lg px-8 py-4 font-medium transition-all duration-200 backdrop-blur-sm"
               onClick={() => window.location.href = '/contact'}
             >
               Contact Us <ArrowRight className="ml-2 h-5 w-5" />
