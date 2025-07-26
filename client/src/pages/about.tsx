@@ -201,7 +201,10 @@ export default function About() {
             <p className="text-lg text-gray-700 mb-8 max-w-4xl mx-auto">
               Our success is measured not just in products shipped, but in lasting relationships built on trust, transparency, and shared ambition.
             </p>
-            <Button className="bg-electric-teal hover:bg-electric-teal/90 text-white">
+            <Button 
+              className="bg-electric-teal hover:bg-electric-teal/90 text-white"
+              onClick={() => window.location.href = '/partner'}
+            >
               Partner With Us <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
