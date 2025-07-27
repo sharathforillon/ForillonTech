@@ -101,6 +101,10 @@ export default function Navigation() {
               <Link href="/about" className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-forillon-navy transition-colors duration-200 rounded-md hover:bg-gray-50">
                 About
               </Link>
+              
+              <Link href="/partner" className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-forillon-navy transition-colors duration-200 rounded-md hover:bg-gray-50">
+                Partnerships
+              </Link>
             </div>
             
             {/* CTA Button */}
@@ -157,6 +161,13 @@ export default function Navigation() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
+              </Link>
+              <Link 
+                href="/partner" 
+                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-forillon-navy hover:bg-gray-50 rounded-md transition-colors" 
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Partnerships
               </Link>
             </div>
             

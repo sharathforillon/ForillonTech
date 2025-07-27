@@ -15,6 +15,7 @@ export default function Footer() {
     { name: "About Us", path: "/about" },
     { name: "Blog", path: "/blog" }, 
     { name: "Careers", path: "/careers" },
+    { name: "Partnerships", path: "/partner" },
     { name: "Contact", path: "/contact" }
   ];
 
