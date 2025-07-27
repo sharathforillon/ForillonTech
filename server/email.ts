@@ -19,7 +19,7 @@ export async function sendPartnershipInquiry(inquiry: PartnershipInquiry): Promi
     
     // Trial accounts can only send to administrator email - using the account holder's email
     const recipients = [
-      new Recipient("sharath.kan@gmail.com", "Siva Reddy")
+      new Recipient("sreddy@forillontech.com", "Siva Reddy")
     ];
 
     // Create personalization data for the template
