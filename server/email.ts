@@ -13,8 +13,8 @@ export async function sendPartnershipInquiry(inquiry: PartnershipInquiry): Promi
   }
 
   try {
-    // Use the exact pattern from the MailerSend documentation
-    const sentFrom = new Sender("info@trial-pxkjn2wn68ol7vyz.mlsender.net", "Forillon Partnership Team");
+    // Use the exact pattern from the MailerSend documentation with proper domain
+    const sentFrom = new Sender("info@forillontech.com", "Forillon Partnership Team");
     
     const recipients = [
       new Recipient("sreddy@forillontech.com", "Siva Reddy")
