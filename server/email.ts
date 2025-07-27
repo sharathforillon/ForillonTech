@@ -59,10 +59,10 @@ This inquiry was submitted through the Forillon Technologies partnership form.
 Contact: ${inquiry.email}
     `.trim();
 
-    // For MailerSend trial accounts, use the account administrator's email as both sender and recipient
-    // This should resolve the trial account restrictions
-    const sentFrom = new Sender("sreddy@forillontech.com", "Partnership Inquiry");
-    const recipients = [new Recipient("sreddy@forillontech.com")];
+    // For MailerSend trial accounts, let's try using a verified trial domain
+    // Trial accounts typically get a subdomain like this
+    const sentFrom = new Sender("ms-trial@trial-pxkjn2wn68ol7vyz.mlsender.net", "Forillon Partnership Form");
+    const recipients = [new Recipient("sreddy@forillontech.com", "Siva Reddy")];
 
     const emailParams = new EmailParams()
       .setFrom(sentFrom)

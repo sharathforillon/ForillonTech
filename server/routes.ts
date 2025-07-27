@@ -6,6 +6,7 @@ import { join } from "path";
 import matter from "gray-matter";
 import { partnershipInquirySchema } from "../shared/schema";
 import { sendPartnershipInquiry } from "./email";
+import { logPartnershipInquiry, generateFollowUpEmailTemplate } from "./notification";
 
 interface BlogPost {
   slug: string;
@@ -109,21 +110,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       const inquiry = validationResult.data;
       
-      // Log the inquiry details for manual follow-up regardless of email status
-      console.log('=== NEW PARTNERSHIP INQUIRY ===');
-      console.log('Company:', inquiry.companyName);
-      console.log('Contact:', `${inquiry.firstName} ${inquiry.lastName}`);
-      console.log('Email:', inquiry.email);
-      console.log('Phone:', inquiry.phone);
-      console.log('Job Title:', inquiry.jobTitle);
-      console.log('Company Size:', inquiry.companySize);
-      console.log('Industry:', inquiry.industry);
-      console.log('Partnership Types:', inquiry.partnershipType.join(', '));
-      console.log('Budget:', inquiry.projectBudget);
-      console.log('Timeline:', inquiry.timeline);
-      console.log('Description:', inquiry.description);
-      console.log('Website:', inquiry.website || 'Not provided');
-      console.log('=== END INQUIRY ===');
+      // Always log the inquiry with structured formatting
+      logPartnershipInquiry(inquiry);
       
       // Attempt to send email notification
       const emailSent = await sendPartnershipInquiry(inquiry);
@@ -131,7 +119,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (emailSent) {
         console.log('✅ Email sent successfully via MailerSend');
       } else {
-        console.log('⚠️ Email failed to send - partnership inquiry logged above for manual follow-up');
+        console.log('⚠️ Email failed to send - inquiry logged above for manual follow-up');
+        console.log('\n📧 SUGGESTED FOLLOW-UP EMAIL:');
+        console.log(generateFollowUpEmailTemplate(inquiry));
+        console.log('='.repeat(40));
       }
 
       // Always return success to user since we've logged the inquiry
