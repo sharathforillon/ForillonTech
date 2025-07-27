@@ -1,10 +1,12 @@
-import sgMail from '@sendgrid/mail';
+import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 
-if (!process.env.SENDGRID_API_KEY) {
-  throw new Error("SENDGRID_API_KEY environment variable must be set");
+if (!process.env.MAILERSEND_API_TOKEN) {
+  throw new Error("MAILERSEND_API_TOKEN environment variable must be set");
 }
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const mailerSend = new MailerSend({
+  apiKey: process.env.MAILERSEND_API_TOKEN,
+});
 
 interface PartnershipInquiry {
   // Contact Information
@@ -56,19 +58,21 @@ ${inquiry.description}
 This inquiry was submitted through the Forillon Technologies partnership form.
     `.trim();
 
-    const msg = {
-      to: 'sreddy@forillontech.com',
-      from: 'noreply@forillontech.com', // This should be a verified sender in SendGrid
-      subject: `New Partnership Inquiry from ${inquiry.companyName}`,
-      text: emailContent,
-      html: emailContent.replace(/\n/g, '<br>'),
-    };
+    const sentFrom = new Sender("noreply@forillontech.com", "Forillon Technologies");
+    const recipients = [new Recipient("sreddy@forillontech.com", "Siva Reddy")];
 
-    await sgMail.send(msg);
-    console.log('Partnership inquiry email sent successfully');
+    const emailParams = new EmailParams()
+      .setFrom(sentFrom)
+      .setTo(recipients)
+      .setSubject(`New Partnership Inquiry from ${inquiry.companyName}`)
+      .setText(emailContent)
+      .setHtml(emailContent.replace(/\n/g, '<br>'));
+
+    await mailerSend.email.send(emailParams);
+    console.log('Partnership inquiry email sent successfully via MailerSend');
     return true;
   } catch (error) {
-    console.error('SendGrid email error:', error);
+    console.error('MailerSend email error:', error);
     return false;
   }
 }
