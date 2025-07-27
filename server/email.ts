@@ -56,25 +56,38 @@ ${inquiry.description}
 
 ---
 This inquiry was submitted through the Forillon Technologies partnership form.
+Contact: ${inquiry.email}
     `.trim();
 
-    // For MailerSend trial accounts, we need to use a verified domain
-    // Common solution: use the account owner's email as sender for trial accounts
-    const sentFrom = new Sender("sreddy@forillontech.com", "Forillon Technologies Partnership Form");
-    const recipients = [new Recipient("sreddy@forillontech.com", "Siva Reddy")];
+    // For MailerSend trial accounts, use the account administrator's email as both sender and recipient
+    // This should resolve the trial account restrictions
+    const sentFrom = new Sender("sreddy@forillontech.com", "Partnership Inquiry");
+    const recipients = [new Recipient("sreddy@forillontech.com")];
 
     const emailParams = new EmailParams()
       .setFrom(sentFrom)
       .setTo(recipients)
-      .setSubject(`New Partnership Inquiry from ${inquiry.companyName}`)
+      .setSubject(`Partnership Inquiry - ${inquiry.companyName} (${inquiry.firstName} ${inquiry.lastName})`)
       .setText(emailContent)
-      .setHtml(emailContent.replace(/\n/g, '<br>'));
+      .setHtml(`<pre>${emailContent.replace(/\n/g, '<br>')}</pre>`);
 
-    await mailerSend.email.send(emailParams);
-    console.log('Partnership inquiry email sent successfully via MailerSend');
+    const response = await mailerSend.email.send(emailParams);
+    console.log('Partnership inquiry email sent successfully via MailerSend', response);
     return true;
   } catch (error) {
     console.error('MailerSend email error:', error);
+    
+    // For trial account limitations, we'll log the inquiry details for manual follow-up
+    console.log('Partnership inquiry details (for manual follow-up):', {
+      company: inquiry.companyName,
+      contact: `${inquiry.firstName} ${inquiry.lastName}`,
+      email: inquiry.email,
+      phone: inquiry.phone,
+      partnershipType: inquiry.partnershipType,
+      description: inquiry.description.substring(0, 100) + '...'
+    });
+    
+    // Still return false to indicate email wasn't sent
     return false;
   }
 }

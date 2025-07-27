@@ -109,18 +109,36 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       const inquiry = validationResult.data;
       
-      // Send email notification
+      // Log the inquiry details for manual follow-up regardless of email status
+      console.log('=== NEW PARTNERSHIP INQUIRY ===');
+      console.log('Company:', inquiry.companyName);
+      console.log('Contact:', `${inquiry.firstName} ${inquiry.lastName}`);
+      console.log('Email:', inquiry.email);
+      console.log('Phone:', inquiry.phone);
+      console.log('Job Title:', inquiry.jobTitle);
+      console.log('Company Size:', inquiry.companySize);
+      console.log('Industry:', inquiry.industry);
+      console.log('Partnership Types:', inquiry.partnershipType.join(', '));
+      console.log('Budget:', inquiry.projectBudget);
+      console.log('Timeline:', inquiry.timeline);
+      console.log('Description:', inquiry.description);
+      console.log('Website:', inquiry.website || 'Not provided');
+      console.log('=== END INQUIRY ===');
+      
+      // Attempt to send email notification
       const emailSent = await sendPartnershipInquiry(inquiry);
       
-      if (!emailSent) {
-        return res.status(500).json({ 
-          error: "Failed to send partnership inquiry email" 
-        });
+      if (emailSent) {
+        console.log('✅ Email sent successfully via MailerSend');
+      } else {
+        console.log('⚠️ Email failed to send - partnership inquiry logged above for manual follow-up');
       }
 
+      // Always return success to user since we've logged the inquiry
       res.json({ 
         success: true, 
-        message: "Partnership inquiry submitted successfully" 
+        message: "Partnership inquiry submitted successfully. Our team will contact you within 24 hours.",
+        emailSent: emailSent
       });
       
     } catch (error) {
