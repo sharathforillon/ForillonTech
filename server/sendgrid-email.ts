@@ -1,70 +1,24 @@
-import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
+import sgMail from '@sendgrid/mail';
 import { type PartnershipInquiry } from "../shared/schema";
-import { sendPartnershipInquiryViaSendGrid } from "./sendgrid-email";
 
-// Initialize MailerSend with API key using the official pattern
-const mailerSend = new MailerSend({
-  apiKey: process.env.MAILERSEND_API_TOKEN || '',
-});
-
-export async function sendPartnershipInquiry(inquiry: PartnershipInquiry): Promise<boolean> {
-  // Try MailerSend first, then fallback to SendGrid
-  const mailerSendResult = await sendPartnershipInquiryViaMailerSend(inquiry);
-  if (mailerSendResult) {
-    return true;
-  }
-  
-  console.log('MailerSend failed, trying SendGrid as fallback...');
-  const sendGridResult = await sendPartnershipInquiryViaSendGrid(inquiry);
-  console.log('SendGrid result:', sendGridResult);
-  return sendGridResult;
+if (!process.env.SENDGRID_API_KEY) {
+  console.warn("SENDGRID_API_KEY environment variable is not set");
+} else {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 }
 
-async function sendPartnershipInquiryViaMailerSend(inquiry: PartnershipInquiry): Promise<boolean> {
-  if (!process.env.MAILERSEND_API_TOKEN) {
-    console.error('MAILERSEND_API_TOKEN environment variable is not set');
+export async function sendPartnershipInquiryViaSendGrid(inquiry: PartnershipInquiry): Promise<boolean> {
+  if (!process.env.SENDGRID_API_KEY) {
+    console.error('SENDGRID_API_KEY environment variable is not set');
     return false;
   }
 
   try {
-    // For trial accounts, use the verified trial domain and send to administrator email
-    // This should work with trial account restrictions
-    const sentFrom = new Sender("info@trial-pxkjn2wn68ol7vyz.mlsender.net", "Forillon Partnership Team");
-    
-    // Trial accounts can only send to administrator email - must match the MailerSend account holder
-    const recipients = [
-      new Recipient("sharath.kan@gmail.com", "Siva Reddy")
-    ];
-
-    // Create personalization data for the template
-    const personalization = [
-      {
-        email: "sreddy@forillontech.com",
-        data: {
-          company_name: inquiry.companyName,
-          contact_name: `${inquiry.firstName} ${inquiry.lastName}`,
-          contact_email: inquiry.email,
-          contact_phone: inquiry.phone,
-          job_title: inquiry.jobTitle,
-          company_size: inquiry.companySize,
-          industry: inquiry.industry,
-          website: inquiry.website || 'Not provided',
-          partnership_types: inquiry.partnershipType.join(', '),
-          project_budget: inquiry.projectBudget,
-          timeline: inquiry.timeline,
-          description: inquiry.description || '',
-          inquiry_date: new Date().toLocaleDateString(),
-          unsubscribe: ''
-        }
-      }
-    ];
-
-    const emailParams = new EmailParams()
-      .setFrom(sentFrom)
-      .setTo(recipients)
-      .setReplyTo(sentFrom)
-      .setSubject(`Partnership Inquiry from ${inquiry.companyName}`)
-      .setHtml(`
+    const msg = {
+      to: 'sreddy@forillontech.com',
+      from: 'noreply@forillontech.com', // This should be a verified sender
+      subject: `Partnership Inquiry from ${inquiry.companyName}`,
+      html: `
 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff;">
   <div style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); padding: 30px; text-align: center;">
     <h1 style="color: white; margin: 0; font-size: 24px; font-weight: 600;">
@@ -114,8 +68,8 @@ async function sendPartnershipInquiryViaMailerSend(inquiry: PartnershipInquiry):
     </div>
   </div>
 </div>
-      `)
-      .setText(`
+      `,
+      text: `
 New Partnership Inquiry from ${inquiry.companyName}
 
 Contact: ${inquiry.firstName} ${inquiry.lastName} (${inquiry.jobTitle})
@@ -137,27 +91,15 @@ ${inquiry.description || 'No specific details provided'}
 ---
 This inquiry was submitted through the Forillon Technologies partnership form.
 Reply directly to: ${inquiry.email}
-      `);
+      `
+    };
 
-    // Send the email using the official SDK pattern
-    const response = await mailerSend.email.send(emailParams);
-    
-    console.log('✅ MailerSend email sent successfully:', response);
+    await sgMail.send(msg);
+    console.log('✅ SendGrid email sent successfully');
     return true;
 
   } catch (error: any) {
-    console.error('MailerSend error:', error);
-    
-    // Log the inquiry details for manual follow-up
-    console.log('Partnership inquiry details (for manual follow-up):', {
-      company: inquiry.companyName,
-      contact: `${inquiry.firstName} ${inquiry.lastName}`,
-      email: inquiry.email,
-      phone: inquiry.phone,
-      partnershipType: inquiry.partnershipType,
-      description: inquiry.description ? inquiry.description.substring(0, 100) + '...' : 'No description provided'
-    });
-    
+    console.error('SendGrid error:', error);
     return false;
   }
 }

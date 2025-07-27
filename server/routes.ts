@@ -113,13 +113,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Always log the inquiry with structured formatting
       logPartnershipInquiry(inquiry);
       
-      // Attempt to send email notification
+      // Attempt to send email notification with fallback
       const emailSent = await sendPartnershipInquiry(inquiry);
       
       if (emailSent) {
-        console.log('✅ Email sent successfully via MailerSend');
+        console.log('✅ Email sent successfully');
       } else {
-        console.log('⚠️ Email failed to send - inquiry logged above for manual follow-up');
+        console.log('⚠️ All email services failed - inquiry logged above for manual follow-up');
         console.log('\n📧 SUGGESTED FOLLOW-UP EMAIL:');
         console.log(generateFollowUpEmailTemplate(inquiry));
         console.log('='.repeat(40));
