@@ -52,10 +52,10 @@ export default function Performance() {
               <div className="inline-flex items-center justify-center px-4 py-2 bg-electric-teal/20 rounded-full mb-6">
                 <span className="text-electric-teal font-semibold text-sm">PERFORMANCE ENGINEERING</span>
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-white">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-white drop-shadow-lg">
                 Maximum Performance, Proven Results
               </h1>
-              <p className="text-xl md:text-2xl text-silver-mist mb-8">
+              <p className="text-xl md:text-2xl text-white/90 mb-8 drop-shadow-md">
                 Data-driven optimization strategies to maximize efficiency and ROI across your technology investments.
               </p>
               <Button className="bg-electric-teal hover:bg-electric-teal/90 text-white text-lg px-8 py-3">
