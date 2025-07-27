@@ -47,16 +47,16 @@ export default function AITransformation() {
           <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_3840_2160_30fps.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-forillon-navy/85"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="relative z-10">
               <div className="inline-flex items-center justify-center px-4 py-2 bg-electric-teal/20 rounded-full mb-6">
                 <span className="text-electric-teal font-semibold text-sm">AI & DIGITAL TRANSFORMATION</span>
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-white drop-shadow-lg">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-white" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0px 0px 8px rgba(0,0,0,0.3)' }}>
                 Intelligent Systems That Transform Business
               </h1>
-              <p className="text-xl md:text-2xl text-white/90 mb-8 drop-shadow-md">
+              <p className="text-xl md:text-2xl text-white mb-8" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.7), 0px 0px 6px rgba(0,0,0,0.2)' }}>
                 We architect AI solutions that fundamentally reshape how your organization operates, thinks, and competes in the digital economy.
               </p>
               <Link href="/contact#get-in-touch">
