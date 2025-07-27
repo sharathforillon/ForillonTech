@@ -13,11 +13,13 @@ export async function sendPartnershipInquiry(inquiry: PartnershipInquiry): Promi
   }
 
   try {
-    // Use the exact pattern from the MailerSend documentation with proper domain
-    const sentFrom = new Sender("info@forillontech.com", "Forillon Partnership Team");
+    // For trial accounts, use the verified trial domain and send to administrator email
+    // This should work with trial account restrictions
+    const sentFrom = new Sender("info@trial-pxkjn2wn68ol7vyz.mlsender.net", "Forillon Partnership Team");
     
+    // Trial accounts can only send to administrator email - using the account holder's email
     const recipients = [
-      new Recipient("sreddy@forillontech.com", "Siva Reddy")
+      new Recipient("sharath.kan@gmail.com", "Siva Reddy")
     ];
 
     // Create personalization data for the template
