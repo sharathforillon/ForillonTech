@@ -1,9 +1,9 @@
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 import { type PartnershipInquiry } from "../shared/schema";
 
-// Initialize MailerSend with API key
+// Initialize MailerSend with API key using the official pattern
 const mailerSend = new MailerSend({
-  apiKey: process.env.MAILERSEND_API_TOKEN || '',
+  apiKey: process.env.MAILERSEND_API_TOKEN,
 });
 
 export async function sendPartnershipInquiry(inquiry: PartnershipInquiry): Promise<boolean> {
@@ -13,35 +13,42 @@ export async function sendPartnershipInquiry(inquiry: PartnershipInquiry): Promi
   }
 
   try {
-    const emailText = `
-New Partnership Inquiry from Forillon Technologies Website
+    // Use the exact pattern from the MailerSend documentation
+    const sentFrom = new Sender("info@trial-pxkjn2wn68ol7vyz.mlsender.net", "Forillon Partnership Team");
+    
+    const recipients = [
+      new Recipient("sreddy@forillontech.com", "Siva Reddy")
+    ];
 
-Company Information:
-- Company Name: ${inquiry.companyName}
-- Industry: ${inquiry.industry}
-- Company Size: ${inquiry.companySize}
-- Website: ${inquiry.website || 'Not provided'}
+    // Create personalization data for the template
+    const personalization = [
+      {
+        email: "sreddy@forillontech.com",
+        data: {
+          company_name: inquiry.companyName,
+          contact_name: `${inquiry.firstName} ${inquiry.lastName}`,
+          contact_email: inquiry.email,
+          contact_phone: inquiry.phone,
+          job_title: inquiry.jobTitle,
+          company_size: inquiry.companySize,
+          industry: inquiry.industry,
+          website: inquiry.website || 'Not provided',
+          partnership_types: inquiry.partnershipType.join(', '),
+          project_budget: inquiry.projectBudget,
+          timeline: inquiry.timeline,
+          description: inquiry.description,
+          inquiry_date: new Date().toLocaleDateString(),
+          unsubscribe: ''
+        }
+      }
+    ];
 
-Contact Information:
-- Name: ${inquiry.firstName} ${inquiry.lastName}
-- Job Title: ${inquiry.jobTitle}
-- Email: ${inquiry.email}
-- Phone: ${inquiry.phone}
-
-Partnership Details:
-- Partnership Types: ${inquiry.partnershipType.join(', ')}
-- Project Budget: ${inquiry.projectBudget}
-- Timeline: ${inquiry.timeline}
-
-Project Description:
-${inquiry.description}
-
----
-This inquiry was submitted through the Forillon Technologies partnership form.
-Reply directly to: ${inquiry.email}
-    `.trim();
-
-    const emailHtml = `
+    const emailParams = new EmailParams()
+      .setFrom(sentFrom)
+      .setTo(recipients)
+      .setReplyTo(sentFrom)
+      .setSubject(`Partnership Inquiry from ${inquiry.companyName}`)
+      .setHtml(`
 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff;">
   <div style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); padding: 30px; text-align: center;">
     <h1 style="color: white; margin: 0; font-size: 24px; font-weight: 600;">
@@ -91,63 +98,50 @@ Reply directly to: ${inquiry.email}
     </div>
   </div>
 </div>
-    `.trim();
+      `)
+      .setText(`
+New Partnership Inquiry from ${inquiry.companyName}
 
-    // Try different sender configurations for trial account compatibility
-    const senderConfigurations = [
-      // Use trial domain as per MailerSend documentation
-      "info@trial-pxkjn2wn68ol7vyz.mlsender.net",
-      "noreply@trial-pxkjn2wn68ol7vyz.mlsender.net",
-      "partnership@trial-pxkjn2wn68ol7vyz.mlsender.net"
-    ];
+Contact: ${inquiry.firstName} ${inquiry.lastName} (${inquiry.jobTitle})
+Email: ${inquiry.email}
+Phone: ${inquiry.phone}
 
-    for (let i = 0; i < senderConfigurations.length; i++) {
-      const senderEmail = senderConfigurations[i];
-      
-      try {
-        console.log(`Attempting MailerSend SDK configuration ${i + 1}: ${senderEmail}`);
+Company: ${inquiry.companyName}
+Industry: ${inquiry.industry}
+Company Size: ${inquiry.companySize}
+Website: ${inquiry.website || 'Not provided'}
 
-        const sentFrom = new Sender(senderEmail, "Forillon Partnership Team");
-        const recipients = [new Recipient("sreddy@forillontech.com", "Siva Reddy")];
+Partnership Types: ${inquiry.partnershipType.join(', ')}
+Budget: ${inquiry.projectBudget}
+Timeline: ${inquiry.timeline}
 
-        const emailParams = new EmailParams()
-          .setFrom(sentFrom)
-          .setTo(recipients)
-          .setSubject(`Partnership Inquiry from ${inquiry.companyName}`)
-          .setText(emailText)
-          .setHtml(emailHtml);
+Description:
+${inquiry.description}
 
-        const response = await mailerSend.email.send(emailParams);
-        
-        console.log(`✅ MailerSend SDK email sent successfully with configuration ${i + 1}:`, {
-          response: response,
-          senderEmail: senderEmail
-        });
-        
-        return true;
+---
+This inquiry was submitted through the Forillon Technologies partnership form.
+Reply directly to: ${inquiry.email}
+      `);
 
-      } catch (configError: any) {
-        console.log(`Configuration ${i + 1} failed:`, {
-          senderEmail: senderEmail,
-          error: configError.message || configError.toString(),
-          details: configError.body || configError.response || {}
-        });
-
-        // Continue to next configuration
-        if (i === senderConfigurations.length - 1) {
-          console.error('All MailerSend SDK configurations failed.');
-        }
-      }
-    }
-
-    return false;
+    // Send the email using the official SDK pattern
+    const response = await mailerSend.email.send(emailParams);
+    
+    console.log('✅ MailerSend email sent successfully:', response);
+    return true;
 
   } catch (error: any) {
-    console.error('MailerSend SDK error:', {
-      message: error.message || error.toString(),
-      body: error.body || {},
-      response: error.response || {}
+    console.error('MailerSend error:', error);
+    
+    // Log the inquiry details for manual follow-up
+    console.log('Partnership inquiry details (for manual follow-up):', {
+      company: inquiry.companyName,
+      contact: `${inquiry.firstName} ${inquiry.lastName}`,
+      email: inquiry.email,
+      phone: inquiry.phone,
+      partnershipType: inquiry.partnershipType,
+      description: inquiry.description.substring(0, 100) + '...'
     });
+    
     return false;
   }
 }
