@@ -70,6 +70,8 @@ export default function Partner() {
   });
 
   const onSubmit = (data: PartnershipInquiry) => {
+    console.log('Form submission data:', data);
+    console.log('Form errors:', form.formState.errors);
     submitPartnershipInquiry.mutate(data);
   };
 
