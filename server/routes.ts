@@ -4,6 +4,8 @@ import { storage } from "./storage";
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
 import matter from "gray-matter";
+import { partnershipInquirySchema } from "../shared/schema";
+import { sendPartnershipInquiry } from "./email";
 
 interface BlogPost {
   slug: string;
@@ -89,6 +91,43 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error(`Error fetching blog post ${req.params.slug}:`, error);
       res.status(500).json({ error: 'Failed to fetch blog post' });
+    }
+  });
+
+  // Partnership inquiry endpoint
+  app.post("/api/partnership-inquiry", async (req, res) => {
+    try {
+      // Validate the request body
+      const validationResult = partnershipInquirySchema.safeParse(req.body);
+      
+      if (!validationResult.success) {
+        return res.status(400).json({ 
+          error: "Invalid form data", 
+          details: validationResult.error.issues 
+        });
+      }
+
+      const inquiry = validationResult.data;
+      
+      // Send email notification
+      const emailSent = await sendPartnershipInquiry(inquiry);
+      
+      if (!emailSent) {
+        return res.status(500).json({ 
+          error: "Failed to send partnership inquiry email" 
+        });
+      }
+
+      res.json({ 
+        success: true, 
+        message: "Partnership inquiry submitted successfully" 
+      });
+      
+    } catch (error) {
+      console.error('Partnership inquiry error:', error);
+      res.status(500).json({ 
+        error: "Internal server error" 
+      });
     }
   });
 
