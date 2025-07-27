@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Brain, Cloud, Shield, Zap, Database, Cpu } from "lucide-react";
+import { Link } from "wouter";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 
@@ -12,42 +13,48 @@ export default function Solutions() {
       title: "AI Consulting & Strategy",
       description: "Comprehensive AI strategy development and implementation guidance for enterprise transformation.",
       features: ["AI Readiness Assessment", "Strategic Roadmap Development", "Technology Selection", "ROI Analysis"],
-      category: "Strategy"
+      category: "Strategy",
+      link: "/solutions/ai-consulting"
     },
     {
       icon: Cloud,
       title: "Digital Transformation",
       description: "End-to-end digital transformation services that modernize your entire technology stack.",
       features: ["Legacy System Modernization", "Cloud Migration", "Process Automation", "Digital Workflows"],
-      category: "Transformation"
+      category: "Transformation",
+      link: "/solutions/digital-transformation"
     },
     {
       icon: Database,
       title: "Enterprise Architecture",
       description: "Scalable, secure, and intelligent enterprise architecture design and implementation.",
       features: ["System Integration", "Microservices Architecture", "API Design", "Data Architecture"],
-      category: "Architecture"
+      category: "Architecture",
+      link: "/solutions/enterprise-architecture"
     },
     {
       icon: Shield,
       title: "AI Security & Governance",
       description: "Comprehensive security frameworks and governance models for AI implementations.",
       features: ["AI Ethics Framework", "Security Protocols", "Compliance Management", "Risk Assessment"],
-      category: "Security"
+      category: "Security",
+      link: "/solutions/ai-security"
     },
     {
       icon: Zap,
       title: "Intelligent Automation",
       description: "Smart automation solutions that learn and adapt to your business processes.",
       features: ["Process Mining", "RPA Implementation", "Workflow Optimization", "Performance Analytics"],
-      category: "Automation"
+      category: "Automation",
+      link: "/solutions/intelligent-automation"
     },
     {
       icon: Cpu,
       title: "Custom AI Development",
       description: "Tailored AI solutions built specifically for your unique business requirements.",
       features: ["Machine Learning Models", "Natural Language Processing", "Computer Vision", "Predictive Analytics"],
-      category: "Development"
+      category: "Development",
+      link: "/solutions/custom-ai-development"
     }
   ];
 
@@ -113,9 +120,11 @@ export default function Solutions() {
                       </li>
                     ))}
                   </ul>
-                  <Button variant="outline" className="w-full border-electric-teal text-electric-teal hover:bg-electric-teal hover:text-white">
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  <Link href={solution.link}>
+                    <Button variant="outline" className="w-full border-electric-teal text-electric-teal hover:bg-electric-teal hover:text-white">
+                      Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             ))}
@@ -188,9 +197,11 @@ export default function Solutions() {
           <p className="text-xl text-silver-mist mb-8 max-w-2xl mx-auto">
             Let's discuss how our solutions can drive your business forward
           </p>
-          <Button className="bg-electric-teal hover:bg-electric-teal/90 text-white text-lg px-8 py-3">
-            Start Your Transformation <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+          <Link href="/contact">
+            <Button className="bg-electric-teal hover:bg-electric-teal/90 text-white text-lg px-8 py-3">
+              Start Your Transformation <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
         </div>
       </section>
       
