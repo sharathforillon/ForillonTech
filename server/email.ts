@@ -58,7 +58,9 @@ ${inquiry.description}
 This inquiry was submitted through the Forillon Technologies partnership form.
     `.trim();
 
-    const sentFrom = new Sender("noreply@forillontech.com", "Forillon Technologies");
+    // For MailerSend trial accounts, we need to use a verified domain
+    // Common solution: use the account owner's email as sender for trial accounts
+    const sentFrom = new Sender("sreddy@forillontech.com", "Forillon Technologies Partnership Form");
     const recipients = [new Recipient("sreddy@forillontech.com", "Siva Reddy")];
 
     const emailParams = new EmailParams()
