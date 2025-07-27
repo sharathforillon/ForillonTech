@@ -35,7 +35,7 @@ export const partnershipInquirySchema = z.object({
   partnershipType: z.array(z.string()).min(1, "Select at least one partnership type"),
   projectBudget: z.string().min(1, "Project budget is required"),
   timeline: z.string().min(1, "Timeline is required"),
-  description: z.string().min(10, "Please provide a detailed description (minimum 10 characters)"),
+  description: z.string().optional(),
 });
 
 export type PartnershipInquiry = z.infer<typeof partnershipInquirySchema>;

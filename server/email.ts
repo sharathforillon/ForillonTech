@@ -3,7 +3,7 @@ import { type PartnershipInquiry } from "../shared/schema";
 
 // Initialize MailerSend with API key using the official pattern
 const mailerSend = new MailerSend({
-  apiKey: process.env.MAILERSEND_API_TOKEN,
+  apiKey: process.env.MAILERSEND_API_TOKEN || '',
 });
 
 export async function sendPartnershipInquiry(inquiry: PartnershipInquiry): Promise<boolean> {
@@ -36,7 +36,7 @@ export async function sendPartnershipInquiry(inquiry: PartnershipInquiry): Promi
           partnership_types: inquiry.partnershipType.join(', '),
           project_budget: inquiry.projectBudget,
           timeline: inquiry.timeline,
-          description: inquiry.description,
+          description: inquiry.description || '',
           inquiry_date: new Date().toLocaleDateString(),
           unsubscribe: ''
         }
@@ -85,7 +85,7 @@ export async function sendPartnershipInquiry(inquiry: PartnershipInquiry): Promi
 
     <div style="background: #faf5ff; padding: 25px; margin: 20px 0; border-radius: 8px; border-left: 4px solid #8b5cf6;">
       <h3 style="color: #7c3aed; margin: 0 0 15px 0; font-size: 18px; font-weight: 600;">Project Description</h3>
-      <div style="color: #374151; line-height: 1.6; white-space: pre-line;">${inquiry.description}</div>
+      <div style="color: #374151; line-height: 1.6; white-space: pre-line;">${inquiry.description || 'No specific details provided'}</div>
     </div>
 
     <div style="margin-top: 40px; padding-top: 25px; border-top: 2px solid #e5e7eb; text-align: center;">
@@ -116,7 +116,7 @@ Budget: ${inquiry.projectBudget}
 Timeline: ${inquiry.timeline}
 
 Description:
-${inquiry.description}
+${inquiry.description || 'No specific details provided'}
 
 ---
 This inquiry was submitted through the Forillon Technologies partnership form.
@@ -139,7 +139,7 @@ Reply directly to: ${inquiry.email}
       email: inquiry.email,
       phone: inquiry.phone,
       partnershipType: inquiry.partnershipType,
-      description: inquiry.description.substring(0, 100) + '...'
+      description: inquiry.description ? inquiry.description.substring(0, 100) + '...' : 'No description provided'
     });
     
     return false;

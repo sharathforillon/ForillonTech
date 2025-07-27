@@ -412,7 +412,7 @@ export default function Partner() {
                       name="description"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Partnership Proposal & Goals *</FormLabel>
+                          <FormLabel>Partnership Proposal & Goals (Optional)</FormLabel>
                           <FormControl>
                             <Textarea
                               {...field}
