@@ -27,6 +27,16 @@ export default function Security() {
       icon: Eye,
       title: "Security Monitoring",
       description: "Continuous security monitoring with advanced analytics and automated threat response"
+    },
+    {
+      icon: Shield,
+      title: "ISG Testing",
+      description: "Information Security Governance testing to ensure your security frameworks meet industry standards"
+    },
+    {
+      icon: Lock,
+      title: "Penetration Testing",
+      description: "Comprehensive PEN testing to identify vulnerabilities before attackers do"
     }
   ];
 

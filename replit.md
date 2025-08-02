@@ -8,6 +8,9 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 
 ## Recent Changes
 
+- **August 02, 2025**: Added ISG Testing and Penetration Testing as new security services
+- **August 02, 2025**: Created dedicated Security Testing & Validation page with comprehensive service offerings
+- **August 02, 2025**: Enhanced security solutions portfolio with vulnerability assessment and compliance testing
 - **July 22, 2025**: MAJOR TRANSFORMATION: Completely redesigned website to match IBM Consulting's world-class enterprise standards
 - **July 22, 2025**: Implemented comprehensive enterprise-grade design system with refined typography, professional spacing, and polished interactions
 - **July 22, 2025**: Created IBM-inspired CSS utilities: advanced typography scale, professional spacing system, enterprise button styles, and sophisticated card components

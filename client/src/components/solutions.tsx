@@ -57,6 +57,15 @@ const serviceCards = [
     cta: "Innovate with Us",
     link: "/solutions",
     hover: "from-green-50 to-emerald-50"
+  },
+  {
+    icon: "🛡️",
+    title: "Security Testing & Validation",
+    description: "Comprehensive ISG testing and penetration testing to identify vulnerabilities and strengthen your security posture.",
+    keyBenefits: ["Vulnerability assessment", "Compliance validation"],
+    cta: "Test Security",
+    link: "/solutions/security-testing",
+    hover: "from-red-50 to-orange-50"
   }
 ];
 

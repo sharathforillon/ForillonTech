@@ -22,6 +22,7 @@ import EnterpriseArchitecture from "@/pages/solutions/enterprise-architecture";
 import AISecurity from "@/pages/solutions/ai-security";
 import IntelligentAutomation from "@/pages/solutions/intelligent-automation";
 import CustomAIDevelopment from "@/pages/solutions/custom-ai-development";
+import SecurityTesting from "@/pages/solutions/security-testing";
 import Careers from "@/pages/careers";
 import Partner from "@/pages/partner";
 import PrivacyPolicy from "@/pages/privacy-policy";
@@ -39,6 +40,7 @@ function Router() {
       <Route path="/solutions/infrastructure" component={Infrastructure} />
       <Route path="/solutions/cloud-migration" component={CloudMigration} />
       <Route path="/solutions/security" component={Security} />
+      <Route path="/solutions/security-testing" component={SecurityTesting} />
       <Route path="/solutions/performance" component={Performance} />
       <Route path="/solutions/ai-consulting" component={AIConsulting} />
       <Route path="/solutions/digital-transformation" component={DigitalTransformation} />
