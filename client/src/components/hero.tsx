@@ -104,8 +104,8 @@ export default function Hero() {
             </div>
           </div>
           
-          {/* Right Column - Enterprise Intelligence Visual */}
-          <div className="relative mt-12 lg:mt-0">
+          {/* Right Column - Enterprise Intelligence Visual - Hidden on mobile */}
+          <div className="relative mt-12 lg:mt-0 hidden sm:block">
             {/* Enterprise Intelligence Visual */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 h-96">
               {/* Futuristic Enterprise Technology Image */}
@@ -132,7 +132,7 @@ export default function Hero() {
             </div>
             
             {/* Enhanced Stats Card */}
-            <div className="absolute -bottom-12 left-2 right-2 hidden sm:block">
+            <div className="absolute -bottom-12 left-2 right-2">
               <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-12 backdrop-blur-xl">
                 <div className="grid grid-cols-2 gap-8">
                   {stats.map((stat, index) => (
@@ -159,7 +159,7 @@ export default function Hero() {
 
 
         {/* Bottom Trust Indicators */}
-        <div className="mt-16 sm:mt-32 pt-6 sm:pt-8 border-t border-electric-teal/20">
+        <div className="mt-8 sm:mt-32 pt-6 sm:pt-8 border-t border-electric-teal/20">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="text-center md:text-left mb-4 md:mb-0">
               <p className="text-slate-gray text-sm">
