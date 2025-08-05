@@ -63,10 +63,10 @@ export default function Hero() {
             </div>
             
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
               <Button 
                 onClick={() => window.open('https://calendly.com/sreddy-forillontech/30min', '_blank')}
-                className="btn-primary px-8 py-4 text-body-lg font-medium focus-enterprise h-12"
+                className="btn-primary px-8 py-4 text-body-lg font-medium focus-enterprise h-12 w-full sm:w-auto"
               >
                 <Calendar className="mr-3 h-5 w-5" />
                 Book Free Consultation
@@ -74,7 +74,7 @@ export default function Hero() {
               <Button 
                 variant="outline"
                 onClick={scrollToSolutions}
-                className="btn-secondary px-8 py-4 text-body-lg font-medium focus-enterprise h-12"
+                className="btn-secondary px-8 py-4 text-body-lg font-medium focus-enterprise h-12 w-full sm:w-auto"
               >
                 Explore Solutions <ArrowRight className="ml-3 h-5 w-5" />
               </Button>
@@ -82,7 +82,7 @@ export default function Hero() {
           </div>
           
           {/* Right Column - Enterprise Intelligence Visual */}
-          <div className="relative">
+          <div className="relative mt-16 lg:mt-0">
             {/* Enterprise Intelligence Visual */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 h-96">
               {/* Futuristic Enterprise Technology Image */}
@@ -109,7 +109,7 @@ export default function Hero() {
             </div>
             
             {/* Enhanced Stats Card */}
-            <div className="absolute -bottom-12 left-2 right-2">
+            <div className="absolute -bottom-12 left-2 right-2 hidden sm:block">
               <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-12 backdrop-blur-xl">
                 <div className="grid grid-cols-2 gap-8">
                   {stats.map((stat, index) => (
@@ -133,8 +133,31 @@ export default function Hero() {
           </div>
         </div>
         
+        {/* Mobile Stats - Only visible on mobile */}
+        <div className="sm:hidden mt-16">
+          <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8">
+            <div className="grid grid-cols-2 gap-6">
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="mb-4">
+                    <div className="w-16 h-16 bg-electric-teal rounded-2xl flex items-center justify-center mx-auto shadow-lg">
+                      <stat.icon className="w-8 h-8 text-white" />
+                    </div>
+                  </div>
+                  <div className="text-2xl font-bold text-gray-900 mb-2">
+                    {stat.number}
+                  </div>
+                  <div className="text-sm text-gray-700 font-semibold leading-tight">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* Bottom Trust Indicators */}
-        <div className="mt-32 pt-8 border-t border-electric-teal/20">
+        <div className="mt-32 sm:mt-32 pt-8 border-t border-electric-teal/20">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="text-center md:text-left mb-4 md:mb-0">
               <p className="text-slate-gray text-sm">
