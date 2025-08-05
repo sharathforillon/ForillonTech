@@ -32,7 +32,7 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative section-padding-xl min-h-screen flex items-center bg-white">
+    <section className="relative py-16 sm:py-24 lg:py-32 bg-white">
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -82,7 +82,7 @@ export default function Hero() {
           </div>
           
           {/* Right Column - Enterprise Intelligence Visual */}
-          <div className="relative mt-16 lg:mt-0">
+          <div className="relative mt-12 lg:mt-0">
             {/* Enterprise Intelligence Visual */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 h-96">
               {/* Futuristic Enterprise Technology Image */}
@@ -134,20 +134,20 @@ export default function Hero() {
         </div>
         
         {/* Mobile Stats - Only visible on mobile */}
-        <div className="sm:hidden mt-16">
-          <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8">
-            <div className="grid grid-cols-2 gap-6">
+        <div className="sm:hidden mt-8">
+          <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-6">
+            <div className="grid grid-cols-2 gap-4">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
-                  <div className="mb-4">
-                    <div className="w-16 h-16 bg-electric-teal rounded-2xl flex items-center justify-center mx-auto shadow-lg">
-                      <stat.icon className="w-8 h-8 text-white" />
+                  <div className="mb-3">
+                    <div className="w-12 h-12 bg-electric-teal rounded-xl flex items-center justify-center mx-auto shadow-lg">
+                      <stat.icon className="w-6 h-6 text-white" />
                     </div>
                   </div>
-                  <div className="text-2xl font-bold text-gray-900 mb-2">
+                  <div className="text-xl font-bold text-gray-900 mb-1">
                     {stat.number}
                   </div>
-                  <div className="text-sm text-gray-700 font-semibold leading-tight">
+                  <div className="text-xs text-gray-700 font-semibold leading-tight">
                     {stat.label}
                   </div>
                 </div>
@@ -157,7 +157,7 @@ export default function Hero() {
         </div>
 
         {/* Bottom Trust Indicators */}
-        <div className="mt-32 sm:mt-32 pt-8 border-t border-electric-teal/20">
+        <div className="mt-16 sm:mt-32 pt-6 sm:pt-8 border-t border-electric-teal/20">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="text-center md:text-left mb-4 md:mb-0">
               <p className="text-slate-gray text-sm">
