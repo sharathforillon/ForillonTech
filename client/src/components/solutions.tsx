@@ -33,9 +33,9 @@ const serviceCards = [
   },
   {
     icon: "🛡️",
-    title: "Enterprise Security",
-    description: "Comprehensive security frameworks and compliance solutions that protect your digital assets.",
-    keyBenefits: ["99.99% threat detection", "Zero-trust architecture"],
+    title: "Enterprise Security & Testing",
+    description: "Comprehensive security frameworks, compliance solutions, ISG testing, and penetration testing to protect your digital assets from vulnerabilities and attacks.",
+    keyBenefits: ["99.99% threat detection", "PEN testing & ISG validation"],
     cta: "Secure Enterprise",
     link: "/solutions/security",
     hover: "from-red-50 to-pink-50"
@@ -57,15 +57,6 @@ const serviceCards = [
     cta: "Innovate with Us",
     link: "/solutions",
     hover: "from-green-50 to-emerald-50"
-  },
-  {
-    icon: "🛡️",
-    title: "Security Testing & Validation",
-    description: "Comprehensive ISG testing and penetration testing to identify vulnerabilities and strengthen your security posture.",
-    keyBenefits: ["Vulnerability assessment", "Compliance validation"],
-    cta: "Test Security",
-    link: "/solutions/security-testing",
-    hover: "from-red-50 to-orange-50"
   }
 ];
 

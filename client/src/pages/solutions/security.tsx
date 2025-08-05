@@ -1,15 +1,17 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, ArrowRight, Shield, Lock, Eye } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CheckCircle, ArrowRight, Shield, Lock, Eye, Search, Target, AlertTriangle } from "lucide-react";
 
 export default function Security() {
   const benefits = [
     "99.99% threat detection and prevention with advanced AI monitoring",
+    "Comprehensive ISG testing and penetration testing services",
     "Zero-trust security architecture for comprehensive data protection",
     "Compliance with industry standards (SOC 2, ISO 27001, GDPR)",
     "24/7 security operations center with rapid incident response",
-    "Comprehensive security training and awareness programs"
+    "Vulnerability assessment and security validation testing"
   ];
 
   const capabilities = [
@@ -29,14 +31,58 @@ export default function Security() {
       description: "Continuous security monitoring with advanced analytics and automated threat response"
     },
     {
-      icon: Shield,
-      title: "ISG Testing",
-      description: "Information Security Governance testing to ensure your security frameworks meet industry standards"
+      icon: Target,
+      title: "Penetration Testing",
+      description: "Comprehensive PEN testing with simulated cyber attacks to identify vulnerabilities before attackers do"
     },
     {
-      icon: Lock,
-      title: "Penetration Testing",
-      description: "Comprehensive PEN testing to identify vulnerabilities before attackers do"
+      icon: Search,
+      title: "ISG Testing & Compliance",
+      description: "Information Security Governance testing to ensure your security frameworks meet industry standards and regulatory requirements"
+    },
+    {
+      icon: AlertTriangle,
+      title: "Vulnerability Assessment",
+      description: "Systematic identification and analysis of security weaknesses across your infrastructure and applications"
+    }
+  ];
+
+  const testingServices = [
+    {
+      icon: Shield,
+      title: "Information Security Governance (ISG) Testing",
+      description: "Comprehensive evaluation of your security governance framework to ensure compliance with industry standards and regulatory requirements.",
+      features: [
+        "Security policy and procedure assessment",
+        "Compliance gap analysis (ISO 27001, SOC 2, NIST)",
+        "Risk management framework evaluation",
+        "Security awareness and training assessment",
+        "Incident response plan testing"
+      ]
+    },
+    {
+      icon: Target,
+      title: "Penetration Testing (PEN Testing)",
+      description: "Simulated cyber attacks to identify vulnerabilities and security weaknesses before malicious actors exploit them.",
+      features: [
+        "External and internal network penetration testing",
+        "Web application security testing",
+        "Wireless network security assessment",
+        "Social engineering and phishing simulations",
+        "Physical security testing"
+      ]
+    },
+    {
+      icon: Search,
+      title: "Vulnerability Assessment",
+      description: "Systematic identification and analysis of security weaknesses across your infrastructure, applications, and processes.",
+      features: [
+        "Automated vulnerability scanning",
+        "Manual security testing",
+        "Configuration review and hardening",
+        "Database security assessment",
+        "Cloud security posture evaluation"
+      ]
     }
   ];
 
@@ -63,10 +109,10 @@ export default function Security() {
                 <span className="text-electric-teal font-semibold text-sm">ENTERPRISE SECURITY</span>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-white" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0px 0px 8px rgba(0,0,0,0.3)' }}>
-                Uncompromising Security Architecture
+                Enterprise Security & Testing
               </h1>
               <p className="text-xl md:text-2xl text-white mb-8" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.7), 0px 0px 6px rgba(0,0,0,0.2)' }}>
-                Comprehensive security frameworks and compliance solutions that protect your digital assets while enabling business growth.
+                Comprehensive security frameworks, ISG testing, and penetration testing to protect your digital assets from vulnerabilities and attacks.
               </p>
               <Button className="bg-electric-teal hover:bg-electric-teal/90 text-white text-lg px-8 py-3">
                 Secure Your Enterprise <ArrowRight className="ml-2 h-5 w-5" />
@@ -88,10 +134,10 @@ export default function Security() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-forillon-navy mb-6">
-              Enterprise Security Benefits
+              Complete Security Protection
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our security solutions provide comprehensive protection while maintaining operational efficiency and regulatory compliance.
+              Integrated security solutions including testing, compliance validation, and threat protection to defend against vulnerabilities and attacks.
             </p>
           </div>
           
@@ -145,6 +191,44 @@ export default function Security() {
                   {capability.description}
                 </p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Security Testing Services Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-forillon-navy mb-6">
+              Security Testing & Validation Services
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Comprehensive testing services to identify vulnerabilities and validate your security posture against real-world threats.
+            </p>
+          </div>
+          
+          <div className="grid lg:grid-cols-3 gap-8">
+            {testingServices.map((service, index) => (
+              <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <div className="w-16 h-16 bg-electric-teal/10 rounded-xl flex items-center justify-center mb-4">
+                    <service.icon className="h-8 w-8 text-electric-teal" />
+                  </div>
+                  <CardTitle className="text-xl text-forillon-navy">{service.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 mb-6">{service.description}</p>
+                  <div className="space-y-3">
+                    {service.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-start space-x-3">
+                        <CheckCircle className="h-4 w-4 text-electric-teal flex-shrink-0 mt-1" />
+                        <span className="text-sm text-gray-700">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
