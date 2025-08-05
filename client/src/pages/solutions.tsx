@@ -10,51 +10,43 @@ export default function Solutions() {
   const solutions = [
     {
       icon: Brain,
-      title: "AI Consulting & Strategy",
-      description: "Comprehensive AI strategy development and implementation guidance for enterprise transformation.",
-      features: ["AI Readiness Assessment", "Strategic Roadmap Development", "Technology Selection", "ROI Analysis"],
-      category: "Strategy",
-      link: "/solutions/ai-consulting"
-    },
-    {
-      icon: Cloud,
-      title: "Digital Transformation",
-      description: "End-to-end digital transformation services that modernize your entire technology stack.",
-      features: ["Legacy System Modernization", "Cloud Migration", "Process Automation", "Digital Workflows"],
+      title: "AI & Digital Transformation",
+      description: "Architect intelligent systems that fundamentally reshape how your organization operates and competes.",
+      features: ["AI Strategy Development", "Intelligent Automation", "Machine Learning Implementation", "Digital Process Optimization"],
       category: "Transformation",
-      link: "/solutions/digital-transformation"
+      link: "/solutions/ai-transformation"
     },
     {
       icon: Database,
-      title: "Enterprise Architecture",
-      description: "Scalable, secure, and intelligent enterprise architecture design and implementation.",
-      features: ["System Integration", "Microservices Architecture", "API Design", "Data Architecture"],
-      category: "Architecture",
-      link: "/solutions/enterprise-architecture"
+      title: "Technology Infrastructure",
+      description: "Enterprise-grade infrastructure that scales with your ambitions while maintaining security and performance.",
+      features: ["System Integration", "Microservices Architecture", "API Design", "Scalable Cloud Architecture"],
+      category: "Infrastructure",
+      link: "/solutions/infrastructure"
+    },
+    {
+      icon: Cloud,
+      title: "Cloud Migration & Modernization",
+      description: "Strategic cloud migration that modernizes your infrastructure while ensuring zero business disruption.",
+      features: ["Legacy System Modernization", "Cloud Migration", "Zero-Downtime Migration", "Cloud-Native Architecture"],
+      category: "Cloud",
+      link: "/solutions/cloud-migration"
     },
     {
       icon: Shield,
-      title: "AI Security & Governance",
-      description: "Comprehensive security frameworks and governance models for AI implementations.",
-      features: ["AI Ethics Framework", "Security Protocols", "Compliance Management", "Risk Assessment"],
+      title: "Enterprise Security & Testing",
+      description: "Comprehensive security frameworks, compliance solutions, ISG testing, and penetration testing to protect your digital assets from vulnerabilities and attacks.",
+      features: ["ISG Testing & Compliance", "Penetration Testing", "Vulnerability Assessment", "Security Monitoring"],
       category: "Security",
-      link: "/solutions/ai-security"
+      link: "/solutions/security"
     },
     {
       icon: Zap,
-      title: "Intelligent Automation",
-      description: "Smart automation solutions that learn and adapt to your business processes.",
-      features: ["Process Mining", "RPA Implementation", "Workflow Optimization", "Performance Analytics"],
-      category: "Automation",
-      link: "/solutions/intelligent-automation"
-    },
-    {
-      icon: Cpu,
-      title: "Custom AI Development",
-      description: "Tailored AI solutions built specifically for your unique business requirements.",
-      features: ["Machine Learning Models", "Natural Language Processing", "Computer Vision", "Predictive Analytics"],
-      category: "Development",
-      link: "/solutions/custom-ai-development"
+      title: "Performance Engineering",
+      description: "Data-driven optimization strategies to maximize efficiency and ROI across your technology investments.",
+      features: ["Performance Optimization", "System Monitoring", "Efficiency Analysis", "Proactive Maintenance"],
+      category: "Performance",
+      link: "/solutions/performance"
     }
   ];
 

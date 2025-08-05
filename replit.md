@@ -8,6 +8,8 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 
 ## Recent Changes
 
+- **August 05, 2025**: Synchronized all solutions listings across website to ensure "Enterprise Security & Testing" appears consistently in home page, navigation dropdown, footer, and main solutions page
+- **August 05, 2025**: Updated main solutions page to match the 5 core service offerings established in navigation
 - **August 02, 2025**: Added ISG Testing and Penetration Testing as new security services
 - **August 02, 2025**: Created dedicated Security Testing & Validation page with comprehensive service offerings
 - **August 02, 2025**: Enhanced security solutions portfolio with vulnerability assessment and compliance testing
