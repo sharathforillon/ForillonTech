@@ -79,6 +79,29 @@ export default function Hero() {
                 Explore Solutions <ArrowRight className="ml-3 h-5 w-5" />
               </Button>
             </div>
+
+            {/* Mobile Stats - Only visible on mobile, right after CTA */}
+            <div className="sm:hidden mb-8">
+              <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-6">
+                <div className="grid grid-cols-2 gap-4">
+                  {stats.map((stat, index) => (
+                    <div key={index} className="text-center">
+                      <div className="mb-3">
+                        <div className="w-12 h-12 bg-electric-teal rounded-xl flex items-center justify-center mx-auto shadow-lg">
+                          <stat.icon className="w-6 h-6 text-white" />
+                        </div>
+                      </div>
+                      <div className="text-xl font-bold text-gray-900 mb-1">
+                        {stat.number}
+                      </div>
+                      <div className="text-xs text-gray-700 font-semibold leading-tight">
+                        {stat.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
           
           {/* Right Column - Enterprise Intelligence Visual */}
@@ -133,28 +156,7 @@ export default function Hero() {
           </div>
         </div>
         
-        {/* Mobile Stats - Only visible on mobile */}
-        <div className="sm:hidden mt-8">
-          <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-6">
-            <div className="grid grid-cols-2 gap-4">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="mb-3">
-                    <div className="w-12 h-12 bg-electric-teal rounded-xl flex items-center justify-center mx-auto shadow-lg">
-                      <stat.icon className="w-6 h-6 text-white" />
-                    </div>
-                  </div>
-                  <div className="text-xl font-bold text-gray-900 mb-1">
-                    {stat.number}
-                  </div>
-                  <div className="text-xs text-gray-700 font-semibold leading-tight">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+
 
         {/* Bottom Trust Indicators */}
         <div className="mt-16 sm:mt-32 pt-6 sm:pt-8 border-t border-electric-teal/20">
