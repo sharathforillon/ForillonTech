@@ -49,7 +49,15 @@ const serviceCards = [
     link: "/solutions/performance",
     hover: "from-yellow-50 to-orange-50"
   },
-
+  {
+    icon: "🔬",
+    title: "Digital Innovation Strategy",
+    description: "Strategic consulting to identify emerging technologies and innovation opportunities that drive competitive advantage.",
+    keyBenefits: ["Innovation roadmap development", "Technology trend analysis"],
+    cta: "Innovate with Us",
+    link: "/solutions/digital-innovation",
+    hover: "from-green-50 to-emerald-50"
+  }
 ];
 
 const socialProof = [

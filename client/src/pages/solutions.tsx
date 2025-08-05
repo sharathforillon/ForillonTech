@@ -47,6 +47,14 @@ export default function Solutions() {
       features: ["Performance Optimization", "System Monitoring", "Efficiency Analysis", "Proactive Maintenance"],
       category: "Performance",
       link: "/solutions/performance"
+    },
+    {
+      icon: Brain,
+      title: "Digital Innovation Strategy",
+      description: "Strategic consulting to identify emerging technologies and innovation opportunities that drive competitive advantage.",
+      features: ["Innovation Roadmap Development", "Technology Trend Analysis", "Digital Strategy Planning", "Future-Ready Solutions"],
+      category: "Strategy",
+      link: "/solutions/digital-innovation"
     }
   ];
 

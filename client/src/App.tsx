@@ -22,6 +22,7 @@ import EnterpriseArchitecture from "@/pages/solutions/enterprise-architecture";
 import AISecurity from "@/pages/solutions/ai-security";
 import IntelligentAutomation from "@/pages/solutions/intelligent-automation";
 import CustomAIDevelopment from "@/pages/solutions/custom-ai-development";
+import DigitalInnovation from "@/pages/solutions/digital-innovation";
 
 import Careers from "@/pages/careers";
 import Partner from "@/pages/partner";
@@ -48,6 +49,7 @@ function Router() {
       <Route path="/solutions/ai-security" component={AISecurity} />
       <Route path="/solutions/intelligent-automation" component={IntelligentAutomation} />
       <Route path="/solutions/custom-ai-development" component={CustomAIDevelopment} />
+      <Route path="/solutions/digital-innovation" component={DigitalInnovation} />
       <Route path="/why-forillon" component={WhyForillon} />
       <Route path="/contact" component={Contact} />
       <Route path="/partner" component={Partner} />

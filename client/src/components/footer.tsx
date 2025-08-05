@@ -7,7 +7,8 @@ export default function Footer() {
     { name: "Technology Infrastructure", path: "/solutions/infrastructure" },
     { name: "Cloud Migration & Modernization", path: "/solutions/cloud-migration" },
     { name: "Enterprise Security & Testing", path: "/solutions/security" },
-    { name: "Performance Engineering", path: "/solutions/performance" }
+    { name: "Performance Engineering", path: "/solutions/performance" },
+    { name: "Digital Innovation Strategy", path: "/solutions/digital-innovation" }
   ];
 
   const company = [

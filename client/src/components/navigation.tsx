@@ -84,6 +84,12 @@ export default function Navigation() {
                         <span className="text-xs text-gray-500 mt-1">Optimization and reliability</span>
                       </Link>
                     </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/solutions/digital-innovation" className="flex flex-col px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+                        <span className="text-sm font-semibold text-forillon-navy">Digital Innovation Strategy</span>
+                        <span className="text-xs text-gray-500 mt-1">Strategic consulting and innovation</span>
+                      </Link>
+                    </DropdownMenuItem>
                     <div className="border-t border-gray-100 mt-3 pt-3">
                       <DropdownMenuItem asChild>
                         <Link href="/solutions" className="flex items-center px-4 py-3 rounded-lg hover:bg-electric-teal/5 transition-colors">
@@ -187,6 +193,13 @@ export default function Navigation() {
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Performance Engineering
+                    </Link>
+                    <Link 
+                      href="/solutions/digital-innovation" 
+                      className="block px-3 py-2 text-sm text-gray-600 hover:text-forillon-navy hover:bg-gray-50 rounded-md transition-colors" 
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Digital Innovation Strategy
                     </Link>
                     <Link 
                       href="/solutions" 
