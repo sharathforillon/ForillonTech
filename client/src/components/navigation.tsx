@@ -14,6 +14,7 @@ import F_nobackground from "@assets/F-nobackground.png";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobileSolutionsOpen, setIsMobileSolutionsOpen] = useState(false);
 
 
 
@@ -73,8 +74,8 @@ export default function Navigation() {
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link href="/solutions/security" className="flex flex-col px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
-                        <span className="text-sm font-semibold text-forillon-navy">Enterprise Security</span>
-                        <span className="text-xs text-gray-500 mt-1">Comprehensive security solutions</span>
+                        <span className="text-sm font-semibold text-forillon-navy">Enterprise Security & Testing</span>
+                        <span className="text-xs text-gray-500 mt-1">Security, ISG testing & PEN testing</span>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
@@ -141,13 +142,62 @@ export default function Navigation() {
               >
                 Home
               </Link>
-              <Link 
-                href="/solutions" 
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-forillon-navy hover:bg-gray-50 rounded-md transition-colors" 
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Solutions
-              </Link>
+              <div>
+                <button 
+                  onClick={() => setIsMobileSolutionsOpen(!isMobileSolutionsOpen)}
+                  className="flex items-center justify-between w-full px-3 py-2 text-base font-medium text-gray-700 hover:text-forillon-navy hover:bg-gray-50 rounded-md transition-colors"
+                >
+                  <span>Solutions</span>
+                  <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${isMobileSolutionsOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {isMobileSolutionsOpen && (
+                  <div className="mt-2 ml-4 space-y-2 border-l-2 border-gray-100 pl-4">
+                    <Link 
+                      href="/solutions/ai-transformation" 
+                      className="block px-3 py-2 text-sm text-gray-600 hover:text-forillon-navy hover:bg-gray-50 rounded-md transition-colors" 
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      AI & Digital Transformation
+                    </Link>
+                    <Link 
+                      href="/solutions/infrastructure" 
+                      className="block px-3 py-2 text-sm text-gray-600 hover:text-forillon-navy hover:bg-gray-50 rounded-md transition-colors" 
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Technology Infrastructure
+                    </Link>
+                    <Link 
+                      href="/solutions/cloud-migration" 
+                      className="block px-3 py-2 text-sm text-gray-600 hover:text-forillon-navy hover:bg-gray-50 rounded-md transition-colors" 
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Cloud Migration & Modernization
+                    </Link>
+                    <Link 
+                      href="/solutions/security" 
+                      className="block px-3 py-2 text-sm text-gray-600 hover:text-forillon-navy hover:bg-gray-50 rounded-md transition-colors" 
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Enterprise Security & Testing
+                    </Link>
+                    <Link 
+                      href="/solutions/performance" 
+                      className="block px-3 py-2 text-sm text-gray-600 hover:text-forillon-navy hover:bg-gray-50 rounded-md transition-colors" 
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Performance Engineering
+                    </Link>
+                    <Link 
+                      href="/solutions" 
+                      className="block px-3 py-2 text-sm text-electric-teal font-medium hover:text-electric-teal/80 hover:bg-electric-teal/5 rounded-md transition-colors" 
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      View All Solutions →
+                    </Link>
+                  </div>
+                )}
+              </div>
               <Link 
                 href="/why-forillon" 
                 className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-forillon-navy hover:bg-gray-50 rounded-md transition-colors" 
