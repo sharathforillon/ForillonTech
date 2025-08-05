@@ -3,12 +3,11 @@ import F_nobackground from "@assets/F-nobackground.png";
 
 export default function Footer() {
   const services = [
-    { name: "AI Consulting & Strategy", path: "/solutions/ai-consulting" },
-    { name: "Digital Transformation", path: "/solutions/digital-transformation" },
-    { name: "Enterprise Architecture", path: "/solutions/enterprise-architecture" },
-    { name: "AI Security & Governance", path: "/solutions/ai-security" },
-    { name: "Intelligent Automation", path: "/solutions/intelligent-automation" },
-    { name: "Custom AI Development", path: "/solutions/custom-ai-development" }
+    { name: "AI & Digital Transformation", path: "/solutions/ai-transformation" },
+    { name: "Technology Infrastructure", path: "/solutions/infrastructure" },
+    { name: "Cloud Migration & Modernization", path: "/solutions/cloud-migration" },
+    { name: "Enterprise Security & Testing", path: "/solutions/security" },
+    { name: "Performance Engineering", path: "/solutions/performance" }
   ];
 
   const company = [
