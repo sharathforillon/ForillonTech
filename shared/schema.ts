@@ -1,4 +1,4 @@
-import { pgTable, text, serial, integer, boolean } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, integer, boolean, timestamp, jsonb } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -8,13 +8,54 @@ export const users = pgTable("users", {
   password: text("password").notNull(),
 });
 
+export const contactRecords = pgTable("contact_records", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  subject: text("subject").notNull(),
+  message: text("message").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const partnershipRecords = pgTable("partnership_records", {
+  id: serial("id").primaryKey(),
+  firstName: text("first_name").notNull(),
+  lastName: text("last_name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  jobTitle: text("job_title").notNull(),
+  companyName: text("company_name").notNull(),
+  companySize: text("company_size").notNull(),
+  industry: text("industry").notNull(),
+  website: text("website"),
+  partnershipType: jsonb("partnership_type").notNull(),
+  projectBudget: text("project_budget").notNull(),
+  timeline: text("timeline").notNull(),
+  description: text("description"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
   password: true,
 });
 
+export const insertContactRecordSchema = createInsertSchema(contactRecords).omit({
+  id: true,
+  createdAt: true,
+});
+
+export const insertPartnershipRecordSchema = createInsertSchema(partnershipRecords).omit({
+  id: true,
+  createdAt: true,
+});
+
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
+export type ContactRecord = typeof contactRecords.$inferSelect;
+export type InsertContactRecord = z.infer<typeof insertContactRecordSchema>;
+export type PartnershipRecord = typeof partnershipRecords.$inferSelect;
+export type InsertPartnershipRecord = z.infer<typeof insertPartnershipRecordSchema>;
 
 // Partnership inquiry schema (for validation only, not stored in DB)
 export const partnershipInquirySchema = z.object({

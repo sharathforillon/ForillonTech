@@ -38,7 +38,8 @@ export default function Partner() {
 
   const submitPartnershipInquiry = useMutation({
     mutationFn: async (data: PartnershipInquiry) => {
-      const response = await fetch('/api/partnership-inquiry', {
+      // Save to database first
+      const dbResponse = await fetch('/api/partnership', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -46,11 +47,20 @@ export default function Partner() {
         },
       });
       
-      if (!response.ok) {
-        throw new Error('Failed to submit partnership inquiry');
+      if (!dbResponse.ok) {
+        console.error('Failed to save to database, but continuing with email');
       }
       
-      return response.json();
+      // Then try to send email
+      const emailResponse = await fetch('/api/partnership-inquiry', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      
+      return { database: dbResponse.ok, email: emailResponse.ok };
     },
     onSuccess: () => {
       toast({

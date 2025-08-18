@@ -18,22 +18,51 @@ export default function Contact() {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Simulate form submission
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
-    });
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      message: ""
-    });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.company || 'General Inquiry',
+          message: `Company: ${formData.company || 'Not specified'}\n\n${formData.message}`,
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
+        });
+        
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          message: ""
+        });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      toast({
+        title: "Failed to Send Message",
+        description: "Please try again or contact us directly at contact@forillontech.com",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -164,8 +193,10 @@ export default function Contact() {
                     <Button 
                       type="submit" 
                       className="w-full bg-electric-teal hover:bg-electric-teal/90 text-white"
+                      disabled={isSubmitting}
                     >
-                      Send Message <ArrowRight className="ml-2 h-4 w-4" />
+                      {isSubmitting ? "Sending..." : "Send Message"} 
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </form>
                 </CardContent>
