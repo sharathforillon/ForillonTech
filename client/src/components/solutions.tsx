@@ -1,11 +1,25 @@
-import { ArrowRight, CheckCircle, Calendar, ExternalLink, Users, Building, TrendingUp } from "lucide-react";
+import { 
+  ArrowRight, 
+  CheckCircle, 
+  Calendar, 
+  ExternalLink, 
+  Users, 
+  Building, 
+  TrendingUp,
+  Brain,
+  Server,
+  Cloud,
+  Shield,
+  Zap,
+  Lightbulb
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 const serviceCards = [
   {
-    icon: "🤖",
+    icon: <Brain className="w-8 h-8" />,
     title: "AI & Digital Transformation",
     description: "Architect intelligent systems that fundamentally reshape how your organization operates and competes.",
     keyBenefits: ["30% operational efficiency gains", "AI-driven decision making"],
@@ -14,7 +28,7 @@ const serviceCards = [
     hover: "from-blue-50 to-indigo-50"
   },
   {
-    icon: "🏗️",
+    icon: <Server className="w-8 h-8" />,
     title: "Technology Infrastructure",
     description: "Enterprise-grade infrastructure that scales with your ambitions while maintaining security and performance.",
     keyBenefits: ["99.9% uptime guarantee", "Scalable cloud architecture"],
@@ -23,7 +37,7 @@ const serviceCards = [
     hover: "from-teal-50 to-cyan-50"
   },
   {
-    icon: "☁️",
+    icon: <Cloud className="w-8 h-8" />,
     title: "Cloud Migration & Modernization",
     description: "Strategic cloud migration that modernizes your infrastructure while ensuring zero business disruption.",
     keyBenefits: ["40% cost reduction", "Zero-downtime migration"],
@@ -32,7 +46,7 @@ const serviceCards = [
     hover: "from-purple-50 to-violet-50"
   },
   {
-    icon: "🛡️",
+    icon: <Shield className="w-8 h-8" />,
     title: "Enterprise Security & Testing",
     description: "Comprehensive security frameworks, compliance solutions, ISG testing, and penetration testing to protect your digital assets from vulnerabilities and attacks.",
     keyBenefits: ["99.99% threat detection", "PEN testing & ISG validation"],
@@ -41,7 +55,7 @@ const serviceCards = [
     hover: "from-red-50 to-pink-50"
   },
   {
-    icon: "⚡",
+    icon: <Zap className="w-8 h-8" />,
     title: "Performance Engineering",
     description: "Data-driven optimization strategies to maximize efficiency and ROI across your technology investments.",
     keyBenefits: ["70% performance improvement", "Proactive monitoring"],
@@ -50,7 +64,7 @@ const serviceCards = [
     hover: "from-yellow-50 to-orange-50"
   },
   {
-    icon: "🔬",
+    icon: <Lightbulb className="w-8 h-8" />,
     title: "Digital Innovation Strategy",
     description: "Strategic consulting to identify emerging technologies and innovation opportunities that drive competitive advantage.",
     keyBenefits: ["Innovation roadmap development", "Technology trend analysis"],
@@ -106,7 +120,9 @@ export default function Solutions() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {serviceCards.map((service, index) => (
             <div key={index} className="card-elevated p-8 text-center group hover:shadow-xl transition-all duration-300">
-              <div className="text-4xl mb-6">{service.icon}</div>
+              <div className="w-16 h-16 bg-electric-teal rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-white">{service.icon}</div>
+              </div>
               <h3 className="text-heading-md text-forillon-navy mb-4 group-hover:text-electric-teal transition-colors">
                 {service.title}
               </h3>
