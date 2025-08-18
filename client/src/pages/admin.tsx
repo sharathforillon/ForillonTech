@@ -9,9 +9,10 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ContactRecord, PartnershipRecord } from "@shared/schema";
-import { Download, Users, MessageSquare, LogOut, Eye, EyeOff } from "lucide-react";
-import { format } from "date-fns";
+import { Download, Users, MessageSquare, LogOut, Eye, EyeOff, ChevronUp, ChevronDown, Calendar, Filter } from "lucide-react";
+import { format, isWithinInterval, parseISO } from "date-fns";
 
 function LoginForm() {
   const [username, setUsername] = useState("");
@@ -96,6 +97,16 @@ function AdminDashboard() {
   const { user, logoutMutation } = useAuth();
   const { toast } = useToast();
 
+  // State for filtering, sorting, and pagination
+  const [dateFilter, setDateFilter] = useState('all');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [contactSort, setContactSort] = useState({ field: 'createdAt', direction: 'desc' as 'asc' | 'desc' });
+  const [partnershipSort, setPartnershipSort] = useState({ field: 'createdAt', direction: 'desc' as 'asc' | 'desc' });
+  const [contactPage, setContactPage] = useState(1);
+  const [partnershipPage, setPartnershipPage] = useState(1);
+  const recordsPerPage = 10;
+
   const { data: contacts = [], isLoading: contactsLoading } = useQuery<ContactRecord[]>({
     queryKey: ["/api/admin/contacts"],
   });
@@ -103,6 +114,91 @@ function AdminDashboard() {
   const { data: partnerships = [], isLoading: partnershipsLoading } = useQuery<PartnershipRecord[]>({
     queryKey: ["/api/admin/partnerships"],
   });
+
+  // Filter and sort functions
+  const filterByDate = (items: any[]) => {
+    if (dateFilter === 'all') return items;
+    
+    if (dateFilter === 'custom' && startDate && endDate) {
+      const start = parseISO(startDate);
+      const end = parseISO(endDate);
+      return items.filter(item => {
+        if (!item.createdAt) return false;
+        const itemDate = parseISO(item.createdAt);
+        return isWithinInterval(itemDate, { start, end });
+      });
+    }
+    
+    const now = new Date();
+    const filterDate = new Date();
+    
+    switch (dateFilter) {
+      case 'today':
+        filterDate.setHours(0, 0, 0, 0);
+        break;
+      case 'week':
+        filterDate.setDate(now.getDate() - 7);
+        break;
+      case 'month':
+        filterDate.setMonth(now.getMonth() - 1);
+        break;
+      default:
+        return items;
+    }
+    
+    return items.filter(item => {
+      if (!item.createdAt) return false;
+      const itemDate = parseISO(item.createdAt);
+      return itemDate >= filterDate;
+    });
+  };
+
+  const sortData = (items: any[], sortConfig: { field: string; direction: 'asc' | 'desc' }) => {
+    return [...items].sort((a, b) => {
+      const aValue = a[sortConfig.field];
+      const bValue = b[sortConfig.field];
+      
+      if (aValue < bValue) {
+        return sortConfig.direction === 'asc' ? -1 : 1;
+      }
+      if (aValue > bValue) {
+        return sortConfig.direction === 'asc' ? 1 : -1;
+      }
+      return 0;
+    });
+  };
+
+  const paginateData = (items: any[], page: number) => {
+    const startIndex = (page - 1) * recordsPerPage;
+    return items.slice(startIndex, startIndex + recordsPerPage);
+  };
+
+  // Process data
+  const filteredContacts = filterByDate(contacts);
+  const sortedContacts = sortData(filteredContacts, contactSort);
+  const paginatedContacts = paginateData(sortedContacts, contactPage);
+  const totalContactPages = Math.ceil(sortedContacts.length / recordsPerPage);
+
+  const filteredPartnerships = filterByDate(partnerships);
+  const sortedPartnerships = sortData(filteredPartnerships, partnershipSort);
+  const paginatedPartnerships = paginateData(sortedPartnerships, partnershipPage);
+  const totalPartnershipPages = Math.ceil(sortedPartnerships.length / recordsPerPage);
+
+  const handleSort = (field: string, type: 'contacts' | 'partnerships') => {
+    if (type === 'contacts') {
+      setContactSort(prev => ({
+        field,
+        direction: prev.field === field && prev.direction === 'desc' ? 'asc' : 'desc'
+      }));
+      setContactPage(1);
+    } else {
+      setPartnershipSort(prev => ({
+        field,
+        direction: prev.field === field && prev.direction === 'desc' ? 'asc' : 'desc'
+      }));
+      setPartnershipPage(1);
+    }
+  };
 
   const downloadCSV = async (type: 'contacts' | 'partnerships') => {
     try {
@@ -186,11 +282,74 @@ function AdminDashboard() {
           </Card>
         </div>
 
+        {/* Date Filter Controls */}
+        <Card className="mb-6">
+          <CardHeader>
+            <CardTitle className="flex items-center">
+              <Filter className="mr-2 h-5 w-5" />
+              Filter Records
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-wrap gap-4 items-center">
+              <div>
+                <Label htmlFor="date-filter">Date Range</Label>
+                <Select value={dateFilter} onValueChange={setDateFilter}>
+                  <SelectTrigger className="w-40">
+                    <SelectValue placeholder="Select range" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Time</SelectItem>
+                    <SelectItem value="today">Today</SelectItem>
+                    <SelectItem value="week">Last 7 Days</SelectItem>
+                    <SelectItem value="month">Last 30 Days</SelectItem>
+                    <SelectItem value="custom">Custom Range</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              {dateFilter === 'custom' && (
+                <>
+                  <div>
+                    <Label htmlFor="start-date">Start Date</Label>
+                    <Input
+                      id="start-date"
+                      type="date"
+                      value={startDate}
+                      onChange={(e) => setStartDate(e.target.value)}
+                      className="w-40"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="end-date">End Date</Label>
+                    <Input
+                      id="end-date"
+                      type="date"
+                      value={endDate}
+                      onChange={(e) => setEndDate(e.target.value)}
+                      className="w-40"
+                    />
+                  </div>
+                </>
+              )}
+              
+              <div className="flex items-center gap-4 text-sm text-gray-600">
+                <span>Contacts: {sortedContacts.length} records</span>
+                <span>Partnerships: {sortedPartnerships.length} records</span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Data Tables */}
         <Tabs defaultValue="contacts" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="contacts">Contact Records</TabsTrigger>
-            <TabsTrigger value="partnerships">Partnership Records</TabsTrigger>
+            <TabsTrigger value="contacts">
+              Contact Records ({sortedContacts.length})
+            </TabsTrigger>
+            <TabsTrigger value="partnerships">
+              Partnership Records ({sortedPartnerships.length})
+            </TabsTrigger>
           </TabsList>
           
           <TabsContent value="contacts">
@@ -207,23 +366,76 @@ function AdminDashboard() {
               <CardContent>
                 {contactsLoading ? (
                   <div className="text-center py-4">Loading contacts...</div>
-                ) : contacts.length === 0 ? (
+                ) : sortedContacts.length === 0 ? (
                   <div className="text-center py-4 text-gray-500">No contact records found</div>
                 ) : (
-                  <div className="overflow-x-auto">
-                    <Table>
-                      <TableHeader>
-                        <TableRow>
-                          <TableHead>ID</TableHead>
-                          <TableHead>Name</TableHead>
-                          <TableHead>Email</TableHead>
-                          <TableHead>Subject</TableHead>
-                          <TableHead>Message</TableHead>
-                          <TableHead>Date</TableHead>
-                        </TableRow>
-                      </TableHeader>
+                  <div>
+                    <div className="overflow-x-auto">
+                      <Table>
+                        <TableHeader>
+                          <TableRow>
+                            <TableHead>
+                              <Button 
+                                variant="ghost" 
+                                onClick={() => handleSort('id', 'contacts')}
+                                className="h-auto p-0 font-semibold"
+                              >
+                                ID
+                                {contactSort.field === 'id' && (
+                                  contactSort.direction === 'desc' ? 
+                                    <ChevronDown className="ml-1 h-4 w-4" /> : 
+                                    <ChevronUp className="ml-1 h-4 w-4" />
+                                )}
+                              </Button>
+                            </TableHead>
+                            <TableHead>
+                              <Button 
+                                variant="ghost" 
+                                onClick={() => handleSort('name', 'contacts')}
+                                className="h-auto p-0 font-semibold"
+                              >
+                                Name
+                                {contactSort.field === 'name' && (
+                                  contactSort.direction === 'desc' ? 
+                                    <ChevronDown className="ml-1 h-4 w-4" /> : 
+                                    <ChevronUp className="ml-1 h-4 w-4" />
+                                )}
+                              </Button>
+                            </TableHead>
+                            <TableHead>
+                              <Button 
+                                variant="ghost" 
+                                onClick={() => handleSort('email', 'contacts')}
+                                className="h-auto p-0 font-semibold"
+                              >
+                                Email
+                                {contactSort.field === 'email' && (
+                                  contactSort.direction === 'desc' ? 
+                                    <ChevronDown className="ml-1 h-4 w-4" /> : 
+                                    <ChevronUp className="ml-1 h-4 w-4" />
+                                )}
+                              </Button>
+                            </TableHead>
+                            <TableHead>Subject</TableHead>
+                            <TableHead>Message</TableHead>
+                            <TableHead>
+                              <Button 
+                                variant="ghost" 
+                                onClick={() => handleSort('createdAt', 'contacts')}
+                                className="h-auto p-0 font-semibold"
+                              >
+                                Date
+                                {contactSort.field === 'createdAt' && (
+                                  contactSort.direction === 'desc' ? 
+                                    <ChevronDown className="ml-1 h-4 w-4" /> : 
+                                    <ChevronUp className="ml-1 h-4 w-4" />
+                                )}
+                              </Button>
+                            </TableHead>
+                          </TableRow>
+                        </TableHeader>
                       <TableBody>
-                        {contacts.map((contact) => (
+                        {paginatedContacts.map((contact) => (
                           <TableRow key={contact.id}>
                             <TableCell>{contact.id}</TableCell>
                             <TableCell className="font-medium">{contact.name}</TableCell>
@@ -237,6 +449,39 @@ function AdminDashboard() {
                         ))}
                       </TableBody>
                     </Table>
+                    </div>
+                    
+                    {/* Pagination for Contacts */}
+                    {totalContactPages > 1 && (
+                      <div className="flex items-center justify-between px-2 py-4">
+                        <div className="text-sm text-gray-500">
+                          Showing {((contactPage - 1) * recordsPerPage) + 1} to{' '}
+                          {Math.min(contactPage * recordsPerPage, sortedContacts.length)} of{' '}
+                          {sortedContacts.length} records
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setContactPage(prev => Math.max(prev - 1, 1))}
+                            disabled={contactPage === 1}
+                          >
+                            Previous
+                          </Button>
+                          <span className="text-sm">
+                            Page {contactPage} of {totalContactPages}
+                          </span>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setContactPage(prev => Math.min(prev + 1, totalContactPages))}
+                            disabled={contactPage === totalContactPages}
+                          >
+                            Next
+                          </Button>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </CardContent>
@@ -257,57 +502,156 @@ function AdminDashboard() {
               <CardContent>
                 {partnershipsLoading ? (
                   <div className="text-center py-4">Loading partnerships...</div>
-                ) : partnerships.length === 0 ? (
+                ) : sortedPartnerships.length === 0 ? (
                   <div className="text-center py-4 text-gray-500">No partnership records found</div>
                 ) : (
-                  <div className="overflow-x-auto">
-                    <Table>
-                      <TableHeader>
-                        <TableRow>
-                          <TableHead>ID</TableHead>
-                          <TableHead>Name</TableHead>
-                          <TableHead>Email</TableHead>
-                          <TableHead>Company</TableHead>
-                          <TableHead>Industry</TableHead>
-                          <TableHead>Partnership Types</TableHead>
-                          <TableHead>Budget</TableHead>
-                          <TableHead>Timeline</TableHead>
-                          <TableHead>Date</TableHead>
-                        </TableRow>
-                      </TableHeader>
-                      <TableBody>
-                        {partnerships.map((partnership) => (
-                          <TableRow key={partnership.id}>
-                            <TableCell>{partnership.id}</TableCell>
-                            <TableCell className="font-medium">
-                              {partnership.firstName} {partnership.lastName}
-                            </TableCell>
-                            <TableCell>{partnership.email}</TableCell>
-                            <TableCell>{partnership.companyName}</TableCell>
-                            <TableCell>{partnership.industry}</TableCell>
-                            <TableCell>
-                              <div className="flex flex-wrap gap-1">
-                                {Array.isArray(partnership.partnershipType) 
-                                  ? partnership.partnershipType.map((type, index) => (
-                                      <Badge key={index} variant="secondary" className="text-xs">
-                                        {String(type)}
-                                      </Badge>
-                                    ))
-                                  : <Badge variant="secondary" className="text-xs">
-                                      {String(partnership.partnershipType)}
-                                    </Badge>
-                                }
-                              </div>
-                            </TableCell>
-                            <TableCell>{partnership.projectBudget}</TableCell>
-                            <TableCell>{partnership.timeline}</TableCell>
-                            <TableCell>
-                              {partnership.createdAt ? format(new Date(partnership.createdAt), 'MMM d, yyyy') : 'N/A'}
-                            </TableCell>
+                  <div>
+                    <div className="overflow-x-auto">
+                      <Table>
+                        <TableHeader>
+                          <TableRow>
+                            <TableHead>
+                              <Button 
+                                variant="ghost" 
+                                onClick={() => handleSort('id', 'partnerships')}
+                                className="h-auto p-0 font-semibold"
+                              >
+                                ID
+                                {partnershipSort.field === 'id' && (
+                                  partnershipSort.direction === 'desc' ? 
+                                    <ChevronDown className="ml-1 h-4 w-4" /> : 
+                                    <ChevronUp className="ml-1 h-4 w-4" />
+                                )}
+                              </Button>
+                            </TableHead>
+                            <TableHead>
+                              <Button 
+                                variant="ghost" 
+                                onClick={() => handleSort('firstName', 'partnerships')}
+                                className="h-auto p-0 font-semibold"
+                              >
+                                Name
+                                {partnershipSort.field === 'firstName' && (
+                                  partnershipSort.direction === 'desc' ? 
+                                    <ChevronDown className="ml-1 h-4 w-4" /> : 
+                                    <ChevronUp className="ml-1 h-4 w-4" />
+                                )}
+                              </Button>
+                            </TableHead>
+                            <TableHead>
+                              <Button 
+                                variant="ghost" 
+                                onClick={() => handleSort('email', 'partnerships')}
+                                className="h-auto p-0 font-semibold"
+                              >
+                                Email
+                                {partnershipSort.field === 'email' && (
+                                  partnershipSort.direction === 'desc' ? 
+                                    <ChevronDown className="ml-1 h-4 w-4" /> : 
+                                    <ChevronUp className="ml-1 h-4 w-4" />
+                                )}
+                              </Button>
+                            </TableHead>
+                            <TableHead>
+                              <Button 
+                                variant="ghost" 
+                                onClick={() => handleSort('companyName', 'partnerships')}
+                                className="h-auto p-0 font-semibold"
+                              >
+                                Company
+                                {partnershipSort.field === 'companyName' && (
+                                  partnershipSort.direction === 'desc' ? 
+                                    <ChevronDown className="ml-1 h-4 w-4" /> : 
+                                    <ChevronUp className="ml-1 h-4 w-4" />
+                                )}
+                              </Button>
+                            </TableHead>
+                            <TableHead>Industry</TableHead>
+                            <TableHead>Partnership Types</TableHead>
+                            <TableHead>Budget</TableHead>
+                            <TableHead>Timeline</TableHead>
+                            <TableHead>
+                              <Button 
+                                variant="ghost" 
+                                onClick={() => handleSort('createdAt', 'partnerships')}
+                                className="h-auto p-0 font-semibold"
+                              >
+                                Date
+                                {partnershipSort.field === 'createdAt' && (
+                                  partnershipSort.direction === 'desc' ? 
+                                    <ChevronDown className="ml-1 h-4 w-4" /> : 
+                                    <ChevronUp className="ml-1 h-4 w-4" />
+                                )}
+                              </Button>
+                            </TableHead>
                           </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
+                        </TableHeader>
+                        <TableBody>
+                          {paginatedPartnerships.map((partnership) => (
+                            <TableRow key={partnership.id}>
+                              <TableCell>{partnership.id}</TableCell>
+                              <TableCell className="font-medium">
+                                {partnership.firstName} {partnership.lastName}
+                              </TableCell>
+                              <TableCell>{partnership.email}</TableCell>
+                              <TableCell>{partnership.companyName}</TableCell>
+                              <TableCell>{partnership.industry}</TableCell>
+                              <TableCell>
+                                <div className="flex flex-wrap gap-1">
+                                  {Array.isArray(partnership.partnershipType) 
+                                    ? partnership.partnershipType.map((type: string, index: number) => (
+                                        <Badge key={index} variant="secondary" className="text-xs">
+                                          {String(type)}
+                                        </Badge>
+                                      ))
+                                    : <Badge variant="secondary" className="text-xs">
+                                        {String(partnership.partnershipType)}
+                                      </Badge>
+                                  }
+                                </div>
+                              </TableCell>
+                              <TableCell>{partnership.projectBudget}</TableCell>
+                              <TableCell>{partnership.timeline}</TableCell>
+                              <TableCell>
+                                {partnership.createdAt ? format(new Date(partnership.createdAt), 'MMM d, yyyy') : 'N/A'}
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                      </Table>
+                    </div>
+                    
+                    {/* Pagination for Partnerships */}
+                    {totalPartnershipPages > 1 && (
+                      <div className="flex items-center justify-between px-2 py-4">
+                        <div className="text-sm text-gray-500">
+                          Showing {((partnershipPage - 1) * recordsPerPage) + 1} to{' '}
+                          {Math.min(partnershipPage * recordsPerPage, sortedPartnerships.length)} of{' '}
+                          {sortedPartnerships.length} records
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setPartnershipPage(prev => Math.max(prev - 1, 1))}
+                            disabled={partnershipPage === 1}
+                          >
+                            Previous
+                          </Button>
+                          <span className="text-sm">
+                            Page {partnershipPage} of {totalPartnershipPages}
+                          </span>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setPartnershipPage(prev => Math.min(prev + 1, totalPartnershipPages))}
+                            disabled={partnershipPage === totalPartnershipPages}
+                          >
+                            Next
+                          </Button>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </CardContent>
