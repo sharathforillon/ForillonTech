@@ -30,8 +30,6 @@ export default function Partner() {
       industry: "",
       website: "",
       partnershipType: [],
-      projectBudget: "",
-      timeline: "",
       description: "",
     },
   });
@@ -363,57 +361,7 @@ export default function Partner() {
                           </FormItem>
                         )}
                       />
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <FormField
-                          control={form.control}
-                          name="projectBudget"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Expected Investment Range *</FormLabel>
-                              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                <FormControl>
-                                  <SelectTrigger>
-                                    <SelectValue placeholder="Select budget range" />
-                                  </SelectTrigger>
-                                </FormControl>
-                                <SelectContent>
-                                  <SelectItem value="10k">$10K - $50K</SelectItem>
-                                  <SelectItem value="50k">$50K - $100K</SelectItem>
-                                  <SelectItem value="100k">$100K - $500K</SelectItem>
-                                  <SelectItem value="500k">$500K - $1M</SelectItem>
-                                  <SelectItem value="1m">$1M+</SelectItem>
-                                  <SelectItem value="discuss">Prefer to discuss</SelectItem>
-                                </SelectContent>
-                              </Select>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name="timeline"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Project Timeline *</FormLabel>
-                              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                <FormControl>
-                                  <SelectTrigger>
-                                    <SelectValue placeholder="Select timeline" />
-                                  </SelectTrigger>
-                                </FormControl>
-                                <SelectContent>
-                                  <SelectItem value="immediate">Immediate (within 1 month)</SelectItem>
-                                  <SelectItem value="short">Short term (1-3 months)</SelectItem>
-                                  <SelectItem value="medium">Medium term (3-6 months)</SelectItem>
-                                  <SelectItem value="long">Long term (6+ months)</SelectItem>
-                                  <SelectItem value="ongoing">Ongoing partnership</SelectItem>
-                                </SelectContent>
-                              </Select>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </div>
+
                     </div>
                   </div>
 

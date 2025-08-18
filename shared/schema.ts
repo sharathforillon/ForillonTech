@@ -29,8 +29,6 @@ export const partnershipRecords = pgTable("partnership_records", {
   industry: text("industry").notNull(),
   website: text("website"),
   partnershipType: jsonb("partnership_type").notNull(),
-  projectBudget: text("project_budget").notNull(),
-  timeline: text("timeline").notNull(),
   description: text("description"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
@@ -74,8 +72,6 @@ export const partnershipInquirySchema = z.object({
   
   // Partnership Details
   partnershipType: z.array(z.string()).min(1, "Select at least one partnership type"),
-  projectBudget: z.string().min(1, "Project budget is required"),
-  timeline: z.string().min(1, "Timeline is required"),
   description: z.string().optional(),
 });
 

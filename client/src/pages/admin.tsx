@@ -568,8 +568,6 @@ function AdminDashboard() {
                             </TableHead>
                             <TableHead>Industry</TableHead>
                             <TableHead>Partnership Types</TableHead>
-                            <TableHead>Budget</TableHead>
-                            <TableHead>Timeline</TableHead>
                             <TableHead>
                               <Button 
                                 variant="ghost" 
@@ -610,8 +608,6 @@ function AdminDashboard() {
                                   }
                                 </div>
                               </TableCell>
-                              <TableCell>{partnership.projectBudget}</TableCell>
-                              <TableCell>{partnership.timeline}</TableCell>
                               <TableCell>
                                 {partnership.createdAt ? format(new Date(partnership.createdAt), 'MMM d, yyyy') : 'N/A'}
                               </TableCell>
