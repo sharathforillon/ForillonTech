@@ -7,18 +7,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { 
-  CheckSquare, 
-  Server, 
-  Palette, 
-  Plug, 
-  Globe, 
-  Wifi, 
-  Shield, 
-  Workflow, 
-  BarChart3, 
-  KeyRound,
   Loader2,
   ArrowRight
 } from "lucide-react";
@@ -26,66 +17,46 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { checkboxLeadSchema, type CheckboxLeadForm } from "@shared/schema";
 
-const features = [
+const featureCategories = [
   {
-    id: "survey-builder",
-    title: "Survey Builder (Drag & Drop)",
-    description: "Intuitive drag-and-drop interface for creating complex surveys without coding",
-    icon: CheckSquare
+    id: "tech-platform",
+    name: "TECH SURVEY PLATFORM",
+    features: [
+      { id: "cloud-based", title: "Cloud based" },
+      { id: "on-premise", title: "On Premise" },
+      { id: "white-labelled", title: "White Labelled" },
+      { id: "whatsapp-bot", title: "Whatsapp Bot" },
+      { id: "survey-gamification", title: "Survey Gamification" },
+      { id: "voice-response", title: "Voice response" },
+      { id: "ai-sentiment", title: "AI Enabled Real time Sentiment Analysis" },
+      { id: "multilingual", title: "Multilingual" }
+    ]
   },
   {
-    id: "on-prem-hosting",
-    title: "On-Prem Hosting (Data stays in UAE)",
-    description: "Deploy securely within UAE borders, ensuring full data sovereignty compliance",
-    icon: Server
-  },
-  {
-    id: "white-label",
-    title: "Full White-Label Customization",
-    description: "Complete branding control with custom colors, logos, and domain names",
-    icon: Palette
-  },
-  {
-    id: "api-integration",
-    title: "API & Integration Support",
-    description: "RESTful APIs and webhooks for seamless integration with your existing systems",
-    icon: Plug
-  },
-  {
-    id: "multilingual",
-    title: "Multilingual Support (English / Arabic)",
-    description: "Native support for English and Arabic with RTL layout optimization",
-    icon: Globe
-  },
-  {
-    id: "offline-collection",
-    title: "Offline / Field Data Collection",
-    description: "Collect data without internet connectivity, sync when back online",
-    icon: Wifi
-  },
-  {
-    id: "security",
-    title: "Role-Based Access & Security Logs",
-    description: "Granular permissions, audit trails, and comprehensive security logging",
-    icon: Shield
-  },
-  {
-    id: "workflow-automation",
-    title: "Workflow Automation",
-    description: "Automate responses, notifications, and data processing workflows",
-    icon: Workflow
-  },
-  {
-    id: "analytics",
-    title: "Advanced Analytics Dashboard",
-    description: "Real-time insights with customizable reports and data visualization",
-    icon: BarChart3
-  },
-  {
-    id: "enterprise-sso",
-    title: "Enterprise SSO (SAML / OAuth)",
-    description: "Seamless authentication with SAML, OAuth, and Active Directory integration",
-    icon: KeyRound
+    id: "research-helpdesk",
+    name: "RESEARCH HELP DESK",
+    features: [
+      { id: "mr-problem", title: "MR Problem assessment – definition" },
+      { id: "rfp-prep", title: "RFP Preparation / Review" },
+      { id: "questionnaire", title: "Instrument / Questionnaire Design" },
+      { id: "data-collection", title: "Data collection" },
+      { id: "data-analysis", title: "Data Analysis support" },
+      { id: "data-viz", title: "Data Visualization" },
+      { id: "dashboard-creation", title: "Dashboard Creation for Existing Data" },
+      { id: "integrate-multi-sources", title: "Integrating Data from Multiple Sources (Int & External Data)" },
+      { id: "integrate-multi-types", title: "Integrating Multiple Data Types (text, images, video, numbers)" },
+      { id: "data-cleaning", title: "Data Cleaning & Data File Preparation" },
+      { id: "statistical-testing", title: "Statistical testing - Advanced Statistical Modelling" },
+      { id: "predictive-analytics", title: "Data Analytics - Predictive Analytics" },
+      { id: "report-prep", title: "Report Preparation Support" },
+      { id: "report-design", title: "Report Design" },
+      { id: "presentation-design", title: "Presentation Design" },
+      { id: "research-workshops", title: "Research Workshops" },
+      { id: "data-workshops", title: "Data Analysis Workshops" },
+      { id: "dedicated-analyst", title: "Dedicated Data Analyst" },
+      { id: "micro-study", title: "Micro Study (Upto 5 Questions)" },
+      { id: "mini-study", title: "Mini Study (upto 10 Questions)" }
+    ]
   }
 ];
 
@@ -144,8 +115,12 @@ export default function CheckboxLandingPage() {
       
       // Map feature IDs to human-readable titles for the API
       const featureTitles = newFeatures.map(id => {
-        const feature = features.find(f => f.id === id);
-        return feature ? feature.title : id;
+        // Search through all categories to find the feature
+        for (const category of featureCategories) {
+          const feature = category.features.find(f => f.id === id);
+          if (feature) return feature.title;
+        }
+        return id;
       });
       
       form.setValue('features', featureTitles, { shouldValidate: true, shouldDirty: true });
@@ -264,7 +239,7 @@ export default function CheckboxLandingPage() {
       {/* Feature Selection Section */}
       <section id="features" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#0A0F2C]">
               Select Features You're Interested In
             </h2>
@@ -273,58 +248,64 @@ export default function CheckboxLandingPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {features.map((feature) => {
-              const isSelected = selectedFeatures.includes(feature.id);
-              const Icon = feature.icon;
-              
-              return (
-                <Card
-                  key={feature.id}
-                  className={`transition-all duration-300 hover:shadow-xl ${
-                    isSelected 
-                      ? 'border-[#D4AF37] border-2 shadow-lg bg-[#D4AF37]/5' 
-                      : 'border-gray-200 hover:border-[#D4AF37]/50'
-                  }`}
-                  data-testid={`feature-card-${feature.id}`}
-                >
-                  <CardContent className="p-6 cursor-pointer" onClick={() => toggleFeature(feature.id)}>
-                    <div className="flex items-start gap-4">
-                      <div className={`p-3 rounded-xl ${
-                        isSelected ? 'bg-[#D4AF37] text-white' : 'bg-gray-100 text-[#0A0F2C]'
-                      }`}>
-                        <Icon className="h-6 w-6" />
+          <Tabs defaultValue="tech-platform" className="w-full">
+            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-2 mb-8 bg-gray-100 h-auto p-1">
+              <TabsTrigger 
+                value="tech-platform" 
+                className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-[#0A0F2C] font-semibold py-3 text-sm md:text-base"
+              >
+                TECH SURVEY PLATFORM
+              </TabsTrigger>
+              <TabsTrigger 
+                value="research-helpdesk" 
+                className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-[#0A0F2C] font-semibold py-3 text-sm md:text-base"
+              >
+                RESEARCH HELP DESK
+              </TabsTrigger>
+            </TabsList>
+
+            {featureCategories.map((category) => (
+              <TabsContent key={category.id} value={category.id} className="mt-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
+                  {category.features.map((feature) => {
+                    const isSelected = selectedFeatures.includes(feature.id);
+                    
+                    return (
+                      <div
+                        key={feature.id}
+                        onClick={() => toggleFeature(feature.id)}
+                        className={`flex items-center gap-3 p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 ${
+                          isSelected 
+                            ? 'border-[#D4AF37] bg-[#D4AF37]/5 shadow-md' 
+                            : 'border-gray-200 hover:border-[#D4AF37]/50 hover:bg-gray-50'
+                        }`}
+                        data-testid={`feature-item-${feature.id}`}
+                      >
+                        <Checkbox
+                          checked={isSelected}
+                          onCheckedChange={(checked) => {
+                            if (checked !== isSelected) {
+                              toggleFeature(feature.id);
+                            }
+                          }}
+                          className={`${isSelected ? "border-[#D4AF37] bg-[#D4AF37]" : ""} flex-shrink-0`}
+                          data-testid={`checkbox-${feature.id}`}
+                        />
+                        <label 
+                          className="text-sm font-medium text-[#0A0F2C] cursor-pointer flex-1"
+                        >
+                          {feature.title}
+                        </label>
                       </div>
-                      <div className="flex-1">
-                        <div className="flex items-start justify-between mb-2">
-                          <h3 className="font-semibold text-lg text-[#0A0F2C]">
-                            {feature.title}
-                          </h3>
-                          <Checkbox
-                            checked={isSelected}
-                            onCheckedChange={(checked) => {
-                              // Prevent double toggle from card click
-                              if (checked !== isSelected) {
-                                toggleFeature(feature.id);
-                              }
-                            }}
-                            className={isSelected ? "border-[#D4AF37] bg-[#D4AF37]" : ""}
-                            data-testid={`checkbox-${feature.id}`}
-                          />
-                        </div>
-                        <p className="text-gray-600 text-sm">
-                          {feature.description}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
+                    );
+                  })}
+                </div>
+              </TabsContent>
+            ))}
+          </Tabs>
 
           {selectedFeatures.length > 0 && (
-            <div className="text-center">
+            <div className="text-center mt-12">
               <div className="inline-block bg-[#D4AF37]/10 border border-[#D4AF37] rounded-lg px-6 py-3 mb-6">
                 <p className="text-[#0A0F2C] font-semibold">
                   {selectedFeatures.length} feature{selectedFeatures.length !== 1 ? 's' : ''} selected
@@ -468,15 +449,23 @@ export default function CheckboxLandingPage() {
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {selectedFeatures.map(featureId => {
-                          const feature = features.find(f => f.id === featureId);
-                          return feature ? (
+                          // Search through all categories to find the feature
+                          let featureTitle = featureId;
+                          for (const category of featureCategories) {
+                            const feature = category.features.find(f => f.id === featureId);
+                            if (feature) {
+                              featureTitle = feature.title;
+                              break;
+                            }
+                          }
+                          return (
                             <span 
                               key={featureId}
                               className="inline-flex items-center bg-white border border-[#D4AF37] text-[#0A0F2C] text-xs px-3 py-1 rounded-full"
                             >
-                              {feature.title}
+                              {featureTitle}
                             </span>
-                          ) : null;
+                          );
                         })}
                       </div>
                     </div>
