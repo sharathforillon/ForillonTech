@@ -8,8 +8,11 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 
 ## Recent Changes
 
+- **October 28, 2025**: Redesigned Checkbox feature selection with tabbed interface for better digestibility (28 total features)
+- **October 28, 2025**: Added TECH SURVEY PLATFORM category (8 features: Cloud based, On Premise, White Labelled, Whatsapp Bot, Survey Gamification, Voice response, AI Sentiment Analysis, Multilingual)
+- **October 28, 2025**: Added RESEARCH HELP DESK category (20 features: MR Problem assessment, RFP Preparation, Questionnaire Design, Data collection, Data Analysis, Data Visualization, Dashboard Creation, Statistical Modelling, Predictive Analytics, and more)
+- **October 28, 2025**: Implemented compact checkbox list layout replacing large feature cards for improved scannability
 - **October 28, 2025**: Built complete Checkbox landing page at /checkbox - white-label survey platform for UAE enterprises
-- **October 28, 2025**: Added interactive feature selection system (10 features including on-prem hosting, survey builder, workflow automation)
 - **October 28, 2025**: Implemented checkbox_leads database table and lead capture API with full validation
 - **October 28, 2025**: Integrated co-branding (Forillon × Mindsbourg) with Midnight Blue and Gold theme
 - **October 28, 2025**: Fixed double-toggle bug in feature card selection with proper form state management
