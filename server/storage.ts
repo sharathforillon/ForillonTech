@@ -1,4 +1,4 @@
-import { users, contactRecords, partnershipRecords, type User, type InsertUser, type ContactRecord, type InsertContactRecord, type PartnershipRecord, type InsertPartnershipRecord } from "@shared/schema";
+import { users, contactRecords, partnershipRecords, checkboxLeads, type User, type InsertUser, type ContactRecord, type InsertContactRecord, type PartnershipRecord, type InsertPartnershipRecord, type CheckboxLead, type InsertCheckboxLead } from "@shared/schema";
 import { db } from "./db";
 import { eq } from "drizzle-orm";
 import session from "express-session";
@@ -23,11 +23,15 @@ export interface IStorage {
   createPartnershipRecord(record: InsertPartnershipRecord): Promise<PartnershipRecord>;
   getAllPartnershipRecords(): Promise<PartnershipRecord[]>;
   
-  sessionStore: session.SessionStore;
+  // Checkbox leads
+  createCheckboxLead(lead: InsertCheckboxLead): Promise<CheckboxLead>;
+  getAllCheckboxLeads(): Promise<CheckboxLead[]>;
+  
+  sessionStore: session.Store;
 }
 
 export class DatabaseStorage implements IStorage {
-  sessionStore: session.SessionStore;
+  sessionStore: session.Store;
 
   constructor() {
     this.sessionStore = new PostgresSessionStore({ pool, createTableIfMissing: true });
@@ -73,6 +77,18 @@ export class DatabaseStorage implements IStorage {
 
   async getAllPartnershipRecords(): Promise<PartnershipRecord[]> {
     return await db.select().from(partnershipRecords).orderBy(partnershipRecords.createdAt);
+  }
+
+  async createCheckboxLead(lead: InsertCheckboxLead): Promise<CheckboxLead> {
+    const [checkboxLead] = await db
+      .insert(checkboxLeads)
+      .values(lead)
+      .returning();
+    return checkboxLead;
+  }
+
+  async getAllCheckboxLeads(): Promise<CheckboxLead[]> {
+    return await db.select().from(checkboxLeads).orderBy(checkboxLeads.createdAt);
   }
 }
 

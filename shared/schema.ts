@@ -33,6 +33,16 @@ export const partnershipRecords = pgTable("partnership_records", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
+export const checkboxLeads = pgTable("checkbox_leads", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  company: text("company").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  features: jsonb("features").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
   password: true,
@@ -48,12 +58,19 @@ export const insertPartnershipRecordSchema = createInsertSchema(partnershipRecor
   createdAt: true,
 });
 
+export const insertCheckboxLeadSchema = createInsertSchema(checkboxLeads).omit({
+  id: true,
+  createdAt: true,
+});
+
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
 export type ContactRecord = typeof contactRecords.$inferSelect;
 export type InsertContactRecord = z.infer<typeof insertContactRecordSchema>;
 export type PartnershipRecord = typeof partnershipRecords.$inferSelect;
 export type InsertPartnershipRecord = z.infer<typeof insertPartnershipRecordSchema>;
+export type CheckboxLead = typeof checkboxLeads.$inferSelect;
+export type InsertCheckboxLead = z.infer<typeof insertCheckboxLeadSchema>;
 
 // Partnership inquiry schema (for validation only, not stored in DB)
 export const partnershipInquirySchema = z.object({
@@ -76,3 +93,15 @@ export const partnershipInquirySchema = z.object({
 });
 
 export type PartnershipInquiry = z.infer<typeof partnershipInquirySchema>;
+
+// Checkbox lead schema (for validation)
+export const checkboxLeadSchema = z.object({
+  name: z.string().min(1, "Full name is required"),
+  company: z.string().min(1, "Company name is required"),
+  email: z.string().email("Valid email is required"),
+  phone: z.string().min(1, "Phone number is required"),
+  features: z.array(z.string()).min(1, "Please select at least one feature"),
+  consent: z.boolean().refine((val) => val === true, "You must agree to be contacted"),
+});
+
+export type CheckboxLeadForm = z.infer<typeof checkboxLeadSchema>;

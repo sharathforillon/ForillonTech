@@ -5,7 +5,7 @@ import { storage } from "./storage";
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
 import matter from "gray-matter";
-import { partnershipInquirySchema, insertContactRecordSchema, insertPartnershipRecordSchema } from "../shared/schema";
+import { partnershipInquirySchema, insertContactRecordSchema, insertPartnershipRecordSchema, checkboxLeadSchema } from "../shared/schema";
 import { sendPartnershipInquiry } from "./email";
 import { logPartnershipInquiry, generateFollowUpEmailTemplate } from "./notification";
 
@@ -167,6 +167,40 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Checkbox lead submission endpoint
+  app.post("/api/lead", async (req, res) => {
+    try {
+      const validationResult = checkboxLeadSchema.safeParse(req.body);
+      
+      if (!validationResult.success) {
+        return res.status(400).json({ 
+          error: "Invalid form data", 
+          details: validationResult.error.issues 
+        });
+      }
+
+      const { consent, ...leadData } = validationResult.data;
+      
+      const lead = await storage.createCheckboxLead(leadData);
+      
+      console.log('📋 New Checkbox Lead Received:', {
+        id: lead.id,
+        company: lead.company,
+        features: lead.features,
+        createdAt: lead.createdAt
+      });
+      
+      res.status(201).json({ 
+        success: true, 
+        message: "Thank you! Our team will contact you within 24 hours.",
+        leadId: lead.id
+      });
+    } catch (error) {
+      console.error("Checkbox lead submission error:", error);
+      res.status(500).json({ error: "Failed to submit lead. Please try again." });
+    }
+  });
+
   // Admin routes (protected by auth middleware)
   app.get("/api/admin/contacts", async (req, res) => {
     try {
@@ -221,7 +255,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const partnerships = await storage.getAllPartnershipRecords();
       
       // Create CSV content
-      const headers = ['ID', 'First Name', 'Last Name', 'Email', 'Phone', 'Job Title', 'Company', 'Company Size', 'Industry', 'Website', 'Partnership Types', 'Budget', 'Timeline', 'Description', 'Date Created'];
+      const headers = ['ID', 'First Name', 'Last Name', 'Email', 'Phone', 'Job Title', 'Company', 'Company Size', 'Industry', 'Website', 'Partnership Types', 'Description', 'Date Created'];
       const csvContent = [
         headers.join(','),
         ...partnerships.map(partnership => [
@@ -236,8 +270,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
           `"${partnership.industry}"`,
           partnership.website || '',
           `"${Array.isArray(partnership.partnershipType) ? partnership.partnershipType.join(', ') : partnership.partnershipType}"`,
-          `"${partnership.projectBudget}"`,
-          `"${partnership.timeline}"`,
           `"${partnership.description?.replace(/"/g, '""') || ''}"`,
           partnership.createdAt?.toISOString() || ''
         ].join(','))

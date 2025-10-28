@@ -1,0 +1,174 @@
+Objective:
+Add a new landing page to my existing Forillon Technologies website (hosted on Replit) at the route /checkbox.
+
+The page should promote Checkbox, a white-label, on-premise survey and workflow automation platform built for UAE enterprises, co-branded with Forillon Technologies × Mindsbourg.
+
+Key Purpose:
+Showcase product features clearly and let visitors select the features they’re interested in, then submit an enquiry with their contact information.
+
+🧱 PAGE STRUCTURE & FUNCTIONALITY
+
+1️⃣ Header Section
+
+Show both Forillon Technologies and Mindsbourg logos side-by-side with an “×” symbol between them.
+
+Match existing site styling (navigation, font, spacing).
+
+Keep responsive for desktop and mobile.
+
+2️⃣ Hero Section
+
+Headline:
+
+“Checkbox — Your White-Label, On-Prem Survey Platform for UAE Enterprises.”
+
+Subheadline:
+
+“Control your data. Customize your brand. Deploy securely within UAE.”
+
+Primary CTA button: “Request a Free POC” (scrolls to form).
+
+Secondary CTA: “Explore Features.”
+
+Use a clean background image or abstract tech pattern.
+
+3️⃣ Feature Selection Section
+
+Create an interactive grid of selectable checkboxes (each with a title, short description, and icon).
+
+Features should include:
+
+Survey Builder (Drag & Drop)
+
+On-Prem Hosting (Data stays in UAE)
+
+Full White-Label Customization
+
+API & Integration Support
+
+Multilingual Support (English / Arabic)
+
+Offline / Field Data Collection
+
+Role-Based Access & Security Logs
+
+Workflow Automation
+
+Advanced Analytics Dashboard
+
+Enterprise SSO (SAML / OAuth)
+
+Visitors can select multiple features.
+
+Visually highlight selected cards (color border or check icon).
+
+Store all selected features in a JavaScript array to send with the form.
+
+4️⃣ Lead Capture Section (Form)
+
+Two-step or single-section form under the feature grid.
+
+Fields:
+
+Full Name (required)
+
+Company Name (required)
+
+Work Email (required)
+
+Phone Number (required)
+
+Hidden Field (auto-populate with selected features array).
+
+Include a required consent checkbox: “I agree to be contacted by Forillon Technologies.”
+
+Submit button: “Submit Enquiry”
+
+On submit:
+
+POST to /api/lead (JSON payload: { name, company, email, phone, features[] }).
+
+Show a success message:
+
+“Thank you! Our team will contact you within 24 hours.”
+
+Clear form and reset selections.
+
+5️⃣ Design & UI Guidelines
+
+Professional, corporate theme.
+
+Color palette: Midnight Blue (#0A0F2C) and Gold (#D4AF37) with white accents.
+
+Use TailwindCSS or the site’s existing CSS framework.
+
+Responsive and mobile-friendly grid layouts.
+
+Subtle hover effects and soft animations for interactions.
+
+Add small icons for each feature card (checkmark, server, API, etc.).
+
+6️⃣ Footer Section
+
+Text:
+
+“© Forillon Technologies × Mindsbourg — All Rights Reserved.”
+
+Include links to Privacy Policy and Contact page.
+
+Match existing site footer style.
+
+⚙️ TECHNICAL IMPLEMENTATION
+
+If site is React-based:
+
+Create a new component CheckboxLandingPage.jsx.
+
+Add route in App.jsx or router:
+
+<Route path="/checkbox" element={<CheckboxLandingPage />} />
+
+
+If site is static HTML:
+
+Create a new folder /checkbox with index.html, style.css, and app.js.
+
+Ensure it’s accessible at forillontech.com/checkbox.
+
+Backend:
+
+Add new Express route /api/lead that receives POST requests, validates input, and saves to leads.json file in root.
+Example data format:
+
+{
+  "name": "John Doe",
+  "company": "ABC Telecom",
+  "email": "john@abc.com",
+  "phone": "+971501234567",
+  "features": ["On-Prem Hosting", "Workflow Automation"]
+}
+
+
+Add basic rate limiting (max 20/min).
+
+Analytics:
+
+Add Google Analytics 4 (GA4) tag in <head>.
+
+Trigger GA event lead_submitted when form submits successfully.
+
+Track unique visitors via localStorage ID.
+
+SEO:
+
+Page title: “Checkbox — White-Label Survey Platform | Forillon × Mindsbourg”
+
+Meta description: “Checkbox lets UAE enterprises deploy secure, white-label survey and automation platforms on-premise. Powered by Forillon Technologies × Mindsbourg.”
+
+📦 EXPECTED OUTPUT
+
+A new, fully functional /checkbox landing page seamlessly integrated into the existing Forillon website.
+
+All features selectable, form submissions captured, analytics ready.
+
+Mobile-friendly, clean, and conversion-optimized design.

@@ -31,6 +31,7 @@ import TermsOfService from "@/pages/terms-of-service";
 import CookiePolicy from "@/pages/cookie-policy";
 import DatabaseExport from "@/pages/database-export";
 import AdminPage from "@/pages/admin";
+import CheckboxLandingPage from "@/pages/checkbox";
 import { AuthProvider } from "@/hooks/use-auth";
 
 function Router() {
@@ -63,6 +64,7 @@ function Router() {
       <Route path="/cookie-policy" component={CookiePolicy} />
       <Route path="/database-export" component={DatabaseExport} />
       <Route path="/admin" component={AdminPage} />
+      <Route path="/checkbox" component={CheckboxLandingPage} />
       <Route component={NotFound} />
     </Switch>
   );
