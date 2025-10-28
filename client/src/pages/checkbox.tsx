@@ -75,7 +75,6 @@ const allFeatures = [...platformFeatures, ...researchFeatures];
 
 export default function CheckboxLandingPage() {
   const { toast } = useToast();
-  const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
   const [formStep, setFormStep] = useState(1);
   const [productType, setProductType] = useState<'tech' | 'research' | null>(null);
 
@@ -105,19 +104,17 @@ export default function CheckboxLandingPage() {
   });
 
   const toggleFeature = (featureId: string) => {
-    setSelectedFeatures(prev => {
-      const newFeatures = prev.includes(featureId)
-        ? prev.filter(id => id !== featureId)
-        : [...prev, featureId];
-      
-      const featureTitles = newFeatures.map(id => {
-        const feature = allFeatures.find(f => f.id === id);
-        return feature ? feature.title : id;
-      });
-      
-      form.setValue('features', featureTitles, { shouldValidate: true, shouldDirty: true });
-      return newFeatures;
-    });
+    const feature = allFeatures.find(f => f.id === featureId);
+    if (!feature) return;
+    
+    const currentFeatures = form.getValues('features') || [];
+    const isSelected = currentFeatures.includes(feature.title);
+    
+    if (isSelected) {
+      form.setValue('features', currentFeatures.filter(f => f !== feature.title), { shouldValidate: false });
+    } else {
+      form.setValue('features', [...currentFeatures, feature.title], { shouldValidate: false });
+    }
   };
 
   const submitLead = useMutation({
