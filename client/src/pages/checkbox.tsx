@@ -273,8 +273,7 @@ export default function CheckboxLandingPage() {
                     return (
                       <div
                         key={feature.id}
-                        onClick={() => toggleFeature(feature.id)}
-                        className={`flex items-center gap-3 p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 ${
+                        className={`flex items-center gap-3 p-4 rounded-lg border-2 transition-all duration-200 ${
                           isSelected 
                             ? 'border-[#D4AF37] bg-[#D4AF37]/5 shadow-md' 
                             : 'border-gray-200 hover:border-[#D4AF37]/50 hover:bg-gray-50'
@@ -283,16 +282,13 @@ export default function CheckboxLandingPage() {
                       >
                         <Checkbox
                           checked={isSelected}
-                          onCheckedChange={(checked) => {
-                            if (checked !== isSelected) {
-                              toggleFeature(feature.id);
-                            }
-                          }}
+                          onCheckedChange={() => toggleFeature(feature.id)}
                           className={`${isSelected ? "border-[#D4AF37] bg-[#D4AF37]" : ""} flex-shrink-0`}
                           data-testid={`checkbox-${feature.id}`}
                         />
                         <label 
                           className="text-sm font-medium text-[#0A0F2C] cursor-pointer flex-1"
+                          onClick={() => toggleFeature(feature.id)}
                         >
                           {feature.title}
                         </label>

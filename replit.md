@@ -8,6 +8,7 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 
 ## Recent Changes
 
+- **October 28, 2025**: Fixed checkbox click handler bug - direct clicks on checkbox icons now properly toggle selection
 - **October 28, 2025**: Redesigned Checkbox feature selection with tabbed interface for better digestibility (28 total features)
 - **October 28, 2025**: Added TECH SURVEY PLATFORM category (8 features: Cloud based, On Premise, White Labelled, Whatsapp Bot, Survey Gamification, Voice response, AI Sentiment Analysis, Multilingual)
 - **October 28, 2025**: Added RESEARCH HELP DESK category (20 features: MR Problem assessment, RFP Preparation, Questionnaire Design, Data collection, Data Analysis, Data Visualization, Dashboard Creation, Statistical Modelling, Predictive Analytics, and more)
