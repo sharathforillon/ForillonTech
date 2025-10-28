@@ -11,11 +11,17 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { 
   Loader2,
-  ArrowRight
+  ArrowRight,
+  CheckCircle2,
+  Sparkles,
+  Shield,
+  Zap
 } from "lucide-react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { checkboxLeadSchema, type CheckboxLeadForm } from "@shared/schema";
+import mindsbourgLogo from "@assets/Mindsbourg-Logo_alt_1761671481551.jpg";
+import forillonLogo from "@assets/logo_nobackground_1761671485550.png";
 
 const featureCategories = [
   {
@@ -64,11 +70,9 @@ export default function CheckboxLandingPage() {
   const { toast } = useToast();
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
 
-  // Set page title and meta description for SEO
   useEffect(() => {
     document.title = "Checkbox — White-Label Survey Platform | Forillon × Mindsbourg";
     
-    // Update or create meta description
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
       metaDescription = document.createElement('meta');
@@ -77,7 +81,6 @@ export default function CheckboxLandingPage() {
     }
     metaDescription.setAttribute('content', 'Checkbox lets UAE enterprises deploy secure, white-label survey and automation platforms on-premise. Powered by Forillon Technologies × Mindsbourg.');
 
-    // Add Open Graph tags
     const ogTags = [
       { property: 'og:title', content: 'Checkbox — White-Label Survey Platform | Forillon × Mindsbourg' },
       { property: 'og:description', content: 'Control your data. Customize your brand. Deploy securely within UAE.' },
@@ -113,9 +116,7 @@ export default function CheckboxLandingPage() {
         ? prev.filter(id => id !== featureId)
         : [...prev, featureId];
       
-      // Map feature IDs to human-readable titles for the API
       const featureTitles = newFeatures.map(id => {
-        // Search through all categories to find the feature
         for (const category of featureCategories) {
           const feature = category.features.find(f => f.id === id);
           if (feature) return feature.title;
@@ -177,45 +178,84 @@ export default function CheckboxLandingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative py-24 overflow-hidden" style={{
-        background: "linear-gradient(135deg, #0A0F2C 0%, #1a2456 100%)"
-      }}>
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }} />
-        </div>
+      <section className="relative py-32 overflow-hidden">
+        {/* Animated Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 opacity-70" />
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          {/* Co-Branding Header */}
-          <div className="flex items-center justify-center gap-6 mb-12">
-            <div className="text-white text-2xl font-bold tracking-wide">
-              FORILLON TECHNOLOGIES
+        {/* Floating Orbs */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-purple-300/30 to-pink-300/30 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-blue-300/30 to-cyan-300/30 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-br from-pink-200/20 to-purple-200/20 rounded-full blur-3xl" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Co-Branding Logos */}
+          <div className="flex items-center justify-center gap-8 mb-16 flex-wrap">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <img 
+                src={forillonLogo} 
+                alt="Forillon Technologies" 
+                className="h-16 w-auto"
+              />
             </div>
-            <div className="text-[#D4AF37] text-3xl">×</div>
-            <div className="text-[#D4AF37] text-2xl font-bold tracking-wide">
-              MINDSBOURG
+            <div className="text-5xl font-light text-gray-400">×</div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <img 
+                src={mindsbourgLogo} 
+                alt="Mindsbourg" 
+                className="h-16 w-auto"
+              />
             </div>
           </div>
 
           <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white leading-tight">
-              Checkbox — Your White-Label,<br />On-Prem Survey Platform<br />for UAE Enterprises
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg mb-8 border border-purple-100">
+              <Sparkles className="w-5 h-5 text-purple-500" />
+              <span className="text-sm font-semibold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                White-Label Survey Platform
+              </span>
+            </div>
+
+            <h1 className="text-6xl md:text-7xl font-bold mb-8 leading-tight">
+              <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                Checkbox
+              </span>
+              <br />
+              <span className="text-gray-800 text-5xl md:text-6xl">
+                Enterprise Survey Platform
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-4xl mx-auto leading-relaxed">
+            
+            <p className="text-xl md:text-2xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
               Control your data. Customize your brand. Deploy securely within UAE.
+              <br />
+              <span className="text-lg text-gray-600">On-premise. White-labeled. Enterprise-ready.</span>
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            {/* Key Features Pills */}
+            <div className="flex flex-wrap gap-4 justify-center mb-12 max-w-3xl mx-auto">
+              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-5 py-3 rounded-full shadow-md border border-blue-100">
+                <Shield className="w-5 h-5 text-blue-500" />
+                <span className="text-sm font-medium text-gray-700">100% Data Sovereignty</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-5 py-3 rounded-full shadow-md border border-purple-100">
+                <Zap className="w-5 h-5 text-purple-500" />
+                <span className="text-sm font-medium text-gray-700">Rapid Deployment</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-5 py-3 rounded-full shadow-md border border-pink-100">
+                <CheckCircle2 className="w-5 h-5 text-pink-500" />
+                <span className="text-sm font-medium text-gray-700">Full Customization</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button 
                 size="lg"
-                className="bg-[#D4AF37] hover:bg-[#D4AF37]/90 text-[#0A0F2C] font-semibold text-lg px-8 py-6"
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold text-lg px-10 py-7 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 rounded-2xl"
                 onClick={scrollToForm}
                 data-testid="button-request-poc"
               >
@@ -225,7 +265,7 @@ export default function CheckboxLandingPage() {
               <Button 
                 size="lg"
                 variant="outline"
-                className="bg-white/10 hover:bg-white/20 text-white border-white/30 font-semibold text-lg px-8 py-6"
+                className="bg-white/80 backdrop-blur-sm hover:bg-white text-gray-800 border-2 border-purple-200 hover:border-purple-300 font-semibold text-lg px-10 py-7 shadow-lg hover:shadow-xl transition-all duration-300 rounded-2xl"
                 onClick={scrollToFeatures}
                 data-testid="button-explore-features"
               >
@@ -237,28 +277,32 @@ export default function CheckboxLandingPage() {
       </section>
 
       {/* Feature Selection Section */}
-      <section id="features" className="py-20 bg-white">
+      <section id="features" className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#0A0F2C]">
-              Select Features You're Interested In
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-pink-100 px-5 py-2 rounded-full mb-6">
+              <Sparkles className="w-4 h-4 text-purple-600" />
+              <span className="text-sm font-semibold text-purple-700">Customizable Capabilities</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+              Select Features You're<br />Interested In
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light">
               Choose the capabilities that matter most to your organization. Our team will provide a customized demonstration.
             </p>
           </div>
 
           <Tabs defaultValue="tech-platform" className="w-full">
-            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-2 mb-8 bg-gray-100 h-auto p-1">
+            <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-2 mb-12 bg-white/80 backdrop-blur-sm h-auto p-2 rounded-2xl shadow-lg border border-purple-100">
               <TabsTrigger 
                 value="tech-platform" 
-                className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-[#0A0F2C] font-semibold py-3 text-sm md:text-base"
+                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-pink-500 data-[state=active]:text-white font-semibold py-4 text-base md:text-lg rounded-xl transition-all duration-300"
               >
                 TECH SURVEY PLATFORM
               </TabsTrigger>
               <TabsTrigger 
                 value="research-helpdesk" 
-                className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-[#0A0F2C] font-semibold py-3 text-sm md:text-base"
+                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-pink-500 data-[state=active]:text-white font-semibold py-4 text-base md:text-lg rounded-xl transition-all duration-300"
               >
                 RESEARCH HELP DESK
               </TabsTrigger>
@@ -266,28 +310,34 @@ export default function CheckboxLandingPage() {
 
             {featureCategories.map((category) => (
               <TabsContent key={category.id} value={category.id} className="mt-8">
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
                   {category.features.map((feature) => {
                     const isSelected = selectedFeatures.includes(feature.id);
                     
                     return (
                       <div
                         key={feature.id}
-                        className={`flex items-center gap-3 p-4 rounded-lg border-2 transition-all duration-200 ${
+                        className={`group flex items-center gap-4 p-5 rounded-2xl border-2 transition-all duration-300 ${
                           isSelected 
-                            ? 'border-[#D4AF37] bg-[#D4AF37]/5 shadow-md' 
-                            : 'border-gray-200 hover:border-[#D4AF37]/50 hover:bg-gray-50'
+                            ? 'border-purple-400 bg-gradient-to-br from-purple-50 to-pink-50 shadow-lg scale-105' 
+                            : 'border-purple-100 bg-white/80 backdrop-blur-sm hover:border-purple-300 hover:shadow-md hover:scale-102'
                         }`}
                         data-testid={`feature-item-${feature.id}`}
                       >
                         <Checkbox
                           checked={isSelected}
                           onCheckedChange={() => toggleFeature(feature.id)}
-                          className={`${isSelected ? "border-[#D4AF37] bg-[#D4AF37]" : ""} flex-shrink-0`}
+                          className={`${
+                            isSelected 
+                              ? "border-purple-500 bg-gradient-to-br from-purple-500 to-pink-500 text-white" 
+                              : "border-gray-300"
+                          } flex-shrink-0 w-5 h-5 transition-all duration-300`}
                           data-testid={`checkbox-${feature.id}`}
                         />
                         <label 
-                          className="text-sm font-medium text-[#0A0F2C] cursor-pointer flex-1"
+                          className={`text-sm font-medium cursor-pointer flex-1 transition-colors duration-300 ${
+                            isSelected ? 'text-purple-900' : 'text-gray-700 group-hover:text-gray-900'
+                          }`}
                           onClick={() => toggleFeature(feature.id)}
                         >
                           {feature.title}
@@ -301,20 +351,22 @@ export default function CheckboxLandingPage() {
           </Tabs>
 
           {selectedFeatures.length > 0 && (
-            <div className="text-center mt-12">
-              <div className="inline-block bg-[#D4AF37]/10 border border-[#D4AF37] rounded-lg px-6 py-3 mb-6">
-                <p className="text-[#0A0F2C] font-semibold">
-                  {selectedFeatures.length} feature{selectedFeatures.length !== 1 ? 's' : ''} selected
+            <div className="text-center mt-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <div className="inline-block bg-gradient-to-r from-purple-100 to-pink-100 border-2 border-purple-200 rounded-2xl px-8 py-4 mb-8 shadow-lg">
+                <p className="text-gray-800 font-bold text-lg">
+                  <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    {selectedFeatures.length} feature{selectedFeatures.length !== 1 ? 's' : ''} selected
+                  </span>
                 </p>
               </div>
               <div>
                 <Button 
                   onClick={scrollToForm}
-                  className="bg-[#D4AF37] hover:bg-[#D4AF37]/90 text-[#0A0F2C] font-semibold px-8"
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-10 py-6 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 rounded-2xl"
                   data-testid="button-proceed-to-form"
                 >
                   Proceed to Submit Enquiry
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </div>
             </div>
@@ -323,17 +375,36 @@ export default function CheckboxLandingPage() {
       </section>
 
       {/* Lead Capture Form */}
-      <section id="lead-form" className="py-20 bg-gray-50">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="shadow-xl border-t-4 border-[#D4AF37]">
-            <div className="bg-[#0A0F2C] text-white p-8 rounded-t-lg">
-              <h2 className="text-3xl font-bold mb-3 text-center">Submit Your Enquiry</h2>
-              <p className="text-white/90 text-center">
-                Fill in your details and our team will reach out within 24 hours to discuss your requirements.
-              </p>
+      <section id="lead-form" className="py-24 relative">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 opacity-50" />
+        
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-purple-100 px-5 py-2 rounded-full mb-6">
+              <CheckCircle2 className="w-4 h-4 text-blue-600" />
+              <span className="text-sm font-semibold text-blue-700">Ready to Get Started?</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+              Submit Your Enquiry
+            </h2>
+            <p className="text-lg text-gray-600 font-light">
+              Fill in your details and our team will reach out within 24 hours
+            </p>
+          </div>
+
+          <Card className="shadow-2xl border-0 overflow-hidden rounded-3xl bg-white/90 backdrop-blur-sm">
+            <div className="bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500 text-white p-10 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full blur-2xl" />
+              <div className="relative z-10">
+                <h3 className="text-2xl font-bold mb-2 text-center">Let's Connect</h3>
+                <p className="text-purple-100 text-center text-sm">
+                  Complete the form below to start your Checkbox journey
+                </p>
+              </div>
             </div>
             
-            <CardContent className="p-8">
+            <CardContent className="p-10">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   <FormField
@@ -341,12 +412,12 @@ export default function CheckboxLandingPage() {
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-[#0A0F2C] font-semibold">Full Name *</FormLabel>
+                        <FormLabel className="text-gray-700 font-semibold text-base">Full Name *</FormLabel>
                         <FormControl>
                           <Input 
                             {...field} 
                             placeholder="John Smith"
-                            className="border-gray-300 focus:border-[#D4AF37]"
+                            className="border-2 border-purple-100 focus:border-purple-400 rounded-xl py-6 text-base transition-all duration-300"
                             data-testid="input-name"
                           />
                         </FormControl>
@@ -360,12 +431,12 @@ export default function CheckboxLandingPage() {
                     name="company"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-[#0A0F2C] font-semibold">Company Name *</FormLabel>
+                        <FormLabel className="text-gray-700 font-semibold text-base">Company Name *</FormLabel>
                         <FormControl>
                           <Input 
                             {...field} 
                             placeholder="ABC Corporation"
-                            className="border-gray-300 focus:border-[#D4AF37]"
+                            className="border-2 border-purple-100 focus:border-purple-400 rounded-xl py-6 text-base transition-all duration-300"
                             data-testid="input-company"
                           />
                         </FormControl>
@@ -379,13 +450,13 @@ export default function CheckboxLandingPage() {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-[#0A0F2C] font-semibold">Work Email *</FormLabel>
+                        <FormLabel className="text-gray-700 font-semibold text-base">Work Email *</FormLabel>
                         <FormControl>
                           <Input 
                             {...field} 
                             type="email"
                             placeholder="john@company.com"
-                            className="border-gray-300 focus:border-[#D4AF37]"
+                            className="border-2 border-purple-100 focus:border-purple-400 rounded-xl py-6 text-base transition-all duration-300"
                             data-testid="input-email"
                           />
                         </FormControl>
@@ -399,12 +470,12 @@ export default function CheckboxLandingPage() {
                     name="phone"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-[#0A0F2C] font-semibold">Phone Number *</FormLabel>
+                        <FormLabel className="text-gray-700 font-semibold text-base">Phone Number *</FormLabel>
                         <FormControl>
                           <Input 
                             {...field} 
                             placeholder="+971 50 123 4567"
-                            className="border-gray-300 focus:border-[#D4AF37]"
+                            className="border-2 border-purple-100 focus:border-purple-400 rounded-xl py-6 text-base transition-all duration-300"
                             data-testid="input-phone"
                           />
                         </FormControl>
@@ -417,20 +488,20 @@ export default function CheckboxLandingPage() {
                     control={form.control}
                     name="consent"
                     render={({ field }) => (
-                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border border-gray-200 p-4 bg-gray-50">
+                      <FormItem className="flex flex-row items-start space-x-4 space-y-0 rounded-2xl border-2 border-purple-100 p-5 bg-gradient-to-br from-purple-50/50 to-pink-50/50">
                         <FormControl>
                           <Checkbox
                             checked={field.value}
                             onCheckedChange={field.onChange}
-                            className="mt-1"
+                            className="mt-1 border-purple-300"
                             data-testid="checkbox-consent"
                           />
                         </FormControl>
                         <div className="space-y-1 leading-none">
-                          <FormLabel className="text-sm font-medium text-[#0A0F2C] cursor-pointer">
+                          <FormLabel className="text-sm font-medium text-gray-700 cursor-pointer">
                             I agree to be contacted by Forillon Technologies *
                           </FormLabel>
-                          <p className="text-xs text-gray-600">
+                          <p className="text-xs text-gray-500">
                             We respect your privacy and will only contact you regarding Checkbox.
                           </p>
                         </div>
@@ -439,13 +510,13 @@ export default function CheckboxLandingPage() {
                   />
 
                   {selectedFeatures.length > 0 && (
-                    <div className="bg-[#D4AF37]/5 border border-[#D4AF37]/30 rounded-lg p-4">
-                      <p className="text-sm font-semibold text-[#0A0F2C] mb-2">
+                    <div className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-2xl p-6">
+                      <p className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-purple-600" />
                         Selected Features ({selectedFeatures.length}):
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {selectedFeatures.map(featureId => {
-                          // Search through all categories to find the feature
                           let featureTitle = featureId;
                           for (const category of featureCategories) {
                             const feature = category.features.find(f => f.id === featureId);
@@ -457,7 +528,7 @@ export default function CheckboxLandingPage() {
                           return (
                             <span 
                               key={featureId}
-                              className="inline-flex items-center bg-white border border-[#D4AF37] text-[#0A0F2C] text-xs px-3 py-1 rounded-full"
+                              className="inline-flex items-center bg-white border-2 border-purple-300 text-purple-700 text-xs font-medium px-4 py-2 rounded-full shadow-sm"
                             >
                               {featureTitle}
                             </span>
@@ -470,16 +541,19 @@ export default function CheckboxLandingPage() {
                   <Button 
                     type="submit" 
                     disabled={submitLead.isPending}
-                    className="w-full bg-[#D4AF37] hover:bg-[#D4AF37]/90 text-[#0A0F2C] font-semibold text-lg py-6"
+                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-lg py-7 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 rounded-2xl"
                     data-testid="button-submit"
                   >
                     {submitLead.isPending ? (
                       <>
-                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                        <Loader2 className="mr-2 h-6 w-6 animate-spin" />
                         Submitting...
                       </>
                     ) : (
-                      "Submit Enquiry"
+                      <>
+                        Submit Enquiry
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </>
                     )}
                   </Button>
                 </form>
@@ -490,18 +564,35 @@ export default function CheckboxLandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#0A0F2C] text-white py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-white/80 mb-4">
-            © Forillon Technologies × Mindsbourg — All Rights Reserved.
-          </p>
-          <div className="flex justify-center gap-6 text-sm">
-            <a href="/privacy-policy" className="text-[#D4AF37] hover:text-[#D4AF37]/80 transition-colors">
-              Privacy Policy
-            </a>
-            <a href="/contact" className="text-[#D4AF37] hover:text-[#D4AF37]/80 transition-colors">
-              Contact
-            </a>
+      <footer className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-pink-900" />
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
+            backgroundSize: '40px 40px'
+          }} />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Logos */}
+          <div className="flex items-center justify-center gap-8 mb-8 flex-wrap">
+            <img src={forillonLogo} alt="Forillon Technologies" className="h-12 w-auto opacity-80" />
+            <div className="text-3xl font-light text-white/50">×</div>
+            <img src={mindsbourgLogo} alt="Mindsbourg" className="h-12 w-auto opacity-80" />
+          </div>
+          
+          <div className="text-center">
+            <p className="text-purple-200 mb-6 text-sm">
+              © 2025 Forillon Technologies × Mindsbourg — All Rights Reserved.
+            </p>
+            <div className="flex justify-center gap-8 text-sm">
+              <a href="/privacy-policy" className="text-purple-300 hover:text-white transition-colors">
+                Privacy Policy
+              </a>
+              <a href="/contact" className="text-purple-300 hover:text-white transition-colors">
+                Contact
+              </a>
+            </div>
           </div>
         </div>
       </footer>
