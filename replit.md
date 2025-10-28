@@ -8,6 +8,12 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 
 ## Recent Changes
 
+- **October 28, 2025**: MAJOR REDESIGN: Completely transformed Checkbox landing page with modern pastel color scheme (purples, pinks, blues) and premium visual design
+- **October 28, 2025**: Integrated Mindsbourg and Forillon actual logos throughout the page (hero section and footer)
+- **October 28, 2025**: Implemented modern UI elements: gradient backgrounds, glassmorphism effects, floating animated orbs, premium shadows, and smooth transitions
+- **October 28, 2025**: Enhanced typography with larger headings, gradient text effects, and improved spacing for premium marketing appeal
+- **October 28, 2025**: Added visual feature pills (Data Sovereignty, Rapid Deployment, Full Customization) with icon badges
+- **October 28, 2025**: Upgraded all interactive elements with gradient buttons, rounded corners (rounded-2xl/3xl), and hover scale effects
 - **October 28, 2025**: Fixed checkbox click handler bug - direct clicks on checkbox icons now properly toggle selection
 - **October 28, 2025**: Redesigned Checkbox feature selection with tabbed interface for better digestibility (28 total features)
 - **October 28, 2025**: Added TECH SURVEY PLATFORM category (8 features: Cloud based, On Premise, White Labelled, Whatsapp Bot, Survey Gamification, Voice response, AI Sentiment Analysis, Multilingual)
