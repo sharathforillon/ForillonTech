@@ -39,6 +39,7 @@ export const checkboxLeads = pgTable("checkbox_leads", {
   company: text("company").notNull(),
   email: text("email").notNull(),
   phone: text("phone").notNull(),
+  productType: text("product_type"),
   features: jsonb("features").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
@@ -100,6 +101,7 @@ export const checkboxLeadSchema = z.object({
   company: z.string().min(1, "Company name is required"),
   email: z.string().email("Valid email is required"),
   phone: z.string().min(1, "Phone number is required"),
+  productType: z.string().optional(),
   features: z.array(z.string()).min(1, "Please select at least one feature"),
   consent: z.boolean().refine((val) => val === true, "You must agree to be contacted"),
 });
