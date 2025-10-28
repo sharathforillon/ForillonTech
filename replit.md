@@ -8,6 +8,11 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 
 ## Recent Changes
 
+- **October 28, 2025**: Built complete Checkbox landing page at /checkbox - white-label survey platform for UAE enterprises
+- **October 28, 2025**: Added interactive feature selection system (10 features including on-prem hosting, survey builder, workflow automation)
+- **October 28, 2025**: Implemented checkbox_leads database table and lead capture API with full validation
+- **October 28, 2025**: Integrated co-branding (Forillon × Mindsbourg) with Midnight Blue and Gold theme
+- **October 28, 2025**: Fixed double-toggle bug in feature card selection with proper form state management
 - **August 05, 2025**: Created comprehensive admin dashboard system with PostgreSQL database integration
 - **August 05, 2025**: Implemented admin authentication system with username: sharathadmin, password: sharathadmin
 - **August 05, 2025**: Built contact and partnership record management with database storage and CSV export functionality
@@ -65,6 +70,7 @@ Preferred communication style: Simple, everyday language.
 - **Navigation**: Sticky header with smooth scrolling navigation
 - **Hero Section**: Brand-focused landing area with CTAs
 - **About/Solutions/Why Forillon**: Service showcase sections
+- **Checkbox Landing Page**: White-label survey platform showcase with interactive feature selection and lead capture (/checkbox)
 - **Blog System**: Content management with markdown support
 - **Contact Form**: Interactive form with toast notifications
 - **UI Components**: Complete shadcn/ui component library
@@ -154,5 +160,6 @@ Preferred communication style: Simple, everyday language.
 - Migration files stored in `./migrations`
 - Schema defined in `./shared/schema.ts`
 - User management system with authentication ready
+- Multiple lead capture tables: checkbox_leads, contact_records, partnership_leads
 
 The application follows a monorepo structure with shared TypeScript types and utilities, making it maintainable and scalable for enterprise use.
