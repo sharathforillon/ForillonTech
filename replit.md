@@ -8,11 +8,15 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 
 ## Recent Changes
 
+- **October 29, 2025**: ENHANCED: Users can now select features from BOTH Tech Platform AND Research Help Desk categories using tabbed interface
+- **October 29, 2025**: Implemented smart product type detection: 'tech-platform', 'research-helpdesk', or 'combined' based on selections
+- **October 29, 2025**: Updated to new Forillon logo with consistent sizing (h-16) across hero and footer for professional co-branding
+- **October 29, 2025**: Added visual badge counters on tabs showing number of features selected in each category
+- **October 29, 2025**: Cross-category selection summary displays "X Tech Platform • Y Research Services" when features from both selected
 - **October 28, 2025**: FINAL REDESIGN: Removed "Checkbox" branding and revamped UX flow - feature selection now comes BEFORE the lead form
 - **October 28, 2025**: Simplified page structure: Hero → Stats → Feature Selection → Lead Form → Product Spotlight → Footer
 - **October 28, 2025**: Fixed infinite re-render loop by simplifying state management with useState for feature selection
 - **October 28, 2025**: Enterprise indigo/gold color scheme with Playfair Display + Inter typography for premium visual design
-- **October 28, 2025**: Product type toggle (Tech Survey Platform vs Research Help Desk) before feature selection
 - **October 28, 2025**: Added enterprise trust signals: ISO 27001, GDPR, UAE-Hosted, 100% Data Sovereignty badges
 - **October 28, 2025**: Created stats section (50+ UAE enterprises, 99.99% uptime, zero data breaches) and social proof (Emirates NBD, Dubai Health Authority)
 - **October 28, 2025**: Updated database schema to include productType field for tracking Tech Survey Platform vs Research Help Desk selections
