@@ -34,7 +34,7 @@ import {
 import Navigation from "@/components/navigation";
 import { checkboxLeadSchema, type CheckboxLeadForm } from "@shared/schema";
 import mindsbourgLogo from "@assets/Mindsbourg-Logo_alt_1761671481551.jpg";
-import forillonLogo from "@assets/Logo_1761673001798.png";
+import forillonLogo from "@assets/Logo_1761707930660.png";
 
 const platformFeatures = [
   { id: "cloud-based", title: "Cloud based", icon: Cloud, benefit: "Deploy globally in minutes", category: "tech" },
@@ -240,12 +240,12 @@ export default function EnterpriseSurveyPlatform() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Co-branded Logos - Same Size */}
           <div className="flex items-center justify-center gap-8 mb-12 flex-wrap">
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-indigo-100">
-              <img src={forillonLogo} alt="Forillon Technologies" className="h-16 w-auto object-contain" />
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-indigo-100 w-64 h-24 flex items-center justify-center">
+              <img src={forillonLogo} alt="Forillon Technologies" className="max-h-16 max-w-full object-contain" />
             </div>
             <div className="text-4xl font-light text-gray-400">×</div>
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-indigo-100">
-              <img src={mindsbourgLogo} alt="Mindsbourg" className="h-16 w-auto object-contain" />
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-indigo-100 w-64 h-24 flex items-center justify-center">
+              <img src={mindsbourgLogo} alt="Mindsbourg" className="max-h-16 max-w-full object-contain" />
             </div>
           </div>
 
@@ -758,9 +758,13 @@ export default function EnterpriseSurveyPlatform() {
       <footer className="relative py-16 overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-900 to-violet-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex items-center justify-center gap-8 mb-8 flex-wrap">
-            <img src={forillonLogo} alt="Forillon Technologies" className="h-14 w-auto opacity-70 hover:opacity-100 transition-opacity object-contain" />
+            <div className="w-56 h-20 flex items-center justify-center">
+              <img src={forillonLogo} alt="Forillon Technologies" className="max-h-14 max-w-full opacity-70 hover:opacity-100 transition-opacity object-contain" />
+            </div>
             <div className="text-3xl font-light text-white/40">×</div>
-            <img src={mindsbourgLogo} alt="Mindsbourg" className="h-14 w-auto opacity-70 hover:opacity-100 transition-opacity object-contain" />
+            <div className="w-56 h-20 flex items-center justify-center">
+              <img src={mindsbourgLogo} alt="Mindsbourg" className="max-h-14 max-w-full opacity-70 hover:opacity-100 transition-opacity object-contain" />
+            </div>
           </div>
           
           <div className="text-center">
