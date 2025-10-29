@@ -34,46 +34,46 @@ import {
 import Navigation from "@/components/navigation";
 import { checkboxLeadSchema, type CheckboxLeadForm } from "@shared/schema";
 import mindsbourgLogo from "@assets/Mindsbourg-Logo_alt_1761671481551.jpg";
-import forillonLogo from "@assets/logo_nobackground_1761671485550.png";
+import forillonLogo from "@assets/Logo_1761673001798.png";
 
 const platformFeatures = [
-  { id: "cloud-based", title: "Cloud based", icon: Cloud, benefit: "Deploy globally in minutes" },
-  { id: "on-premise", title: "On Premise", icon: Server, benefit: "100% data sovereignty guaranteed" },
-  { id: "white-labelled", title: "White Labelled", icon: Tag, benefit: "Your brand, your platform" },
-  { id: "whatsapp-bot", title: "WhatsApp Bot", icon: MessageSquare, benefit: "Reach 2B users instantly" },
-  { id: "survey-gamification", title: "Survey Gamification", icon: Gamepad2, benefit: "3x higher completion rates" },
-  { id: "voice-response", title: "Voice response", icon: Mic, benefit: "Accessible to everyone" },
-  { id: "ai-sentiment", title: "AI Real-time Sentiment Analysis", icon: Brain, benefit: "40% faster insights" },
-  { id: "multilingual", title: "Multilingual", icon: Globe, benefit: "Support 100+ languages" }
+  { id: "cloud-based", title: "Cloud based", icon: Cloud, benefit: "Deploy globally in minutes", category: "tech" },
+  { id: "on-premise", title: "On Premise", icon: Server, benefit: "100% data sovereignty guaranteed", category: "tech" },
+  { id: "white-labelled", title: "White Labelled", icon: Tag, benefit: "Your brand, your platform", category: "tech" },
+  { id: "whatsapp-bot", title: "WhatsApp Bot", icon: MessageSquare, benefit: "Reach 2B users instantly", category: "tech" },
+  { id: "survey-gamification", title: "Survey Gamification", icon: Gamepad2, benefit: "3x higher completion rates", category: "tech" },
+  { id: "voice-response", title: "Voice response", icon: Mic, benefit: "Accessible to everyone", category: "tech" },
+  { id: "ai-sentiment", title: "AI Real-time Sentiment Analysis", icon: Brain, benefit: "40% faster insights", category: "tech" },
+  { id: "multilingual", title: "Multilingual", icon: Globe, benefit: "Support 100+ languages", category: "tech" }
 ];
 
 const researchFeatures = [
-  { id: "mr-problem", title: "MR Problem assessment – definition", icon: FileCheck },
-  { id: "rfp-prep", title: "RFP Preparation / Review", icon: PenTool },
-  { id: "questionnaire", title: "Instrument / Questionnaire Design", icon: FileCheck },
-  { id: "data-collection", title: "Data collection", icon: Database },
-  { id: "data-analysis", title: "Data Analysis support", icon: BarChart3 },
-  { id: "data-viz", title: "Data Visualization", icon: TrendingUp },
-  { id: "dashboard-creation", title: "Dashboard Creation for Existing Data", icon: BarChart3 },
-  { id: "integrate-multi-sources", title: "Integrating Data from Multiple Sources", icon: Database },
-  { id: "integrate-multi-types", title: "Integrating Multiple Data Types", icon: Database },
-  { id: "data-cleaning", title: "Data Cleaning & Data File Preparation", icon: Database },
-  { id: "statistical-testing", title: "Statistical testing - Advanced Statistical Modelling", icon: TrendingUp },
-  { id: "predictive-analytics", title: "Data Analytics - Predictive Analytics", icon: Brain },
-  { id: "report-prep", title: "Report Preparation Support", icon: FileCheck },
-  { id: "report-design", title: "Report Design", icon: PenTool },
-  { id: "presentation-design", title: "Presentation Design", icon: PenTool },
-  { id: "research-workshops", title: "Research Workshops", icon: FileCheck },
-  { id: "data-workshops", title: "Data Analysis Workshops", icon: BarChart3 },
-  { id: "dedicated-analyst", title: "Dedicated Data Analyst", icon: Brain },
-  { id: "micro-study", title: "Micro Study (Up to 5 Questions)", icon: FileCheck },
-  { id: "mini-study", title: "Mini Study (up to 10 Questions)", icon: FileCheck }
+  { id: "mr-problem", title: "MR Problem assessment – definition", icon: FileCheck, category: "research" },
+  { id: "rfp-prep", title: "RFP Preparation / Review", icon: PenTool, category: "research" },
+  { id: "questionnaire", title: "Instrument / Questionnaire Design", icon: FileCheck, category: "research" },
+  { id: "data-collection", title: "Data collection", icon: Database, category: "research" },
+  { id: "data-analysis", title: "Data Analysis support", icon: BarChart3, category: "research" },
+  { id: "data-viz", title: "Data Visualization", icon: TrendingUp, category: "research" },
+  { id: "dashboard-creation", title: "Dashboard Creation for Existing Data", icon: BarChart3, category: "research" },
+  { id: "integrate-multi-sources", title: "Integrating Data from Multiple Sources", icon: Database, category: "research" },
+  { id: "integrate-multi-types", title: "Integrating Multiple Data Types", icon: Database, category: "research" },
+  { id: "data-cleaning", title: "Data Cleaning & Data File Preparation", icon: Database, category: "research" },
+  { id: "statistical-testing", title: "Statistical testing - Advanced Statistical Modelling", icon: TrendingUp, category: "research" },
+  { id: "predictive-analytics", title: "Data Analytics - Predictive Analytics", icon: Brain, category: "research" },
+  { id: "report-prep", title: "Report Preparation Support", icon: FileCheck, category: "research" },
+  { id: "report-design", title: "Report Design", icon: PenTool, category: "research" },
+  { id: "presentation-design", title: "Presentation Design", icon: PenTool, category: "research" },
+  { id: "research-workshops", title: "Research Workshops", icon: FileCheck, category: "research" },
+  { id: "data-workshops", title: "Data Analysis Workshops", icon: BarChart3, category: "research" },
+  { id: "dedicated-analyst", title: "Dedicated Data Analyst", icon: Brain, category: "research" },
+  { id: "micro-study", title: "Micro Study (Up to 5 Questions)", icon: FileCheck, category: "research" },
+  { id: "mini-study", title: "Mini Study (up to 10 Questions)", icon: FileCheck, category: "research" }
 ];
 
 export default function EnterpriseSurveyPlatform() {
   const { toast } = useToast();
-  const [selectedProductType, setSelectedProductType] = useState<'tech' | 'research'>('tech');
   const [selectedFeatureIds, setSelectedFeatureIds] = useState<string[]>([]);
+  const [activeTab, setActiveTab] = useState<'tech' | 'research'>('tech');
 
   useEffect(() => {
     document.title = "Enterprise Survey Platform — White-Label Solutions | Forillon × Mindsbourg";
@@ -94,7 +94,7 @@ export default function EnterpriseSurveyPlatform() {
       company: "",
       email: "",
       phone: "",
-      productType: "tech-platform",
+      productType: "",
       features: [],
       consent: false,
     },
@@ -108,6 +108,22 @@ export default function EnterpriseSurveyPlatform() {
       .map(f => f!.title);
   };
 
+  // Detect product type based on selected features
+  const detectProductType = () => {
+    const allFeatures = [...platformFeatures, ...researchFeatures];
+    const selectedCategories = selectedFeatureIds
+      .map(id => allFeatures.find(f => f.id === id)?.category)
+      .filter(Boolean);
+    
+    const hasTech = selectedCategories.includes('tech');
+    const hasResearch = selectedCategories.includes('research');
+    
+    if (hasTech && hasResearch) return 'combined';
+    if (hasTech) return 'tech-platform';
+    if (hasResearch) return 'research-helpdesk';
+    return '';
+  };
+
   // Sync feature selection with form
   useEffect(() => {
     const selectedFeatureNames = getSelectedFeatures();
@@ -116,9 +132,9 @@ export default function EnterpriseSurveyPlatform() {
 
   // Sync product type with form
   useEffect(() => {
-    const productTypeValue = selectedProductType === 'tech' ? 'tech-platform' : 'research-helpdesk';
-    form.setValue('productType', productTypeValue, { shouldValidate: true });
-  }, [selectedProductType]);
+    const productType = detectProductType();
+    form.setValue('productType', productType, { shouldValidate: true });
+  }, [selectedFeatureIds]);
 
   const submitLead = useMutation({
     mutationFn: async (data: CheckboxLeadForm) => {
@@ -175,6 +191,14 @@ export default function EnterpriseSurveyPlatform() {
     );
   };
 
+  // Count features by category
+  const techCount = selectedFeatureIds.filter(id => 
+    platformFeatures.find(f => f.id === id)
+  ).length;
+  const researchCount = selectedFeatureIds.filter(id => 
+    researchFeatures.find(f => f.id === id)
+  ).length;
+
   return (
     <div className="min-h-screen bg-slate-50" style={{ fontFamily: "'Inter', sans-serif" }}>
       <Navigation />
@@ -214,14 +238,14 @@ export default function EnterpriseSurveyPlatform() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Co-branded Logos */}
+          {/* Co-branded Logos - Same Size */}
           <div className="flex items-center justify-center gap-8 mb-12 flex-wrap">
             <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-indigo-100">
-              <img src={forillonLogo} alt="Forillon Technologies" className="h-14 w-auto" />
+              <img src={forillonLogo} alt="Forillon Technologies" className="h-16 w-auto object-contain" />
             </div>
             <div className="text-4xl font-light text-gray-400">×</div>
             <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-indigo-100">
-              <img src={mindsbourgLogo} alt="Mindsbourg" className="h-14 w-auto" />
+              <img src={mindsbourgLogo} alt="Mindsbourg" className="h-16 w-auto object-contain" />
             </div>
           </div>
 
@@ -318,7 +342,7 @@ export default function EnterpriseSurveyPlatform() {
         </div>
       </section>
 
-      {/* Feature Selection Section - BEFORE Form */}
+      {/* Feature Selection Section - Tabbed Interface */}
       <section id="feature-selection" className="py-24 bg-gradient-to-br from-slate-50 to-indigo-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -329,96 +353,143 @@ export default function EnterpriseSurveyPlatform() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>
               Select Features You Need
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Choose the capabilities that matter most to your organization
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
+              Choose capabilities from both Tech Platform and Research Services
+            </p>
+            <p className="text-base text-indigo-600 font-medium">
+              Mix and match features from both categories to build your perfect solution
             </p>
           </div>
 
-          {/* Product Type Toggle */}
-          <div className="max-w-3xl mx-auto mb-12">
-            <div className="grid grid-cols-2 gap-4 bg-white p-2 rounded-2xl shadow-lg border border-indigo-100">
-              <button
-                onClick={() => {
-                  setSelectedProductType('tech');
-                  setSelectedFeatureIds([]);
-                }}
-                className={`py-4 px-6 rounded-xl font-bold text-base transition-all duration-300 ${
-                  selectedProductType === 'tech'
-                    ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-md'
-                    : 'text-gray-600 hover:bg-gray-50'
-                }`}
-                data-testid="toggle-tech-platform"
+          {/* Tabbed Feature Selection */}
+          <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as 'tech' | 'research')} className="max-w-6xl mx-auto">
+            <TabsList className="grid w-full grid-cols-2 mb-8 bg-white p-2 rounded-2xl shadow-lg border border-indigo-100 h-auto">
+              <TabsTrigger 
+                value="tech" 
+                className="py-4 px-6 text-base font-bold data-[state=active]:bg-gradient-to-r data-[state=active]:from-indigo-600 data-[state=active]:to-violet-600 data-[state=active]:text-white rounded-xl transition-all duration-300"
+                data-testid="tab-tech-platform"
               >
-                Tech Survey Platform
-              </button>
-              <button
-                onClick={() => {
-                  setSelectedProductType('research');
-                  setSelectedFeatureIds([]);
-                }}
-                className={`py-4 px-6 rounded-xl font-bold text-base transition-all duration-300 ${
-                  selectedProductType === 'research'
-                    ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-md'
-                    : 'text-gray-600 hover:bg-gray-50'
-                }`}
-                data-testid="toggle-research-helpdesk"
-              >
-                Research Help Desk
-              </button>
-            </div>
-          </div>
-
-          {/* Feature Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto mb-12">
-            {(selectedProductType === 'tech' ? platformFeatures : researchFeatures).map((feature) => {
-              const isSelected = selectedFeatureIds.includes(feature.id);
-              const Icon = feature.icon;
-              
-              return (
-                <div
-                  key={feature.id}
-                  onClick={() => toggleFeature(feature.id)}
-                  className={`group flex items-start gap-4 p-5 rounded-2xl border-2 transition-all duration-300 cursor-pointer ${
-                    isSelected 
-                      ? 'border-amber-400 bg-gradient-to-br from-amber-50 to-orange-50 shadow-lg scale-105' 
-                      : 'border-gray-200 bg-white hover:border-amber-300 hover:shadow-md'
-                  }`}
-                  data-testid={`feature-item-${feature.id}`}
-                >
-                  <div className="flex-shrink-0 mt-1">
-                    {isSelected ? (
-                      <CheckCircle2 className="w-6 h-6 text-amber-600" />
-                    ) : (
-                      <div className="w-6 h-6 border-2 border-gray-300 rounded-md" />
-                    )}
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-start gap-2 mb-1">
-                      <Icon className={`w-5 h-5 flex-shrink-0 mt-0.5 ${isSelected ? 'text-amber-600' : 'text-gray-400'}`} />
-                      <h3 className="text-sm font-semibold text-gray-800 leading-tight">
-                        {feature.title}
-                      </h3>
-                    </div>
-                    {(feature as typeof platformFeatures[0]).benefit && (
-                      <p className="text-xs text-gray-500 ml-7">
-                        {(feature as typeof platformFeatures[0]).benefit}
-                      </p>
-                    )}
-                  </div>
+                <div className="flex items-center gap-2">
+                  <Cloud className="w-5 h-5" />
+                  <span>Tech Survey Platform</span>
+                  {techCount > 0 && (
+                    <span className="ml-2 bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                      {techCount}
+                    </span>
+                  )}
                 </div>
-              );
-            })}
-          </div>
+              </TabsTrigger>
+              <TabsTrigger 
+                value="research" 
+                className="py-4 px-6 text-base font-bold data-[state=active]:bg-gradient-to-r data-[state=active]:from-indigo-600 data-[state=active]:to-violet-600 data-[state=active]:text-white rounded-xl transition-all duration-300"
+                data-testid="tab-research-helpdesk"
+              >
+                <div className="flex items-center gap-2">
+                  <BarChart3 className="w-5 h-5" />
+                  <span>Research Help Desk</span>
+                  {researchCount > 0 && (
+                    <span className="ml-2 bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                      {researchCount}
+                    </span>
+                  )}
+                </div>
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="tech" className="mt-0">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {platformFeatures.map((feature) => {
+                  const isSelected = selectedFeatureIds.includes(feature.id);
+                  const Icon = feature.icon;
+                  
+                  return (
+                    <div
+                      key={feature.id}
+                      onClick={() => toggleFeature(feature.id)}
+                      className={`group flex items-start gap-4 p-5 rounded-2xl border-2 transition-all duration-300 cursor-pointer ${
+                        isSelected 
+                          ? 'border-amber-400 bg-gradient-to-br from-amber-50 to-orange-50 shadow-lg scale-105' 
+                          : 'border-gray-200 bg-white hover:border-amber-300 hover:shadow-md'
+                      }`}
+                      data-testid={`feature-item-${feature.id}`}
+                    >
+                      <div className="flex-shrink-0 mt-1">
+                        {isSelected ? (
+                          <CheckCircle2 className="w-6 h-6 text-amber-600" />
+                        ) : (
+                          <div className="w-6 h-6 border-2 border-gray-300 rounded-md" />
+                        )}
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-start gap-2 mb-1">
+                          <Icon className={`w-5 h-5 flex-shrink-0 mt-0.5 ${isSelected ? 'text-amber-600' : 'text-gray-400'}`} />
+                          <h3 className="text-sm font-semibold text-gray-800 leading-tight">
+                            {feature.title}
+                          </h3>
+                        </div>
+                        <p className="text-xs text-gray-500 ml-7">
+                          {feature.benefit}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="research" className="mt-0">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {researchFeatures.map((feature) => {
+                  const isSelected = selectedFeatureIds.includes(feature.id);
+                  const Icon = feature.icon;
+                  
+                  return (
+                    <div
+                      key={feature.id}
+                      onClick={() => toggleFeature(feature.id)}
+                      className={`group flex items-start gap-4 p-5 rounded-2xl border-2 transition-all duration-300 cursor-pointer ${
+                        isSelected 
+                          ? 'border-amber-400 bg-gradient-to-br from-amber-50 to-orange-50 shadow-lg scale-105' 
+                          : 'border-gray-200 bg-white hover:border-amber-300 hover:shadow-md'
+                      }`}
+                      data-testid={`feature-item-${feature.id}`}
+                    >
+                      <div className="flex-shrink-0 mt-1">
+                        {isSelected ? (
+                          <CheckCircle2 className="w-6 h-6 text-amber-600" />
+                        ) : (
+                          <div className="w-6 h-6 border-2 border-gray-300 rounded-md" />
+                        )}
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-start gap-2 mb-1">
+                          <Icon className={`w-5 h-5 flex-shrink-0 mt-0.5 ${isSelected ? 'text-amber-600' : 'text-gray-400'}`} />
+                          <h3 className="text-sm font-semibold text-gray-800 leading-tight">
+                            {feature.title}
+                          </h3>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </TabsContent>
+          </Tabs>
 
           {/* Selected Features Summary */}
           {selectedFeatureIds.length > 0 && (
-            <div className="text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div className="text-center mt-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
               <div className="inline-block bg-gradient-to-r from-amber-100 to-orange-100 border-2 border-amber-200 rounded-2xl px-8 py-4 mb-8 shadow-lg">
-                <p className="text-gray-800 font-bold text-lg">
+                <p className="text-gray-800 font-bold text-lg mb-2">
                   <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
                     {selectedFeatureIds.length} feature{selectedFeatureIds.length !== 1 ? 's' : ''} selected
                   </span>
                 </p>
+                {techCount > 0 && researchCount > 0 && (
+                  <p className="text-sm text-gray-600">
+                    {techCount} Tech Platform • {researchCount} Research Services
+                  </p>
+                )}
               </div>
               <div>
                 <Button 
@@ -586,6 +657,14 @@ export default function EnterpriseSurveyPlatform() {
                           </span>
                         ))}
                       </div>
+                      {techCount > 0 && researchCount > 0 && (
+                        <div className="mt-4 pt-4 border-t border-amber-200">
+                          <p className="text-xs text-gray-600 flex items-center gap-2">
+                            <Zap className="w-4 h-4 text-indigo-600" />
+                            <span className="font-semibold">Combined Solution:</span> {techCount} Tech Platform + {researchCount} Research Services
+                          </p>
+                        </div>
+                      )}
                     </div>
                   )}
 
@@ -679,9 +758,9 @@ export default function EnterpriseSurveyPlatform() {
       <footer className="relative py-16 overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-900 to-violet-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex items-center justify-center gap-8 mb-8 flex-wrap">
-            <img src={forillonLogo} alt="Forillon Technologies" className="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity" />
+            <img src={forillonLogo} alt="Forillon Technologies" className="h-14 w-auto opacity-70 hover:opacity-100 transition-opacity object-contain" />
             <div className="text-3xl font-light text-white/40">×</div>
-            <img src={mindsbourgLogo} alt="Mindsbourg" className="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity" />
+            <img src={mindsbourgLogo} alt="Mindsbourg" className="h-14 w-auto opacity-70 hover:opacity-100 transition-opacity object-contain" />
           </div>
           
           <div className="text-center">
