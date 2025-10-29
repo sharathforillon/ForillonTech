@@ -8,13 +8,15 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 
 ## Recent Changes
 
-- **October 28, 2025**: MAJOR REDESIGN: Completely transformed Checkbox landing page with enterprise indigo/gold color scheme, Playfair Display + Inter typography, and premium visual design
-- **October 28, 2025**: Implemented comprehensive multi-step form (Basic Info → Product Selection → Feature Selection) with progress bar and product type capture
+- **October 28, 2025**: FINAL REDESIGN: Removed "Checkbox" branding and revamped UX flow - feature selection now comes BEFORE the lead form
+- **October 28, 2025**: Simplified page structure: Hero → Stats → Feature Selection → Lead Form → Product Spotlight → Footer
+- **October 28, 2025**: Fixed infinite re-render loop by simplifying state management with useState for feature selection
+- **October 28, 2025**: Enterprise indigo/gold color scheme with Playfair Display + Inter typography for premium visual design
+- **October 28, 2025**: Product type toggle (Tech Survey Platform vs Research Help Desk) before feature selection
 - **October 28, 2025**: Added enterprise trust signals: ISO 27001, GDPR, UAE-Hosted, 100% Data Sovereignty badges
 - **October 28, 2025**: Created stats section (50+ UAE enterprises, 99.99% uptime, zero data breaches) and social proof (Emirates NBD, Dubai Health Authority)
-- **October 28, 2025**: Built product spotlight section with dark gradient background and feature showcase with tabbed interface
 - **October 28, 2025**: Updated database schema to include productType field for tracking Tech Survey Platform vs Research Help Desk selections
-- **October 28, 2025**: NOTE: Feature selection in Step 3 has an infinite re-render loop issue that needs resolution before full deployment
+- **October 28, 2025**: Clean, intuitive UX: select features first, then fill form to request demo
 - **October 28, 2025**: Integrated Mindsbourg and Forillon actual logos throughout the page (hero section and footer)
 - **October 28, 2025**: Implemented modern UI elements: gradient backgrounds, glassmorphism effects, floating animated orbs, premium shadows, and smooth transitions
 - **October 28, 2025**: Enhanced typography with larger headings, gradient text effects, and improved spacing for premium marketing appeal

@@ -29,8 +29,7 @@ import {
   Database,
   ChevronRight,
   TrendingUp,
-  Lock,
-  Clock
+  Lock
 } from "lucide-react";
 import Navigation from "@/components/navigation";
 import { checkboxLeadSchema, type CheckboxLeadForm } from "@shared/schema";
@@ -71,15 +70,13 @@ const researchFeatures = [
   { id: "mini-study", title: "Mini Study (up to 10 Questions)", icon: FileCheck }
 ];
 
-const allFeatures = [...platformFeatures, ...researchFeatures];
-
-export default function CheckboxLandingPage() {
+export default function EnterpriseSurveyPlatform() {
   const { toast } = useToast();
-  const [formStep, setFormStep] = useState(1);
-  const [productType, setProductType] = useState<'tech' | 'research' | null>(null);
+  const [selectedProductType, setSelectedProductType] = useState<'tech' | 'research'>('tech');
+  const [selectedFeatureIds, setSelectedFeatureIds] = useState<string[]>([]);
 
   useEffect(() => {
-    document.title = "Checkbox Enterprise — White-Label Survey Platform | Forillon × Mindsbourg";
+    document.title = "Enterprise Survey Platform — White-Label Solutions | Forillon × Mindsbourg";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -97,28 +94,35 @@ export default function CheckboxLandingPage() {
       company: "",
       email: "",
       phone: "",
-      productType: "",
+      productType: "tech-platform",
       features: [],
       consent: false,
     },
   });
 
-  const toggleFeature = (featureId: string) => {
-    const feature = allFeatures.find(f => f.id === featureId);
-    if (!feature) return;
-    
-    const currentFeatures = form.getValues('features') || [];
-    const isSelected = currentFeatures.includes(feature.title);
-    
-    if (isSelected) {
-      form.setValue('features', currentFeatures.filter(f => f !== feature.title), { shouldValidate: false });
-    } else {
-      form.setValue('features', [...currentFeatures, feature.title], { shouldValidate: false });
-    }
+  const getSelectedFeatures = () => {
+    const allFeatures = [...platformFeatures, ...researchFeatures];
+    return selectedFeatureIds
+      .map(id => allFeatures.find(f => f.id === id))
+      .filter(Boolean)
+      .map(f => f!.title);
   };
+
+  // Sync feature selection with form
+  useEffect(() => {
+    const selectedFeatureNames = getSelectedFeatures();
+    form.setValue('features', selectedFeatureNames, { shouldValidate: true });
+  }, [selectedFeatureIds]);
+
+  // Sync product type with form
+  useEffect(() => {
+    const productTypeValue = selectedProductType === 'tech' ? 'tech-platform' : 'research-helpdesk';
+    form.setValue('productType', productTypeValue, { shouldValidate: true });
+  }, [selectedProductType]);
 
   const submitLead = useMutation({
     mutationFn: async (data: CheckboxLeadForm) => {
+      // Form data already has features and productType synced via useEffect
       const response = await fetch('/api/lead', {
         method: 'POST',
         body: JSON.stringify(data),
@@ -133,15 +137,16 @@ export default function CheckboxLandingPage() {
       
       return response.json();
     },
-    onSuccess: (data) => {
+    onSuccess: () => {
       toast({
         title: "Success!",
         description: "Our team will contact you within 24 hours.",
       });
       form.reset();
-      setSelectedFeatures([]);
-      setFormStep(1);
-      setProductType(null);
+      setSelectedFeatureIds([]);
+      
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     },
     onError: (error) => {
       console.error('Lead submission error:', error);
@@ -162,31 +167,12 @@ export default function CheckboxLandingPage() {
     formSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const nextStep = () => {
-    if (formStep === 1) {
-      const { name, company, email, phone } = form.getValues();
-      if (name && company && email && phone) {
-        setFormStep(2);
-      } else {
-        toast({
-          title: "Required Fields",
-          description: "Please fill in all required fields.",
-          variant: "destructive",
-        });
-      }
-    } else if (formStep === 2 && productType) {
-      setFormStep(3);
-    } else if (formStep === 2) {
-      toast({
-        title: "Product Selection",
-        description: "Please select a product type.",
-        variant: "destructive",
-      });
-    }
-  };
-
-  const prevStep = () => {
-    if (formStep > 1) setFormStep(formStep - 1);
+  const toggleFeature = (featureId: string) => {
+    setSelectedFeatureIds(prev => 
+      prev.includes(featureId) 
+        ? prev.filter(id => id !== featureId)
+        : [...prev, featureId]
+    );
   };
 
   return (
@@ -240,14 +226,9 @@ export default function CheckboxLandingPage() {
           </div>
 
           <div className="text-center max-w-5xl mx-auto">
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
-              <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 bg-clip-text text-transparent">
-                Checkbox
-              </span>
-            </h1>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-8">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>
               Enterprise Survey Platform
-            </h2>
+            </h1>
             
             <p className="text-xl md:text-2xl text-gray-700 mb-4 leading-relaxed">
               Control your data. Customize your brand. Deploy securely within UAE.
@@ -294,7 +275,7 @@ export default function CheckboxLandingPage() {
                 onClick={scrollToForm}
                 data-testid="button-claim-study"
               >
-                Claim Your Free Micro-Study
+                Get Your Free Demo
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button 
@@ -337,427 +318,305 @@ export default function CheckboxLandingPage() {
         </div>
       </section>
 
-      {/* Multi-Step Form */}
-      <section id="inquiry-form" className="py-24 bg-gradient-to-br from-slate-50 to-indigo-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-white px-5 py-2 rounded-full shadow-md border border-indigo-100 mb-6">
-              <Clock className="w-4 h-4 text-indigo-600" />
-              <span className="text-sm font-semibold text-indigo-700">Start Your Insights Journey</span>
+      {/* Feature Selection Section - BEFORE Form */}
+      <section id="feature-selection" className="py-24 bg-gradient-to-br from-slate-50 to-indigo-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-100 to-violet-100 px-5 py-2 rounded-full mb-6">
+              <Zap className="w-4 h-4 text-indigo-600" />
+              <span className="text-sm font-semibold text-indigo-700">Choose Your Solution</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Get Started Today
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Select Features You Need
             </h2>
-            <p className="text-lg text-gray-600">
-              Team contacting you in &lt;24h • Your data never leaves UAE servers
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Choose the capabilities that matter most to your organization
             </p>
           </div>
 
-          {/* Progress Bar */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-2">
-              {[1, 2, 3].map((step) => (
-                <div key={step} className="flex items-center">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all duration-300 ${
-                    formStep >= step 
-                      ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg' 
-                      : 'bg-gray-200 text-gray-500'
-                  }`}>
-                    {formStep > step ? <CheckCircle2 className="w-5 h-5" /> : step}
-                  </div>
-                  {step < 3 && (
-                    <div className={`h-1 w-20 md:w-32 transition-all duration-300 ${
-                      formStep > step ? 'bg-gradient-to-r from-indigo-600 to-violet-600' : 'bg-gray-200'
-                    }`} />
-                  )}
-                </div>
-              ))}
-            </div>
-            <div className="flex justify-between text-xs text-gray-600 font-medium">
-              <span>Your Details</span>
-              <span>Product Type</span>
-              <span>Features</span>
+          {/* Product Type Toggle */}
+          <div className="max-w-3xl mx-auto mb-12">
+            <div className="grid grid-cols-2 gap-4 bg-white p-2 rounded-2xl shadow-lg border border-indigo-100">
+              <button
+                onClick={() => {
+                  setSelectedProductType('tech');
+                  setSelectedFeatureIds([]);
+                }}
+                className={`py-4 px-6 rounded-xl font-bold text-base transition-all duration-300 ${
+                  selectedProductType === 'tech'
+                    ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-md'
+                    : 'text-gray-600 hover:bg-gray-50'
+                }`}
+                data-testid="toggle-tech-platform"
+              >
+                Tech Survey Platform
+              </button>
+              <button
+                onClick={() => {
+                  setSelectedProductType('research');
+                  setSelectedFeatureIds([]);
+                }}
+                className={`py-4 px-6 rounded-xl font-bold text-base transition-all duration-300 ${
+                  selectedProductType === 'research'
+                    ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-md'
+                    : 'text-gray-600 hover:bg-gray-50'
+                }`}
+                data-testid="toggle-research-helpdesk"
+              >
+                Research Help Desk
+              </button>
             </div>
           </div>
 
-          <Card className="shadow-2xl border-0 overflow-hidden rounded-3xl">
-            <div className="bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 text-white p-8 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-              <div className="relative z-10">
-                <h3 className="text-2xl font-bold text-center">
-                  {formStep === 1 && "Tell us about yourself"}
-                  {formStep === 2 && "Select your product"}
-                  {formStep === 3 && "Choose your features"}
-                </h3>
+          {/* Feature Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto mb-12">
+            {(selectedProductType === 'tech' ? platformFeatures : researchFeatures).map((feature) => {
+              const isSelected = selectedFeatureIds.includes(feature.id);
+              const Icon = feature.icon;
+              
+              return (
+                <div
+                  key={feature.id}
+                  onClick={() => toggleFeature(feature.id)}
+                  className={`group flex items-start gap-4 p-5 rounded-2xl border-2 transition-all duration-300 cursor-pointer ${
+                    isSelected 
+                      ? 'border-amber-400 bg-gradient-to-br from-amber-50 to-orange-50 shadow-lg scale-105' 
+                      : 'border-gray-200 bg-white hover:border-amber-300 hover:shadow-md'
+                  }`}
+                  data-testid={`feature-item-${feature.id}`}
+                >
+                  <div className="flex-shrink-0 mt-1">
+                    {isSelected ? (
+                      <CheckCircle2 className="w-6 h-6 text-amber-600" />
+                    ) : (
+                      <div className="w-6 h-6 border-2 border-gray-300 rounded-md" />
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-start gap-2 mb-1">
+                      <Icon className={`w-5 h-5 flex-shrink-0 mt-0.5 ${isSelected ? 'text-amber-600' : 'text-gray-400'}`} />
+                      <h3 className="text-sm font-semibold text-gray-800 leading-tight">
+                        {feature.title}
+                      </h3>
+                    </div>
+                    {(feature as typeof platformFeatures[0]).benefit && (
+                      <p className="text-xs text-gray-500 ml-7">
+                        {(feature as typeof platformFeatures[0]).benefit}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Selected Features Summary */}
+          {selectedFeatureIds.length > 0 && (
+            <div className="text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <div className="inline-block bg-gradient-to-r from-amber-100 to-orange-100 border-2 border-amber-200 rounded-2xl px-8 py-4 mb-8 shadow-lg">
+                <p className="text-gray-800 font-bold text-lg">
+                  <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
+                    {selectedFeatureIds.length} feature{selectedFeatureIds.length !== 1 ? 's' : ''} selected
+                  </span>
+                </p>
+              </div>
+              <div>
+                <Button 
+                  onClick={scrollToForm}
+                  className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold px-10 py-6 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 rounded-2xl"
+                  data-testid="button-proceed-to-form"
+                >
+                  Continue to Request Demo
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
               </div>
             </div>
+          )}
+        </div>
+      </section>
 
-            <CardContent className="p-8 md:p-10">
+      {/* Lead Capture Form */}
+      <section id="inquiry-form" className="py-24 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-purple-100 px-5 py-2 rounded-full mb-6">
+              <CheckCircle2 className="w-4 h-4 text-blue-600" />
+              <span className="text-sm font-semibold text-blue-700">Almost There</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Request Your Demo
+            </h2>
+            <p className="text-lg text-gray-600">
+              Fill in your details and our team will reach out within 24 hours
+            </p>
+          </div>
+
+          <Card className="shadow-2xl border-0 overflow-hidden rounded-3xl">
+            <div className="bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 text-white p-10 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full blur-2xl" />
+              <div className="relative z-10">
+                <h3 className="text-2xl font-bold text-center mb-2">Let's Connect</h3>
+                <p className="text-indigo-100 text-center text-sm">
+                  {selectedFeatureIds.length > 0 
+                    ? `You've selected ${selectedFeatureIds.length} feature${selectedFeatureIds.length !== 1 ? 's' : ''} for your custom demo`
+                    : 'Complete the form below to start your journey'}
+                </p>
+              </div>
+            </div>
+            
+            <CardContent className="p-10">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  {/* Step 1: Basic Info */}
-                  {formStep === 1 && (
-                    <div className="space-y-6 animate-in fade-in slide-in-from-right duration-500">
-                      <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-gray-700 font-semibold text-base">Full Name *</FormLabel>
-                            <FormControl>
-                              <Input 
-                                {...field} 
-                                placeholder="e.g., Ahmed Al Maktoum"
-                                className="border-2 border-indigo-100 focus:border-indigo-400 rounded-xl py-6 text-base transition-all duration-300 focus:scale-[1.02]"
-                                data-testid="input-name"
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-gray-700 font-semibold text-base">Full Name *</FormLabel>
+                        <FormControl>
+                          <Input 
+                            {...field} 
+                            placeholder="e.g., Ahmed Al Maktoum"
+                            className="border-2 border-indigo-100 focus:border-indigo-400 rounded-xl py-6 text-base transition-all duration-300"
+                            data-testid="input-name"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                      <FormField
-                        control={form.control}
-                        name="company"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-gray-700 font-semibold text-base">Company Name *</FormLabel>
-                            <FormControl>
-                              <Input 
-                                {...field} 
-                                placeholder="e.g., Dubai Health Authority"
-                                className="border-2 border-indigo-100 focus:border-indigo-400 rounded-xl py-6 text-base transition-all duration-300 focus:scale-[1.02]"
-                                data-testid="input-company"
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                  <FormField
+                    control={form.control}
+                    name="company"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-gray-700 font-semibold text-base">Company Name *</FormLabel>
+                        <FormControl>
+                          <Input 
+                            {...field} 
+                            placeholder="e.g., Dubai Health Authority"
+                            className="border-2 border-indigo-100 focus:border-indigo-400 rounded-xl py-6 text-base transition-all duration-300"
+                            data-testid="input-company"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-gray-700 font-semibold text-base">Work Email *</FormLabel>
-                            <FormControl>
-                              <Input 
-                                {...field} 
-                                type="email"
-                                placeholder="e.g., ahmed@company.ae"
-                                className="border-2 border-indigo-100 focus:border-indigo-400 rounded-xl py-6 text-base transition-all duration-300 focus:scale-[1.02]"
-                                data-testid="input-email"
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-gray-700 font-semibold text-base">Work Email *</FormLabel>
+                        <FormControl>
+                          <Input 
+                            {...field} 
+                            type="email"
+                            placeholder="e.g., ahmed@company.ae"
+                            className="border-2 border-indigo-100 focus:border-indigo-400 rounded-xl py-6 text-base transition-all duration-300"
+                            data-testid="input-email"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                      <FormField
-                        control={form.control}
-                        name="phone"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-gray-700 font-semibold text-base">Phone Number *</FormLabel>
-                            <FormControl>
-                              <Input 
-                                {...field} 
-                                placeholder="e.g., +971 50 123 4567"
-                                className="border-2 border-indigo-100 focus:border-indigo-400 rounded-xl py-6 text-base transition-all duration-300 focus:scale-[1.02]"
-                                data-testid="input-phone"
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                  <FormField
+                    control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-gray-700 font-semibold text-base">Phone Number *</FormLabel>
+                        <FormControl>
+                          <Input 
+                            {...field} 
+                            placeholder="e.g., +971 50 123 4567"
+                            className="border-2 border-indigo-100 focus:border-indigo-400 rounded-xl py-6 text-base transition-all duration-300"
+                            data-testid="input-phone"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                      <Button 
-                        type="button"
-                        onClick={nextStep}
-                        className="w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold text-lg py-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 rounded-2xl"
-                        data-testid="button-next-step-1"
-                      >
-                        Continue
-                        <ChevronRight className="ml-2 h-5 w-5" />
-                      </Button>
-                    </div>
-                  )}
-
-                  {/* Step 2: Product Selection */}
-                  {formStep === 2 && (
-                    <div className="space-y-6 animate-in fade-in slide-in-from-right duration-500">
-                      <div className="text-center mb-6">
-                        <p className="text-gray-600">Select the product that best fits your needs</p>
-                      </div>
-
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div 
-                          onClick={() => {
-                            setProductType('tech');
-                            form.setValue('productType', 'tech-platform', { shouldValidate: true });
-                          }}
-                          className={`group cursor-pointer p-8 rounded-2xl border-3 transition-all duration-300 hover:scale-105 ${
-                            productType === 'tech' 
-                              ? 'border-indigo-500 bg-gradient-to-br from-indigo-50 to-violet-50 shadow-xl' 
-                              : 'border-gray-200 bg-white hover:border-indigo-300 shadow-md hover:shadow-lg'
-                          }`}
-                          data-testid="product-tech-platform"
-                        >
-                          <div className="flex items-center justify-between mb-4">
-                            <Database className={`w-12 h-12 ${productType === 'tech' ? 'text-indigo-600' : 'text-gray-400'}`} />
-                            {productType === 'tech' && <CheckCircle2 className="w-8 h-8 text-indigo-600" />}
-                          </div>
-                          <h3 className="text-2xl font-bold text-gray-900 mb-2">Tech Survey Platform</h3>
-                          <p className="text-gray-600 text-sm">Cloud-based and on-premise survey solutions with advanced features</p>
-                        </div>
-
-                        <div 
-                          onClick={() => {
-                            setProductType('research');
-                            form.setValue('productType', 'research-helpdesk', { shouldValidate: true });
-                          }}
-                          className={`group cursor-pointer p-8 rounded-2xl border-3 transition-all duration-300 hover:scale-105 ${
-                            productType === 'research' 
-                              ? 'border-amber-500 bg-gradient-to-br from-amber-50 to-orange-50 shadow-xl' 
-                              : 'border-gray-200 bg-white hover:border-amber-300 shadow-md hover:shadow-lg'
-                          }`}
-                          data-testid="product-research-helpdesk"
-                        >
-                          <div className="flex items-center justify-between mb-4">
-                            <Brain className={`w-12 h-12 ${productType === 'research' ? 'text-amber-600' : 'text-gray-400'}`} />
-                            {productType === 'research' && <CheckCircle2 className="w-8 h-8 text-amber-600" />}
-                          </div>
-                          <h3 className="text-2xl font-bold text-gray-900 mb-2">Research Help Desk</h3>
-                          <p className="text-gray-600 text-sm">Comprehensive research support and data analysis services</p>
-                        </div>
-                      </div>
-
-                      <div className="flex gap-4">
-                        <Button 
-                          type="button"
-                          onClick={prevStep}
-                          variant="outline"
-                          className="flex-1 border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-6 rounded-2xl"
-                          data-testid="button-prev-step-2"
-                        >
-                          Back
-                        </Button>
-                        <Button 
-                          type="button"
-                          onClick={nextStep}
-                          disabled={!productType}
-                          className="flex-1 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold py-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed"
-                          data-testid="button-next-step-2"
-                        >
-                          Continue
-                          <ChevronRight className="ml-2 h-5 w-5" />
-                        </Button>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Step 3: Feature Selection */}
-                  {formStep === 3 && (
-                    <div className="space-y-6 animate-in fade-in slide-in-from-right duration-500">
-                      <div className="text-center mb-6">
-                        <p className="text-gray-600">Select up to 6 features for your custom demo</p>
-                      </div>
-
-                      <div className="grid md:grid-cols-2 gap-4 max-h-96 overflow-y-auto p-2">
-                        {(productType === 'tech' ? platformFeatures : researchFeatures).map((feature) => {
-                          const isSelected = selectedFeatures.includes(feature.id);
-                          const Icon = feature.icon;
-                          
-                          return (
-                            <div
-                              key={feature.id}
-                              className={`group flex items-start gap-4 p-5 rounded-2xl border-2 transition-all duration-300 cursor-pointer ${
-                                isSelected 
-                                  ? 'border-amber-400 bg-gradient-to-br from-amber-50 to-orange-50 shadow-lg scale-105' 
-                                  : 'border-gray-200 bg-white hover:border-amber-300 hover:shadow-md'
-                              } ${selectedFeatures.length >= 6 && !isSelected ? 'opacity-50 cursor-not-allowed' : ''}`}
-                              onClick={() => {
-                                if (selectedFeatures.length < 6 || isSelected) {
-                                  toggleFeature(feature.id);
-                                }
-                              }}
-                              data-testid={`feature-item-${feature.id}`}
-                            >
-                              <Checkbox
-                                checked={isSelected}
-                                onCheckedChange={() => {
-                                  if (selectedFeatures.length < 6 || isSelected) {
-                                    toggleFeature(feature.id);
-                                  }
-                                }}
-                                disabled={selectedFeatures.length >= 6 && !isSelected}
-                                className={`${isSelected ? "border-amber-500 bg-amber-500" : ""} flex-shrink-0 mt-1`}
-                                data-testid={`checkbox-${feature.id}`}
-                              />
-                              <div className="flex-1">
-                                <div className="flex items-start gap-2 mb-1">
-                                  <Icon className={`w-5 h-5 flex-shrink-0 mt-0.5 ${isSelected ? 'text-amber-600' : 'text-gray-400'}`} />
-                                  <label className="text-sm font-semibold text-gray-800 cursor-pointer leading-tight">
-                                    {feature.title}
-                                  </label>
-                                </div>
-                                {(feature as typeof platformFeatures[0]).benefit && (
-                                  <p className="text-xs text-gray-500 ml-7">
-                                    {(feature as typeof platformFeatures[0]).benefit}
-                                  </p>
-                                )}
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-
-                      {selectedFeatures.length >= 6 && (
-                        <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-4 text-center">
-                          <p className="text-sm font-medium text-amber-800">
-                            Maximum 6 features selected. Deselect to choose different features.
+                  <FormField
+                    control={form.control}
+                    name="consent"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-row items-start space-x-4 space-y-0 rounded-2xl border-2 border-indigo-100 p-5 bg-gradient-to-br from-indigo-50/50 to-violet-50/50">
+                        <FormControl>
+                          <Checkbox
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                            className="mt-1 border-indigo-300"
+                            data-testid="checkbox-consent"
+                          />
+                        </FormControl>
+                        <div className="space-y-1 leading-none">
+                          <FormLabel className="text-sm font-medium text-gray-700 cursor-pointer">
+                            I agree to be contacted by Forillon Technologies *
+                          </FormLabel>
+                          <p className="text-xs text-gray-500">
+                            We respect your privacy and will only contact you regarding our enterprise solutions.
                           </p>
                         </div>
-                      )}
+                      </FormItem>
+                    )}
+                  />
 
-                      <FormField
-                        control={form.control}
-                        name="consent"
-                        render={({ field }) => (
-                          <FormItem className="flex flex-row items-start space-x-4 space-y-0 rounded-2xl border-2 border-indigo-100 p-5 bg-gradient-to-br from-indigo-50/50 to-violet-50/50">
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value}
-                                onCheckedChange={field.onChange}
-                                className="mt-1 border-indigo-300"
-                                data-testid="checkbox-consent"
-                              />
-                            </FormControl>
-                            <div className="space-y-1 leading-none">
-                              <FormLabel className="text-sm font-medium text-gray-700 cursor-pointer">
-                                I agree to be contacted by Forillon Technologies *
-                              </FormLabel>
-                              <p className="text-xs text-gray-500">
-                                We respect your privacy and will only contact you regarding Checkbox.
-                              </p>
-                            </div>
-                          </FormItem>
-                        )}
-                      />
-
-                      <div className="flex gap-4">
-                        <Button 
-                          type="button"
-                          onClick={prevStep}
-                          variant="outline"
-                          className="flex-1 border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-6 rounded-2xl"
-                          data-testid="button-prev-step-3"
-                        >
-                          Back
-                        </Button>
-                        <Button 
-                          type="submit" 
-                          disabled={submitLead.isPending || selectedFeatures.length === 0}
-                          className="flex-1 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-lg py-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 rounded-2xl disabled:opacity-50"
-                          data-testid="button-submit"
-                        >
-                          {submitLead.isPending ? (
-                            <>
-                              <Loader2 className="mr-2 h-6 w-6 animate-spin" />
-                              Submitting...
-                            </>
-                          ) : (
-                            <>
-                              Submit Enquiry
-                              <ArrowRight className="ml-2 h-5 w-5" />
-                            </>
-                          )}
-                        </Button>
+                  {selectedFeatureIds.length > 0 && (
+                    <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200 rounded-2xl p-6">
+                      <p className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-amber-600" />
+                        Your Selected Features ({selectedFeatureIds.length}):
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {getSelectedFeatures().map((title, index) => (
+                          <span 
+                            key={index}
+                            className="inline-flex items-center bg-white border-2 border-amber-300 text-amber-700 text-xs font-medium px-4 py-2 rounded-full shadow-sm"
+                          >
+                            {title}
+                          </span>
+                        ))}
                       </div>
                     </div>
+                  )}
+
+                  <Button 
+                    type="submit" 
+                    disabled={submitLead.isPending || selectedFeatureIds.length === 0}
+                    className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-lg py-7 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 rounded-2xl disabled:opacity-50"
+                    data-testid="button-submit"
+                  >
+                    {submitLead.isPending ? (
+                      <>
+                        <Loader2 className="mr-2 h-6 w-6 animate-spin" />
+                        Submitting...
+                      </>
+                    ) : (
+                      <>
+                        Request Demo
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </>
+                    )}
+                  </Button>
+
+                  {selectedFeatureIds.length === 0 && (
+                    <p className="text-center text-sm text-gray-500">
+                      Please select at least one feature above to continue
+                    </p>
                   )}
                 </form>
               </Form>
             </CardContent>
           </Card>
-        </div>
-      </section>
-
-      {/* Feature Showcase - Tabbed */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-100 to-violet-100 px-5 py-2 rounded-full mb-6">
-              <Zap className="w-4 h-4 text-indigo-600" />
-              <span className="text-sm font-semibold text-indigo-700">Powerful Capabilities</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Everything You Need
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Choose from our comprehensive suite of features to build your perfect solution
-            </p>
-          </div>
-
-          <Tabs defaultValue="platform" className="w-full">
-            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-2 mb-12 bg-slate-100 h-auto p-2 rounded-2xl shadow-md">
-              <TabsTrigger 
-                value="platform" 
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-indigo-600 data-[state=active]:to-violet-600 data-[state=active]:text-white font-bold py-4 text-base rounded-xl transition-all duration-300"
-              >
-                Tech Survey Platform
-              </TabsTrigger>
-              <TabsTrigger 
-                value="research" 
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-indigo-600 data-[state=active]:to-violet-600 data-[state=active]:text-white font-bold py-4 text-base rounded-xl transition-all duration-300"
-              >
-                Research Help Desk
-              </TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="platform" className="mt-8">
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {platformFeatures.map((feature) => {
-                  const Icon = feature.icon;
-                  return (
-                    <div key={feature.id} className="group bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-indigo-300 hover:shadow-xl transition-all duration-300 hover:scale-105">
-                      <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                        <Icon className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
-                      <p className="text-sm text-gray-600 mb-4">{feature.benefit}</p>
-                      <button className="text-indigo-600 hover:text-indigo-700 font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all duration-300">
-                        Learn more <ChevronRight className="w-4 h-4" />
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
-            </TabsContent>
-
-            <TabsContent value="research" className="mt-8">
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {researchFeatures.map((feature) => {
-                  const Icon = feature.icon;
-                  return (
-                    <div key={feature.id} className="group bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-amber-300 hover:shadow-xl transition-all duration-300 hover:scale-105">
-                      <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                        <Icon className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="text-base font-bold text-gray-900 mb-2">{feature.title}</h3>
-                      <button className="text-amber-600 hover:text-amber-700 font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all duration-300">
-                        Learn more <ChevronRight className="w-4 h-4" />
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
-            </TabsContent>
-          </Tabs>
         </div>
       </section>
 
@@ -771,9 +630,6 @@ export default function CheckboxLandingPage() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-            Checkbox
-          </h1>
           <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white/90">
             Enterprise Survey Platform
           </h2>
@@ -797,9 +653,9 @@ export default function CheckboxLandingPage() {
             size="lg"
             onClick={scrollToForm}
             className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-xl px-12 py-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 rounded-2xl"
-            data-testid="button-deploy-checkbox"
+            data-testid="button-deploy"
           >
-            Deploy Checkbox Today
+            Get Started Today
             <ArrowRight className="ml-2 h-6 w-6" />
           </Button>
         </div>
