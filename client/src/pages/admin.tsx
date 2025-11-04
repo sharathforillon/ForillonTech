@@ -10,8 +10,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ContactRecord, PartnershipRecord } from "@shared/schema";
-import { Download, Users, MessageSquare, LogOut, Eye, EyeOff, ChevronUp, ChevronDown, Calendar, Filter } from "lucide-react";
+import { ContactRecord, PartnershipRecord, CheckboxLead } from "@shared/schema";
+import { Download, Users, MessageSquare, LogOut, Eye, EyeOff, ChevronUp, ChevronDown, Calendar, Filter, Clipboard } from "lucide-react";
 import { format, isWithinInterval, parseISO } from "date-fns";
 
 function LoginForm() {
@@ -103,8 +103,10 @@ function AdminDashboard() {
   const [endDate, setEndDate] = useState('');
   const [contactSort, setContactSort] = useState({ field: 'createdAt', direction: 'desc' as 'asc' | 'desc' });
   const [partnershipSort, setPartnershipSort] = useState({ field: 'createdAt', direction: 'desc' as 'asc' | 'desc' });
+  const [checkboxLeadSort, setCheckboxLeadSort] = useState({ field: 'createdAt', direction: 'desc' as 'asc' | 'desc' });
   const [contactPage, setContactPage] = useState(1);
   const [partnershipPage, setPartnershipPage] = useState(1);
+  const [checkboxLeadPage, setCheckboxLeadPage] = useState(1);
   const recordsPerPage = 10;
 
   const { data: contacts = [], isLoading: contactsLoading } = useQuery<ContactRecord[]>({
@@ -113,6 +115,10 @@ function AdminDashboard() {
 
   const { data: partnerships = [], isLoading: partnershipsLoading } = useQuery<PartnershipRecord[]>({
     queryKey: ["/api/admin/partnerships"],
+  });
+
+  const { data: checkboxLeads = [], isLoading: checkboxLeadsLoading } = useQuery<CheckboxLead[]>({
+    queryKey: ["/api/admin/checkbox-leads"],
   });
 
   // Filter and sort functions
@@ -184,23 +190,34 @@ function AdminDashboard() {
   const paginatedPartnerships = paginateData(sortedPartnerships, partnershipPage);
   const totalPartnershipPages = Math.ceil(sortedPartnerships.length / recordsPerPage);
 
-  const handleSort = (field: string, type: 'contacts' | 'partnerships') => {
+  const filteredCheckboxLeads = filterByDate(checkboxLeads);
+  const sortedCheckboxLeads = sortData(filteredCheckboxLeads, checkboxLeadSort);
+  const paginatedCheckboxLeads = paginateData(sortedCheckboxLeads, checkboxLeadPage);
+  const totalCheckboxLeadPages = Math.ceil(sortedCheckboxLeads.length / recordsPerPage);
+
+  const handleSort = (field: string, type: 'contacts' | 'partnerships' | 'checkbox-leads') => {
     if (type === 'contacts') {
       setContactSort(prev => ({
         field,
         direction: prev.field === field && prev.direction === 'desc' ? 'asc' : 'desc'
       }));
       setContactPage(1);
-    } else {
+    } else if (type === 'partnerships') {
       setPartnershipSort(prev => ({
         field,
         direction: prev.field === field && prev.direction === 'desc' ? 'asc' : 'desc'
       }));
       setPartnershipPage(1);
+    } else {
+      setCheckboxLeadSort(prev => ({
+        field,
+        direction: prev.field === field && prev.direction === 'desc' ? 'asc' : 'desc'
+      }));
+      setCheckboxLeadPage(1);
     }
   };
 
-  const downloadCSV = async (type: 'contacts' | 'partnerships') => {
+  const downloadCSV = async (type: 'contacts' | 'partnerships' | 'checkbox-leads') => {
     try {
       const response = await fetch(`/api/admin/export/${type}`, {
         credentials: 'include'
@@ -259,7 +276,7 @@ function AdminDashboard() {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Contacts</CardTitle>
@@ -278,6 +295,16 @@ function AdminDashboard() {
             <CardContent>
               <div className="text-2xl font-bold">{partnerships.length}</div>
               <p className="text-xs text-muted-foreground">Partnership inquiries</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Demo Requests</CardTitle>
+              <Clipboard className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{checkboxLeads.length}</div>
+              <p className="text-xs text-muted-foreground">Checkbox platform leads</p>
             </CardContent>
           </Card>
         </div>
@@ -336,6 +363,7 @@ function AdminDashboard() {
               <div className="flex items-center gap-4 text-sm text-gray-600">
                 <span>Contacts: {sortedContacts.length} records</span>
                 <span>Partnerships: {sortedPartnerships.length} records</span>
+                <span>Demo Requests: {sortedCheckboxLeads.length} records</span>
               </div>
             </div>
           </CardContent>
@@ -343,12 +371,15 @@ function AdminDashboard() {
 
         {/* Data Tables */}
         <Tabs defaultValue="contacts" className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
+          <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="contacts">
               Contact Records ({sortedContacts.length})
             </TabsTrigger>
             <TabsTrigger value="partnerships">
               Partnership Records ({sortedPartnerships.length})
+            </TabsTrigger>
+            <TabsTrigger value="demo-requests">
+              Demo Requests ({sortedCheckboxLeads.length})
             </TabsTrigger>
           </TabsList>
           
@@ -642,6 +673,180 @@ function AdminDashboard() {
                             size="sm"
                             onClick={() => setPartnershipPage(prev => Math.min(prev + 1, totalPartnershipPages))}
                             disabled={partnershipPage === totalPartnershipPages}
+                          >
+                            Next
+                          </Button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="demo-requests">
+            <Card>
+              <CardHeader>
+                <div className="flex justify-between items-center">
+                  <CardTitle>Checkbox Platform Demo Requests</CardTitle>
+                  <Button onClick={() => downloadCSV('checkbox-leads')}>
+                    <Download className="mr-2 h-4 w-4" />
+                    Export CSV
+                  </Button>
+                </div>
+              </CardHeader>
+              <CardContent>
+                {checkboxLeadsLoading ? (
+                  <div className="text-center py-4">Loading demo requests...</div>
+                ) : sortedCheckboxLeads.length === 0 ? (
+                  <div className="text-center py-4 text-gray-500">No demo requests found</div>
+                ) : (
+                  <div>
+                    <div className="overflow-x-auto">
+                      <Table>
+                        <TableHeader>
+                          <TableRow>
+                            <TableHead>
+                              <Button 
+                                variant="ghost" 
+                                onClick={() => handleSort('id', 'checkbox-leads')}
+                                className="h-auto p-0 font-semibold"
+                              >
+                                ID
+                                {checkboxLeadSort.field === 'id' && (
+                                  checkboxLeadSort.direction === 'desc' ? 
+                                    <ChevronDown className="ml-1 h-4 w-4" /> : 
+                                    <ChevronUp className="ml-1 h-4 w-4" />
+                                )}
+                              </Button>
+                            </TableHead>
+                            <TableHead>
+                              <Button 
+                                variant="ghost" 
+                                onClick={() => handleSort('name', 'checkbox-leads')}
+                                className="h-auto p-0 font-semibold"
+                              >
+                                Name
+                                {checkboxLeadSort.field === 'name' && (
+                                  checkboxLeadSort.direction === 'desc' ? 
+                                    <ChevronDown className="ml-1 h-4 w-4" /> : 
+                                    <ChevronUp className="ml-1 h-4 w-4" />
+                                )}
+                              </Button>
+                            </TableHead>
+                            <TableHead>
+                              <Button 
+                                variant="ghost" 
+                                onClick={() => handleSort('company', 'checkbox-leads')}
+                                className="h-auto p-0 font-semibold"
+                              >
+                                Company
+                                {checkboxLeadSort.field === 'company' && (
+                                  checkboxLeadSort.direction === 'desc' ? 
+                                    <ChevronDown className="ml-1 h-4 w-4" /> : 
+                                    <ChevronUp className="ml-1 h-4 w-4" />
+                                )}
+                              </Button>
+                            </TableHead>
+                            <TableHead>
+                              <Button 
+                                variant="ghost" 
+                                onClick={() => handleSort('email', 'checkbox-leads')}
+                                className="h-auto p-0 font-semibold"
+                              >
+                                Email
+                                {checkboxLeadSort.field === 'email' && (
+                                  checkboxLeadSort.direction === 'desc' ? 
+                                    <ChevronDown className="ml-1 h-4 w-4" /> : 
+                                    <ChevronUp className="ml-1 h-4 w-4" />
+                                )}
+                              </Button>
+                            </TableHead>
+                            <TableHead>Phone</TableHead>
+                            <TableHead>Product Type</TableHead>
+                            <TableHead>Features</TableHead>
+                            <TableHead>
+                              <Button 
+                                variant="ghost" 
+                                onClick={() => handleSort('createdAt', 'checkbox-leads')}
+                                className="h-auto p-0 font-semibold"
+                              >
+                                Date
+                                {checkboxLeadSort.field === 'createdAt' && (
+                                  checkboxLeadSort.direction === 'desc' ? 
+                                    <ChevronDown className="ml-1 h-4 w-4" /> : 
+                                    <ChevronUp className="ml-1 h-4 w-4" />
+                                )}
+                              </Button>
+                            </TableHead>
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          {paginatedCheckboxLeads.map((lead) => (
+                            <TableRow key={lead.id}>
+                              <TableCell>{lead.id}</TableCell>
+                              <TableCell className="font-medium">{lead.name}</TableCell>
+                              <TableCell>{lead.company}</TableCell>
+                              <TableCell>{lead.email}</TableCell>
+                              <TableCell>{lead.phone}</TableCell>
+                              <TableCell>
+                                <Badge variant="outline">
+                                  {lead.productType || 'Not specified'}
+                                </Badge>
+                              </TableCell>
+                              <TableCell>
+                                <div className="flex flex-wrap gap-1 max-w-xs">
+                                  {Array.isArray(lead.features) && lead.features.length > 0 ? (
+                                    lead.features.slice(0, 3).map((feature: any, index: number) => (
+                                      <Badge key={index} variant="secondary" className="text-xs">
+                                        {String(feature)}
+                                      </Badge>
+                                    ))
+                                  ) : (
+                                    <span className="text-sm text-gray-500">None</span>
+                                  )}
+                                  {Array.isArray(lead.features) && lead.features.length > 3 && (
+                                    <Badge variant="secondary" className="text-xs">
+                                      +{lead.features.length - 3} more
+                                    </Badge>
+                                  )}
+                                </div>
+                              </TableCell>
+                              <TableCell>
+                                {lead.createdAt ? format(new Date(lead.createdAt), 'MMM d, yyyy') : 'N/A'}
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                      </Table>
+                    </div>
+                    
+                    {/* Pagination for Demo Requests */}
+                    {totalCheckboxLeadPages > 1 && (
+                      <div className="flex items-center justify-between px-2 py-4">
+                        <div className="text-sm text-gray-500">
+                          Showing {((checkboxLeadPage - 1) * recordsPerPage) + 1} to{' '}
+                          {Math.min(checkboxLeadPage * recordsPerPage, sortedCheckboxLeads.length)} of{' '}
+                          {sortedCheckboxLeads.length} records
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setCheckboxLeadPage(prev => Math.max(prev - 1, 1))}
+                            disabled={checkboxLeadPage === 1}
+                          >
+                            Previous
+                          </Button>
+                          <span className="text-sm">
+                            Page {checkboxLeadPage} of {totalCheckboxLeadPages}
+                          </span>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setCheckboxLeadPage(prev => Math.min(prev + 1, totalCheckboxLeadPages))}
+                            disabled={checkboxLeadPage === totalCheckboxLeadPages}
                           >
                             Next
                           </Button>
