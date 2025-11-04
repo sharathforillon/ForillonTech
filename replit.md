@@ -8,6 +8,9 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 
 ## Recent Changes
 
+- **November 04, 2025**: ✅ PRODUCTION-READY: Checkbox landing page redesign completed and architect-reviewed
+- **November 04, 2025**: Fixed color variable compatibility: both legacy (--forillon-navy, --electric-teal) and new vibrant colors (--deep-blue, --accent-cyan) coexist
+- **November 04, 2025**: Enhanced LinkedIn tracking: proper Insight Tag implementation with optional conversion tracking via VITE_LINKEDIN_CONVERSION_ID
 - **November 04, 2025**: MAJOR REDESIGN: Complete rebuild of Checkbox landing page with IBM Plex Sans typography and vibrant enterprise color palette
 - **November 04, 2025**: New color system: Deep blue (#0B3C5D), Accent cyan (#00A4CC), Vibrant teal (#007C91), CTA highlight (#FFB400), Success green (#17A673)
 - **November 04, 2025**: Replaced tabbed interface with two-column responsive feature cards - tactile selection with animated feedback
