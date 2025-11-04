@@ -8,6 +8,7 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 
 ## Recent Changes
 
+- **November 04, 2025**: Removed non-functional Netlify CMS admin - use `/admin` for the working admin dashboard instead
 - **November 04, 2025**: Updated Forillon logo across entire website (navigation, footer, checkbox page) with new brand design
 - **November 04, 2025**: ✅ PRODUCTION-READY: Checkbox landing page redesign completed and architect-reviewed
 - **November 04, 2025**: Fixed color variable compatibility: both legacy (--forillon-navy, --electric-teal) and new vibrant colors (--deep-blue, --accent-cyan) coexist
