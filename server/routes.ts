@@ -226,6 +226,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  app.get("/api/admin/checkbox-leads", async (req, res) => {
+    try {
+      const checkboxLeads = await storage.getAllCheckboxLeads();
+      res.json(checkboxLeads);
+    } catch (error) {
+      console.error("Error fetching checkbox leads:", error);
+      res.status(500).json({ error: "Failed to fetch checkbox leads" });
+    }
+  });
+
   // CSV Export endpoints
   app.get("/api/admin/export/contacts", async (req, res) => {
     try {
@@ -285,6 +295,35 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error exporting partnerships:", error);
       res.status(500).json({ error: "Failed to export partnerships" });
+    }
+  });
+
+  app.get("/api/admin/export/checkbox-leads", async (req, res) => {
+    try {
+      const checkboxLeads = await storage.getAllCheckboxLeads();
+      
+      // Create CSV content
+      const headers = ['ID', 'Name', 'Company', 'Email', 'Phone', 'Product Type', 'Features', 'Date Created'];
+      const csvContent = [
+        headers.join(','),
+        ...checkboxLeads.map(lead => [
+          lead.id,
+          `"${lead.name}"`,
+          `"${lead.company}"`,
+          lead.email,
+          lead.phone,
+          `"${lead.productType || 'Not specified'}"`,
+          `"${Array.isArray(lead.features) ? lead.features.join(', ') : lead.features}"`,
+          lead.createdAt?.toISOString() || ''
+        ].join(','))
+      ].join('\n');
+
+      res.setHeader('Content-Type', 'text/csv');
+      res.setHeader('Content-Disposition', 'attachment; filename=checkbox-leads.csv');
+      res.send(csvContent);
+    } catch (error) {
+      console.error("Error exporting checkbox leads:", error);
+      res.status(500).json({ error: "Failed to export checkbox leads" });
     }
   });
 
