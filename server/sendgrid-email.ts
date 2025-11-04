@@ -49,8 +49,6 @@ export async function sendPartnershipInquiryViaSendGrid(inquiry: PartnershipInqu
     <div style="background: #fefbf0; padding: 25px; margin: 20px 0; border-radius: 8px; border-left: 4px solid #f59e0b;">
       <h3 style="color: #d97706; margin: 0 0 15px 0; font-size: 18px; font-weight: 600;">Partnership Details</h3>
       <div style="margin-bottom: 12px;"><strong style="color: #374151;">Partnership Types:</strong> <span style="color: #6b7280;">${inquiry.partnershipType.join(', ')}</span></div>
-      <div style="margin-bottom: 12px;"><strong style="color: #374151;">Budget:</strong> <span style="color: #6b7280;">${inquiry.projectBudget}</span></div>
-      <div><strong style="color: #374151;">Timeline:</strong> <span style="color: #6b7280;">${inquiry.timeline}</span></div>
     </div>
 
     <div style="background: #faf5ff; padding: 25px; margin: 20px 0; border-radius: 8px; border-left: 4px solid #8b5cf6;">
@@ -82,8 +80,6 @@ Company Size: ${inquiry.companySize}
 Website: ${inquiry.website || 'Not provided'}
 
 Partnership Types: ${inquiry.partnershipType.join(', ')}
-Budget: ${inquiry.projectBudget}
-Timeline: ${inquiry.timeline}
 
 Description:
 ${inquiry.description || 'No specific details provided'}

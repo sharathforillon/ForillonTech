@@ -41,8 +41,6 @@ async function sendPartnershipInquiryViaMailerSend(inquiry: PartnershipInquiry):
           industry: inquiry.industry,
           website: inquiry.website || 'Not provided',
           partnership_types: inquiry.partnershipType.join(', '),
-          project_budget: inquiry.projectBudget,
-          timeline: inquiry.timeline,
           description: inquiry.description || 'No description provided',
           inquiry_date: new Date().toLocaleDateString()
         }
