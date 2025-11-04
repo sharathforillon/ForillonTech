@@ -8,9 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import forilonLogo from "@assets/logo_nobackground_1752130704893.png";
-
-import F_nobackground from "@assets/F-nobackground.png";
+import forillonLogo from "@assets/image_1762228948953.png";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,18 +24,11 @@ export default function Navigation() {
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0 flex items-center cursor-pointer group">
               <img 
-                src={F_nobackground} 
-                alt="Forillon Technologies" 
-                className="h-10 w-auto mr-3 transition-transform group-hover:scale-105"
+                src={forillonLogo} 
+                alt="Forillon Technologies - Trusted to Transform" 
+                className="h-12 w-auto transition-transform group-hover:scale-105"
+                data-testid="nav-logo"
               />
-              <div className="flex flex-col">
-                <span className="text-xl font-bold text-forillon-navy tracking-tight">
-                  Forillon Technologies
-                </span>
-                <span className="text-xs text-electric-teal font-medium -mt-1">
-                  Trusted to transform
-                </span>
-              </div>
             </Link>
           </div>
           

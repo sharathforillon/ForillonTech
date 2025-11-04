@@ -34,7 +34,7 @@ import {
 import Navigation from "@/components/navigation";
 import { checkboxLeadSchema, type CheckboxLeadForm } from "@shared/schema";
 import mindsbourgLogo from "@assets/Mindsbourg-Logo_alt_1761671481551.jpg";
-import forillonLogo from "@assets/Logo_1761707930660.png";
+import forillonLogo from "@assets/image_1762228948953.png";
 import { apiRequest } from "@/lib/queryClient";
 import { analytics } from "@/lib/analytics";
 
