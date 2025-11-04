@@ -8,6 +8,7 @@ import matter from "gray-matter";
 import { partnershipInquirySchema, insertContactRecordSchema, insertPartnershipRecordSchema, checkboxLeadSchema } from "../shared/schema";
 import { sendPartnershipInquiry } from "./email";
 import { logPartnershipInquiry, generateFollowUpEmailTemplate } from "./notification";
+import { sendCheckboxLeadNotificationToAdmin, sendCheckboxLeadConfirmation } from "./sendgrid-email";
 
 interface BlogPost {
   slug: string;
@@ -188,6 +189,26 @@ export async function registerRoutes(app: Express): Promise<Server> {
         company: lead.company,
         features: lead.features,
         createdAt: lead.createdAt
+      });
+      
+      // Send email notifications (don't wait for them to complete)
+      Promise.all([
+        sendCheckboxLeadNotificationToAdmin(lead),
+        sendCheckboxLeadConfirmation(lead)
+      ]).then(([adminSent, leadSent]) => {
+        if (adminSent) {
+          console.log('✅ Admin notification sent for lead #' + lead.id);
+        } else {
+          console.warn('⚠️ Failed to send admin notification for lead #' + lead.id);
+        }
+        
+        if (leadSent) {
+          console.log('✅ Confirmation email sent to ' + lead.email);
+        } else {
+          console.warn('⚠️ Failed to send confirmation email to ' + lead.email);
+        }
+      }).catch(err => {
+        console.error('Email notification error:', err);
       });
       
       res.status(201).json({ 
