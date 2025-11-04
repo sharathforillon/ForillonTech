@@ -1,0 +1,163 @@
+Build a fast, responsive, accessible, and conversion-optimized landing page that showcases Checkbox features. The page must let visitors pick features, submit contact info, and track feature interest and conversions. The design must use IBM Plex Sans as the primary font and convey high vibrance and enterprise trust. Deliver production-ready Next.js + Tailwind code. Provide deployment instructions.
+
+Requirements summary.
+
+Visual. Use IBM Plex Sans for all UI. Use a vibrant professional palette. Provide a modern, premium layout with generous white space, subtle card shadows, and micro-animations for interactions.
+
+UX. Feature selection must be frictionless. Show two grouped lists. Selected features are stored and submitted with the contact form. The flow must be: Hero -> Feature Explorer -> Minimal Form modal -> Thank-you with calendar CTA.
+
+Tracking. Track unique visitors, feature selections, CTA clicks, and form submissions. Provide GA4 event names and LinkedIn/Meta pixel snippets.
+
+Performance. Lighthouse score > 90 on mobile and desktop. Keep bundle small. Provide server-side rendering for initial load.
+
+Accessibility. WCAG AA. Keyboard focus states, proper alt text, semantic HTML, ARIA for toggles.
+
+Integration. Save leads to HubSpot or a provided webhook endpoint. Include optional Calendly link on Thank-you page.
+
+Deliverables. Complete Next.js repo, Tailwind config, environment variable sample (.env.example), deployment steps to Vercel or Replit, testing checklist, and a short README.
+
+Design system and assets.
+Font. Load IBM Plex Sans via Google Fonts or self-host. Use variable weights: 300, 400, 600, 700. Ensure fallback stack includes system fonts.
+Color palette. Use these hex values.
+
+Primary deep blue: #0B3C5D
+
+Accent cyan: #00A4CC
+
+Vibrant teal: #007C91
+
+Soft neutral: #F6F7F9
+
+Slate gray: #394A59
+
+Success green: #17A673
+
+CTA highlight: #FFB400
+Use gradients sparingly for hero background. Keep CTAs high contrast and consistent.
+Iconography. Use a crisp icon set such as Heroicons or Lucide. Micro-illustrations allowed but must be subtle.
+
+Copy guidelines. Keep copy short, confident, and benefits-first. Example strings.
+
+Hero headline. Build your custom research and survey platform fast.
+
+Subhead. Checkbox by Forillon. White-label. UAE hosting option. No-code form builder. Enterprise security.
+
+Primary CTA. Choose your features
+
+Secondary CTA. Watch 60s demo
+
+Feature section intro. Pick the capabilities you want. We will tailor a demo and proposal.
+
+Form CTA. Get my custom demo
+
+Feature lists. Use these two groups and present them as selectable cards with concise tooltips for each. The UI must show a running count of selected features.
+Group 1. Research Help Desk.
+
+MR Problem assessment – definition
+
+RFP Preparation / Review
+
+Instrument / Questionnaire Design
+
+Data collection
+
+Data Analysis support
+
+Data Visualization
+
+Dashboard Creation for Existing Data
+
+Integrating Data from Multiple Sources (Int & External Data)
+
+Integrating Multiple Data Types (text, images, video, numbers)
+
+Data Cleaning & Data File Preparation
+
+Statistical testing - Advanced Statistical Modelling
+
+Data Analytics - Predictive Analytics
+
+Report Preparation Support
+
+Report Design
+
+Presentation Design
+
+Research Workshops
+
+Data Analysis Workshops
+
+Dedicated Data Analyst
+
+Micro Study (Upto 5 Questions)
+
+Mini Study (upto 10 Questions)
+
+Group 2. Tech Survey Platform.
+
+Cloud based
+
+On Premise
+
+White Labelled
+
+Whatsapp Bot
+
+Survey Gamification
+
+Voice response
+
+AI Enabled Real time Sentiment Analysis
+
+Multilingual
+
+Core flows and interactions.
+
+Hero. Large headline. Short supporting paragraph. Primary CTA scrolls to feature explorer. Provide secondary video modal CTA.
+
+Feature Explorer. Two-column responsive layout on desktop. Each feature is a tactile card with icon, one-line description, and toggle checkbox. Clicking toggles selection. Animate selection with subtle scale and shadow. Show a fixed sticky panel on the right at desktop that summarizes selected features and shows “Configure My Demo” CTA.
+
+Selection counter. Show how many features chosen. Allow deselect from the summary panel.
+
+Form modal. After “Configure My Demo” open a minimal modal with these fields.
+
+Full name. Placeholder: e.g. Sarah Ahmed
+
+Company name
+
+Business email
+
+Phone number. Prefilled country code +971. Validation for mobile pattern.
+
+Optional message textarea
+Include hidden input with JSON of selected features.
+
+Form UX. Use inline validation. Allow autofill where possible. Show progress indicator: Step 1 of 2 selection. Step 2 of 2 contact. Keep total steps small.
+
+Submission. On submit, show success with suggested Calendly booking link. Return an email with PDF brochure and feature summary. Save lead record to CRM via API webhook provided in .env.
+
+Confirmations. Provide both on-page thank you and email. Add a fallback PDF download.
+
+Tracking and analytics.
+
+Add GA4 page view and enhanced event tracking. Use these event names.
+. feature_select. Parameters. feature_name, group, action(add|remove), selected_count.
+. form_open. Parameters. selected_count.
+. form_submit. Parameters. selected_count, lead_id.
+. cta_click. Parameters. cta_name.
+
+Add LinkedIn Insight and Meta Pixel snippets with instructions on where to paste environment keys.
+
+Add Hotjar or Microsoft Clarity optional snippets for heatmaps.
+
+Ensure front-end emits events to a small analytics wrapper so future instrumentation is easy.
+
+Data and integrations.
+
+Create a secure server route at /api/leads that validates input and forwards to HubSpot or webhook.
+
+Include request signing via HMAC using a server secret env var for the webhook.
+
+Save lead to a simple DB or JSON file for demo mode. Use MongoDB if env var MONGODB_URI is provided.
+
+Add email via SendGrid or SMTP. Provide .env.example keys: HUBSPOT_API_KEY, WEBHOOK_URL, SENDGRID_API_KEY, GA_MEASUREMENT_ID, LINKEDIN_PARTNER_ID, META_PIXEL_ID, CALENDLY_LINK.

@@ -27,13 +27,22 @@
   --ring: hsl(185, 84%, 39%);
   --radius: 0.5rem;
   
-  /* Forillon Brand Colors - Exact HEX to HSL conversion */
+  /* Original Forillon Brand Colors - Keep for compatibility */
   --forillon-navy: hsl(196, 93%, 12%); /* #032D3C */
   --slate-gray: hsl(215, 19%, 35%); /* #475569 */
   --silver-mist: hsl(214, 32%, 91%); /* #E2E8F0 */
   --electric-teal: hsl(173, 80%, 40%); /* #14B8A6 */
   --ice-white: hsl(214, 32%, 98%); /* #F8FAFC */
   --jet-black: hsl(0, 0%, 12%); /* #1E1E1E */
+  
+  /* Vibrant Enterprise Colors - Checkbox Platform */
+  --deep-blue: hsl(203, 72%, 20%); /* #0B3C5D */
+  --accent-cyan: hsl(192, 100%, 40%); /* #00A4CC */
+  --vibrant-teal: hsl(189, 100%, 28%); /* #007C91 */
+  --soft-neutral: hsl(210, 25%, 97%); /* #F6F7F9 */
+  --slate-gray-new: hsl(208, 21%, 29%); /* #394A59 - renamed to avoid conflict */
+  --success-green: hsl(162, 72%, 37%); /* #17A673 */
+  --cta-highlight: hsl(43, 100%, 50%); /* #FFB400 */
 }
 
 .dark {
@@ -64,8 +73,9 @@
   }
 
   body {
-    @apply bg-gradient-to-b from-ice-white via-white to-ice-white text-foreground antialiased;
-    font-family: 'IBM Plex Sans', sans-serif;
+    @apply text-foreground antialiased;
+    background-color: var(--soft-neutral);
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
     min-height: 100vh;
   }
   
@@ -111,32 +121,84 @@
 }
 
 @layer utilities {
-  .text-forillon-navy {
-    color: var(--forillon-navy);
+  .text-deep-blue {
+    color: var(--deep-blue);
+  }
+  
+  .text-accent-cyan {
+    color: var(--accent-cyan);
+  }
+  
+  .text-vibrant-teal {
+    color: var(--vibrant-teal);
   }
   
   .text-slate-gray {
     color: var(--slate-gray);
   }
   
-  .text-electric-teal {
-    color: var(--electric-teal);
+  .text-success-green {
+    color: var(--success-green);
   }
   
-  .text-silver-mist {
-    color: var(--silver-mist);
+  .text-cta-highlight {
+    color: var(--cta-highlight);
   }
   
-  .bg-electric-teal {
-    background-color: var(--electric-teal);
+  .bg-deep-blue {
+    background-color: var(--deep-blue);
   }
   
-  .bg-forillon-navy {
-    background-color: var(--forillon-navy);
+  .bg-accent-cyan {
+    background-color: var(--accent-cyan);
   }
   
-  .bg-ice-white {
-    background-color: var(--ice-white);
+  .bg-vibrant-teal {
+    background-color: var(--vibrant-teal);
+  }
+  
+  .bg-soft-neutral {
+    background-color: var(--soft-neutral);
+  }
+  
+  .bg-slate-gray {
+    background-color: var(--slate-gray);
+  }
+  
+  .bg-success-green {
+    background-color: var(--success-green);
+  }
+  
+  .bg-cta-highlight {
+    background-color: var(--cta-highlight);
+  }
+  
+  .border-deep-blue {
+    border-color: var(--deep-blue);
+  }
+  
+  .border-accent-cyan {
+    border-color: var(--accent-cyan);
+  }
+  
+  .border-vibrant-teal {
+    border-color: var(--vibrant-teal);
+  }
+  
+  .hover\:bg-accent-cyan:hover {
+    background-color: var(--accent-cyan);
+  }
+  
+  .hover\:bg-vibrant-teal:hover {
+    background-color: var(--vibrant-teal);
+  }
+  
+  .hover\:text-accent-cyan:hover {
+    color: var(--accent-cyan);
+  }
+  
+  .hover\:border-accent-cyan:hover {
+    border-color: var(--accent-cyan);
   }
   
   /* Page Layout Improvements */

@@ -8,6 +8,16 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 
 ## Recent Changes
 
+- **November 04, 2025**: MAJOR REDESIGN: Complete rebuild of Checkbox landing page with IBM Plex Sans typography and vibrant enterprise color palette
+- **November 04, 2025**: New color system: Deep blue (#0B3C5D), Accent cyan (#00A4CC), Vibrant teal (#007C91), CTA highlight (#FFB400), Success green (#17A673)
+- **November 04, 2025**: Replaced tabbed interface with two-column responsive feature cards - tactile selection with animated feedback
+- **November 04, 2025**: Added sticky summary panel showing selected features count with "Configure My Demo" CTA
+- **November 04, 2025**: Converted lead form to modal-based UX flow: Hero → Feature Explorer → Modal Form → Success Modal (with Calendly)
+- **November 04, 2025**: Implemented comprehensive GA4 analytics tracking: feature_select, form_open, form_submit, cta_click events
+- **November 04, 2025**: Added LinkedIn Insight Tag and Meta Pixel integration with environment variable configuration
+- **November 04, 2025**: Created analytics wrapper library (/client/src/lib/analytics.ts) for easy multi-platform tracking
+- **November 04, 2025**: Fixed API route alias: /api/checkbox-leads now correctly saves leads to database
+- **November 04, 2025**: Added .env.example documenting all required environment variables (GA4, LinkedIn, Meta, HubSpot, SendGrid, Calendly)
 - **October 29, 2025**: ENHANCED: Users can now select features from BOTH Tech Platform AND Research Help Desk categories using tabbed interface
 - **October 29, 2025**: Implemented smart product type detection: 'tech-platform', 'research-helpdesk', or 'combined' based on selections
 - **October 29, 2025**: Updated to new Forillon logo with consistent sizing (h-16) across hero and footer for professional co-branding

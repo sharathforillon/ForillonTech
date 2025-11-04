@@ -3,18 +3,17 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { 
   Loader2,
   ArrowRight,
   CheckCircle2,
   Shield,
-  Zap,
   Cloud,
   Server,
   Tag,
@@ -27,66 +26,70 @@ import {
   PenTool,
   BarChart3,
   Database,
-  ChevronRight,
   TrendingUp,
-  Lock
+  PlayCircle,
+  X,
+  Check
 } from "lucide-react";
 import Navigation from "@/components/navigation";
 import { checkboxLeadSchema, type CheckboxLeadForm } from "@shared/schema";
 import mindsbourgLogo from "@assets/Mindsbourg-Logo_alt_1761671481551.jpg";
 import forillonLogo from "@assets/Logo_1761707930660.png";
+import { apiRequest } from "@/lib/queryClient";
+import { analytics } from "@/lib/analytics";
+
+// Feature definitions with descriptions
+const researchFeatures = [
+  { id: "mr-problem", title: "MR Problem assessment", desc: "Define your research objectives with expert guidance", icon: FileCheck, group: "research" },
+  { id: "rfp-prep", title: "RFP Preparation / Review", desc: "Professional RFP development and assessment", icon: PenTool, group: "research" },
+  { id: "questionnaire", title: "Questionnaire Design", desc: "Build effective survey instruments", icon: FileCheck, group: "research" },
+  { id: "data-collection", title: "Data collection", desc: "Comprehensive data gathering services", icon: Database, group: "research" },
+  { id: "data-analysis", title: "Data Analysis support", desc: "Expert statistical analysis assistance", icon: BarChart3, group: "research" },
+  { id: "data-viz", title: "Data Visualization", desc: "Transform data into compelling visuals", icon: TrendingUp, group: "research" },
+  { id: "dashboard-creation", title: "Dashboard Creation", desc: "Build interactive dashboards for your data", icon: BarChart3, group: "research" },
+  { id: "integrate-multi-sources", title: "Multi-Source Data Integration", desc: "Combine internal and external datasets", icon: Database, group: "research" },
+  { id: "integrate-multi-types", title: "Multi-Type Data Integration", desc: "Integrate text, images, video, and numbers", icon: Database, group: "research" },
+  { id: "data-cleaning", title: "Data Cleaning & Prep", desc: "Professional data file preparation", icon: Database, group: "research" },
+  { id: "statistical-testing", title: "Advanced Statistical Modelling", desc: "Sophisticated statistical testing", icon: TrendingUp, group: "research" },
+  { id: "predictive-analytics", title: "Predictive Analytics", desc: "Forecast trends with ML algorithms", icon: Brain, group: "research" },
+  { id: "report-prep", title: "Report Preparation", desc: "Comprehensive report writing support", icon: FileCheck, group: "research" },
+  { id: "report-design", title: "Report Design", desc: "Professional visual report creation", icon: PenTool, group: "research" },
+  { id: "presentation-design", title: "Presentation Design", desc: "Engaging presentation development", icon: PenTool, group: "research" },
+  { id: "research-workshops", title: "Research Workshops", desc: "Hands-on research training sessions", icon: FileCheck, group: "research" },
+  { id: "data-workshops", title: "Data Analysis Workshops", desc: "Learn advanced analytics techniques", icon: BarChart3, group: "research" },
+  { id: "dedicated-analyst", title: "Dedicated Data Analyst", desc: "Full-time analyst for your projects", icon: Brain, group: "research" },
+  { id: "micro-study", title: "Micro Study (≤5 Questions)", desc: "Fast turnaround mini-surveys", icon: FileCheck, group: "research" },
+  { id: "mini-study", title: "Mini Study (≤10 Questions)", desc: "Compact surveys with quick insights", icon: FileCheck, group: "research" }
+];
 
 const platformFeatures = [
-  { id: "cloud-based", title: "Cloud based", icon: Cloud, benefit: "Deploy globally in minutes", category: "tech" },
-  { id: "on-premise", title: "On Premise", icon: Server, benefit: "100% data sovereignty guaranteed", category: "tech" },
-  { id: "white-labelled", title: "White Labelled", icon: Tag, benefit: "Your brand, your platform", category: "tech" },
-  { id: "whatsapp-bot", title: "WhatsApp Bot", icon: MessageSquare, benefit: "Reach 2B users instantly", category: "tech" },
-  { id: "survey-gamification", title: "Survey Gamification", icon: Gamepad2, benefit: "3x higher completion rates", category: "tech" },
-  { id: "voice-response", title: "Voice response", icon: Mic, benefit: "Accessible to everyone", category: "tech" },
-  { id: "ai-sentiment", title: "AI Real-time Sentiment Analysis", icon: Brain, benefit: "40% faster insights", category: "tech" },
-  { id: "multilingual", title: "Multilingual", icon: Globe, benefit: "Support 100+ languages", category: "tech" }
+  { id: "cloud-based", title: "Cloud based", desc: "Global deployment in minutes", icon: Cloud, group: "platform" },
+  { id: "on-premise", title: "On Premise", desc: "100% data sovereignty guaranteed", icon: Server, group: "platform" },
+  { id: "white-labelled", title: "White Labelled", desc: "Your brand, your platform", icon: Tag, group: "platform" },
+  { id: "whatsapp-bot", title: "WhatsApp Bot", desc: "Reach 2B users instantly", icon: MessageSquare, group: "platform" },
+  { id: "survey-gamification", title: "Survey Gamification", desc: "3x higher completion rates", icon: Gamepad2, group: "platform" },
+  { id: "voice-response", title: "Voice response", desc: "Accessible to everyone", icon: Mic, group: "platform" },
+  { id: "ai-sentiment", title: "AI Sentiment Analysis", desc: "Real-time emotion tracking", icon: Brain, group: "platform" },
+  { id: "multilingual", title: "Multilingual", desc: "Support 100+ languages", icon: Globe, group: "platform" }
 ];
 
-const researchFeatures = [
-  { id: "mr-problem", title: "MR Problem assessment – definition", icon: FileCheck, category: "research" },
-  { id: "rfp-prep", title: "RFP Preparation / Review", icon: PenTool, category: "research" },
-  { id: "questionnaire", title: "Instrument / Questionnaire Design", icon: FileCheck, category: "research" },
-  { id: "data-collection", title: "Data collection", icon: Database, category: "research" },
-  { id: "data-analysis", title: "Data Analysis support", icon: BarChart3, category: "research" },
-  { id: "data-viz", title: "Data Visualization", icon: TrendingUp, category: "research" },
-  { id: "dashboard-creation", title: "Dashboard Creation for Existing Data", icon: BarChart3, category: "research" },
-  { id: "integrate-multi-sources", title: "Integrating Data from Multiple Sources", icon: Database, category: "research" },
-  { id: "integrate-multi-types", title: "Integrating Multiple Data Types", icon: Database, category: "research" },
-  { id: "data-cleaning", title: "Data Cleaning & Data File Preparation", icon: Database, category: "research" },
-  { id: "statistical-testing", title: "Statistical testing - Advanced Statistical Modelling", icon: TrendingUp, category: "research" },
-  { id: "predictive-analytics", title: "Data Analytics - Predictive Analytics", icon: Brain, category: "research" },
-  { id: "report-prep", title: "Report Preparation Support", icon: FileCheck, category: "research" },
-  { id: "report-design", title: "Report Design", icon: PenTool, category: "research" },
-  { id: "presentation-design", title: "Presentation Design", icon: PenTool, category: "research" },
-  { id: "research-workshops", title: "Research Workshops", icon: FileCheck, category: "research" },
-  { id: "data-workshops", title: "Data Analysis Workshops", icon: BarChart3, category: "research" },
-  { id: "dedicated-analyst", title: "Dedicated Data Analyst", icon: Brain, category: "research" },
-  { id: "micro-study", title: "Micro Study (Up to 5 Questions)", icon: FileCheck, category: "research" },
-  { id: "mini-study", title: "Mini Study (up to 10 Questions)", icon: FileCheck, category: "research" }
-];
+const allFeatures = [...researchFeatures, ...platformFeatures];
 
-export default function EnterpriseSurveyPlatform() {
+export default function CheckboxLandingPage() {
   const { toast } = useToast();
-  const [selectedFeatureIds, setSelectedFeatureIds] = useState<string[]>([]);
-  const [activeTab, setActiveTab] = useState<'tech' | 'research'>('tech');
+  const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
+  const [formOpen, setFormOpen] = useState(false);
+  const [videoOpen, setVideoOpen] = useState(false);
+  const [successOpen, setSuccessOpen] = useState(false);
 
   useEffect(() => {
-    document.title = "Enterprise Survey Platform — White-Label Solutions | Forillon × Mindsbourg";
-    
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Deploy enterprise survey platforms on-premise with 100% data sovereignty. Trusted by UAE enterprises. ISO 27001 | GDPR compliant | UAE-hosted.');
+    document.title = "Build Your Custom Research Platform | Checkbox by Forillon";
+    const metaDescription = document.querySelector('meta[name="description"]') || document.createElement('meta');
+    metaDescription.setAttribute('name', 'description');
+    metaDescription.setAttribute('content', 'White-label survey platform with UAE hosting. No-code form builder. Enterprise security. Choose your features and get a custom demo.');
+    if (!metaDescription.parentNode) document.head.appendChild(metaDescription);
   }, []);
-  
+
   const form = useForm<CheckboxLeadForm>({
     resolver: zodResolver(checkboxLeadSchema),
     defaultValues: {
@@ -100,687 +103,553 @@ export default function EnterpriseSurveyPlatform() {
     },
   });
 
-  const getSelectedFeatures = () => {
-    const allFeatures = [...platformFeatures, ...researchFeatures];
-    return selectedFeatureIds
-      .map(id => allFeatures.find(f => f.id === id))
-      .filter(Boolean)
-      .map(f => f!.title);
-  };
-
-  // Detect product type based on selected features
-  const detectProductType = () => {
-    const allFeatures = [...platformFeatures, ...researchFeatures];
-    const selectedCategories = selectedFeatureIds
-      .map(id => allFeatures.find(f => f.id === id)?.category)
-      .filter(Boolean);
-    
-    const hasTech = selectedCategories.includes('tech');
-    const hasResearch = selectedCategories.includes('research');
-    
-    if (hasTech && hasResearch) return 'combined';
-    if (hasTech) return 'tech-platform';
-    if (hasResearch) return 'research-helpdesk';
-    return '';
-  };
-
-  // Sync feature selection with form
-  useEffect(() => {
-    const selectedFeatureNames = getSelectedFeatures();
-    form.setValue('features', selectedFeatureNames, { shouldValidate: true });
-  }, [selectedFeatureIds]);
-
-  // Sync product type with form
-  useEffect(() => {
-    const productType = detectProductType();
-    form.setValue('productType', productType, { shouldValidate: true });
-  }, [selectedFeatureIds]);
-
-  const submitLead = useMutation({
+  const submitMutation = useMutation({
     mutationFn: async (data: CheckboxLeadForm) => {
-      // Form data already has features and productType synced via useEffect
-      const response = await fetch('/api/lead', {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      
-      if (!response.ok) {
-        throw new Error('Failed to submit lead');
-      }
-      
-      return response.json();
+      const response = await apiRequest("POST", "/api/checkbox-leads", data);
+      return response;
     },
-    onSuccess: () => {
+    onSuccess: (response: any) => {
+      // Track form submission
+      const leadId = response?.leadId || 'unknown';
+      analytics.trackFormSubmit(selectedFeatures.length, leadId);
+
       toast({
-        title: "Success!",
-        description: "Our team will contact you within 24 hours.",
+        title: "Request submitted!",
+        description: "We'll send you a custom demo link shortly.",
       });
       form.reset();
-      setSelectedFeatureIds([]);
-      
-      // Scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setFormOpen(false);
+      setSuccessOpen(true);
+      setSelectedFeatures([]);
     },
-    onError: (error) => {
-      console.error('Lead submission error:', error);
+    onError: (error: Error) => {
       toast({
-        title: "Error",
-        description: "Failed to submit enquiry. Please try again.",
         variant: "destructive",
+        title: "Submission failed",
+        description: error.message || "Please try again.",
       });
     },
   });
 
-  const onSubmit = (data: CheckboxLeadForm) => {
-    submitLead.mutate(data);
-  };
-
-  const scrollToForm = () => {
-    const formSection = document.querySelector('#inquiry-form');
-    formSection?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   const toggleFeature = (featureId: string) => {
-    setSelectedFeatureIds(prev => 
+    const feature = allFeatures.find(f => f.id === featureId);
+    if (!feature) return;
+
+    const isCurrentlySelected = selectedFeatures.includes(featureId);
+    const action = isCurrentlySelected ? 'remove' : 'add';
+    const newCount = isCurrentlySelected ? selectedFeatures.length - 1 : selectedFeatures.length + 1;
+
+    // Track feature selection
+    analytics.trackFeatureSelect(
+      feature.title,
+      feature.group as 'platform' | 'research',
+      action,
+      newCount
+    );
+
+    setSelectedFeatures(prev => 
       prev.includes(featureId) 
         ? prev.filter(id => id !== featureId)
         : [...prev, featureId]
     );
   };
 
-  // Count features by category
-  const techCount = selectedFeatureIds.filter(id => 
-    platformFeatures.find(f => f.id === id)
-  ).length;
-  const researchCount = selectedFeatureIds.filter(id => 
-    researchFeatures.find(f => f.id === id)
-  ).length;
+  const openForm = () => {
+    if (selectedFeatures.length === 0) {
+      toast({
+        variant: "destructive",
+        title: "No features selected",
+        description: "Please choose at least one feature to continue.",
+      });
+      return;
+    }
+    
+    // Track form open
+    analytics.trackFormOpen(selectedFeatures.length);
+
+    // Detect product type
+    const hasResearch = selectedFeatures.some(id => 
+      researchFeatures.find(f => f.id === id)
+    );
+    const hasPlatform = selectedFeatures.some(id => 
+      platformFeatures.find(f => f.id === id)
+    );
+    
+    let productType = "";
+    if (hasResearch && hasPlatform) productType = "combined";
+    else if (hasResearch) productType = "research-helpdesk";
+    else if (hasPlatform) productType = "tech-platform";
+
+    const selectedTitles = selectedFeatures
+      .map(id => allFeatures.find(f => f.id === id)?.title)
+      .filter(Boolean) as string[];
+
+    form.setValue("productType", productType);
+    form.setValue("features", selectedTitles);
+    setFormOpen(true);
+  };
+
+  const onSubmit = (data: CheckboxLeadForm) => {
+    submitMutation.mutate(data);
+  };
+
+  const selectedCount = selectedFeatures.length;
 
   return (
-    <div className="min-h-screen bg-slate-50" style={{ fontFamily: "'Inter', sans-serif" }}>
+    <div className="min-h-screen bg-white">
       <Navigation />
-      
-      {/* Trust Badge Bar */}
-      <div className="bg-gradient-to-r from-indigo-900 via-violet-900 to-purple-900 text-white py-2 px-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-center gap-6 text-xs md:text-sm flex-wrap">
-          <div className="flex items-center gap-2">
-            <Shield className="w-4 h-4" />
-            <span>ISO 27001 Certified</span>
-          </div>
-          <div className="h-4 w-px bg-white/30" />
-          <div className="flex items-center gap-2">
-            <Lock className="w-4 h-4" />
-            <span>GDPR Compliant</span>
-          </div>
-          <div className="h-4 w-px bg-white/30" />
-          <div className="flex items-center gap-2">
-            <Server className="w-4 h-4" />
-            <span>UAE-Hosted</span>
-          </div>
-          <div className="h-4 w-px bg-white/30" />
-          <div className="flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4" />
-            <span>100% Data Sovereignty</span>
-          </div>
-        </div>
-      </div>
 
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-br from-slate-50 via-indigo-50 to-violet-50">
-        {/* Animated gradient background */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-20 right-20 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-violet-300 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-1000" />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-200 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-700" />
-        </div>
-
+      <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-cyan-50/30 pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Co-branded Logos - Same Size */}
-          <div className="flex items-center justify-center gap-8 mb-12 flex-wrap">
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-indigo-100 w-64 h-24 flex items-center justify-center">
-              <img src={forillonLogo} alt="Forillon Technologies" className="max-h-16 max-w-full object-contain" />
+          {/* Co-branded Logos */}
+          <div className="flex items-center justify-center gap-6 mb-10">
+            <div className="w-48 h-20 flex items-center justify-center">
+              <img src={forillonLogo} alt="Forillon Technologies" className="max-h-14 max-w-full object-contain opacity-80" />
             </div>
-            <div className="text-4xl font-light text-gray-400">×</div>
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-indigo-100 w-64 h-24 flex items-center justify-center">
-              <img src={mindsbourgLogo} alt="Mindsbourg" className="max-h-16 max-w-full object-contain" />
+            <div className="text-2xl font-light text-gray-300">×</div>
+            <div className="w-48 h-20 flex items-center justify-center">
+              <img src={mindsbourgLogo} alt="Mindsbourg" className="max-h-14 max-w-full object-contain opacity-80" />
             </div>
           </div>
 
-          <div className="text-center max-w-5xl mx-auto">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Enterprise Survey Platform
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-deep-blue leading-tight">
+              Build your custom research and survey platform fast
             </h1>
-            
-            <p className="text-xl md:text-2xl text-gray-700 mb-4 leading-relaxed">
-              Control your data. Customize your brand. Deploy securely within UAE.
+            <p className="text-xl md:text-2xl text-slate-gray mb-4 leading-relaxed">
+              Checkbox by Forillon. White-label. UAE hosting option. No-code form builder. Enterprise security.
             </p>
-            <p className="text-lg md:text-xl text-gray-600 mb-12">
-              On-premise. White-labeled. Enterprise-ready.
-            </p>
-
-            {/* Feature Pills */}
-            <div className="flex flex-wrap gap-4 justify-center mb-12 max-w-4xl mx-auto">
-              <div className="group bg-white/90 backdrop-blur-sm px-6 py-4 rounded-2xl shadow-lg border-2 border-indigo-100 hover:border-indigo-300 transition-all duration-300 hover:scale-105 hover:shadow-xl">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-xl flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-white" />
-                  </div>
-                  <span className="text-base font-semibold text-gray-800">100% Data Sovereignty</span>
-                </div>
-              </div>
-              
-              <div className="group bg-white/90 backdrop-blur-sm px-6 py-4 rounded-2xl shadow-lg border-2 border-amber-100 hover:border-amber-300 transition-all duration-300 hover:scale-105 hover:shadow-xl">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center">
-                    <Zap className="w-6 h-6 text-white" />
-                  </div>
-                  <span className="text-base font-semibold text-gray-800">Rapid Deployment</span>
-                </div>
-              </div>
-              
-              <div className="group bg-white/90 backdrop-blur-sm px-6 py-4 rounded-2xl shadow-lg border-2 border-violet-100 hover:border-violet-300 transition-all duration-300 hover:scale-105 hover:shadow-xl">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-violet-500 to-purple-500 rounded-xl flex items-center justify-center">
-                    <CheckCircle2 className="w-6 h-6 text-white" />
-                  </div>
-                  <span className="text-base font-semibold text-gray-800">Full Customization</span>
-                </div>
-              </div>
-            </div>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <div className="flex flex-wrap gap-4 justify-center mt-8">
               <Button 
-                size="lg"
-                className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-lg px-10 py-7 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 rounded-2xl"
-                onClick={scrollToForm}
-                data-testid="button-claim-study"
+                size="lg" 
+                className="bg-accent-cyan hover:bg-vibrant-teal text-white px-8 py-6 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+                onClick={() => {
+                  analytics.trackCTAClick('hero_choose_features');
+                  document.getElementById('feature-explorer')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                data-testid="button-choose-features"
               >
-                Get Your Free Demo
+                Choose your features
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button 
-                size="lg"
+                size="lg" 
                 variant="outline"
-                className="bg-white hover:bg-gray-50 text-indigo-700 border-2 border-indigo-300 hover:border-indigo-400 font-bold text-lg px-10 py-7 shadow-lg hover:shadow-xl transition-all duration-300 rounded-2xl"
-                onClick={scrollToForm}
-                data-testid="button-schedule-demo"
+                className="border-2 border-accent-cyan text-accent-cyan hover:bg-accent-cyan hover:text-white px-8 py-6 text-lg font-semibold rounded-lg transition-all"
+                onClick={() => {
+                  analytics.trackCTAClick('hero_watch_demo');
+                  setVideoOpen(true);
+                }}
+                data-testid="button-watch-demo"
               >
-                Schedule Demo
+                <PlayCircle className="mr-2 h-5 w-5" />
+                Watch 60s demo
               </Button>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-white border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div className="group hover:scale-105 transition-transform duration-300">
-              <div className="text-5xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent mb-2">
-                50+
-              </div>
-              <div className="text-gray-600 font-medium">UAE Enterprises</div>
+          {/* Trust Badges */}
+          <div className="mt-16 flex flex-wrap gap-6 justify-center items-center">
+            <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
+              <Shield className="h-5 w-5 text-success-green" />
+              <span className="text-sm font-medium text-slate-gray">ISO 27001</span>
             </div>
-            <div className="group hover:scale-105 transition-transform duration-300">
-              <div className="text-5xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent mb-2">
-                99.99%
-              </div>
-              <div className="text-gray-600 font-medium">Uptime SLA</div>
+            <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
+              <Shield className="h-5 w-5 text-success-green" />
+              <span className="text-sm font-medium text-slate-gray">GDPR Compliant</span>
             </div>
-            <div className="group hover:scale-105 transition-transform duration-300">
-              <div className="text-5xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent mb-2">
-                Zero
-              </div>
-              <div className="text-gray-600 font-medium">Data Breaches</div>
+            <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
+              <Server className="h-5 w-5 text-accent-cyan" />
+              <span className="text-sm font-medium text-slate-gray">UAE-Hosted</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Feature Selection Section - Tabbed Interface */}
-      <section id="feature-selection" className="py-24 bg-gradient-to-br from-slate-50 to-indigo-50">
+      {/* Feature Explorer Section */}
+      <section id="feature-explorer" className="py-20 bg-soft-neutral">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-100 to-violet-100 px-5 py-2 rounded-full mb-6">
-              <Zap className="w-4 h-4 text-indigo-600" />
-              <span className="text-sm font-semibold text-indigo-700">Choose Your Solution</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Select Features You Need
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-deep-blue mb-4">
+              Pick the capabilities you want
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
-              Choose capabilities from both Tech Platform and Research Services
-            </p>
-            <p className="text-base text-indigo-600 font-medium">
-              Mix and match features from both categories to build your perfect solution
+            <p className="text-xl text-slate-gray">
+              We'll tailor a demo and proposal just for you.
             </p>
           </div>
 
-          {/* Tabbed Feature Selection */}
-          <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as 'tech' | 'research')} className="max-w-6xl mx-auto">
-            <TabsList className="grid w-full grid-cols-2 mb-8 bg-white p-2 rounded-2xl shadow-lg border border-indigo-100 h-auto">
-              <TabsTrigger 
-                value="tech" 
-                className="py-4 px-6 text-base font-bold data-[state=active]:bg-gradient-to-r data-[state=active]:from-indigo-600 data-[state=active]:to-violet-600 data-[state=active]:text-white rounded-xl transition-all duration-300"
-                data-testid="tab-tech-platform"
-              >
-                <div className="flex items-center gap-2">
-                  <Cloud className="w-5 h-5" />
-                  <span>Tech Survey Platform</span>
-                  {techCount > 0 && (
-                    <span className="ml-2 bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                      {techCount}
-                    </span>
-                  )}
-                </div>
-              </TabsTrigger>
-              <TabsTrigger 
-                value="research" 
-                className="py-4 px-6 text-base font-bold data-[state=active]:bg-gradient-to-r data-[state=active]:from-indigo-600 data-[state=active]:to-violet-600 data-[state=active]:text-white rounded-xl transition-all duration-300"
-                data-testid="tab-research-helpdesk"
-              >
-                <div className="flex items-center gap-2">
-                  <BarChart3 className="w-5 h-5" />
-                  <span>Research Help Desk</span>
-                  {researchCount > 0 && (
-                    <span className="ml-2 bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                      {researchCount}
-                    </span>
-                  )}
-                </div>
-              </TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="tech" className="mt-0">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {platformFeatures.map((feature) => {
-                  const isSelected = selectedFeatureIds.includes(feature.id);
-                  const Icon = feature.icon;
-                  
-                  return (
-                    <div
-                      key={feature.id}
-                      onClick={() => toggleFeature(feature.id)}
-                      className={`group flex items-start gap-4 p-5 rounded-2xl border-2 transition-all duration-300 cursor-pointer ${
-                        isSelected 
-                          ? 'border-amber-400 bg-gradient-to-br from-amber-50 to-orange-50 shadow-lg scale-105' 
-                          : 'border-gray-200 bg-white hover:border-amber-300 hover:shadow-md'
-                      }`}
-                      data-testid={`feature-item-${feature.id}`}
-                    >
-                      <div className="flex-shrink-0 mt-1">
-                        {isSelected ? (
-                          <CheckCircle2 className="w-6 h-6 text-amber-600" />
-                        ) : (
-                          <div className="w-6 h-6 border-2 border-gray-300 rounded-md" />
-                        )}
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-start gap-2 mb-1">
-                          <Icon className={`w-5 h-5 flex-shrink-0 mt-0.5 ${isSelected ? 'text-amber-600' : 'text-gray-400'}`} />
-                          <h3 className="text-sm font-semibold text-gray-800 leading-tight">
-                            {feature.title}
-                          </h3>
-                        </div>
-                        <p className="text-xs text-gray-500 ml-7">
-                          {feature.benefit}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </TabsContent>
-
-            <TabsContent value="research" className="mt-0">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {researchFeatures.map((feature) => {
-                  const isSelected = selectedFeatureIds.includes(feature.id);
-                  const Icon = feature.icon;
-                  
-                  return (
-                    <div
-                      key={feature.id}
-                      onClick={() => toggleFeature(feature.id)}
-                      className={`group flex items-start gap-4 p-5 rounded-2xl border-2 transition-all duration-300 cursor-pointer ${
-                        isSelected 
-                          ? 'border-amber-400 bg-gradient-to-br from-amber-50 to-orange-50 shadow-lg scale-105' 
-                          : 'border-gray-200 bg-white hover:border-amber-300 hover:shadow-md'
-                      }`}
-                      data-testid={`feature-item-${feature.id}`}
-                    >
-                      <div className="flex-shrink-0 mt-1">
-                        {isSelected ? (
-                          <CheckCircle2 className="w-6 h-6 text-amber-600" />
-                        ) : (
-                          <div className="w-6 h-6 border-2 border-gray-300 rounded-md" />
-                        )}
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-start gap-2 mb-1">
-                          <Icon className={`w-5 h-5 flex-shrink-0 mt-0.5 ${isSelected ? 'text-amber-600' : 'text-gray-400'}`} />
-                          <h3 className="text-sm font-semibold text-gray-800 leading-tight">
-                            {feature.title}
-                          </h3>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </TabsContent>
-          </Tabs>
-
-          {/* Selected Features Summary */}
-          {selectedFeatureIds.length > 0 && (
-            <div className="text-center mt-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="inline-block bg-gradient-to-r from-amber-100 to-orange-100 border-2 border-amber-200 rounded-2xl px-8 py-4 mb-8 shadow-lg">
-                <p className="text-gray-800 font-bold text-lg mb-2">
-                  <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
-                    {selectedFeatureIds.length} feature{selectedFeatureIds.length !== 1 ? 's' : ''} selected
-                  </span>
-                </p>
-                {techCount > 0 && researchCount > 0 && (
-                  <p className="text-sm text-gray-600">
-                    {techCount} Tech Platform • {researchCount} Research Services
-                  </p>
-                )}
-              </div>
+          <div className="lg:grid lg:grid-cols-3 lg:gap-8">
+            {/* Feature Cards */}
+            <div className="lg:col-span-2 space-y-12">
+              {/* Research Help Desk Features */}
               <div>
-                <Button 
-                  onClick={scrollToForm}
-                  className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold px-10 py-6 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 rounded-2xl"
-                  data-testid="button-proceed-to-form"
+                <h3 className="text-2xl font-bold text-deep-blue mb-6 flex items-center gap-3">
+                  <BarChart3 className="h-7 w-7 text-accent-cyan" />
+                  Research Help Desk
+                </h3>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {researchFeatures.map((feature) => {
+                    const Icon = feature.icon;
+                    const isSelected = selectedFeatures.includes(feature.id);
+                    return (
+                      <button
+                        key={feature.id}
+                        onClick={() => toggleFeature(feature.id)}
+                        className={`
+                          relative p-4 rounded-xl border-2 text-left transition-all duration-200
+                          ${isSelected 
+                            ? 'bg-accent-cyan/10 border-accent-cyan shadow-lg scale-[1.02]' 
+                            : 'bg-white border-gray-200 hover:border-accent-cyan/50 hover:shadow-md'
+                          }
+                        `}
+                        data-testid={`feature-card-${feature.id}`}
+                        aria-pressed={isSelected}
+                      >
+                        {isSelected && (
+                          <div className="absolute top-3 right-3">
+                            <div className="bg-accent-cyan rounded-full p-1">
+                              <Check className="h-4 w-4 text-white" />
+                            </div>
+                          </div>
+                        )}
+                        <div className="flex items-start gap-3">
+                          <Icon className={`h-6 w-6 flex-shrink-0 ${isSelected ? 'text-accent-cyan' : 'text-slate-gray'}`} />
+                          <div className="flex-1 min-w-0">
+                            <h4 className={`font-semibold mb-1 ${isSelected ? 'text-deep-blue' : 'text-slate-gray'}`}>
+                              {feature.title}
+                            </h4>
+                            <p className="text-sm text-gray-600">{feature.desc}</p>
+                          </div>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Tech Survey Platform Features */}
+              <div>
+                <h3 className="text-2xl font-bold text-deep-blue mb-6 flex items-center gap-3">
+                  <Cloud className="h-7 w-7 text-vibrant-teal" />
+                  Tech Survey Platform
+                </h3>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {platformFeatures.map((feature) => {
+                    const Icon = feature.icon;
+                    const isSelected = selectedFeatures.includes(feature.id);
+                    return (
+                      <button
+                        key={feature.id}
+                        onClick={() => toggleFeature(feature.id)}
+                        className={`
+                          relative p-4 rounded-xl border-2 text-left transition-all duration-200
+                          ${isSelected 
+                            ? 'bg-vibrant-teal/10 border-vibrant-teal shadow-lg scale-[1.02]' 
+                            : 'bg-white border-gray-200 hover:border-vibrant-teal/50 hover:shadow-md'
+                          }
+                        `}
+                        data-testid={`feature-card-${feature.id}`}
+                        aria-pressed={isSelected}
+                      >
+                        {isSelected && (
+                          <div className="absolute top-3 right-3">
+                            <div className="bg-vibrant-teal rounded-full p-1">
+                              <Check className="h-4 w-4 text-white" />
+                            </div>
+                          </div>
+                        )}
+                        <div className="flex items-start gap-3">
+                          <Icon className={`h-6 w-6 flex-shrink-0 ${isSelected ? 'text-vibrant-teal' : 'text-slate-gray'}`} />
+                          <div className="flex-1 min-w-0">
+                            <h4 className={`font-semibold mb-1 ${isSelected ? 'text-deep-blue' : 'text-slate-gray'}`}>
+                              {feature.title}
+                            </h4>
+                            <p className="text-sm text-gray-600">{feature.desc}</p>
+                          </div>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* Sticky Summary Panel */}
+            <div className="lg:col-span-1 mt-8 lg:mt-0">
+              <div className="sticky top-24 bg-white rounded-2xl shadow-xl border-2 border-gray-100 p-6 space-y-6">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-lg font-bold text-deep-blue">Your Selection</h3>
+                    <div className="bg-cta-highlight text-white text-sm font-bold px-3 py-1 rounded-full">
+                      {selectedCount}
+                    </div>
+                  </div>
+                  
+                  {selectedCount === 0 ? (
+                    <p className="text-gray-500 text-sm">
+                      Select features to build your custom platform
+                    </p>
+                  ) : (
+                    <div className="space-y-2 max-h-64 overflow-y-auto">
+                      {selectedFeatures.map(id => {
+                        const feature = allFeatures.find(f => f.id === id);
+                        if (!feature) return null;
+                        return (
+                          <div 
+                            key={id} 
+                            className="flex items-center justify-between gap-2 text-sm bg-gray-50 px-3 py-2 rounded-lg"
+                          >
+                            <span className="text-slate-gray flex-1">{feature.title}</span>
+                            <button
+                              onClick={() => toggleFeature(id)}
+                              className="text-gray-400 hover:text-red-500 transition-colors"
+                              aria-label={`Remove ${feature.title}`}
+                              data-testid={`remove-${id}`}
+                            >
+                              <X className="h-4 w-4" />
+                            </button>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+
+                <Button
+                  onClick={openForm}
+                  disabled={selectedCount === 0}
+                  className="w-full bg-cta-highlight hover:bg-cta-highlight/90 text-deep-blue font-bold py-6 text-lg rounded-xl shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  data-testid="button-configure-demo"
                 >
-                  Continue to Request Demo
+                  {selectedCount === 0 ? 'Select features first' : 'Configure My Demo'}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
+
+                <div className="pt-4 border-t border-gray-200">
+                  <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <CheckCircle2 className="h-4 w-4 text-success-green" />
+                    <span>Free consultation included</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 mt-2">
+                    <CheckCircle2 className="h-4 w-4 text-success-green" />
+                    <span>No credit card required</span>
+                  </div>
+                </div>
               </div>
             </div>
-          )}
+          </div>
         </div>
       </section>
 
-      {/* Lead Capture Form */}
-      <section id="inquiry-form" className="py-24 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-purple-100 px-5 py-2 rounded-full mb-6">
-              <CheckCircle2 className="w-4 h-4 text-blue-600" />
-              <span className="text-sm font-semibold text-blue-700">Almost There</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Request Your Demo
-            </h2>
-            <p className="text-lg text-gray-600">
-              Fill in your details and our team will reach out within 24 hours
-            </p>
-          </div>
+      {/* Form Modal */}
+      <Dialog open={formOpen} onOpenChange={setFormOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-deep-blue">Get your custom demo</DialogTitle>
+            <DialogDescription className="text-slate-gray">
+              {selectedCount} feature{selectedCount !== 1 ? 's' : ''} selected. Fill in your details below.
+            </DialogDescription>
+          </DialogHeader>
 
-          <Card className="shadow-2xl border-0 overflow-hidden rounded-3xl">
-            <div className="bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 text-white p-10 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full blur-2xl" />
-              <div className="relative z-10">
-                <h3 className="text-2xl font-bold text-center mb-2">Let's Connect</h3>
-                <p className="text-indigo-100 text-center text-sm">
-                  {selectedFeatureIds.length > 0 
-                    ? `You've selected ${selectedFeatureIds.length} feature${selectedFeatureIds.length !== 1 ? 's' : ''} for your custom demo`
-                    : 'Complete the form below to start your journey'}
-                </p>
-              </div>
-            </div>
-            
-            <CardContent className="p-10">
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-gray-700 font-semibold text-base">Full Name *</FormLabel>
-                        <FormControl>
-                          <Input 
-                            {...field} 
-                            placeholder="e.g., Ahmed Al Maktoum"
-                            className="border-2 border-indigo-100 focus:border-indigo-400 rounded-xl py-6 text-base transition-all duration-300"
-                            data-testid="input-name"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-deep-blue">Full name</FormLabel>
+                    <FormControl>
+                      <Input 
+                        placeholder="e.g. Sarah Ahmed" 
+                        {...field} 
+                        className="border-gray-300 focus:border-accent-cyan"
+                        data-testid="input-name"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-                  <FormField
-                    control={form.control}
-                    name="company"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-gray-700 font-semibold text-base">Company Name *</FormLabel>
-                        <FormControl>
-                          <Input 
-                            {...field} 
-                            placeholder="e.g., Dubai Health Authority"
-                            className="border-2 border-indigo-100 focus:border-indigo-400 rounded-xl py-6 text-base transition-all duration-300"
-                            data-testid="input-company"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+              <FormField
+                control={form.control}
+                name="company"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-deep-blue">Company name</FormLabel>
+                    <FormControl>
+                      <Input 
+                        placeholder="Your company" 
+                        {...field} 
+                        className="border-gray-300 focus:border-accent-cyan"
+                        data-testid="input-company"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-gray-700 font-semibold text-base">Work Email *</FormLabel>
-                        <FormControl>
-                          <Input 
-                            {...field} 
-                            type="email"
-                            placeholder="e.g., ahmed@company.ae"
-                            className="border-2 border-indigo-100 focus:border-indigo-400 rounded-xl py-6 text-base transition-all duration-300"
-                            data-testid="input-email"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-deep-blue">Business email</FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="email" 
+                        placeholder="you@company.com" 
+                        {...field} 
+                        className="border-gray-300 focus:border-accent-cyan"
+                        data-testid="input-email"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-gray-700 font-semibold text-base">Phone Number *</FormLabel>
-                        <FormControl>
-                          <Input 
-                            {...field} 
-                            placeholder="e.g., +971 50 123 4567"
-                            className="border-2 border-indigo-100 focus:border-indigo-400 rounded-xl py-6 text-base transition-all duration-300"
-                            data-testid="input-phone"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+              <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-deep-blue">Phone number</FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="tel" 
+                        placeholder="+971 50 123 4567" 
+                        {...field} 
+                        className="border-gray-300 focus:border-accent-cyan"
+                        data-testid="input-phone"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-                  <FormField
-                    control={form.control}
-                    name="consent"
-                    render={({ field }) => (
-                      <FormItem className="flex flex-row items-start space-x-4 space-y-0 rounded-2xl border-2 border-indigo-100 p-5 bg-gradient-to-br from-indigo-50/50 to-violet-50/50">
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                            className="mt-1 border-indigo-300"
-                            data-testid="checkbox-consent"
-                          />
-                        </FormControl>
-                        <div className="space-y-1 leading-none">
-                          <FormLabel className="text-sm font-medium text-gray-700 cursor-pointer">
-                            I agree to be contacted by Forillon Technologies *
-                          </FormLabel>
-                          <p className="text-xs text-gray-500">
-                            We respect your privacy and will only contact you regarding our enterprise solutions.
-                          </p>
-                        </div>
-                      </FormItem>
-                    )}
-                  />
 
-                  {selectedFeatureIds.length > 0 && (
-                    <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200 rounded-2xl p-6">
-                      <p className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
-                        <CheckCircle2 className="w-5 h-5 text-amber-600" />
-                        Your Selected Features ({selectedFeatureIds.length}):
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {getSelectedFeatures().map((title, index) => (
-                          <span 
-                            key={index}
-                            className="inline-flex items-center bg-white border-2 border-amber-300 text-amber-700 text-xs font-medium px-4 py-2 rounded-full shadow-sm"
-                          >
-                            {title}
-                          </span>
-                        ))}
-                      </div>
-                      {techCount > 0 && researchCount > 0 && (
-                        <div className="mt-4 pt-4 border-t border-amber-200">
-                          <p className="text-xs text-gray-600 flex items-center gap-2">
-                            <Zap className="w-4 h-4 text-indigo-600" />
-                            <span className="font-semibold">Combined Solution:</span> {techCount} Tech Platform + {researchCount} Research Services
-                          </p>
-                        </div>
-                      )}
+              <FormField
+                control={form.control}
+                name="consent"
+                render={({ field }) => (
+                  <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                    <FormControl>
+                      <Checkbox 
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                        data-testid="checkbox-consent"
+                      />
+                    </FormControl>
+                    <div className="space-y-1 leading-none">
+                      <FormLabel className="text-sm text-slate-gray cursor-pointer">
+                        I agree to receive product updates and marketing communications
+                      </FormLabel>
+                      <FormMessage />
                     </div>
-                  )}
+                  </FormItem>
+                )}
+              />
 
-                  <Button 
-                    type="submit" 
-                    disabled={submitLead.isPending || selectedFeatureIds.length === 0}
-                    className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-lg py-7 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 rounded-2xl disabled:opacity-50"
-                    data-testid="button-submit"
-                  >
-                    {submitLead.isPending ? (
-                      <>
-                        <Loader2 className="mr-2 h-6 w-6 animate-spin" />
-                        Submitting...
-                      </>
-                    ) : (
-                      <>
-                        Request Demo
-                        <ArrowRight className="ml-2 h-5 w-5" />
-                      </>
-                    )}
-                  </Button>
+              <Button
+                type="submit"
+                disabled={submitMutation.isPending}
+                className="w-full bg-cta-highlight hover:bg-cta-highlight/90 text-deep-blue font-bold py-6 rounded-xl"
+                data-testid="button-submit-form"
+              >
+                {submitMutation.isPending ? (
+                  <>
+                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  <>
+                    Get my custom demo
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </>
+                )}
+              </Button>
+            </form>
+          </Form>
+        </DialogContent>
+      </Dialog>
 
-                  {selectedFeatureIds.length === 0 && (
-                    <p className="text-center text-sm text-gray-500">
-                      Please select at least one feature above to continue
-                    </p>
-                  )}
-                </form>
-              </Form>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Product Spotlight */}
-      <section className="relative py-32 overflow-hidden bg-gradient-to-br from-indigo-900 via-violet-900 to-purple-900 text-white">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }} />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white/90">
-            Enterprise Survey Platform
-          </h2>
-          <p className="text-2xl md:text-3xl mb-12 max-w-3xl mx-auto leading-relaxed text-white/80">
-            Deploy in days. Own your data. Scale without limits.
-          </p>
-
-          <div className="flex flex-wrap gap-8 justify-center mb-12">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-amber-400 mb-2">Used by 50+ UAE enterprises</div>
+      {/* Success Modal */}
+      <Dialog open={successOpen} onOpenChange={setSuccessOpen}>
+        <DialogContent className="sm:max-w-md text-center">
+          <div className="flex flex-col items-center py-6">
+            <div className="bg-success-green/10 rounded-full p-4 mb-4">
+              <CheckCircle2 className="h-16 w-16 text-success-green" />
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-amber-400 mb-2">99.99% uptime</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-amber-400 mb-2">Zero data breaches</div>
+            <DialogTitle className="text-3xl font-bold text-deep-blue mb-2">
+              Thank you!
+            </DialogTitle>
+            <DialogDescription className="text-lg text-slate-gray mb-6">
+              We'll send your custom demo link within 24 hours.
+            </DialogDescription>
+            
+            <div className="w-full space-y-4">
+              <Button
+                className="w-full bg-accent-cyan hover:bg-vibrant-teal text-white font-semibold py-6 rounded-xl"
+                onClick={() => {
+                  analytics.trackCTAClick('schedule_discovery_call');
+                  window.open('https://calendly.com/forillon-tech', '_blank');
+                }}
+                data-testid="button-schedule-call"
+              >
+                Schedule a discovery call
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              
+              <Button
+                variant="outline"
+                className="w-full border-2 border-gray-300 text-slate-gray font-semibold py-6 rounded-xl"
+                onClick={() => setSuccessOpen(false)}
+                data-testid="button-close-success"
+              >
+                Close
+              </Button>
             </div>
           </div>
+        </DialogContent>
+      </Dialog>
 
-          <Button 
-            size="lg"
-            onClick={scrollToForm}
-            className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-xl px-12 py-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 rounded-2xl"
-            data-testid="button-deploy"
-          >
-            Get Started Today
-            <ArrowRight className="ml-2 h-6 w-6" />
-          </Button>
-        </div>
-      </section>
-
-      {/* Social Proof */}
-      <section className="py-16 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gray-600 font-semibold text-lg mb-4">Trusted by leading UAE organizations</p>
-          <div className="flex flex-wrap gap-6 justify-center items-center text-gray-500 font-medium">
-            <span>Emirates NBD</span>
-            <span>•</span>
-            <span>Dubai Health Authority</span>
-            <span>•</span>
-            <span>Abu Dhabi Government</span>
+      {/* Video Modal (Placeholder) */}
+      <Dialog open={videoOpen} onOpenChange={setVideoOpen}>
+        <DialogContent className="sm:max-w-3xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-deep-blue">Platform Demo</DialogTitle>
+          </DialogHeader>
+          <div className="aspect-video bg-gray-100 rounded-lg flex items-center justify-center">
+            <p className="text-gray-500">Demo video would be embedded here</p>
           </div>
-        </div>
-      </section>
+        </DialogContent>
+      </Dialog>
 
       {/* Footer */}
-      <footer className="relative py-16 overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-900 to-violet-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex items-center justify-center gap-8 mb-8 flex-wrap">
-            <div className="w-56 h-20 flex items-center justify-center">
-              <img src={forillonLogo} alt="Forillon Technologies" className="max-h-14 max-w-full opacity-70 hover:opacity-100 transition-opacity object-contain" />
+      <footer className="bg-deep-blue text-white py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-center gap-6 mb-6">
+            <div className="w-48 h-16 flex items-center justify-center">
+              <img src={forillonLogo} alt="Forillon Technologies" className="max-h-12 max-w-full object-contain opacity-70" />
             </div>
-            <div className="text-3xl font-light text-white/40">×</div>
-            <div className="w-56 h-20 flex items-center justify-center">
-              <img src={mindsbourgLogo} alt="Mindsbourg" className="max-h-14 max-w-full opacity-70 hover:opacity-100 transition-opacity object-contain" />
+            <div className="text-2xl font-light text-white/30">×</div>
+            <div className="w-48 h-16 flex items-center justify-center">
+              <img src={mindsbourgLogo} alt="Mindsbourg" className="max-h-12 max-w-full object-contain opacity-70" />
             </div>
           </div>
-          
           <div className="text-center">
-            <p className="text-white/60 mb-6 text-sm">
-              © 2025 Forillon Technologies × Mindsbourg — All Rights Reserved.
+            <p className="text-white/60 text-sm">
+              © 2025 Forillon Technologies × Mindsbourg. All Rights Reserved.
             </p>
-            <div className="flex justify-center gap-8 text-sm">
-              <a href="/privacy-policy" className="text-indigo-300 hover:text-white transition-colors">
-                Privacy Policy
-              </a>
-              <a href="/contact" className="text-indigo-300 hover:text-white transition-colors">
-                Contact
-              </a>
-              <a href="/terms" className="text-indigo-300 hover:text-white transition-colors">
-                Terms
-              </a>
+            <div className="flex justify-center gap-6 mt-4 text-sm">
+              <a href="/privacy-policy" className="text-accent-cyan hover:text-white transition-colors">Privacy Policy</a>
+              <a href="/contact" className="text-accent-cyan hover:text-white transition-colors">Contact</a>
+              <a href="/terms" className="text-accent-cyan hover:text-white transition-colors">Terms</a>
             </div>
           </div>
         </div>

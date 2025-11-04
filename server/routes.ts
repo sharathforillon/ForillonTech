@@ -167,8 +167,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Checkbox lead submission endpoint
-  app.post("/api/lead", async (req, res) => {
+  // Checkbox lead submission endpoint (handler function)
+  const handleCheckboxLead = async (req: any, res: any) => {
     try {
       const validationResult = checkboxLeadSchema.safeParse(req.body);
       
@@ -199,7 +199,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.error("Checkbox lead submission error:", error);
       res.status(500).json({ error: "Failed to submit lead. Please try again." });
     }
-  });
+  };
+
+  // Checkbox lead endpoints (both routes use same handler)
+  app.post("/api/lead", handleCheckboxLead);
+  app.post("/api/checkbox-leads", handleCheckboxLead);
 
   // Admin routes (protected by auth middleware)
   app.get("/api/admin/contacts", async (req, res) => {
