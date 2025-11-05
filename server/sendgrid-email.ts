@@ -112,7 +112,7 @@ export async function sendCheckboxLeadNotificationToAdmin(lead: CheckboxLead): P
       : '<li>No features selected</li>';
 
     const msg = {
-      to: 'sreddy@forillontech.com',
+      to: ['sreddy@forillontech.com', 'support@forillontech.com'],
       from: 'noreply@forillontech.com',
       subject: `New Checkbox Demo Request from ${lead.company}`,
       html: `

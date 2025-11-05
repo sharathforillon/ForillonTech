@@ -796,20 +796,15 @@ function AdminDashboard() {
                                 </Badge>
                               </TableCell>
                               <TableCell>
-                                <div className="flex flex-wrap gap-1 max-w-xs">
+                                <div className="flex flex-wrap gap-1 max-w-md">
                                   {Array.isArray(lead.features) && lead.features.length > 0 ? (
-                                    lead.features.slice(0, 3).map((feature: any, index: number) => (
+                                    lead.features.map((feature: any, index: number) => (
                                       <Badge key={index} variant="secondary" className="text-xs">
                                         {String(feature)}
                                       </Badge>
                                     ))
                                   ) : (
                                     <span className="text-sm text-gray-500">None</span>
-                                  )}
-                                  {Array.isArray(lead.features) && lead.features.length > 3 && (
-                                    <Badge variant="secondary" className="text-xs">
-                                      +{lead.features.length - 3} more
-                                    </Badge>
                                   )}
                                 </div>
                               </TableCell>
