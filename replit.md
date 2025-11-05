@@ -6,6 +6,8 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 
 ## Recent Changes
 
+- **November 05, 2025**: ✅ Removed Calendly scheduling option from post-submission success modal
+- **November 05, 2025**: ✅ Added mandatory demo consent checkbox: "I agree to be contacted regarding the product demo request"
 - **November 05, 2025**: ✅ Made marketing consent checkbox optional (not required) for demo request submissions
 - **November 05, 2025**: ✅ Updated setup time from "48 hours" to "24 hours" on Martech landing page hero section
 - **November 05, 2025**: ✅ STUNNING VISUAL REDESIGN: Martech landing page now features full-screen hero with rich blue-teal gradient, all content clearly visible with enhanced contrast

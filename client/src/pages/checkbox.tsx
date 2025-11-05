@@ -657,26 +657,14 @@ export default function CheckboxLandingPage() {
               We'll send your custom demo link within 24 hours.
             </DialogDescription>
             
-            <div className="w-full space-y-4">
+            <div className="w-full">
               <Button
                 className="w-full bg-accent-cyan hover:bg-vibrant-teal text-white font-semibold py-6 rounded-xl"
-                onClick={() => {
-                  analytics.trackCTAClick('schedule_discovery_call');
-                  window.open('https://calendly.com/forillon-tech', '_blank');
-                }}
-                data-testid="button-schedule-call"
-              >
-                Schedule a discovery call
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              
-              <Button
-                variant="outline"
-                className="w-full border-2 border-gray-300 text-slate-gray font-semibold py-6 rounded-xl"
                 onClick={() => setSuccessOpen(false)}
                 data-testid="button-close-success"
               >
                 Close
+                <CheckCircle2 className="ml-2 h-5 w-5" />
               </Button>
             </div>
           </div>
