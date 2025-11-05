@@ -297,10 +297,10 @@ export default function CheckboxLandingPage() {
       </section>
 
       {/* Feature Explorer Section */}
-      <section id="feature-explorer" className="py-20 bg-soft-neutral">
+      <section id="feature-explorer" className="py-16 bg-gradient-to-br from-soft-neutral via-white to-soft-neutral min-h-screen pb-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-deep-blue mb-4">
+          <div className="text-center mb-10">
+            <h2 className="text-4xl md:text-5xl font-bold text-deep-blue mb-4 bg-gradient-to-r from-deep-blue via-accent-cyan to-vibrant-teal bg-clip-text text-transparent">
               Pick the capabilities you want
             </h2>
             <p className="text-xl text-slate-gray">
@@ -308,168 +308,178 @@ export default function CheckboxLandingPage() {
             </p>
           </div>
 
-          <div className="lg:grid lg:grid-cols-3 lg:gap-8">
-            {/* Feature Cards */}
-            <div className="lg:col-span-2 space-y-12">
-              {/* Research Help Desk Features */}
-              <div>
-                <h3 className="text-2xl font-bold text-deep-blue mb-6 flex items-center gap-3">
-                  <BarChart3 className="h-7 w-7 text-accent-cyan" />
-                  Research Help Desk
-                </h3>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {researchFeatures.map((feature) => {
-                    const Icon = feature.icon;
-                    const isSelected = selectedFeatures.includes(feature.id);
-                    return (
-                      <button
-                        key={feature.id}
-                        onClick={() => toggleFeature(feature.id)}
-                        className={`
-                          relative p-4 rounded-xl border-2 text-left transition-all duration-200
-                          ${isSelected 
-                            ? 'bg-accent-cyan/10 border-accent-cyan shadow-lg scale-[1.02]' 
-                            : 'bg-white border-gray-200 hover:border-accent-cyan/50 hover:shadow-md'
-                          }
-                        `}
-                        data-testid={`feature-card-${feature.id}`}
-                        aria-pressed={isSelected}
-                      >
-                        {isSelected && (
-                          <div className="absolute top-3 right-3">
-                            <div className="bg-accent-cyan rounded-full p-1">
-                              <Check className="h-4 w-4 text-white" />
-                            </div>
-                          </div>
-                        )}
-                        <div className="flex items-start gap-3">
-                          <Icon className={`h-6 w-6 flex-shrink-0 ${isSelected ? 'text-accent-cyan' : 'text-slate-gray'}`} />
-                          <div className="flex-1 min-w-0">
-                            <h4 className={`font-semibold mb-1 ${isSelected ? 'text-deep-blue' : 'text-slate-gray'}`}>
-                              {feature.title}
-                            </h4>
-                            <p className="text-sm text-gray-600">{feature.desc}</p>
-                          </div>
-                        </div>
-                      </button>
-                    );
-                  })}
+          {/* Two-Column Feature Grid */}
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
+            {/* Research Help Desk Features - Left Column */}
+            <div className="bg-white rounded-2xl shadow-xl border border-accent-cyan/20 p-6 lg:p-8">
+              <div className="flex items-center gap-3 mb-6 pb-4 border-b-2 border-accent-cyan/30">
+                <div className="bg-gradient-to-br from-accent-cyan to-vibrant-teal p-3 rounded-xl shadow-lg">
+                  <BarChart3 className="h-7 w-7 text-white" />
                 </div>
+                <h3 className="text-2xl font-bold text-deep-blue">Research Help Desk</h3>
               </div>
-
-              {/* Tech Survey Platform Features */}
-              <div>
-                <h3 className="text-2xl font-bold text-deep-blue mb-6 flex items-center gap-3">
-                  <Cloud className="h-7 w-7 text-vibrant-teal" />
-                  Tech Survey Platform
-                </h3>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {platformFeatures.map((feature) => {
-                    const Icon = feature.icon;
-                    const isSelected = selectedFeatures.includes(feature.id);
-                    return (
-                      <button
-                        key={feature.id}
-                        onClick={() => toggleFeature(feature.id)}
-                        className={`
-                          relative p-4 rounded-xl border-2 text-left transition-all duration-200
-                          ${isSelected 
-                            ? 'bg-vibrant-teal/10 border-vibrant-teal shadow-lg scale-[1.02]' 
-                            : 'bg-white border-gray-200 hover:border-vibrant-teal/50 hover:shadow-md'
-                          }
-                        `}
-                        data-testid={`feature-card-${feature.id}`}
-                        aria-pressed={isSelected}
-                      >
-                        {isSelected && (
-                          <div className="absolute top-3 right-3">
-                            <div className="bg-vibrant-teal rounded-full p-1">
-                              <Check className="h-4 w-4 text-white" />
-                            </div>
-                          </div>
-                        )}
-                        <div className="flex items-start gap-3">
-                          <Icon className={`h-6 w-6 flex-shrink-0 ${isSelected ? 'text-vibrant-teal' : 'text-slate-gray'}`} />
-                          <div className="flex-1 min-w-0">
-                            <h4 className={`font-semibold mb-1 ${isSelected ? 'text-deep-blue' : 'text-slate-gray'}`}>
-                              {feature.title}
-                            </h4>
-                            <p className="text-sm text-gray-600">{feature.desc}</p>
+              <div className="grid gap-3 max-h-[60vh] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-accent-cyan/30 scrollbar-track-gray-100">
+                {researchFeatures.map((feature) => {
+                  const Icon = feature.icon;
+                  const isSelected = selectedFeatures.includes(feature.id);
+                  return (
+                    <button
+                      key={feature.id}
+                      onClick={() => toggleFeature(feature.id)}
+                      className={`
+                        relative p-3 rounded-lg border-2 text-left transition-all duration-200 hover:scale-[1.01]
+                        ${isSelected 
+                          ? 'bg-gradient-to-br from-accent-cyan/10 to-vibrant-teal/10 border-accent-cyan shadow-md' 
+                          : 'bg-gray-50 border-gray-200 hover:border-accent-cyan/50 hover:shadow-sm'
+                        }
+                      `}
+                      data-testid={`feature-card-${feature.id}`}
+                      aria-pressed={isSelected}
+                    >
+                      {isSelected && (
+                        <div className="absolute top-2 right-2">
+                          <div className="bg-accent-cyan rounded-full p-0.5 shadow-lg">
+                            <Check className="h-3 w-3 text-white" />
                           </div>
                         </div>
-                      </button>
-                    );
-                  })}
-                </div>
+                      )}
+                      <div className="flex items-center gap-2">
+                        <Icon className={`h-5 w-5 flex-shrink-0 ${isSelected ? 'text-accent-cyan' : 'text-slate-gray'}`} />
+                        <div className="flex-1 min-w-0">
+                          <h4 className={`font-semibold text-sm ${isSelected ? 'text-deep-blue' : 'text-slate-gray'}`}>
+                            {feature.title}
+                          </h4>
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
-            {/* Sticky Summary Panel */}
-            <div className="lg:col-span-1 mt-8 lg:mt-0">
-              <div className="sticky top-24 bg-white rounded-2xl shadow-xl border-2 border-gray-100 p-6 space-y-6">
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-bold text-deep-blue">Your Selection</h3>
-                    <div className="bg-cta-highlight text-white text-sm font-bold px-3 py-1 rounded-full">
-                      {selectedCount}
-                    </div>
-                  </div>
-                  
-                  {selectedCount === 0 ? (
-                    <p className="text-gray-500 text-sm">
-                      Select features to build your custom platform
-                    </p>
-                  ) : (
-                    <div className="space-y-2 max-h-64 overflow-y-auto">
-                      {selectedFeatures.map(id => {
-                        const feature = allFeatures.find(f => f.id === id);
-                        if (!feature) return null;
-                        return (
-                          <div 
-                            key={id} 
-                            className="flex items-center justify-between gap-2 text-sm bg-gray-50 px-3 py-2 rounded-lg"
-                          >
-                            <span className="text-slate-gray flex-1">{feature.title}</span>
-                            <button
-                              onClick={() => toggleFeature(id)}
-                              className="text-gray-400 hover:text-red-500 transition-colors"
-                              aria-label={`Remove ${feature.title}`}
-                              data-testid={`remove-${id}`}
-                            >
-                              <X className="h-4 w-4" />
-                            </button>
+            {/* Tech Survey Platform Features - Right Column */}
+            <div className="bg-white rounded-2xl shadow-xl border border-vibrant-teal/20 p-6 lg:p-8">
+              <div className="flex items-center gap-3 mb-6 pb-4 border-b-2 border-vibrant-teal/30">
+                <div className="bg-gradient-to-br from-vibrant-teal to-accent-cyan p-3 rounded-xl shadow-lg">
+                  <Cloud className="h-7 w-7 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-deep-blue">Tech Survey Platform</h3>
+              </div>
+              <div className="grid gap-3 max-h-[60vh] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-vibrant-teal/30 scrollbar-track-gray-100">
+                {platformFeatures.map((feature) => {
+                  const Icon = feature.icon;
+                  const isSelected = selectedFeatures.includes(feature.id);
+                  return (
+                    <button
+                      key={feature.id}
+                      onClick={() => toggleFeature(feature.id)}
+                      className={`
+                        relative p-3 rounded-lg border-2 text-left transition-all duration-200 hover:scale-[1.01]
+                        ${isSelected 
+                          ? 'bg-gradient-to-br from-vibrant-teal/10 to-accent-cyan/10 border-vibrant-teal shadow-md' 
+                          : 'bg-gray-50 border-gray-200 hover:border-vibrant-teal/50 hover:shadow-sm'
+                        }
+                      `}
+                      data-testid={`feature-card-${feature.id}`}
+                      aria-pressed={isSelected}
+                    >
+                      {isSelected && (
+                        <div className="absolute top-2 right-2">
+                          <div className="bg-vibrant-teal rounded-full p-0.5 shadow-lg">
+                            <Check className="h-3 w-3 text-white" />
                           </div>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-
-                <Button
-                  onClick={openForm}
-                  disabled={selectedCount === 0}
-                  className="w-full bg-cta-highlight hover:bg-cta-highlight/90 text-deep-blue font-bold py-6 text-lg rounded-xl shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-                  data-testid="button-configure-demo"
-                >
-                  {selectedCount === 0 ? 'Select features first' : 'Configure My Demo'}
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-
-                <div className="pt-4 border-t border-gray-200">
-                  <div className="flex items-center gap-2 text-sm text-gray-600">
-                    <CheckCircle2 className="h-4 w-4 text-success-green" />
-                    <span>Free consultation included</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 mt-2">
-                    <CheckCircle2 className="h-4 w-4 text-success-green" />
-                    <span>No credit card required</span>
-                  </div>
-                </div>
+                        </div>
+                      )}
+                      <div className="flex items-center gap-2">
+                        <Icon className={`h-5 w-5 flex-shrink-0 ${isSelected ? 'text-vibrant-teal' : 'text-slate-gray'}`} />
+                        <div className="flex-1 min-w-0">
+                          <h4 className={`font-semibold text-sm ${isSelected ? 'text-deep-blue' : 'text-slate-gray'}`}>
+                            {feature.title}
+                          </h4>
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Sticky Floating Selection Panel - Bottom */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 transform transition-all duration-300" style={{
+        opacity: selectedCount > 0 ? 1 : 0,
+        pointerEvents: selectedCount > 0 ? 'auto' : 'none',
+        transform: selectedCount > 0 ? 'translateY(0)' : 'translateY(100%)'
+      }}>
+        <div className="bg-gradient-to-r from-deep-blue via-accent-cyan to-vibrant-teal backdrop-blur-xl bg-opacity-95 shadow-2xl border-t-4 border-cta-highlight">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              {/* Left: Selection Count & Preview */}
+              <div className="flex items-center gap-4 text-white">
+                <div className="flex items-center gap-3">
+                  <div className="bg-cta-highlight text-deep-blue font-black text-2xl px-4 py-2 rounded-full shadow-lg animate-pulse">
+                    {selectedCount}
+                  </div>
+                  <div>
+                    <p className="font-bold text-lg">Feature{selectedCount !== 1 ? 's' : ''} Selected</p>
+                    <p className="text-sm text-white/80">Build your custom platform</p>
+                  </div>
+                </div>
+                {/* Selected feature pills */}
+                <div className="hidden lg:flex items-center gap-2 max-w-md overflow-x-auto">
+                  {selectedFeatures.slice(0, 3).map(id => {
+                    const feature = allFeatures.find(f => f.id === id);
+                    if (!feature) return null;
+                    return (
+                      <div 
+                        key={id} 
+                        className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap flex items-center gap-1"
+                      >
+                        {feature.title}
+                        <button
+                          onClick={() => toggleFeature(id)}
+                          className="hover:bg-white/30 rounded-full p-0.5 transition-colors"
+                          aria-label={`Remove ${feature.title}`}
+                        >
+                          <X className="h-3 w-3" />
+                        </button>
+                      </div>
+                    );
+                  })}
+                  {selectedCount > 3 && (
+                    <div className="bg-white/20 px-3 py-1 rounded-full text-xs font-semibold">
+                      +{selectedCount - 3} more
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Right: CTA Button */}
+              <div className="flex items-center gap-3">
+                <Button
+                  onClick={openForm}
+                  size="lg"
+                  className="bg-cta-highlight hover:bg-yellow-500 text-deep-blue font-black px-8 py-6 text-lg rounded-xl shadow-2xl hover:shadow-cta-highlight/50 hover:scale-105 transition-all duration-300 group"
+                  data-testid="button-request-demo"
+                >
+                  Request Demo
+                  <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+                </Button>
+                <button
+                  onClick={() => setSelectedFeatures([])}
+                  className="text-white/80 hover:text-white hover:bg-white/10 p-2 rounded-lg transition-colors"
+                  aria-label="Clear all selections"
+                  data-testid="button-clear-all"
+                >
+                  <X className="h-6 w-6" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Form Modal */}
       <Dialog open={formOpen} onOpenChange={setFormOpen}>
