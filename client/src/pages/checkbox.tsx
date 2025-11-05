@@ -313,8 +313,8 @@ export default function CheckboxLandingPage() {
             {/* Research Help Desk Features - Left Column */}
             <div className="bg-white rounded-2xl shadow-xl border border-accent-cyan/20 p-6 lg:p-8">
               <div className="flex items-center gap-3 mb-6 pb-4 border-b-2 border-accent-cyan/30">
-                <div className="bg-gradient-to-br from-accent-cyan to-vibrant-teal p-3 rounded-xl shadow-lg">
-                  <BarChart3 className="h-7 w-7 text-white" />
+                <div className="bg-gradient-to-br from-blue-500 to-cyan-500 p-3 rounded-xl shadow-lg flex items-center justify-center">
+                  <BarChart3 className="h-7 w-7 text-white stroke-[2.5]" />
                 </div>
                 <h3 className="text-2xl font-bold text-deep-blue">Research Help Desk</h3>
               </div>
@@ -360,8 +360,8 @@ export default function CheckboxLandingPage() {
             {/* Tech Survey Platform Features - Right Column */}
             <div className="bg-white rounded-2xl shadow-xl border border-vibrant-teal/20 p-6 lg:p-8">
               <div className="flex items-center gap-3 mb-6 pb-4 border-b-2 border-vibrant-teal/30">
-                <div className="bg-gradient-to-br from-vibrant-teal to-accent-cyan p-3 rounded-xl shadow-lg">
-                  <Cloud className="h-7 w-7 text-white" />
+                <div className="bg-gradient-to-br from-teal-500 to-cyan-500 p-3 rounded-xl shadow-lg flex items-center justify-center">
+                  <MessageSquare className="h-7 w-7 text-white stroke-[2.5]" />
                 </div>
                 <h3 className="text-2xl font-bold text-deep-blue">Tech Survey Platform</h3>
               </div>
@@ -413,7 +413,7 @@ export default function CheckboxLandingPage() {
         pointerEvents: selectedCount > 0 ? 'auto' : 'none',
         transform: selectedCount > 0 ? 'translateY(0)' : 'translateY(100%)'
       }}>
-        <div className="bg-gradient-to-r from-deep-blue via-accent-cyan to-vibrant-teal backdrop-blur-xl bg-opacity-95 shadow-2xl border-t-4 border-cta-highlight">
+        <div className="bg-gradient-to-r from-blue-900 via-blue-700 to-teal-700 shadow-2xl border-t-4 border-yellow-400">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               {/* Left: Selection Count & Preview */}
