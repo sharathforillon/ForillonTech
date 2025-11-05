@@ -25,7 +25,7 @@ export async function sendPartnershipInquiryViaMailjet(inquiry: PartnershipInqui
         Messages: [
           {
             From: {
-              Email: 'noreply@forillontech.com',
+              Email: 'support@forillontech.com',
               Name: 'Forillon Technologies'
             },
             To: [
@@ -136,7 +136,7 @@ export async function sendCheckboxLeadNotificationToAdmin(lead: CheckboxLead): P
         Messages: [
           {
             From: {
-              Email: 'noreply@forillontech.com',
+              Email: 'support@forillontech.com',
               Name: 'Checkbox Platform'
             },
             To: [
@@ -246,7 +246,7 @@ export async function sendCheckboxLeadConfirmation(lead: CheckboxLead): Promise<
         Messages: [
           {
             From: {
-              Email: 'noreply@forillontech.com',
+              Email: 'support@forillontech.com',
               Name: 'Checkbox Platform'
             },
             To: [
