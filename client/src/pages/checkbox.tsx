@@ -197,13 +197,16 @@ export default function CheckboxLandingPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Full Screen Landing */}
-      <section className="relative overflow-hidden min-h-screen flex items-center justify-center bg-gradient-to-br from-deep-blue via-accent-cyan/20 to-vibrant-teal/30">
+      <section className="relative overflow-hidden min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0B3C5D] via-[#005A7F] to-[#007C91]">
         {/* Animated Background Orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-cyan/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-vibrant-teal/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-cta-highlight/10 rounded-full blur-2xl animate-pulse delay-500"></div>
+          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-cyan-400/30 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-teal-400/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 right-1/3 w-80 h-80 bg-yellow-400/20 rounded-full blur-3xl animate-pulse delay-500"></div>
         </div>
+        
+        {/* Dark overlay for better text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
           {/* Co-branded Logos */}
@@ -218,24 +221,24 @@ export default function CheckboxLandingPage() {
           </div>
 
           <div className="text-center max-w-5xl mx-auto animate-fade-in-up">
-            <div className="mb-6 inline-block">
-              <span className="bg-white/10 backdrop-blur-md text-white px-6 py-3 rounded-full text-sm font-semibold border border-white/20 shadow-lg">
+            <div className="mb-8 inline-block">
+              <span className="bg-white/20 backdrop-blur-md text-white px-8 py-4 rounded-full text-base font-bold border-2 border-white/30 shadow-2xl">
                 🚀 Enterprise Survey Platform • Made in UAE
               </span>
             </div>
             
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 text-white leading-tight drop-shadow-2xl">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black mb-8 text-white leading-tight" style={{textShadow: '0 4px 20px rgba(0,0,0,0.5), 0 0 60px rgba(0,164,204,0.3)'}}>
               Build your custom research platform in{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cta-highlight via-yellow-300 to-cta-highlight animate-gradient">
+              <span className="inline-block text-[#FFD700] animate-pulse" style={{textShadow: '0 0 30px rgba(255,215,0,0.6), 0 4px 20px rgba(0,0,0,0.5)'}}>
                 days, not months
               </span>
             </h1>
             
-            <p className="text-2xl md:text-3xl text-white/90 mb-6 leading-relaxed font-light drop-shadow-lg">
+            <p className="text-xl md:text-2xl text-white mb-6 leading-relaxed font-medium" style={{textShadow: '0 2px 10px rgba(0,0,0,0.5)'}}>
               White-label survey & research platform. UAE data sovereignty. Zero-code builder. Bank-grade security.
             </p>
             
-            <p className="text-lg md:text-xl text-white/70 mb-8 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-white/95 mb-10 max-w-3xl mx-auto font-light" style={{textShadow: '0 2px 8px rgba(0,0,0,0.4)'}}>
               Pick exactly what you need. From basic surveys to AI-powered sentiment analysis. Deploy on-premise or cloud. Your brand, your rules.
             </p>
             <div className="flex flex-wrap gap-6 justify-center mt-12">
@@ -267,41 +270,41 @@ export default function CheckboxLandingPage() {
             </div>
 
             {/* Value Props */}
-            <div className="flex flex-wrap gap-8 justify-center mt-16 text-white/90">
-              <div className="flex items-center gap-3">
-                <div className="bg-success-green/20 backdrop-blur-sm p-3 rounded-full">
-                  <CheckCircle2 className="h-6 w-6 text-success-green" />
+            <div className="flex flex-wrap gap-6 justify-center mt-14 text-white">
+              <div className="flex items-center gap-3 bg-white/15 backdrop-blur-md px-6 py-4 rounded-xl shadow-2xl border border-white/30">
+                <div className="bg-emerald-500 p-2 rounded-full shadow-lg">
+                  <CheckCircle2 className="h-6 w-6 text-white" />
                 </div>
-                <span className="font-semibold text-lg">Setup in 48 hours</span>
+                <span className="font-bold text-lg" style={{textShadow: '0 2px 8px rgba(0,0,0,0.3)'}}>Setup in 48 hours</span>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="bg-success-green/20 backdrop-blur-sm p-3 rounded-full">
-                  <CheckCircle2 className="h-6 w-6 text-success-green" />
+              <div className="flex items-center gap-3 bg-white/15 backdrop-blur-md px-6 py-4 rounded-xl shadow-2xl border border-white/30">
+                <div className="bg-emerald-500 p-2 rounded-full shadow-lg">
+                  <CheckCircle2 className="h-6 w-6 text-white" />
                 </div>
-                <span className="font-semibold text-lg">100% data sovereignty</span>
+                <span className="font-bold text-lg" style={{textShadow: '0 2px 8px rgba(0,0,0,0.3)'}}>100% data sovereignty</span>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="bg-success-green/20 backdrop-blur-sm p-3 rounded-full">
-                  <CheckCircle2 className="h-6 w-6 text-success-green" />
+              <div className="flex items-center gap-3 bg-white/15 backdrop-blur-md px-6 py-4 rounded-xl shadow-2xl border border-white/30">
+                <div className="bg-emerald-500 p-2 rounded-full shadow-lg">
+                  <CheckCircle2 className="h-6 w-6 text-white" />
                 </div>
-                <span className="font-semibold text-lg">No technical skills needed</span>
+                <span className="font-bold text-lg" style={{textShadow: '0 2px 8px rgba(0,0,0,0.3)'}}>No technical skills needed</span>
               </div>
             </div>
           </div>
 
           {/* Trust Badges */}
           <div className="mt-20 flex flex-wrap gap-6 justify-center items-center animate-fade-in-up delay-200">
-            <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full shadow-xl border border-white/20">
-              <Shield className="h-6 w-6 text-success-green" />
-              <span className="text-base font-semibold text-white">ISO 27001 Certified</span>
+            <div className="flex items-center gap-3 bg-white/20 backdrop-blur-md px-7 py-4 rounded-full shadow-2xl border-2 border-white/40">
+              <Shield className="h-7 w-7 text-emerald-400" />
+              <span className="text-base font-bold text-white" style={{textShadow: '0 2px 6px rgba(0,0,0,0.3)'}}>ISO 27001 Certified</span>
             </div>
-            <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full shadow-xl border border-white/20">
-              <Shield className="h-6 w-6 text-success-green" />
-              <span className="text-base font-semibold text-white">GDPR Compliant</span>
+            <div className="flex items-center gap-3 bg-white/20 backdrop-blur-md px-7 py-4 rounded-full shadow-2xl border-2 border-white/40">
+              <Shield className="h-7 w-7 text-emerald-400" />
+              <span className="text-base font-bold text-white" style={{textShadow: '0 2px 6px rgba(0,0,0,0.3)'}}>GDPR Compliant</span>
             </div>
-            <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full shadow-xl border border-white/20">
-              <Server className="h-6 w-6 text-cta-highlight" />
-              <span className="text-base font-semibold text-white">UAE Data Centers</span>
+            <div className="flex items-center gap-3 bg-white/20 backdrop-blur-md px-7 py-4 rounded-full shadow-2xl border-2 border-white/40">
+              <Server className="h-7 w-7 text-yellow-400" />
+              <span className="text-base font-bold text-white" style={{textShadow: '0 2px 6px rgba(0,0,0,0.3)'}}>UAE Data Centers</span>
             </div>
           </div>
         </div>

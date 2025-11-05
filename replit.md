@@ -4,6 +4,14 @@
 
 This is a modern, enterprise-grade marketing website for Forillon Technologies, showcasing its technology consulting services, including AI consulting, digital transformation, and enterprise architecture solutions. It is a full-stack application with a React frontend and an Express backend, live in production at https://forillontech.com. The project aims to provide a professional online presence, capture leads, and manage client interactions efficiently.
 
+## Recent Changes
+
+- **November 05, 2025**: ✅ STUNNING VISUAL REDESIGN: Checkbox landing page now features full-screen hero with rich blue-teal gradient, all content clearly visible with enhanced contrast
+- **November 05, 2025**: ✅ Removed navigation from /checkbox for distraction-free marketing experience
+- **November 05, 2025**: ✅ Enhanced text visibility: White text with glowing shadows, gold "days, not months" accent, emerald green value props
+- **November 05, 2025**: ✅ Admin dashboard Features column displays ALL selected features (no truncation)
+- **November 05, 2025**: ✅ Email notifications sent to BOTH sreddy@forillontech.com AND support@forillontech.com
+
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
