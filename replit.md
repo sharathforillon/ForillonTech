@@ -6,6 +6,7 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 
 ## Recent Changes
 
+- **November 05, 2025**: ✅ Updated setup time from "48 hours" to "24 hours" on Martech landing page hero section
 - **November 05, 2025**: ✅ STUNNING VISUAL REDESIGN: Martech landing page now features full-screen hero with rich blue-teal gradient, all content clearly visible with enhanced contrast
 - **November 05, 2025**: ✅ Removed navigation from /checkbox for distraction-free marketing experience
 - **November 05, 2025**: ✅ Rebranded platform from "Checkbox" to "Martech" across landing page and email templates

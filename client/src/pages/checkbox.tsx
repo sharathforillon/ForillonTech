@@ -275,7 +275,7 @@ export default function CheckboxLandingPage() {
                 <div className="bg-emerald-500 p-2 rounded-full shadow-lg">
                   <CheckCircle2 className="h-6 w-6 text-white" />
                 </div>
-                <span className="font-bold text-lg" style={{textShadow: '0 2px 8px rgba(0,0,0,0.3)'}}>Setup in 48 hours</span>
+                <span className="font-bold text-lg" style={{textShadow: '0 2px 8px rgba(0,0,0,0.3)'}}>Setup in 24 hours</span>
               </div>
               <div className="flex items-center gap-3 bg-white/15 backdrop-blur-md px-6 py-4 rounded-xl shadow-2xl border border-white/30">
                 <div className="bg-emerald-500 p-2 rounded-full shadow-lg">
