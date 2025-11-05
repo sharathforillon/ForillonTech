@@ -137,7 +137,7 @@ export async function sendCheckboxLeadNotificationToAdmin(lead: CheckboxLead): P
           {
             From: {
               Email: 'support@forillontech.com',
-              Name: 'Checkbox Platform'
+              Name: 'Martech Platform'
             },
             To: [
               {
@@ -149,7 +149,7 @@ export async function sendCheckboxLeadNotificationToAdmin(lead: CheckboxLead): P
                 Name: 'Support Team'
               }
             ],
-            Subject: `New Checkbox Demo Request from ${lead.company}`,
+            Subject: `New Martech Demo Request from ${lead.company}`,
             HTMLPart: `
 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff;">
   <div style="background: linear-gradient(135deg, #0B3C5D 0%, #00A4CC 100%); padding: 30px; text-align: center;">
@@ -157,7 +157,7 @@ export async function sendCheckboxLeadNotificationToAdmin(lead: CheckboxLead): P
       🎉 New Demo Request
     </h1>
     <p style="color: #bfdbfe; margin: 8px 0 0 0; font-size: 16px;">
-      Checkbox Platform - White Label Survey Solution
+      Martech Platform - White Label Survey Solution
     </p>
   </div>
   
@@ -189,7 +189,7 @@ export async function sendCheckboxLeadNotificationToAdmin(lead: CheckboxLead): P
 
     <div style="margin-top: 40px; padding-top: 25px; border-top: 2px solid #e5e7eb; text-align: center;">
       <p style="color: #6b7280; font-size: 14px; margin: 0 0 10px 0;">
-        This demo request was submitted through the Checkbox landing page.
+        This demo request was submitted through the Martech landing page.
       </p>
       <a href="mailto:${lead.email}" style="display: inline-block; background: #00A4CC; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: 500; margin-top: 10px;">
         Reply to ${lead.name}
@@ -199,7 +199,7 @@ export async function sendCheckboxLeadNotificationToAdmin(lead: CheckboxLead): P
 </div>
             `,
             TextPart: `
-New Checkbox Demo Request from ${lead.company}
+New Martech Demo Request from ${lead.company}
 
 Contact: ${lead.name}
 Email: ${lead.email}
@@ -212,7 +212,7 @@ Selected Features (${Array.isArray(lead.features) ? lead.features.length : 0}):
 ${Array.isArray(lead.features) ? lead.features.map(f => `- ${f}`).join('\n') : 'No features selected'}
 
 ---
-This demo request was submitted through the Checkbox landing page.
+This demo request was submitted through the Martech landing page.
 Reply directly to: ${lead.email}
             `
           }
@@ -247,7 +247,7 @@ export async function sendCheckboxLeadConfirmation(lead: CheckboxLead): Promise<
           {
             From: {
               Email: 'support@forillontech.com',
-              Name: 'Checkbox Platform'
+              Name: 'Martech Platform'
             },
             To: [
               {
@@ -255,7 +255,7 @@ export async function sendCheckboxLeadConfirmation(lead: CheckboxLead): Promise<
                 Name: lead.name
               }
             ],
-            Subject: 'Thank You for Requesting a Checkbox Platform Demo',
+            Subject: 'Thank You for Requesting a Martech Platform Demo',
             HTMLPart: `
 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff;">
   <div style="background: linear-gradient(135deg, #0B3C5D 0%, #00A4CC 100%); padding: 30px; text-align: center;">
@@ -269,7 +269,7 @@ export async function sendCheckboxLeadConfirmation(lead: CheckboxLead): Promise<
   
   <div style="padding: 30px;">
     <p style="color: #374151; font-size: 16px; line-height: 1.6; margin-top: 0;">
-      We're excited to show you how Checkbox can transform your survey and research operations. Our team will review your requirements and reach out within <strong>24 hours</strong> to schedule a personalized demo.
+      We're excited to show you how Martech can transform your survey and research operations. Our team will review your requirements and reach out within <strong>24 hours</strong> to schedule a personalized demo.
     </p>
 
     <div style="background: #f0f9ff; padding: 25px; margin: 30px 0; border-radius: 8px; border-left: 4px solid #00A4CC;">
@@ -291,7 +291,7 @@ export async function sendCheckboxLeadConfirmation(lead: CheckboxLead): Promise<
     </div>
 
     <div style="background: #fefbf0; padding: 25px; margin: 20px 0; border-radius: 8px; border-left: 4px solid #FFB400;">
-      <h3 style="color: #d97706; margin: 0 0 15px 0; font-size: 18px; font-weight: 600;">Why Checkbox?</h3>
+      <h3 style="color: #d97706; margin: 0 0 15px 0; font-size: 18px; font-weight: 600;">Why Martech?</h3>
       <ul style="margin: 0; padding-left: 20px; color: #374151; line-height: 1.8;">
         <li>🇦🇪 <strong>UAE-Hosted & Data Sovereign</strong> - Full compliance with local regulations</li>
         <li>⚡ <strong>Rapid Deployment</strong> - Go live in weeks, not months</li>
@@ -321,7 +321,7 @@ export async function sendCheckboxLeadConfirmation(lead: CheckboxLead): Promise<
             TextPart: `
 Thank You, ${lead.name.split(' ')[0]}!
 
-Your demo request has been received. We're excited to show you how Checkbox can transform your survey and research operations.
+Your demo request has been received. We're excited to show you how Martech can transform your survey and research operations.
 
 Our team will review your requirements and reach out within 24 hours to schedule a personalized demo.
 
@@ -335,7 +335,7 @@ Your Selected Features:
 Product: ${lead.productType || 'Custom Solution'}
 ${Array.isArray(lead.features) ? lead.features.map(f => `- ${f}`).join('\n') : 'No features selected'}
 
-Why Checkbox?
+Why Martech?
 - UAE-Hosted & Data Sovereign - Full compliance with local regulations
 - Rapid Deployment - Go live in weeks, not months
 - Fully Customizable - White-labeled to match your brand

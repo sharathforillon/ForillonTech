@@ -6,8 +6,9 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 
 ## Recent Changes
 
-- **November 05, 2025**: ✅ STUNNING VISUAL REDESIGN: Checkbox landing page now features full-screen hero with rich blue-teal gradient, all content clearly visible with enhanced contrast
+- **November 05, 2025**: ✅ STUNNING VISUAL REDESIGN: Martech landing page now features full-screen hero with rich blue-teal gradient, all content clearly visible with enhanced contrast
 - **November 05, 2025**: ✅ Removed navigation from /checkbox for distraction-free marketing experience
+- **November 05, 2025**: ✅ Rebranded platform from "Checkbox" to "Martech" across landing page and email templates
 - **November 05, 2025**: ✅ Enhanced text visibility: White text with glowing shadows, gold "days, not months" accent, emerald green value props
 - **November 05, 2025**: ✅ Both company logos (Forillon × Mindsbourg) now have matching white backgrounds in BOTH hero and footer for perfect visibility
 - **November 05, 2025**: ✅ Admin dashboard Features column displays ALL selected features (no truncation)
@@ -32,7 +33,7 @@ The website features an enterprise-grade design system inspired by IBM Consultin
 
 ### Feature Specifications
 - **Core Services Showcase**: Dedicated sections and pages for AI consulting, digital transformation, enterprise architecture, and a newly added "Digital Innovation Strategy."
-- **Checkbox Landing Page (`/checkbox`)**: A white-label survey platform showcase allowing users to select features from "Tech Platform" and "Research Help Desk" categories, with a streamlined lead form flow and comprehensive tracking.
+- **Martech Landing Page (`/checkbox`)**: A white-label survey platform showcase allowing users to select features from "Tech Platform" and "Research Help Desk" categories, with a streamlined lead form flow and comprehensive tracking.
 - **Blog System**: Markdown-based content management.
 - **Contact & Partnership Forms**: Capture and store submissions in the database for admin tracking.
 

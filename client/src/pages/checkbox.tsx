@@ -82,7 +82,7 @@ export default function CheckboxLandingPage() {
   const [successOpen, setSuccessOpen] = useState(false);
 
   useEffect(() => {
-    document.title = "Build Your Custom Research Platform | Checkbox by Forillon";
+    document.title = "Build Your Custom Research Platform | Martech by Forillon";
     const metaDescription = document.querySelector('meta[name="description"]') || document.createElement('meta');
     metaDescription.setAttribute('name', 'description');
     metaDescription.setAttribute('content', 'White-label survey platform with UAE hosting. No-code form builder. Enterprise security. Choose your features and get a custom demo.');

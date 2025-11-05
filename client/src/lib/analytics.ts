@@ -140,7 +140,7 @@ class Analytics {
     // Meta Pixel Conversion
     if (window.fbq) {
       window.fbq('track', 'Lead', {
-        content_name: 'Checkbox Demo Request',
+        content_name: 'Martech Demo Request',
         value: selectedCount,
         currency: 'USD'
       });
