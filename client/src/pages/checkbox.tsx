@@ -677,12 +677,12 @@ export default function CheckboxLandingPage() {
       <footer className="bg-deep-blue text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center gap-6 mb-6">
-            <div className="w-48 h-16 flex items-center justify-center">
-              <img src={forillonLogo} alt="Forillon Technologies" className="max-h-12 max-w-full object-contain opacity-70" />
+            <div className="w-48 h-16 flex items-center justify-center bg-white rounded-lg shadow-xl px-4 py-3">
+              <img src={forillonLogo} alt="Forillon Technologies" className="max-h-12 max-w-full object-contain" />
             </div>
             <div className="text-2xl font-light text-white/30">×</div>
-            <div className="w-48 h-16 flex items-center justify-center">
-              <img src={mindsbourgLogo} alt="Mindsbourg" className="max-h-12 max-w-full object-contain opacity-70" />
+            <div className="w-48 h-16 flex items-center justify-center bg-white rounded-lg shadow-xl px-4 py-3">
+              <img src={mindsbourgLogo} alt="Mindsbourg" className="max-h-12 max-w-full object-contain" />
             </div>
           </div>
           <div className="text-center">

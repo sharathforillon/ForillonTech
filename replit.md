@@ -9,7 +9,7 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 - **November 05, 2025**: ✅ STUNNING VISUAL REDESIGN: Checkbox landing page now features full-screen hero with rich blue-teal gradient, all content clearly visible with enhanced contrast
 - **November 05, 2025**: ✅ Removed navigation from /checkbox for distraction-free marketing experience
 - **November 05, 2025**: ✅ Enhanced text visibility: White text with glowing shadows, gold "days, not months" accent, emerald green value props
-- **November 05, 2025**: ✅ Both company logos (Forillon × Mindsbourg) now have matching white backgrounds for perfect visibility
+- **November 05, 2025**: ✅ Both company logos (Forillon × Mindsbourg) now have matching white backgrounds in BOTH hero and footer for perfect visibility
 - **November 05, 2025**: ✅ Admin dashboard Features column displays ALL selected features (no truncation)
 - **November 05, 2025**: ✅ Email notifications sent to BOTH sreddy@forillontech.com AND support@forillontech.com
 
