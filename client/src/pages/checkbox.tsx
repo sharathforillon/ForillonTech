@@ -654,7 +654,7 @@ export default function CheckboxLandingPage() {
               Thank you!
             </DialogTitle>
             <DialogDescription className="text-lg text-slate-gray mb-6">
-              We'll send your custom demo link within 24 hours.
+              One of our team members will reach out to you within 24 hours.
             </DialogDescription>
             
             <div className="w-full">
