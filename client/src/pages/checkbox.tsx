@@ -31,7 +31,6 @@ import {
   X,
   Check
 } from "lucide-react";
-import Navigation from "@/components/navigation";
 import { checkboxLeadSchema, type CheckboxLeadForm } from "@shared/schema";
 import mindsbourgLogo from "@assets/Mindsbourg-Logo_alt_1761671481551.jpg";
 import forillonLogo from "@assets/image_1762228948953.png";
@@ -197,71 +196,112 @@ export default function CheckboxLandingPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation />
+      {/* Hero Section - Full Screen Landing */}
+      <section className="relative overflow-hidden min-h-screen flex items-center justify-center bg-gradient-to-br from-deep-blue via-accent-cyan/20 to-vibrant-teal/30">
+        {/* Animated Background Orbs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-cyan/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-vibrant-teal/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-cta-highlight/10 rounded-full blur-2xl animate-pulse delay-500"></div>
+        </div>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-cyan-50/30 pt-32 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
           {/* Co-branded Logos */}
-          <div className="flex items-center justify-center gap-6 mb-10">
-            <div className="w-48 h-20 flex items-center justify-center">
-              <img src={forillonLogo} alt="Forillon Technologies" className="max-h-14 max-w-full object-contain opacity-80" />
+          <div className="flex items-center justify-center gap-8 mb-12 animate-fade-in">
+            <div className="w-56 h-24 flex items-center justify-center">
+              <img src={forillonLogo} alt="Forillon Technologies" className="max-h-16 max-w-full object-contain drop-shadow-xl" />
             </div>
-            <div className="text-2xl font-light text-gray-300">×</div>
-            <div className="w-48 h-20 flex items-center justify-center">
-              <img src={mindsbourgLogo} alt="Mindsbourg" className="max-h-14 max-w-full object-contain opacity-80" />
+            <div className="text-3xl font-light text-white/60">×</div>
+            <div className="w-56 h-24 flex items-center justify-center">
+              <img src={mindsbourgLogo} alt="Mindsbourg" className="max-h-16 max-w-full object-contain drop-shadow-xl" />
             </div>
           </div>
 
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-deep-blue leading-tight">
-              Build your custom research and survey platform fast
+          <div className="text-center max-w-5xl mx-auto animate-fade-in-up">
+            <div className="mb-6 inline-block">
+              <span className="bg-white/10 backdrop-blur-md text-white px-6 py-3 rounded-full text-sm font-semibold border border-white/20 shadow-lg">
+                🚀 Enterprise Survey Platform • Made in UAE
+              </span>
+            </div>
+            
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 text-white leading-tight drop-shadow-2xl">
+              Build your custom research platform in{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cta-highlight via-yellow-300 to-cta-highlight animate-gradient">
+                days, not months
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl text-slate-gray mb-4 leading-relaxed">
-              Checkbox by Forillon. White-label. UAE hosting option. No-code form builder. Enterprise security.
+            
+            <p className="text-2xl md:text-3xl text-white/90 mb-6 leading-relaxed font-light drop-shadow-lg">
+              White-label survey & research platform. UAE data sovereignty. Zero-code builder. Bank-grade security.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center mt-8">
+            
+            <p className="text-lg md:text-xl text-white/70 mb-8 max-w-3xl mx-auto">
+              Pick exactly what you need. From basic surveys to AI-powered sentiment analysis. Deploy on-premise or cloud. Your brand, your rules.
+            </p>
+            <div className="flex flex-wrap gap-6 justify-center mt-12">
               <Button 
                 size="lg" 
-                className="bg-accent-cyan hover:bg-vibrant-teal text-white px-8 py-6 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+                className="bg-cta-highlight hover:bg-yellow-500 text-deep-blue px-10 py-7 text-xl font-bold rounded-xl shadow-2xl hover:shadow-cta-highlight/50 hover:scale-105 transition-all duration-300 group"
                 onClick={() => {
                   analytics.trackCTAClick('hero_choose_features');
                   document.getElementById('feature-explorer')?.scrollIntoView({ behavior: 'smooth' });
                 }}
                 data-testid="button-choose-features"
               >
-                Choose your features
-                <ArrowRight className="ml-2 h-5 w-5" />
+                Choose Your Features
+                <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button 
                 size="lg" 
                 variant="outline"
-                className="border-2 border-accent-cyan text-accent-cyan hover:bg-accent-cyan hover:text-white px-8 py-6 text-lg font-semibold rounded-lg transition-all"
+                className="border-3 border-white bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-deep-blue px-10 py-7 text-xl font-bold rounded-xl shadow-xl transition-all duration-300 hover:scale-105"
                 onClick={() => {
                   analytics.trackCTAClick('hero_watch_demo');
                   setVideoOpen(true);
                 }}
                 data-testid="button-watch-demo"
               >
-                <PlayCircle className="mr-2 h-5 w-5" />
-                Watch 60s demo
+                <PlayCircle className="mr-3 h-6 w-6" />
+                Watch 60s Demo
               </Button>
+            </div>
+
+            {/* Value Props */}
+            <div className="flex flex-wrap gap-8 justify-center mt-16 text-white/90">
+              <div className="flex items-center gap-3">
+                <div className="bg-success-green/20 backdrop-blur-sm p-3 rounded-full">
+                  <CheckCircle2 className="h-6 w-6 text-success-green" />
+                </div>
+                <span className="font-semibold text-lg">Setup in 48 hours</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="bg-success-green/20 backdrop-blur-sm p-3 rounded-full">
+                  <CheckCircle2 className="h-6 w-6 text-success-green" />
+                </div>
+                <span className="font-semibold text-lg">100% data sovereignty</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="bg-success-green/20 backdrop-blur-sm p-3 rounded-full">
+                  <CheckCircle2 className="h-6 w-6 text-success-green" />
+                </div>
+                <span className="font-semibold text-lg">No technical skills needed</span>
+              </div>
             </div>
           </div>
 
           {/* Trust Badges */}
-          <div className="mt-16 flex flex-wrap gap-6 justify-center items-center">
-            <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
-              <Shield className="h-5 w-5 text-success-green" />
-              <span className="text-sm font-medium text-slate-gray">ISO 27001</span>
+          <div className="mt-20 flex flex-wrap gap-6 justify-center items-center animate-fade-in-up delay-200">
+            <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full shadow-xl border border-white/20">
+              <Shield className="h-6 w-6 text-success-green" />
+              <span className="text-base font-semibold text-white">ISO 27001 Certified</span>
             </div>
-            <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
-              <Shield className="h-5 w-5 text-success-green" />
-              <span className="text-sm font-medium text-slate-gray">GDPR Compliant</span>
+            <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full shadow-xl border border-white/20">
+              <Shield className="h-6 w-6 text-success-green" />
+              <span className="text-base font-semibold text-white">GDPR Compliant</span>
             </div>
-            <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
-              <Server className="h-5 w-5 text-accent-cyan" />
-              <span className="text-sm font-medium text-slate-gray">UAE-Hosted</span>
+            <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full shadow-xl border border-white/20">
+              <Server className="h-6 w-6 text-cta-highlight" />
+              <span className="text-base font-semibold text-white">UAE Data Centers</span>
             </div>
           </div>
         </div>
