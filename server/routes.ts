@@ -8,7 +8,7 @@ import matter from "gray-matter";
 import { partnershipInquirySchema, insertContactRecordSchema, insertPartnershipRecordSchema, checkboxLeadSchema } from "../shared/schema";
 import { sendPartnershipInquiry } from "./email";
 import { logPartnershipInquiry, generateFollowUpEmailTemplate } from "./notification";
-import { sendCheckboxLeadNotificationToAdmin, sendCheckboxLeadConfirmation } from "./sendgrid-email";
+import { sendCheckboxLeadNotificationToAdmin, sendCheckboxLeadConfirmation } from "./mailjet-email";
 
 interface BlogPost {
   slug: string;

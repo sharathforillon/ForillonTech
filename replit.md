@@ -11,7 +11,8 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 - **November 05, 2025**: ✅ Enhanced text visibility: White text with glowing shadows, gold "days, not months" accent, emerald green value props
 - **November 05, 2025**: ✅ Both company logos (Forillon × Mindsbourg) now have matching white backgrounds in BOTH hero and footer for perfect visibility
 - **November 05, 2025**: ✅ Admin dashboard Features column displays ALL selected features (no truncation)
-- **November 05, 2025**: ✅ Email notifications sent to BOTH sreddy@forillontech.com AND support@forillontech.com
+- **November 05, 2025**: ✅ Replaced SendGrid with Mailjet for email delivery (node-mailjet package)
+- **November 05, 2025**: ✅ Email notifications sent to BOTH sreddy@forillontech.com AND support@forillontech.com via Mailjet
 
 ## User Preferences
 
