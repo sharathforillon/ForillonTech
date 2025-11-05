@@ -98,6 +98,7 @@ export default function CheckboxLandingPage() {
       phone: "",
       productType: "",
       features: [],
+      demoConsent: false,
       consent: false,
     },
   });
@@ -575,6 +576,27 @@ export default function CheckboxLandingPage() {
                 )}
               />
 
+              <FormField
+                control={form.control}
+                name="demoConsent"
+                render={({ field }) => (
+                  <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                    <FormControl>
+                      <Checkbox 
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                        data-testid="checkbox-demo-consent"
+                      />
+                    </FormControl>
+                    <div className="space-y-1 leading-none">
+                      <FormLabel className="text-sm text-deep-blue cursor-pointer font-medium">
+                        I agree to be contacted regarding the product demo request *
+                      </FormLabel>
+                      <FormMessage />
+                    </div>
+                  </FormItem>
+                )}
+              />
 
               <FormField
                 control={form.control}

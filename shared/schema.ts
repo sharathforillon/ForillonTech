@@ -103,6 +103,7 @@ export const checkboxLeadSchema = z.object({
   phone: z.string().min(1, "Phone number is required"),
   productType: z.string().optional(),
   features: z.array(z.string()).min(1, "Please select at least one feature"),
+  demoConsent: z.boolean().refine((val) => val === true, "You must agree to be contacted regarding the demo"),
   consent: z.boolean().optional(),
 });
 
