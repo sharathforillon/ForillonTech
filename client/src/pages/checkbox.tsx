@@ -27,7 +27,6 @@ import {
   BarChart3,
   Database,
   TrendingUp,
-  PlayCircle,
   X,
   Check
 } from "lucide-react";
@@ -78,7 +77,6 @@ export default function CheckboxLandingPage() {
   const { toast } = useToast();
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
   const [formOpen, setFormOpen] = useState(false);
-  const [videoOpen, setVideoOpen] = useState(false);
   const [successOpen, setSuccessOpen] = useState(false);
 
   useEffect(() => {
@@ -242,7 +240,7 @@ export default function CheckboxLandingPage() {
             <p className="text-lg md:text-xl text-white/95 mb-10 max-w-3xl mx-auto font-light" style={{textShadow: '0 2px 8px rgba(0,0,0,0.4)'}}>
               Pick exactly what you need. From basic surveys to AI-powered sentiment analysis. Deploy on-premise or cloud. Your brand, your rules.
             </p>
-            <div className="flex flex-wrap gap-6 justify-center mt-12">
+            <div className="flex justify-center mt-12">
               <Button 
                 size="lg" 
                 className="bg-cta-highlight hover:bg-yellow-500 text-deep-blue px-10 py-7 text-xl font-bold rounded-xl shadow-2xl hover:shadow-cta-highlight/50 hover:scale-105 transition-all duration-300 group"
@@ -254,19 +252,6 @@ export default function CheckboxLandingPage() {
               >
                 Choose Your Features
                 <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="border-3 border-white bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-deep-blue px-10 py-7 text-xl font-bold rounded-xl shadow-xl transition-all duration-300 hover:scale-105"
-                onClick={() => {
-                  analytics.trackCTAClick('hero_watch_demo');
-                  setVideoOpen(true);
-                }}
-                data-testid="button-watch-demo"
-              >
-                <PlayCircle className="mr-3 h-6 w-6" />
-                Watch 60s Demo
               </Button>
             </div>
 
@@ -667,18 +652,6 @@ export default function CheckboxLandingPage() {
                 <CheckCircle2 className="ml-2 h-5 w-5" />
               </Button>
             </div>
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      {/* Video Modal (Placeholder) */}
-      <Dialog open={videoOpen} onOpenChange={setVideoOpen}>
-        <DialogContent className="sm:max-w-3xl">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-deep-blue">Platform Demo</DialogTitle>
-          </DialogHeader>
-          <div className="aspect-video bg-gray-100 rounded-lg flex items-center justify-center">
-            <p className="text-gray-500">Demo video would be embedded here</p>
           </div>
         </DialogContent>
       </Dialog>

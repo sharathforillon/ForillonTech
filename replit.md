@@ -6,6 +6,7 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 
 ## Recent Changes
 
+- **November 05, 2025**: ✅ Removed "Watch 60s Demo" video button from hero section
 - **November 05, 2025**: ✅ Updated success message: "One of our team members will reach out to you within 24 hours"
 - **November 05, 2025**: ✅ Removed Calendly scheduling option from post-submission success modal
 - **November 05, 2025**: ✅ Added mandatory demo consent checkbox: "I agree to be contacted regarding the product demo request"
