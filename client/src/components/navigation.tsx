@@ -46,6 +46,12 @@ export default function Navigation() {
                 <DropdownMenuContent className="w-72 bg-white border border-gray-200 shadow-xl rounded-xl p-3 mt-2">
                   <div className="space-y-1">
                     <DropdownMenuItem asChild>
+                      <Link href="/solutions/ai-readiness" className="flex flex-col px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+                        <span className="text-sm font-semibold text-forillon-navy">AI Readiness & Sovereignty</span>
+                        <span className="text-xs text-gray-500 mt-1">AI maturity and data sovereignty assessment</span>
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
                       <Link href="/solutions/ai-transformation" className="flex flex-col px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
                         <span className="text-sm font-semibold text-forillon-navy">AI & Digital Transformation</span>
                         <span className="text-xs text-gray-500 mt-1">Intelligent automation and AI strategy</span>
@@ -79,12 +85,6 @@ export default function Navigation() {
                       <Link href="/solutions/digital-innovation" className="flex flex-col px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
                         <span className="text-sm font-semibold text-forillon-navy">Digital Innovation Strategy</span>
                         <span className="text-xs text-gray-500 mt-1">Strategic consulting and innovation</span>
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link href="/solutions/ai-readiness" className="flex flex-col px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
-                        <span className="text-sm font-semibold text-forillon-navy">AI Readiness & Sovereignty</span>
-                        <span className="text-xs text-gray-500 mt-1">AI maturity and data sovereignty assessment</span>
                       </Link>
                     </DropdownMenuItem>
                     <div className="border-t border-gray-100 mt-3 pt-3">
@@ -157,6 +157,13 @@ export default function Navigation() {
                 {isMobileSolutionsOpen && (
                   <div className="mt-2 ml-4 space-y-2 border-l-2 border-gray-100 pl-4">
                     <Link 
+                      href="/solutions/ai-readiness" 
+                      className="block px-3 py-2 text-sm text-gray-600 hover:text-forillon-navy hover:bg-gray-50 rounded-md transition-colors" 
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      AI Readiness & Sovereignty
+                    </Link>
+                    <Link 
                       href="/solutions/ai-transformation" 
                       className="block px-3 py-2 text-sm text-gray-600 hover:text-forillon-navy hover:bg-gray-50 rounded-md transition-colors" 
                       onClick={() => setIsMenuOpen(false)}
@@ -197,13 +204,6 @@ export default function Navigation() {
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Digital Innovation Strategy
-                    </Link>
-                    <Link 
-                      href="/solutions/ai-readiness" 
-                      className="block px-3 py-2 text-sm text-gray-600 hover:text-forillon-navy hover:bg-gray-50 rounded-md transition-colors" 
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      AI Readiness & Sovereignty
                     </Link>
                     <Link 
                       href="/solutions" 
