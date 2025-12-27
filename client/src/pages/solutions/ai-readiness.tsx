@@ -602,7 +602,7 @@ export default function AIReadiness() {
             <Button 
               size="lg"
               variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-forillon-navy text-lg px-8 py-4"
+              className="border-2 border-white bg-white/10 text-white hover:bg-white hover:text-forillon-navy text-lg px-8 py-4"
               onClick={() => window.location.href = '/contact'}
               data-testid="button-contact-team"
             >
