@@ -214,9 +214,9 @@ export default function About() {
                           <ExternalLink className="h-4 w-4" />
                         </a>
                       </div>
-                      <h5 className="font-semibold text-forillon-navy mb-2">AI Innovation Patent #1</h5>
+                      <h5 className="font-semibold text-forillon-navy mb-2">Live Agent Recommendation for Human-Robot Symbiosis</h5>
                       <p className="text-sm text-gray-600">
-                        Patented methodology for advanced artificial intelligence systems and machine learning applications.
+                        US11509770B2 — AI system for selecting optimal live agents using expertise matrices and NPS scoring.
                       </p>
                     </CardContent>
                   </Card>
@@ -234,9 +234,9 @@ export default function About() {
                           <ExternalLink className="h-4 w-4" />
                         </a>
                       </div>
-                      <h5 className="font-semibold text-forillon-navy mb-2">AI Innovation Patent #2</h5>
+                      <h5 className="font-semibold text-forillon-navy mb-2">Self-Improving Transferring in Bot Conversation</h5>
                       <p className="text-sm text-gray-600">
-                        Novel approaches to intelligent automation and enterprise AI integration systems.
+                        US11074484B2 — Intelligent conversation transfer system with self-learning capabilities for chatbots.
                       </p>
                     </CardContent>
                   </Card>
