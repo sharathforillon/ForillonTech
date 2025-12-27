@@ -46,50 +46,50 @@ export default function Navigation() {
                 <DropdownMenuContent className="w-72 bg-white border border-gray-200 shadow-xl rounded-xl p-3 mt-2">
                   <div className="space-y-1">
                     <DropdownMenuItem asChild>
-                      <Link href="/solutions/ai-readiness" className="flex flex-col px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+                      <Link href="/solutions/ai-readiness" className="flex flex-col items-center text-center px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
                         <span className="text-sm font-semibold text-forillon-navy">AI Readiness & Sovereignty</span>
                         <span className="text-xs text-gray-500 mt-1">AI maturity and data sovereignty assessment</span>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <Link href="/solutions/ai-transformation" className="flex flex-col px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+                      <Link href="/solutions/ai-transformation" className="flex flex-col items-center text-center px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
                         <span className="text-sm font-semibold text-forillon-navy">AI & Digital Transformation</span>
                         <span className="text-xs text-gray-500 mt-1">Intelligent automation and AI strategy</span>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <Link href="/solutions/infrastructure" className="flex flex-col px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+                      <Link href="/solutions/infrastructure" className="flex flex-col items-center text-center px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
                         <span className="text-sm font-semibold text-forillon-navy">Technology Infrastructure</span>
                         <span className="text-xs text-gray-500 mt-1">Scalable enterprise systems</span>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <Link href="/solutions/cloud-migration" className="flex flex-col px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+                      <Link href="/solutions/cloud-migration" className="flex flex-col items-center text-center px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
                         <span className="text-sm font-semibold text-forillon-navy">Cloud Migration & Modernization</span>
                         <span className="text-xs text-gray-500 mt-1">Cloud-native transformation</span>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <Link href="/solutions/security" className="flex flex-col px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+                      <Link href="/solutions/security" className="flex flex-col items-center text-center px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
                         <span className="text-sm font-semibold text-forillon-navy">Enterprise Security & Testing</span>
                         <span className="text-xs text-gray-500 mt-1">Security, ISG testing & PEN testing</span>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <Link href="/solutions/performance" className="flex flex-col px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+                      <Link href="/solutions/performance" className="flex flex-col items-center text-center px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
                         <span className="text-sm font-semibold text-forillon-navy">Performance Engineering</span>
                         <span className="text-xs text-gray-500 mt-1">Optimization and reliability</span>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <Link href="/solutions/digital-innovation" className="flex flex-col px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+                      <Link href="/solutions/digital-innovation" className="flex flex-col items-center text-center px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">
                         <span className="text-sm font-semibold text-forillon-navy">Digital Innovation Strategy</span>
                         <span className="text-xs text-gray-500 mt-1">Strategic consulting and innovation</span>
                       </Link>
                     </DropdownMenuItem>
                     <div className="border-t border-gray-100 mt-3 pt-3">
                       <DropdownMenuItem asChild>
-                        <Link href="/solutions" className="flex items-center px-4 py-3 rounded-lg hover:bg-electric-teal/5 transition-colors">
+                        <Link href="/solutions" className="flex items-center justify-center px-4 py-3 rounded-lg hover:bg-electric-teal/5 transition-colors">
                           <span className="text-sm font-semibold text-electric-teal">View All Solutions →</span>
                         </Link>
                       </DropdownMenuItem>
