@@ -11,13 +11,23 @@ import {
   Cloud,
   Shield,
   Zap,
-  Lightbulb
+  Lightbulb,
+  Globe
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 const serviceCards = [
+  {
+    icon: <Globe className="w-8 h-8" />,
+    title: "AI Readiness & Sovereignty",
+    description: "Comprehensive assessment of your organization's AI maturity and data sovereignty posture to navigate regulatory complexity with confidence.",
+    keyBenefits: ["8-dimension assessment framework", "Regional regulatory expertise"],
+    cta: "Assess Readiness",
+    link: "/solutions/ai-readiness",
+    hover: "from-cyan-50 to-teal-50"
+  },
   {
     icon: <Brain className="w-8 h-8" />,
     title: "AI & Digital Transformation",
