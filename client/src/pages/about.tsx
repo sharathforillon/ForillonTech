@@ -4,6 +4,7 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import sharathPhoto from "@assets/Screenshot_2025-11-20_at_10.52.27_AM_1766817664363.png";
 
 export default function About() {
   return (
@@ -132,8 +133,12 @@ export default function About() {
             <div className="lg:col-span-2">
               <Card className="overflow-hidden shadow-xl border-0" data-testid="card-founder-profile">
                 <div className="bg-gradient-to-br from-forillon-navy to-forillon-navy/90 p-8 text-center">
-                  <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-white/10 border-4 border-electric-teal flex items-center justify-center">
-                    <span className="text-5xl font-bold text-white">SR</span>
+                  <div className="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-electric-teal overflow-hidden">
+                    <img 
+                      src={sharathPhoto} 
+                      alt="Sharath Reddy, Founder & CEO" 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-2" data-testid="text-founder-name">Sharath Reddy</h3>
                   <p className="text-electric-teal font-semibold mb-4">Founder & CEO</p>
