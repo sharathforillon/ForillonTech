@@ -210,7 +210,7 @@ export default function About() {
                       <div className="flex items-start justify-between mb-3">
                         <Badge variant="outline" className="text-xs border-forillon-navy text-forillon-navy">USPTO Patent</Badge>
                         <a 
-                          href="https://patents.google.com/?inventor=%22Sharath+Kancharla%22&oq=inventor:+%22Sharath+Kancharla%22" 
+                          href="https://patents.google.com/patent/US11509770B2/en" 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="text-electric-teal hover:text-electric-teal/80 transition-colors"
@@ -230,7 +230,7 @@ export default function About() {
                       <div className="flex items-start justify-between mb-3">
                         <Badge variant="outline" className="text-xs border-forillon-navy text-forillon-navy">USPTO Patent</Badge>
                         <a 
-                          href="https://patents.google.com/?inventor=%22Sharath+Kancharla%22&oq=inventor:+%22Sharath+Kancharla%22" 
+                          href="https://patents.google.com/patent/US11074484B2/en" 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="text-electric-teal hover:text-electric-teal/80 transition-colors"
