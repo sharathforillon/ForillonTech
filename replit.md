@@ -6,6 +6,10 @@ This is a modern, enterprise-grade marketing website for Forillon Technologies, 
 
 ## Recent Changes
 
+- **December 27, 2025**: ✅ Added comprehensive AI Readiness & Sovereignty Assessment offering page at /solutions/ai-readiness
+- **December 27, 2025**: ✅ New page features: 8 assessment dimensions, sovereignty services, readiness services, 6-step methodology, regional expertise section
+- **December 27, 2025**: ✅ Added AI Readiness link to both desktop and mobile navigation dropdown menus
+- **December 27, 2025**: ✅ Integrated offering into solutions page grid with Globe icon
 - **November 05, 2025**: ✅ Fixed sticky floating selection panel: dark blue-to-teal gradient background for excellent text visibility
 - **November 05, 2025**: ✅ Fixed missing icons in section headers: visible BarChart3 and MessageSquare icons with vibrant gradients
 - **November 05, 2025**: ✅ Implemented sticky floating selection panel at bottom (slides up when features selected)
@@ -42,7 +46,8 @@ The website features an enterprise-grade design system inspired by IBM Consultin
 - **Lead Capture**: Implemented a robust lead capture system for demo requests, storing data in the database, displaying it in the admin dashboard, and sending email notifications.
 
 ### Feature Specifications
-- **Core Services Showcase**: Dedicated sections and pages for AI consulting, digital transformation, enterprise architecture, and a newly added "Digital Innovation Strategy."
+- **Core Services Showcase**: Dedicated sections and pages for AI consulting, digital transformation, enterprise architecture, "Digital Innovation Strategy," and the new "AI Readiness & Sovereignty Assessment" offering.
+- **AI Readiness & Sovereignty Assessment (`/solutions/ai-readiness`)**: Comprehensive 8-dimension assessment framework (Data Governance, AI Infrastructure, Skills & Talent, Use Case Portfolio, Regulatory Compliance, Data Sovereignty, AI Operations, AI Risk), sovereignty services (residency mapping, transfer mechanisms, regulatory intelligence, compliance frameworks), readiness services (strategy alignment, infrastructure assessment, talent evaluation, risk assessment), and 6-step methodology with regional expertise section.
 - **Martech Landing Page (`/checkbox`)**: A white-label survey platform showcase with two-column side-by-side feature selection (Research Help Desk with BarChart3 icon + Tech Survey Platform with MessageSquare icon), sticky floating selection panel at bottom with dark gradient background, modal-based lead form with dual consent checkboxes, and comprehensive multi-platform analytics tracking.
 - **Blog System**: Markdown-based content management.
 - **Contact & Partnership Forms**: Capture and store submissions in the database for admin tracking.
