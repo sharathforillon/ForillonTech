@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Brain, Cloud, Shield, Zap, Database, Cpu } from "lucide-react";
+import { ArrowRight, Brain, Cloud, Shield, Zap, Database, Cpu, Globe } from "lucide-react";
 import { Link } from "wouter";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
@@ -55,6 +55,14 @@ export default function Solutions() {
       features: ["Innovation Roadmap Development", "Technology Trend Analysis", "Digital Strategy Planning", "Future-Ready Solutions"],
       category: "Strategy",
       link: "/solutions/digital-innovation"
+    },
+    {
+      icon: Globe,
+      title: "AI Readiness & Sovereignty",
+      description: "Comprehensive assessment of AI maturity and data sovereignty posture to navigate regulatory complexity and unlock AI's full potential.",
+      features: ["AI Maturity Assessment", "Data Sovereignty Analysis", "Regulatory Compliance Review", "Custom AI Roadmap"],
+      category: "Assessment",
+      link: "/solutions/ai-readiness"
     }
   ];
 
