@@ -119,7 +119,7 @@ export default function Hero() {
     { number: "200+", label: "Enterprise Transformations", icon: TrendingUp },
     { number: "99%", label: "System Uptime Guaranteed", icon: Shield },
     { number: "15+", label: "Years of Excellence", icon: Star },
-    { number: "24/7", label: "Support & Monitoring", icon: Zap }
+    { number: "24x7", label: "Support & Monitoring", icon: Zap }
   ];
 
   const achievements = [
