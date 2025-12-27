@@ -132,7 +132,7 @@ export default function About() {
             {/* Founder Profile */}
             <div className="lg:col-span-2">
               <Card className="overflow-hidden shadow-xl border-0" data-testid="card-founder-profile">
-                <div className="bg-gradient-to-br from-forillon-navy to-forillon-navy/90 p-8 text-center">
+                <div className="bg-forillon-navy p-8 text-center">
                   <div className="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-electric-teal overflow-hidden">
                     <img 
                       src={sharathPhoto} 
@@ -141,10 +141,10 @@ export default function About() {
                     />
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-2" data-testid="text-founder-name">Sharath Reddy</h3>
-                  <p className="text-electric-teal font-semibold mb-4">Founder & CEO</p>
+                  <p className="text-white font-semibold mb-4">Founder & CEO</p>
                   <div className="flex flex-wrap justify-center gap-2">
-                    <Badge className="bg-electric-teal/20 text-electric-teal border-0">IBM Inventor</Badge>
-                    <Badge className="bg-white/10 text-white border-0">AI Pioneer</Badge>
+                    <Badge className="bg-electric-teal text-white border-0 font-semibold">IBM Inventor</Badge>
+                    <Badge className="bg-white text-forillon-navy border-0 font-semibold">AI Pioneer</Badge>
                   </div>
                 </div>
                 <CardContent className="p-6 bg-white">
