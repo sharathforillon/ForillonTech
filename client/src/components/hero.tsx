@@ -1,6 +1,104 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Calendar, Sparkles, Shield, Zap, TrendingUp, CheckCircle, Star, Award, Lightbulb } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+
+function useCountUp(end: number, duration: number = 2000, startOnView: boolean = true) {
+  const [count, setCount] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!startOnView) {
+      setHasStarted(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasStarted) {
+          setHasStarted(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasStarted, startOnView]);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    let startTime: number;
+    let animationFrame: number;
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.floor(easeOutQuart * end));
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, [hasStarted, end, duration]);
+
+  return { count, ref };
+}
+
+function AnimatedStat({ stat, index }: { stat: { number: string; label: string; icon: any }; index: number }) {
+  const numericValue = parseInt(stat.number.replace(/[^0-9]/g, ''));
+  const suffix = stat.number.replace(/[0-9]/g, '');
+  const { count, ref } = useCountUp(numericValue, 2000 + index * 200);
+
+  return (
+    <div ref={ref} className="text-center group hover:scale-105 transition-all duration-300">
+      <div className="mb-6">
+        <div className="w-24 h-24 bg-electric-teal rounded-3xl flex items-center justify-center mx-auto shadow-xl group-hover:shadow-2xl transition-all duration-300">
+          <stat.icon className="w-12 h-12 text-white" />
+        </div>
+      </div>
+      <div className="text-4xl font-bold text-gray-900 mb-3">
+        {count}{suffix}
+      </div>
+      <div className="text-base text-gray-700 font-semibold leading-tight">
+        {stat.label}
+      </div>
+    </div>
+  );
+}
+
+function AnimatedStatMobile({ stat, index }: { stat: { number: string; label: string; icon: any }; index: number }) {
+  const numericValue = parseInt(stat.number.replace(/[^0-9]/g, ''));
+  const suffix = stat.number.replace(/[0-9]/g, '');
+  const { count, ref } = useCountUp(numericValue, 2000 + index * 200);
+
+  return (
+    <div ref={ref} className="text-center">
+      <div className="mb-3">
+        <div className="w-12 h-12 bg-electric-teal rounded-xl flex items-center justify-center mx-auto shadow-lg">
+          <stat.icon className="w-6 h-6 text-white" />
+        </div>
+      </div>
+      <div className="text-xl font-bold text-gray-900 mb-1">
+        {count}{suffix}
+      </div>
+      <div className="text-xs text-gray-700 font-semibold leading-tight">
+        {stat.label}
+      </div>
+    </div>
+  );
+}
 
 export default function Hero() {
   const scrollToContact = () => {
@@ -19,7 +117,7 @@ export default function Hero() {
 
   const stats = [
     { number: "200+", label: "Enterprise Transformations", icon: TrendingUp },
-    { number: "99.9%", label: "System Uptime Guaranteed", icon: Shield },
+    { number: "99%", label: "System Uptime Guaranteed", icon: Shield },
     { number: "15+", label: "Years of Excellence", icon: Star },
     { number: "24/7", label: "Support & Monitoring", icon: Zap }
   ];
@@ -31,13 +129,28 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative py-16 sm:py-24 lg:py-32 bg-white">
+    <section className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
+      {/* Video Background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+        data-testid="video-hero-background"
+      >
+        <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_3840_2160_30fps.mp4" type="video/mp4" />
+      </video>
       
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      {/* Overlay gradients for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/80"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-transparent to-white/95"></div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Column - Main Content */}
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center justify-center px-4 py-2 bg-electric-teal/8 rounded-lg mb-8">
+            <div className="inline-flex items-center justify-center px-4 py-2 bg-electric-teal/10 backdrop-blur-sm rounded-lg mb-8 border border-electric-teal/20">
               <Sparkles className="w-4 h-4 mr-2 text-electric-teal" />
               <span className="font-medium text-label-lg text-electric-teal">ENTERPRISE AI & DIGITAL TRANSFORMATION</span>
             </div>
@@ -54,7 +167,7 @@ export default function Hero() {
             {/* Achievement Badges */}
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-10">
               {achievements.map((achievement, index) => (
-                <div key={index} className="flex items-center px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 hover:border-electric-teal/30 transition-all duration-300">
+                <div key={index} className="flex items-center px-4 py-3 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-200 hover:border-electric-teal/30 transition-all duration-300 shadow-sm">
                   <CheckCircle className="w-5 h-5 mr-3 text-electric-teal" />
                   <span className="text-base font-semibold text-gray-900">{achievement}</span>
                 </div>
@@ -65,7 +178,7 @@ export default function Hero() {
             <div className="flex justify-center lg:justify-start mb-8">
               <a 
                 href="/about" 
-                className="inline-flex items-center gap-3 px-5 py-3 bg-forillon-navy rounded-xl hover:bg-forillon-navy/90 transition-colors group cursor-pointer"
+                className="inline-flex items-center gap-3 px-5 py-3 bg-forillon-navy rounded-xl hover:bg-forillon-navy/90 transition-colors group cursor-pointer shadow-lg"
                 data-testid="link-patent-credibility"
               >
                 <div className="flex items-center gap-3">
@@ -85,7 +198,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
               <Button 
                 onClick={() => window.open('https://calendly.com/sreddy-forillontech/30min', '_blank')}
-                className="btn-primary px-8 py-4 text-body-lg font-medium focus-enterprise h-12 w-full sm:w-auto"
+                className="btn-primary px-8 py-4 text-body-lg font-medium focus-enterprise h-12 w-full sm:w-auto shadow-lg"
               >
                 <Calendar className="mr-3 h-5 w-5" />
                 Book Free Consultation
@@ -93,7 +206,7 @@ export default function Hero() {
               <Button 
                 variant="outline"
                 onClick={scrollToSolutions}
-                className="btn-secondary px-8 py-4 text-body-lg font-medium focus-enterprise h-12 w-full sm:w-auto"
+                className="btn-secondary px-8 py-4 text-body-lg font-medium focus-enterprise h-12 w-full sm:w-auto bg-white/80 backdrop-blur-sm"
               >
                 Explore Solutions <ArrowRight className="ml-3 h-5 w-5" />
               </Button>
@@ -101,22 +214,10 @@ export default function Hero() {
 
             {/* Mobile Stats - Only visible on mobile, right after CTA */}
             <div className="sm:hidden mb-8">
-              <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-6">
+              <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-100 p-6">
                 <div className="grid grid-cols-2 gap-4">
                   {stats.map((stat, index) => (
-                    <div key={index} className="text-center">
-                      <div className="mb-3">
-                        <div className="w-12 h-12 bg-electric-teal rounded-xl flex items-center justify-center mx-auto shadow-lg">
-                          <stat.icon className="w-6 h-6 text-white" />
-                        </div>
-                      </div>
-                      <div className="text-xl font-bold text-gray-900 mb-1">
-                        {stat.number}
-                      </div>
-                      <div className="text-xs text-gray-700 font-semibold leading-tight">
-                        {stat.label}
-                      </div>
-                    </div>
+                    <AnimatedStatMobile key={index} stat={stat} index={index} />
                   ))}
                 </div>
               </div>
@@ -150,24 +251,12 @@ export default function Hero() {
               </div>
             </div>
             
-            {/* Enhanced Stats Card */}
+            {/* Enhanced Stats Card with Animated Counters */}
             <div className="absolute -bottom-12 left-2 right-2">
-              <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-12 backdrop-blur-xl">
+              <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-100 p-12">
                 <div className="grid grid-cols-2 gap-8">
                   {stats.map((stat, index) => (
-                    <div key={index} className="text-center group hover:scale-105 transition-all duration-300">
-                      <div className="mb-6">
-                        <div className="w-24 h-24 bg-electric-teal rounded-3xl flex items-center justify-center mx-auto shadow-xl group-hover:shadow-2xl transition-all duration-300">
-                          <stat.icon className="w-12 h-12 text-white" />
-                        </div>
-                      </div>
-                      <div className="text-4xl font-bold text-gray-900 mb-3">
-                        {stat.number}
-                      </div>
-                      <div className="text-base text-gray-700 font-semibold leading-tight">
-                        {stat.label}
-                      </div>
-                    </div>
+                    <AnimatedStat key={index} stat={stat} index={index} />
                   ))}
                 </div>
               </div>
@@ -175,7 +264,6 @@ export default function Hero() {
           </div>
         </div>
         
-
 
         {/* Bottom Trust Indicators */}
         <div className="mt-8 sm:mt-32 pt-6 sm:pt-8 border-t border-electric-teal/20">
