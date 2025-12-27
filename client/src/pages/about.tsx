@@ -28,7 +28,7 @@ export default function About() {
                 <span className="text-electric-teal">That Transforms Lives</span>
               </h1>
               <p className="text-xl text-silver-mist mb-8 leading-relaxed">
-                We don't just create software — we craft solutions that understand, 
+                We don't just create software. We craft solutions that understand, 
                 empower, and uplift the human experience. Every line of code, every interface, 
                 every innovation is designed with one purpose: to make life better.
               </p>
@@ -94,7 +94,7 @@ export default function About() {
               </div>
               <h3 className="text-3xl font-bold mb-6 text-forillon-navy">Our Vision</h3>
               <p className="text-xl text-gray-700 leading-relaxed">
-                To build technology that deeply understands, empowers, and uplifts the human experience—everywhere it's used.
+                To build technology that deeply understands, empowers, and uplifts the human experience, everywhere it's used.
               </p>
             </div>
             
@@ -107,7 +107,7 @@ export default function About() {
               </div>
               <h3 className="text-3xl font-bold mb-6 text-forillon-navy">Our Mission</h3>
               <p className="text-xl text-gray-700 leading-relaxed">
-                We craft intelligent, intuitive solutions that solve real-world problems, enhance lives, and drive meaningful progress—by putting people at the heart of every innovation.
+                We craft intelligent, intuitive solutions that solve real-world problems, enhance lives, and drive meaningful progress by putting people at the heart of every innovation.
               </p>
             </div>
           </div>
@@ -187,7 +187,7 @@ export default function About() {
                   breakthrough solutions that have been recognized by the world's leading patent authority.
                 </p>
                 <p className="text-lg text-gray-700">
-                  His deep experience at IBM—one of the world's most respected technology companies—combined with 
+                  His deep experience at IBM, one of the world's most respected technology companies, combined with 
                   his entrepreneurial vision, positions Forillon Technologies uniquely to deliver enterprise-grade 
                   AI solutions that are both innovative and production-ready.
                 </p>
@@ -216,7 +216,7 @@ export default function About() {
                       </div>
                       <h5 className="font-semibold text-forillon-navy mb-2">Live Agent Recommendation for Human-Robot Symbiosis</h5>
                       <p className="text-sm text-gray-600">
-                        US11509770B2 — AI system for selecting optimal live agents using expertise matrices and NPS scoring.
+                        US11509770B2: AI system for selecting optimal live agents using expertise matrices and NPS scoring.
                       </p>
                     </CardContent>
                   </Card>
@@ -236,7 +236,7 @@ export default function About() {
                       </div>
                       <h5 className="font-semibold text-forillon-navy mb-2">Self-Improving Transferring in Bot Conversation</h5>
                       <p className="text-sm text-gray-600">
-                        US11074484B2 — Intelligent conversation transfer system with self-learning capabilities for chatbots.
+                        US11074484B2: Intelligent conversation transfer system with self-learning capabilities for chatbots.
                       </p>
                     </CardContent>
                   </Card>
@@ -284,7 +284,7 @@ export default function About() {
               Our Story
             </h2>
             <p className="text-xl text-gray-700 max-w-4xl mx-auto">
-              Every great journey begins with a spark — a moment of clarity where passion meets purpose.
+              Every great journey begins with a spark: a moment of clarity where passion meets purpose.
             </p>
           </div>
           
@@ -296,11 +296,11 @@ export default function About() {
               </p>
               <p className="text-lg text-gray-700 mb-6">
                 We started as a small group of dreamers and doers who believed that technology could be more than just code and hardware. 
-                It could be a force for good — solving real problems, opening new possibilities, and empowering everyone to reach their full potential.
+                It could be a force for good, solving real problems, opening new possibilities, and empowering everyone to reach their full potential.
               </p>
               <p className="text-lg text-gray-700">
                 In a world flooded with noise and complexity, we chose a different path: to build solutions that are simple to use, 
-                yet powerful in impact. That's the heartbeat of Forillon — creating technology that feels effortless but drives extraordinary change.
+                yet powerful in impact. That's the heartbeat of Forillon: creating technology that feels effortless but drives extraordinary change.
               </p>
             </div>
             <div className="relative">
@@ -323,13 +323,13 @@ export default function About() {
             <div className="lg:order-1">
               <h3 className="text-2xl font-bold mb-4 text-forillon-navy">Why We Do What We Do</h3>
               <p className="text-lg text-gray-700 mb-6">
-                Technology is everywhere — but not everywhere does technology truly work for people. 
+                Technology is everywhere, but not everywhere does technology truly work for people. 
                 We saw too many products built without heart, without deep understanding of the people who use them. 
                 So we set out to do it differently.
               </p>
               <p className="text-lg text-gray-700 mb-6">
                 Our mission is to blend innovation with empathy. To listen closely to the challenges faced by our partners and users. 
-                To create tools that don't just work — but inspire confidence, spark creativity, and open doors.
+                To create tools that don't just work, but inspire confidence, spark creativity, and open doors.
               </p>
               <p className="text-lg text-gray-700">
                 Because at the end of the day, technology is only as valuable as the lives it touches. 
@@ -344,13 +344,13 @@ export default function About() {
               <div>
                 <p className="text-lg text-gray-700 mb-4">
                   At Forillon, we are builders, creators, and lifelong learners. We embrace big ideas and the messy process of making them real. 
-                  We know innovation requires courage — to question the usual, to take risks, and to keep pushing when the road gets tough.
+                  We know innovation requires courage: to question the usual, to take risks, and to keep pushing when the road gets tough.
                 </p>
               </div>
               <div>
                 <p className="text-lg text-gray-700">
                   We celebrate diversity of thought and background, because it makes us stronger and fuels creativity. 
-                  Every voice matters, every perspective counts — and together we create something far greater than the sum of its parts.
+                  Every voice matters, every perspective counts, and together we create something far greater than the sum of its parts.
                 </p>
               </div>
             </div>
@@ -376,15 +376,15 @@ export default function About() {
           <div className="bg-forillon-navy rounded-lg p-8 text-center text-white">
             <h3 className="text-2xl font-bold mb-6">The Road Ahead</h3>
             <p className="text-lg mb-6 max-w-4xl mx-auto">
-              The future is full of promise — new technologies, new possibilities, new ways to improve how we live and work. 
+              The future is full of promise: new technologies, new possibilities, new ways to improve how we live and work. 
               Forillon Technologies is excited to be at the forefront, leading with integrity, passion, and a relentless drive to make a difference.
             </p>
             <p className="text-lg mb-8 max-w-4xl mx-auto">
-              This is just the beginning. We invite you to join us — as partners, collaborators, or simply believers — 
+              This is just the beginning. We invite you to join us as partners, collaborators, or simply believers 
               in shaping a world where technology serves humanity, elevates potential, and inspires hope.
             </p>
             <p className="text-xl font-semibold text-electric-teal">
-              Forillon Technologies — Where Innovation Meets Heart.
+              Forillon Technologies: Where Innovation Meets Heart.
             </p>
           </div>
         </div>

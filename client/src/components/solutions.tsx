@@ -122,7 +122,7 @@ export default function Solutions() {
             <span className="text-electric-teal">business outcomes</span>
           </h2>
           <p className="text-body-lg text-slate-gray max-w-3xl mx-auto leading-relaxed">
-            We don't just implement technology—we architect strategic advantages that position your organization for sustained competitive leadership.
+            We don't just implement technology. We architect strategic advantages that position your organization for sustained competitive leadership.
           </p>
         </div>
 
