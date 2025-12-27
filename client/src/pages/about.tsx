@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Users, Target, Award } from "lucide-react";
+import { ArrowRight, Users, Target, Award, Lightbulb, ExternalLink, BadgeCheck, Cpu, BookOpen } from "lucide-react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function About() {
   return (
@@ -46,21 +48,21 @@ export default function About() {
             <div className="relative">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
                 <div className="grid grid-cols-2 gap-6">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-electric-teal mb-2">500+</div>
-                    <div className="text-silver-mist text-sm">Lives Transformed</div>
+                  <div className="text-center" data-testid="stat-patents">
+                    <div className="text-3xl font-bold text-electric-teal mb-2">2</div>
+                    <div className="text-silver-mist text-sm">US Patents in AI</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-electric-teal mb-2">16</div>
+                  <div className="text-center" data-testid="stat-years">
+                    <div className="text-3xl font-bold text-electric-teal mb-2">15+</div>
                     <div className="text-silver-mist text-sm">Years of Innovation</div>
                   </div>
-                  <div className="text-center">
+                  <div className="text-center" data-testid="stat-ibm">
+                    <div className="text-3xl font-bold text-electric-teal mb-2">IBM</div>
+                    <div className="text-silver-mist text-sm">Inventor Pedigree</div>
+                  </div>
+                  <div className="text-center" data-testid="stat-satisfaction">
                     <div className="text-3xl font-bold text-electric-teal mb-2">98%</div>
                     <div className="text-silver-mist text-sm">Client Satisfaction</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-electric-teal mb-2">∞</div>
-                    <div className="text-silver-mist text-sm">Possibilities</div>
                   </div>
                 </div>
                 <div className="mt-6 pt-6 border-t border-white/20">
@@ -112,8 +114,170 @@ export default function About() {
         </div>
       </section>
 
+      {/* Founder Section */}
+      <section className="py-20 bg-white" data-testid="section-founder">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <Badge variant="outline" className="mb-4 border-electric-teal text-electric-teal" data-testid="badge-leadership">LEADERSHIP</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-forillon-navy" data-testid="text-founder-heading">
+              Founded by an IBM Inventor
+            </h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              Forillon Technologies is led by a visionary technologist with a proven track record of innovation at the world's leading technology companies.
+            </p>
+          </div>
+          
+          <div className="grid lg:grid-cols-5 gap-12 items-start">
+            {/* Founder Profile */}
+            <div className="lg:col-span-2">
+              <Card className="overflow-hidden shadow-xl border-0" data-testid="card-founder-profile">
+                <div className="bg-gradient-to-br from-forillon-navy to-forillon-navy/90 p-8 text-center">
+                  <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-white/10 border-4 border-electric-teal flex items-center justify-center">
+                    <span className="text-5xl font-bold text-white">SR</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2" data-testid="text-founder-name">Sharath Reddy</h3>
+                  <p className="text-electric-teal font-semibold mb-4">Founder & CEO</p>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    <Badge className="bg-electric-teal/20 text-electric-teal border-0">IBM Inventor</Badge>
+                    <Badge className="bg-white/10 text-white border-0">AI Pioneer</Badge>
+                  </div>
+                </div>
+                <CardContent className="p-6 bg-white">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-electric-teal/10 flex items-center justify-center flex-shrink-0">
+                        <BadgeCheck className="h-5 w-5 text-electric-teal" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-forillon-navy">2 US Patents in AI</p>
+                        <p className="text-sm text-gray-600">USPTO Registered Inventor</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-electric-teal/10 flex items-center justify-center flex-shrink-0">
+                        <Cpu className="h-5 w-5 text-electric-teal" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-forillon-navy">IBM Technology Leader</p>
+                        <p className="text-sm text-gray-600">Enterprise AI & Cloud Architecture</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-electric-teal/10 flex items-center justify-center flex-shrink-0">
+                        <BookOpen className="h-5 w-5 text-electric-teal" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-forillon-navy">15+ Years Experience</p>
+                        <p className="text-sm text-gray-600">Digital Transformation & AI Strategy</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+            
+            {/* Credentials & Patents */}
+            <div className="lg:col-span-3 space-y-8">
+              <div>
+                <h3 className="text-2xl font-bold text-forillon-navy mb-4">A Legacy of Innovation</h3>
+                <p className="text-lg text-gray-700 mb-6">
+                  Sharath Reddy brings unparalleled expertise in AI and enterprise technology to Forillon Technologies. 
+                  As an <span className="font-semibold text-forillon-navy">IBM Inventor</span> with <span className="font-semibold text-forillon-navy">two United States patents</span> in 
+                  artificial intelligence, Sharath has been at the forefront of technological innovation, developing 
+                  breakthrough solutions that have been recognized by the world's leading patent authority.
+                </p>
+                <p className="text-lg text-gray-700">
+                  His deep experience at IBM—one of the world's most respected technology companies—combined with 
+                  his entrepreneurial vision, positions Forillon Technologies uniquely to deliver enterprise-grade 
+                  AI solutions that are both innovative and production-ready.
+                </p>
+              </div>
+              
+              {/* Patent Cards */}
+              <div>
+                <h4 className="text-xl font-bold text-forillon-navy mb-4 flex items-center gap-2">
+                  <Lightbulb className="h-5 w-5 text-electric-teal" />
+                  US Patents in Artificial Intelligence
+                </h4>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <Card className="border-l-4 border-l-electric-teal hover:shadow-lg transition-shadow" data-testid="card-patent-1">
+                    <CardContent className="p-5">
+                      <div className="flex items-start justify-between mb-3">
+                        <Badge variant="outline" className="text-xs border-forillon-navy text-forillon-navy">USPTO Patent</Badge>
+                        <a 
+                          href="https://patents.google.com/?inventor=%22Sharath+Kancharla%22&oq=inventor:+%22Sharath+Kancharla%22" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-electric-teal hover:text-electric-teal/80 transition-colors"
+                          data-testid="link-patent-1"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                        </a>
+                      </div>
+                      <h5 className="font-semibold text-forillon-navy mb-2">AI Innovation Patent #1</h5>
+                      <p className="text-sm text-gray-600">
+                        Patented methodology for advanced artificial intelligence systems and machine learning applications.
+                      </p>
+                    </CardContent>
+                  </Card>
+                  <Card className="border-l-4 border-l-electric-teal hover:shadow-lg transition-shadow" data-testid="card-patent-2">
+                    <CardContent className="p-5">
+                      <div className="flex items-start justify-between mb-3">
+                        <Badge variant="outline" className="text-xs border-forillon-navy text-forillon-navy">USPTO Patent</Badge>
+                        <a 
+                          href="https://patents.google.com/?inventor=%22Sharath+Kancharla%22&oq=inventor:+%22Sharath+Kancharla%22" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-electric-teal hover:text-electric-teal/80 transition-colors"
+                          data-testid="link-patent-2"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                        </a>
+                      </div>
+                      <h5 className="font-semibold text-forillon-navy mb-2">AI Innovation Patent #2</h5>
+                      <p className="text-sm text-gray-600">
+                        Novel approaches to intelligent automation and enterprise AI integration systems.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+                <div className="mt-4 text-center">
+                  <a 
+                    href="https://patents.google.com/?inventor=%22Sharath+Kancharla%22&oq=inventor:+%22Sharath+Kancharla%22" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-electric-teal hover:text-electric-teal/80 font-medium transition-colors"
+                    data-testid="link-view-patents"
+                  >
+                    View Patents on Google Patents <ExternalLink className="ml-2 h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+              
+              {/* IBM Credentials */}
+              <div className="bg-gradient-to-r from-forillon-navy/5 to-electric-teal/5 rounded-xl p-6 border border-gray-100">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-16 h-16 bg-forillon-navy rounded-xl flex items-center justify-center">
+                    <span className="text-white font-bold text-xl">IBM</span>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-forillon-navy">IBM Inventor Recognition</h4>
+                    <p className="text-gray-600">Member of IBM's elite inventor community</p>
+                  </div>
+                </div>
+                <p className="text-gray-700">
+                  The IBM Inventor designation is awarded to employees who have made significant contributions 
+                  to the company's patent portfolio. This recognition places Sharath among an elite group of 
+                  technologists who have advanced the state of the art in computing and artificial intelligence.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Company Story */}
-      <section id="our-story" className="py-20 bg-white">
+      <section id="our-story" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-forillon-navy">
