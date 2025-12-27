@@ -56,7 +56,7 @@ function useCountUp(end: number, duration: number = 2000, startOnView: boolean =
   return { count, ref };
 }
 
-function AnimatedStat({ stat, index }: { stat: { number: string; label: string; icon: any }; index: number }) {
+function AnimatedStat({ stat, index }: { stat: { number: string; label: string; icon: any; static?: boolean }; index: number }) {
   const numericValue = parseInt(stat.number.replace(/[^0-9]/g, ''));
   const suffix = stat.number.replace(/[0-9]/g, '');
   const { count, ref } = useCountUp(numericValue, 2000 + index * 200);
@@ -69,7 +69,7 @@ function AnimatedStat({ stat, index }: { stat: { number: string; label: string; 
         </div>
       </div>
       <div className="text-4xl font-bold text-gray-900 mb-3">
-        {count}{suffix}
+        {stat.static ? stat.number : `${count}${suffix}`}
       </div>
       <div className="text-base text-gray-700 font-semibold leading-tight">
         {stat.label}
@@ -78,7 +78,7 @@ function AnimatedStat({ stat, index }: { stat: { number: string; label: string; 
   );
 }
 
-function AnimatedStatMobile({ stat, index }: { stat: { number: string; label: string; icon: any }; index: number }) {
+function AnimatedStatMobile({ stat, index }: { stat: { number: string; label: string; icon: any; static?: boolean }; index: number }) {
   const numericValue = parseInt(stat.number.replace(/[^0-9]/g, ''));
   const suffix = stat.number.replace(/[0-9]/g, '');
   const { count, ref } = useCountUp(numericValue, 2000 + index * 200);
@@ -91,7 +91,7 @@ function AnimatedStatMobile({ stat, index }: { stat: { number: string; label: st
         </div>
       </div>
       <div className="text-xl font-bold text-gray-900 mb-1">
-        {count}{suffix}
+        {stat.static ? stat.number : `${count}${suffix}`}
       </div>
       <div className="text-xs text-gray-700 font-semibold leading-tight">
         {stat.label}
@@ -119,7 +119,7 @@ export default function Hero() {
     { number: "200+", label: "Enterprise Transformations", icon: TrendingUp },
     { number: "99%", label: "System Uptime Guaranteed", icon: Shield },
     { number: "15+", label: "Years of Excellence", icon: Star },
-    { number: "24x7", label: "Support & Monitoring", icon: Zap }
+    { number: "24 x 7", label: "Support & Monitoring", icon: Zap, static: true }
   ];
 
   const achievements = [
