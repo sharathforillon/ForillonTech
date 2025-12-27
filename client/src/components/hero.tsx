@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Calendar, Sparkles, Shield, Zap, TrendingUp, CheckCircle, Star } from "lucide-react";
+import { ArrowRight, Calendar, Sparkles, Shield, Zap, TrendingUp, CheckCircle, Star, Award, Lightbulb } from "lucide-react";
 
 export default function Hero() {
   const scrollToContact = () => {
@@ -26,7 +26,6 @@ export default function Hero() {
 
   const achievements = [
     "Fortune 500 trusted partner",
-    "AI transformation specialist",
     "Cloud migration expert",
     "Enterprise security certified"
   ];
@@ -62,6 +61,24 @@ export default function Hero() {
               ))}
             </div>
             
+            {/* Patent Credibility Badge */}
+            <a 
+              href="/about" 
+              className="inline-flex items-center gap-3 px-5 py-3 bg-forillon-navy rounded-xl mb-8 hover:bg-forillon-navy/90 transition-colors group cursor-pointer"
+              data-testid="link-patent-credibility"
+            >
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-electric-teal rounded-lg flex items-center justify-center">
+                  <Lightbulb className="w-4 h-4 text-white" />
+                </div>
+                <div className="text-left">
+                  <p className="text-white font-semibold text-sm">IBM Inventor • 2 USPTO AI Patents</p>
+                  <p className="text-gray-300 text-xs">Founded by a recognized AI innovator</p>
+                </div>
+              </div>
+              <ArrowRight className="w-4 h-4 text-electric-teal group-hover:translate-x-1 transition-transform" />
+            </a>
+
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
               <Button 
