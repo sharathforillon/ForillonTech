@@ -180,19 +180,19 @@ export default function Hero() {
             <div className="flex justify-center lg:justify-start mb-8">
               <a 
                 href="/about" 
-                className="inline-flex items-center gap-3 px-5 py-3 bg-forillon-navy rounded-xl hover:bg-forillon-navy/90 transition-colors group cursor-pointer shadow-lg"
+                className="inline-flex items-center gap-3 px-5 py-3 bg-forillon-navy rounded-xl hover:bg-forillon-navy/90 transition-colors group cursor-pointer shadow-lg border border-white/10"
                 data-testid="link-patent-credibility"
               >
                 <div className="flex items-center gap-4">
-                  <div className="text-left order-2 lg:order-1">
+                  <div className="text-left">
                     <p className="text-white font-semibold text-sm">IBM Inventor • 2 USPTO AI Patents</p>
                     <p className="text-gray-300 text-xs">Founded by a recognized AI innovator</p>
                   </div>
-                  <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center flex-shrink-0 p-1 order-1 lg:order-2">
-                    <img src={ibmBadge} alt="IBM Patent Badge" className="w-full h-full object-contain" />
+                  <div className="w-14 h-14 bg-transparent flex items-center justify-center flex-shrink-0">
+                    <img src={ibmBadge} alt="IBM Patent Badge" className="w-full h-full object-contain filter brightness-110 contrast-110" />
                   </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-electric-teal group-hover:translate-x-1 transition-transform flex-shrink-0 order-3" />
+                <ArrowRight className="w-4 h-4 text-electric-teal group-hover:translate-x-1 transition-transform flex-shrink-0" />
               </a>
             </div>
 
