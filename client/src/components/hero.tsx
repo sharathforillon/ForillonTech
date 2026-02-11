@@ -3,6 +3,8 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Calendar, Sparkles, Shield, Zap, TrendingUp, CheckCircle, Star, Award, Lightbulb } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
+import ibmBadge from "@/assets/images/ibm-patent-badge.png";
+
 function useCountUp(end: number, duration: number = 2000, startOnView: boolean = true) {
   const [count, setCount] = useState(0);
   const [hasStarted, setHasStarted] = useState(false);
@@ -181,16 +183,16 @@ export default function Hero() {
                 className="inline-flex items-center gap-3 px-5 py-3 bg-forillon-navy rounded-xl hover:bg-forillon-navy/90 transition-colors group cursor-pointer shadow-lg"
                 data-testid="link-patent-credibility"
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-electric-teal rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Lightbulb className="w-4 h-4 text-white" />
-                  </div>
-                  <div className="text-left">
+                <div className="flex items-center gap-4">
+                  <div className="text-left order-2 lg:order-1">
                     <p className="text-white font-semibold text-sm">IBM Inventor • 2 USPTO AI Patents</p>
                     <p className="text-gray-300 text-xs">Founded by a recognized AI innovator</p>
                   </div>
+                  <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center flex-shrink-0 p-1 order-1 lg:order-2">
+                    <img src={ibmBadge} alt="IBM Patent Badge" className="w-full h-full object-contain" />
+                  </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-electric-teal group-hover:translate-x-1 transition-transform flex-shrink-0" />
+                <ArrowRight className="w-4 h-4 text-electric-teal group-hover:translate-x-1 transition-transform flex-shrink-0 order-3" />
               </a>
             </div>
 
