@@ -11,7 +11,7 @@ const SESSION_DATE     = new Date("2026-05-23T18:00:00+04:00");
 // Replace with real Stripe payment links:
 const STRIPE_EXEC_URL  = "#register";  // https://buy.stripe.com/EXEC_LINK
 const STRIPE_LEAD_URL  = "#register";  // https://buy.stripe.com/LEAD_LINK
-const SESSION_CAPACITY = 20;
+const SESSION_CAPACITY = 10;
 
 export type Tier = "executive" | "leadership";
 
@@ -912,7 +912,7 @@ export default function AgenticShiftPage({ tier = "executive" }: AgenticShiftPag
         <div style={{ maxWidth: 640, margin: "0 auto" }}>
           <div ref={s7.ref} style={{ opacity: s7.v ? 1 : 0, transform: s7.v ? "none" : "translateY(24px)", transition: "all 0.8s ease" }}>
             <div style={{ textAlign: "center", marginBottom: isMobile ? 32 : 48 }}>
-              <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: C.textMuted, marginBottom: 14 }}>Invitation-Only · Limited to 20 Seats</p>
+              <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: C.textMuted, marginBottom: 14 }}>Invitation-Only · Limited to 10 Seats</p>
               <h2 style={{ fontFamily: serif, fontSize: isMobile ? "clamp(26px,8vw,36px)" : "clamp(32px,4vw,48px)", fontWeight: 700, letterSpacing: "-0.02em", color: C.navy, margin: "0 0 14px" }}>Secure your place before this cohort closes.</h2>
               <p style={{ fontSize: isMobile ? 15 : 17, color: C.textSecond, maxWidth: 440, margin: "0 auto 12px", lineHeight: 1.6 }}>
                 Every seat includes all 10 implementation artifacts, delivered to your inbox within 24 hours. No upsells. No follow-up courses.

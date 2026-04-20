@@ -230,13 +230,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/session-seats", async (req, res) => {
     try {
       const regs = await storage.getAllSessionRegistrations();
-      const total = 20;
+      const total = 10;
       const registered = regs.length;
       const remaining = Math.max(0, total - registered);
       res.json({ total, registered, remaining });
     } catch (err) {
       // Fallback so the page never breaks
-      res.json({ total: 20, registered: 0, remaining: 20 });
+      res.json({ total: 10, registered: 0, remaining: 10 });
     }
   });
 
