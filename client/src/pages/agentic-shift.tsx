@@ -53,6 +53,64 @@ const TIER_CONFIG = {
   },
 };
 
+// ─── TIER-SPECIFIC PAGE COPY ──────────────────────────────
+const TIER_PAGE_CONTENT = {
+  executive: {
+    pageTitle:      "The Agentic Shift: Executive Session | ForillonTech",
+    heroSubtitle:   "The blueprint every MENA executive needs to move AI from pilot to P&L.",
+    heroDesc:       "A closed-door 90-minute session with the USPTO-patented inventor of the human-bot orchestration layer. You will leave with the exact operating model MENA enterprises need to win with AI in the next 18 months. Not a framework deck. A working system.",
+    heroBullets: [
+      "A named framework you can present at your exec committee next Monday",
+      "A readiness scorecard benchmarked against MENA peers. Runnable within one week.",
+      "A 90-day execution plan with named owners and clear kill criteria",
+      "10 professional artifacts in your inbox within 24 hours",
+    ],
+    problemSectionLabel: "The State of Enterprise AI · 2026",
+    problemHeadline: "Your board is asking about agents. Your team is still running pilots that go nowhere.",
+    problemDesc:     "These numbers never appear in the keynotes. They are the entire reason this session was built.",
+    quotes: [
+      "\"We hired a Chief AI Officer who inherited twelve pilots and no operating model.\"",
+      "\"Our CFO is asking for ROI on AI and we don't have a defensible answer.\"",
+      "\"Our board is asking about agents, and we're still debating ChatGPT licences.\"",
+    ],
+    quotesAttribution: "MENA executive, 2025",
+    quotesConclusion:  "If your exec committee has said any of these in the past six months, you are not alone. This session addresses all three. Head on.",
+    trapsIntro:      "Real companies. Real consequences. These exact patterns are playing out in MENA boardrooms right now.",
+    trapsSubLabel:   "Act II · The Four Traps",
+    playbookIntro:   "\"If anyone tells you this takes longer, what they are really telling you is that they don't want to move.\"",
+    ctaCloser:       "Air Canada and DBS had access to the same models.",
+    ctaCloserGold:   "The difference was the operating model.",
+    ctaSeatsLine:    (remaining: number) => `Now it is yours. ${remaining} seats remain in this cohort.`,
+  },
+  leadership: {
+    pageTitle:      "The Agentic Shift: Leadership Session | ForillonTech",
+    heroSubtitle:   "The execution playbook every MENA director needs to build AI that actually ships.",
+    heroDesc:       "A closed-door 90-minute session that gives you the operating model, the implementation framework, and the tools to deliver the AI results your leadership expects. Built by the USPTO-patented inventor of the human-bot orchestration layer. Not a strategy deck — a working system you can run from Monday.",
+    heroBullets: [
+      "A framework to structure your AI roadmap and defend it in any room",
+      "Clear criteria for which pilots to kill, which to scale, and in what order",
+      "A readiness scorecard your team can run in under a week — no consultants needed",
+      "10 professional artifacts to help you deliver results, not just plan them",
+    ],
+    problemSectionLabel: "The Director's Reality · 2026",
+    problemHeadline: "Your leadership handed you an AI mandate. Your team is stuck between pilots that never ship and vendors who overpromise.",
+    problemDesc:     "These numbers explain why you feel the pressure you do — and why most directors in your position are operating without a real playbook.",
+    quotes: [
+      "\"I've been given an AI roadmap with no budget line, no team capacity, and a steering committee presentation in 60 days.\"",
+      "\"Every vendor says their platform will solve it. I'm still fixing the same data pipeline from six months ago.\"",
+      "\"My CXO wants to announce an AI win at the next all-hands. I need to figure out what 'done' actually looks like first.\"",
+    ],
+    quotesAttribution: "MENA director, 2025",
+    quotesConclusion:  "If you have felt any of these in the past six months, you are not alone. This session was built specifically for the leader who has to make the strategy real. Head on.",
+    trapsIntro:      "Real companies. Real consequences. These patterns play out in delivery teams across MENA right now — and when they fail, it is the director who carries the accountability.",
+    trapsSubLabel:   "Act II · The Four Execution Traps",
+    playbookIntro:   "\"The difference between a director who delivers and one who doesn't is almost never the strategy. It is always the operating model.\"",
+    ctaCloser:       "DBS built 800+ AI models with zero material incidents.",
+    ctaCloserGold:   "The difference was the operating model. Now it is yours.",
+    ctaSeatsLine:    (remaining: number) => `${remaining} seats remain. Join the directors who will leave with a real execution system.`,
+  },
+};
+
 const MENA_COUNTRIES = [
   "UAE", "Saudi Arabia", "Qatar", "Kuwait", "Bahrain", "Oman",
   "Jordan", "Egypt", "Lebanon", "Morocco", "Tunisia", "Turkey",
@@ -442,6 +500,7 @@ interface AgenticShiftPageProps {
 
 export default function AgenticShiftPage({ tier = "executive" }: AgenticShiftPageProps) {
   const cfg       = TIER_CONFIG[tier];
+  const content   = TIER_PAGE_CONTENT[tier];
   const countdown = useCountdown(SESSION_DATE);
   const seats     = useSeats();
   const isMobile  = useIsMobile();
@@ -451,7 +510,7 @@ export default function AgenticShiftPage({ tier = "executive" }: AgenticShiftPag
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    document.title = `The Agentic Shift: ${cfg.label} Session | ForillonTech`;
+    document.title = content.pageTitle;
     const handleScroll = () => { setNavBg(window.scrollY > 60); setShowBar(window.scrollY > 600); };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -516,18 +575,14 @@ export default function AgenticShiftPage({ tier = "executive" }: AgenticShiftPag
               </h1>
 
               <p style={{ fontSize: isMobile ? 16 : 19, color: "rgba(255,255,255,0.65)", fontWeight: 400, lineHeight: 1.5, margin: isMobile ? "0 0 12px" : "0 0 14px", maxWidth: 520 }}>
-                The blueprint every MENA executive needs to move AI from pilot to P&L.
+                {content.heroSubtitle}
               </p>
               <p style={{ fontSize: isMobile ? 14 : 15, color: "rgba(255,255,255,0.45)", lineHeight: 1.7, margin: isMobile ? "0 0 28px" : "0 0 36px", maxWidth: 500 }}>
-                A closed-door 90-minute session with the USPTO-patented inventor of the human-bot orchestration layer. You will leave with the exact operating model MENA enterprises need to win with AI in the next 18 months. Not a framework deck. A working system.
+                {content.heroDesc}
               </p>
 
               <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: isMobile ? 28 : 40 }}>
-                {["A named framework you can present at your exec committee next Monday",
-                  "A readiness scorecard benchmarked against MENA peers. Runnable within one week.",
-                  "A 90-day execution plan with named owners and clear kill criteria",
-                  "10 professional artifacts in your inbox within 24 hours",
-                ].map((item, i) => (
+                {content.heroBullets.map((item, i) => (
                   <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
                     <div style={{ width: 20, height: 20, borderRadius: "50%", border: `1px solid rgba(184,151,43,0.5)`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2 }}>
                       <Check style={{ width: 11, height: 11, color: C.goldLight }} />
@@ -625,15 +680,15 @@ export default function AgenticShiftPage({ tier = "executive" }: AgenticShiftPag
           <div ref={s1.ref} style={{ opacity: s1.v ? 1 : 0, transform: s1.v ? "none" : "translateY(24px)", transition: "all 0.8s ease" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: isMobile ? 36 : 56 }}>
               <div style={{ height: 1, flex: 1, background: C.border }} />
-              <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMuted, whiteSpace: "nowrap" }}>The State of Enterprise AI · 2026</span>
+              <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMuted, whiteSpace: "nowrap" }}>{content.problemSectionLabel}</span>
               <div style={{ height: 1, flex: 1, background: C.border }} />
             </div>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 32 : 48, marginBottom: isMobile ? 40 : 72, alignItems: "start" }}>
               <div>
                 <h2 style={{ fontFamily: serif, fontSize: isMobile ? "clamp(28px,8vw,36px)" : "clamp(36px,4vw,52px)", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.02em", color: C.navy, margin: "0 0 20px" }}>
-                  Your board is asking about agents. Your team is still running pilots that go nowhere.
+                  {content.problemHeadline}
                 </h2>
-                <p style={{ fontSize: isMobile ? 15 : 17, color: C.textSecond, lineHeight: 1.7, margin: 0 }}>These numbers never appear in the keynotes. They are the entire reason this session was built.</p>
+                <p style={{ fontSize: isMobile ? 15 : 17, color: C.textSecond, lineHeight: 1.7, margin: 0 }}>{content.problemDesc}</p>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: isMobile ? 16 : 24 }}>
                 {[
@@ -653,19 +708,15 @@ export default function AgenticShiftPage({ tier = "executive" }: AgenticShiftPag
             <div style={{ background: C.white, borderRadius: 10, padding: isMobile ? 20 : 40, border: `1px solid ${C.border}` }}>
               <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMuted, marginBottom: 24 }}>What MENA leaders are saying. Behind closed doors.</p>
               <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: isMobile ? 20 : 32 }}>
-                {[
-                  "\"We hired a Chief AI Officer who inherited twelve pilots and no operating model.\"",
-                  "\"Our CFO is asking for ROI on AI and we don't have a defensible answer.\"",
-                  "\"Our board is asking about agents, and we're still debating ChatGPT licences.\"",
-                ].map((p, i) => (
+                {content.quotes.map((q, i) => (
                   <div key={i} style={{ paddingLeft: 16, borderLeft: `3px solid ${C.goldLight}` }}>
-                    <p style={{ fontSize: isMobile ? 14 : 15, fontFamily: serif, fontStyle: "italic", color: C.navy, lineHeight: 1.6, margin: "0 0 10px" }}>{p}</p>
-                    <span style={{ fontSize: 10, fontWeight: 600, color: C.textMuted, letterSpacing: "0.06em" }}>MENA executive, 2025</span>
+                    <p style={{ fontSize: isMobile ? 14 : 15, fontFamily: serif, fontStyle: "italic", color: C.navy, lineHeight: 1.6, margin: "0 0 10px" }}>{q}</p>
+                    <span style={{ fontSize: 10, fontWeight: 600, color: C.textMuted, letterSpacing: "0.06em" }}>{content.quotesAttribution}</span>
                   </div>
                 ))}
               </div>
               <p style={{ fontSize: isMobile ? 13 : 14, color: C.textSecond, marginTop: 24, paddingTop: 20, borderTop: `1px solid ${C.border}` }}>
-                If your exec committee has said any of these in the past six months, you are not alone. <strong style={{ color: C.navy }}>This session addresses all three. Head on.</strong>
+                {content.quotesConclusion.split(". Head on.")[0]}. <strong style={{ color: C.navy }}>Head on.</strong>
               </p>
             </div>
           </div>
@@ -678,14 +729,14 @@ export default function AgenticShiftPage({ tier = "executive" }: AgenticShiftPag
           <div ref={s2.ref} style={{ opacity: s2.v ? 1 : 0, transform: s2.v ? "none" : "translateY(24px)", transition: "all 0.8s ease" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: isMobile ? 36 : 56 }}>
               <div style={{ height: 1, flex: 1, background: C.border }} />
-              <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMuted, whiteSpace: "nowrap" }}>Act II · The Four Traps</span>
+              <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMuted, whiteSpace: "nowrap" }}>{content.trapsSubLabel}</span>
               <div style={{ height: 1, flex: 1, background: C.border }} />
             </div>
             <div style={{ marginBottom: 36 }}>
               <h2 style={{ fontFamily: serif, fontSize: isMobile ? "clamp(28px,8vw,36px)" : "clamp(36px,4vw,52px)", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.02em", color: C.navy, margin: "0 0 14px" }}>
                 Over $1 billion in losses.<br />Four traps. Every single one preventable.
               </h2>
-              <p style={{ fontSize: isMobile ? 15 : 17, color: C.textSecond, lineHeight: 1.6, maxWidth: 600, margin: 0 }}>Real companies. Real consequences. These exact patterns are playing out in MENA boardrooms right now.</p>
+              <p style={{ fontSize: isMobile ? 15 : 17, color: C.textSecond, lineHeight: 1.6, maxWidth: 600, margin: 0 }}>{content.trapsIntro}</p>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 16 : 24 }}>
               {TRAPS.map(t => (
@@ -880,7 +931,7 @@ export default function AgenticShiftPage({ tier = "executive" }: AgenticShiftPag
               <div style={{ height: 1, flex: 1, background: C.border }} />
             </div>
             <h2 style={{ fontFamily: serif, fontSize: isMobile ? "clamp(24px,7vw,34px)" : "clamp(28px,3.5vw,44px)", fontWeight: 700, letterSpacing: "-0.02em", color: C.navy, margin: "0 0 8px" }}>Not eighteen months. Ninety days.</h2>
-            <p style={{ fontSize: isMobile ? 14 : 16, color: C.textSecond, margin: "0 0 40px" }}>"If anyone tells you this takes longer, what they are really telling you is that they don't want to move."</p>
+            <p style={{ fontSize: isMobile ? 14 : 16, color: C.textSecond, margin: "0 0 40px" }}>{content.playbookIntro}</p>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: isMobile ? 28 : 32 }}>
               {[
                 { phase: "Days 0–30", title: "The Agentic Audit", color: C.gold,
@@ -993,11 +1044,11 @@ export default function AgenticShiftPage({ tier = "executive" }: AgenticShiftPag
         <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center", position: "relative" }}>
           <p style={{ fontSize: isMobile ? 10 : 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: C.goldLight, marginBottom: 28 }}>DBS Bank Singapore · 800+ AI models · Zero material incidents · $250M+ annual ROI</p>
           <h2 style={{ fontFamily: serif, fontSize: isMobile ? "clamp(26px,7vw,40px)" : "clamp(32px,5vw,64px)", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.02em", color: C.white, margin: "0 0 24px" }}>
-            Air Canada and DBS had access to the same models.<br />
-            <span style={{ color: C.goldLight }}>The difference was the operating model.</span>
+            {content.ctaCloser}<br />
+            <span style={{ color: C.goldLight }}>{content.ctaCloserGold}</span>
           </h2>
           <p style={{ fontSize: isMobile ? 15 : 18, color: "rgba(255,255,255,0.55)", margin: "0 0 10px" }}>
-            Now it is yours. <strong style={{ color: C.white }}>{seats.remaining} seats remain in this cohort.</strong>
+            <strong style={{ color: C.white }}>{content.ctaSeatsLine(seats.remaining)}</strong>
           </p>
           <p style={{ fontSize: 12, color: "rgba(255,255,255,0.25)", margin: "0 0 40px" }}>23 May 2026 · Virtual · Live Online · 6:00 PM GST</p>
           <button onClick={openReg}
