@@ -512,7 +512,7 @@ export default function AgenticShiftPage({ tier = "executive" }: AgenticShiftPag
               </div>
 
               <h1 style={{ fontFamily: serif, fontSize: isMobile ? "clamp(42px,11vw,56px)" : "clamp(56px,7vw,88px)", fontWeight: 700, lineHeight: 1.05, letterSpacing: "-0.02em", color: C.white, margin: isMobile ? "0 0 20px" : "0 0 24px" }}>
-                The<br /><span style={{ color: C.goldLight }}>Agentic</span><br />Shift
+                The <span style={{ color: C.goldLight }}>Agentic</span> Shift
               </h1>
 
               <p style={{ fontSize: isMobile ? 16 : 19, color: "rgba(255,255,255,0.65)", fontWeight: 400, lineHeight: 1.5, margin: isMobile ? "0 0 12px" : "0 0 14px", maxWidth: 520 }}>
