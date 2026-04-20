@@ -336,17 +336,6 @@ function RegistrationModal({ tier, onClose, isMobile }: RegModalProps) {
             </div>
 
             <div>
-              <label style={{ fontSize: 12, fontWeight: 600, color: C.textSecond, display: "block", marginBottom: 5 }}>Country</label>
-              <div style={{ position: "relative" }}>
-                <select value={country} onChange={e => setCountry(e.target.value)}
-                  style={{ ...inputStyle, appearance: "none", cursor: "pointer", paddingRight: 32 }}>
-                  {MENA_COUNTRIES.map(c => <option key={c} value={c}>{c}</option>)}
-                </select>
-                <ChevronDown style={{ position: "absolute", right: 10, top: "50%", transform: "translateY(-50%)", width: 14, height: 14, color: C.textMuted, pointerEvents: "none" }} />
-              </div>
-            </div>
-
-            <div>
               <label style={{ fontSize: 12, fontWeight: 600, color: C.textSecond, display: "block", marginBottom: 5 }}>Phone Number *</label>
               <div style={{ display: "flex", gap: 6, position: "relative" }} ref={codeDropRef}>
                 <button type="button"
@@ -397,8 +386,19 @@ function RegistrationModal({ tier, onClose, isMobile }: RegModalProps) {
                   onBlur={e => (e.target.style.borderColor = C.border)} />
               </div>
               <p style={{ fontSize: 11, color: C.textMuted, marginTop: 4 }}>
-                Country code set from your country selection above.
+                Country code set from your country selection below.
               </p>
+            </div>
+
+            <div>
+              <label style={{ fontSize: 12, fontWeight: 600, color: C.textSecond, display: "block", marginBottom: 5 }}>Country</label>
+              <div style={{ position: "relative" }}>
+                <select value={country} onChange={e => setCountry(e.target.value)}
+                  style={{ ...inputStyle, appearance: "none", cursor: "pointer", paddingRight: 32 }}>
+                  {MENA_COUNTRIES.map(c => <option key={c} value={c}>{c}</option>)}
+                </select>
+                <ChevronDown style={{ position: "absolute", right: 10, top: "50%", transform: "translateY(-50%)", width: 14, height: 14, color: C.textMuted, pointerEvents: "none" }} />
+              </div>
             </div>
 
             {error && <p style={{ fontSize: 13, color: "#B91C1C", margin: 0 }}>{error}</p>}
