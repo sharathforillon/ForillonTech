@@ -1,4 +1,4 @@
-name: Deploy to Production
+name: Deploy ForillonTech to Production
 
 on:
   push:
@@ -11,21 +11,26 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Setup SSH
       run: |
         mkdir -p ~/.ssh
-        echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
+        echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_ed25519
+        chmod 600 ~/.ssh/id_ed25519
         ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
 
-    - name: Deploy via SSH
+    - name: Deploy ForillonTech via SSH
       run: |
-        ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
-          cd /home/ubuntu/ForillonTech-Replit
-          git pull origin main
-          npm install
+        ssh -i ~/.ssh/id_ed25519 ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
+          set -e
+          echo "=== Deploying ForillonTech ==="
+          cd /var/www/apps/ForillonTech
+          git fetch origin
+          git reset --hard origin/main
+          npm install --production=false
           npm run build
-          pm2 restart 0
+          pm2 restart forillontech
+          echo "=== Deploy complete ==="
+          pm2 list
         EOF
