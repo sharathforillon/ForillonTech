@@ -1,0 +1,225 @@
+import { 
+  ArrowRight, 
+  CheckCircle, 
+  Calendar, 
+  ExternalLink, 
+  Users, 
+  Building, 
+  TrendingUp,
+  Brain,
+  Server,
+  Cloud,
+  Shield,
+  Zap,
+  Lightbulb,
+  Globe
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+
+const serviceCards = [
+  {
+    icon: <Globe className="w-8 h-8" />,
+    title: "AI Readiness & Sovereignty",
+    description: "Comprehensive assessment of your organization's AI maturity and data sovereignty posture to navigate regulatory complexity with confidence.",
+    keyBenefits: ["8-dimension assessment framework", "Regional regulatory expertise"],
+    cta: "Assess Readiness",
+    link: "/solutions/ai-readiness",
+    hover: "from-cyan-50 to-teal-50"
+  },
+  {
+    icon: <Brain className="w-8 h-8" />,
+    title: "AI & Digital Transformation",
+    description: "Architect intelligent systems that fundamentally reshape how your organization operates and competes.",
+    keyBenefits: ["30% operational efficiency gains", "AI-driven decision making"],
+    cta: "Explore AI Solutions",
+    link: "/solutions/ai-transformation",
+    hover: "from-blue-50 to-indigo-50"
+  },
+  {
+    icon: <Server className="w-8 h-8" />,
+    title: "Technology Infrastructure",
+    description: "Enterprise-grade infrastructure that scales with your ambitions while maintaining security and performance.",
+    keyBenefits: ["99.9% uptime guarantee", "Scalable cloud architecture"],
+    cta: "Build Infrastructure",
+    link: "/solutions/infrastructure",
+    hover: "from-teal-50 to-cyan-50"
+  },
+  {
+    icon: <Cloud className="w-8 h-8" />,
+    title: "Cloud Migration & Modernization",
+    description: "Strategic cloud migration that modernizes your infrastructure while ensuring zero business disruption.",
+    keyBenefits: ["40% cost reduction", "Zero-downtime migration"],
+    cta: "Start Migration",
+    link: "/solutions/cloud-migration",
+    hover: "from-purple-50 to-violet-50"
+  },
+  {
+    icon: <Shield className="w-8 h-8" />,
+    title: "Enterprise Security & Testing",
+    description: "Comprehensive security frameworks, compliance solutions, ISG testing, and penetration testing to protect your digital assets from vulnerabilities and attacks.",
+    keyBenefits: ["99.99% threat detection", "PEN testing & ISG validation"],
+    cta: "Secure Enterprise",
+    link: "/solutions/security",
+    hover: "from-red-50 to-pink-50"
+  },
+  {
+    icon: <Zap className="w-8 h-8" />,
+    title: "Performance Engineering",
+    description: "Data-driven optimization strategies to maximize efficiency and ROI across your technology investments.",
+    keyBenefits: ["70% performance improvement", "Proactive monitoring"],
+    cta: "Optimize Performance",
+    link: "/solutions/performance",
+    hover: "from-yellow-50 to-orange-50"
+  },
+  {
+    icon: <Lightbulb className="w-8 h-8" />,
+    title: "Digital Innovation Strategy",
+    description: "Strategic consulting to identify emerging technologies and innovation opportunities that drive competitive advantage.",
+    keyBenefits: ["Innovation roadmap development", "Technology trend analysis"],
+    cta: "Innovate with Us",
+    link: "/solutions/digital-innovation",
+    hover: "from-green-50 to-emerald-50"
+  }
+];
+
+const socialProof = [
+  {
+    company: "Fortune 500 Financial Services",
+    project: "AI-Powered Risk Assessment Platform",
+    result: "40% reduction in processing time, 99.7% accuracy",
+    industry: "Financial Services",
+    icon: Building
+  },
+  {
+    company: "Global Manufacturing Corp",
+    project: "Enterprise Cloud Migration",
+    result: "60% infrastructure cost savings, zero downtime",
+    industry: "Manufacturing",
+    icon: TrendingUp
+  },
+  {
+    company: "Healthcare Innovation Group",
+    project: "HIPAA-Compliant Security Framework",
+    result: "100% compliance, 50% faster deployment",
+    industry: "Healthcare",
+    icon: Users
+  }
+];
+
+export default function Solutions() {
+  return (
+    <section id="solutions" className="section-padding-lg bg-white">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center justify-center px-4 py-2 bg-electric-teal/8 rounded-lg mb-8">
+            <span className="text-electric-teal font-medium text-label-lg">THE SCIENCE OF TRANSFORMATION</span>
+          </div>
+          <h2 className="text-heading-xl md:text-display-lg text-forillon-navy mb-8 leading-tight">
+            Technology that transforms<br />
+            <span className="text-electric-teal">business outcomes</span>
+          </h2>
+          <p className="text-body-lg text-slate-gray max-w-3xl mx-auto leading-relaxed">
+            We don't just implement technology. We architect strategic advantages that position your organization for sustained competitive leadership.
+          </p>
+        </div>
+
+        {/* Services Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {serviceCards.map((service, index) => (
+            <div key={index} className="card-elevated p-8 text-center group hover:shadow-xl transition-all duration-300">
+              <div className="w-16 h-16 bg-electric-teal rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-white">{service.icon}</div>
+              </div>
+              <h3 className="text-heading-md text-forillon-navy mb-4 group-hover:text-electric-teal transition-colors">
+                {service.title}
+              </h3>
+              <p className="text-slate-gray text-body-md leading-relaxed mb-6">
+                {service.description}
+              </p>
+              
+              <div className="space-y-3 mb-6">
+                {service.keyBenefits.map((benefit, benefitIndex) => (
+                  <div key={benefitIndex} className="flex items-center justify-center text-sm">
+                    <CheckCircle className="h-4 w-4 text-electric-teal mr-2 flex-shrink-0" />
+                    <span className="text-slate-gray">{benefit}</span>
+                  </div>
+                ))}
+              </div>
+              
+              <Button 
+                className="w-full bg-electric-teal hover:bg-electric-teal/90 text-white group-hover:scale-105 transition-transform duration-300"
+                onClick={() => window.location.href = service.link}
+              >
+                {service.cta} <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          ))}
+        </div>
+
+        {/* Social Proof Section */}
+        <div className="bg-silver-mist rounded-2xl p-12 mb-20">
+          <div className="text-center mb-12">
+            <h3 className="text-2xl md:text-3xl font-bold text-forillon-navy mb-4">
+              Trusted by Industry Leaders
+            </h3>
+            <p className="text-lg text-slate-gray max-w-2xl mx-auto">
+              Sample engagements showcasing our expertise across diverse industries and complex challenges.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {socialProof.map((proof, index) => (
+              <Card key={index} className="bg-white border-0 shadow-lg">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    <proof.icon className="h-8 w-8 text-electric-teal mr-3" />
+                    <Badge variant="secondary" className="text-xs">
+                      {proof.industry}
+                    </Badge>
+                  </div>
+                  <h4 className="font-semibold text-forillon-navy mb-2">
+                    {proof.company}
+                  </h4>
+                  <p className="text-sm text-slate-gray mb-3">
+                    {proof.project}
+                  </p>
+                  <p className="text-sm font-medium text-electric-teal">
+                    {proof.result}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="text-center bg-electric-teal rounded-2xl p-12 text-white shadow-2xl">
+          <h3 className="text-2xl md:text-3xl font-bold mb-6">
+            Ready to transform your enterprise?
+          </h3>
+          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+            Let's discuss how our strategic technology solutions can drive your organization's next phase of growth.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              className="bg-white hover:bg-gray-50 text-electric-teal text-lg px-10 py-4 border-2 border-white shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 font-semibold"
+              onClick={() => window.open('https://calendly.com/sreddy-forillontech/30min', '_blank')}
+            >
+              <Calendar className="mr-2 h-5 w-5" />
+              Book a Consultation
+            </Button>
+            <Button 
+              className="bg-white/10 hover:bg-white hover:text-electric-teal text-white border-2 border-white/70 hover:border-white text-lg px-8 py-4 font-medium transition-all duration-200 backdrop-blur-sm"
+              onClick={() => window.location.href = '/contact'}
+            >
+              Contact Us <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -1,0 +1,577 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(222, 84%, 98%);
+  --foreground: hsl(210, 17%, 34%);
+  --muted: hsl(210, 40%, 92%);
+  --muted-foreground: hsl(210, 17%, 44%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(210, 17%, 34%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(210, 17%, 34%);
+  --border: hsl(210, 40%, 92%);
+  --input: hsl(210, 40%, 92%);
+  --primary: hsl(185, 84%, 39%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(210, 40%, 92%);
+  --secondary-foreground: hsl(210, 17%, 34%);
+  --accent: hsl(210, 40%, 92%);
+  --accent-foreground: hsl(210, 17%, 34%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(60, 9%, 98%);
+  --ring: hsl(185, 84%, 39%);
+  --radius: 0.5rem;
+  
+  /* Original Forillon Brand Colors - Keep for compatibility */
+  --forillon-navy: hsl(196, 93%, 12%); /* #032D3C */
+  --slate-gray: hsl(215, 19%, 35%); /* #475569 */
+  --silver-mist: hsl(214, 32%, 91%); /* #E2E8F0 */
+  --electric-teal: hsl(173, 80%, 40%); /* #14B8A6 */
+  --ice-white: hsl(214, 32%, 98%); /* #F8FAFC */
+  --jet-black: hsl(0, 0%, 12%); /* #1E1E1E */
+  
+  /* Vibrant Enterprise Colors - Checkbox Platform */
+  --deep-blue: hsl(203, 72%, 20%); /* #0B3C5D */
+  --accent-cyan: hsl(192, 100%, 40%); /* #00A4CC */
+  --vibrant-teal: hsl(189, 100%, 28%); /* #007C91 */
+  --soft-neutral: hsl(210, 25%, 97%); /* #F6F7F9 */
+  --slate-gray-new: hsl(208, 21%, 29%); /* #394A59 - renamed to avoid conflict */
+  --success-green: hsl(162, 72%, 37%); /* #17A673 */
+  --cta-highlight: hsl(43, 100%, 50%); /* #FFB400 */
+}
+
+.dark {
+  --background: hsl(240, 10%, 4%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 4%, 16%);
+  --muted-foreground: hsl(240, 5%, 65%);
+  --popover: hsl(240, 10%, 4%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 4%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 4%, 16%);
+  --input: hsl(240, 4%, 16%);
+  --primary: hsl(185, 84%, 39%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(240, 4%, 16%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 4%, 16%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 63%, 31%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 5%, 84%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply text-foreground antialiased;
+    background-color: var(--soft-neutral);
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+    min-height: 100vh;
+  }
+  
+  /* Improved page structure */
+  .main-content {
+    @apply min-h-screen flex flex-col;
+  }
+  
+  .page-body {
+    @apply flex-1;
+  }
+  
+  /* Section improvements */
+  .section-clean {
+    @apply py-16 lg:py-24;
+  }
+  
+  .section-white {
+    @apply bg-white shadow-sm border-t border-b border-gray-50;
+  }
+  
+  .section-light {
+    @apply bg-gradient-to-b from-white to-ice-white;
+  }
+  
+  /* Enhanced visual hierarchy */
+  .section-separator {
+    @apply h-px bg-gradient-to-r from-transparent via-electric-teal/20 to-transparent my-12;
+  }
+  
+  .content-max-width {
+    @apply max-w-6xl mx-auto;
+  }
+  
+  /* Improved card shadows and elevation */
+  .card-elevated {
+    @apply bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-50 rounded-xl;
+  }
+  
+  .card-enterprise {
+    @apply bg-white/80 backdrop-blur-sm shadow-xl border-2 border-electric-teal/10 rounded-2xl p-8;
+  }
+}
+
+@layer utilities {
+  .text-deep-blue {
+    color: var(--deep-blue);
+  }
+  
+  .text-accent-cyan {
+    color: var(--accent-cyan);
+  }
+  
+  .text-vibrant-teal {
+    color: var(--vibrant-teal);
+  }
+  
+  .text-slate-gray {
+    color: var(--slate-gray);
+  }
+  
+  .text-success-green {
+    color: var(--success-green);
+  }
+  
+  .text-cta-highlight {
+    color: var(--cta-highlight);
+  }
+  
+  .bg-deep-blue {
+    background-color: var(--deep-blue);
+  }
+  
+  .bg-accent-cyan {
+    background-color: var(--accent-cyan);
+  }
+  
+  .bg-vibrant-teal {
+    background-color: var(--vibrant-teal);
+  }
+  
+  .bg-soft-neutral {
+    background-color: var(--soft-neutral);
+  }
+  
+  .bg-slate-gray {
+    background-color: var(--slate-gray);
+  }
+  
+  .bg-success-green {
+    background-color: var(--success-green);
+  }
+  
+  .bg-cta-highlight {
+    background-color: var(--cta-highlight);
+  }
+  
+  .border-deep-blue {
+    border-color: var(--deep-blue);
+  }
+  
+  .border-accent-cyan {
+    border-color: var(--accent-cyan);
+  }
+  
+  .border-vibrant-teal {
+    border-color: var(--vibrant-teal);
+  }
+  
+  .hover\:bg-accent-cyan:hover {
+    background-color: var(--accent-cyan);
+  }
+  
+  .hover\:bg-vibrant-teal:hover {
+    background-color: var(--vibrant-teal);
+  }
+  
+  .hover\:text-accent-cyan:hover {
+    color: var(--accent-cyan);
+  }
+  
+  .hover\:border-accent-cyan:hover {
+    border-color: var(--accent-cyan);
+  }
+  
+  /* Page Layout Improvements */
+  .page-section {
+    @apply py-20 px-6 lg:px-8;
+  }
+  
+  .section-divider {
+    @apply border-t border-gray-100 my-16;
+  }
+  
+  .content-container {
+    @apply max-w-7xl mx-auto;
+  }
+  
+  .clean-bg {
+    @apply bg-gradient-to-b from-ice-white to-white;
+  }
+  
+  /* Enhanced Header/Footer Distinction */
+  .header-enhanced {
+    @apply shadow-xl border-b-2 border-electric-teal/20 bg-white/98 backdrop-blur-lg;
+  }
+  
+  .footer-enhanced {
+    @apply bg-gradient-to-br from-forillon-navy via-slate-gray/20 to-electric-teal/10;
+  }
+
+  /* Enterprise-grade typography scale */
+  .text-display-xl {
+    font-size: 3.75rem;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  
+  .text-display-lg {
+    font-size: 3rem;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  
+  .text-heading-xl {
+    font-size: 2.25rem;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  
+  .text-heading-lg {
+    font-size: 1.875rem;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  
+  .text-heading-md {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+  
+  .text-body-lg {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  
+  .text-body-md {
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  
+  .text-label-lg {
+    font-size: 0.875rem;
+    line-height: 1.4;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  
+  /* Professional spacing system */
+  .space-section {
+    padding: 5rem 0;
+  }
+  
+  .space-section-lg {
+    padding: 7rem 0;
+  }
+  
+  .space-section-xl {
+    padding: 9rem 0;
+  }
+  
+  /* Enterprise button styles */
+  .btn-primary {
+    background-color: var(--electric-teal);
+    color: white;
+    font-weight: 500;
+    padding: 0.75rem 2rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .btn-primary:hover {
+    background-color: hsl(173, 80%, 35%);
+    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+    transform: translateY(-1px);
+  }
+  
+  .btn-secondary {
+    border: 2px solid var(--electric-teal);
+    color: var(--electric-teal);
+    background-color: transparent;
+    font-weight: 500;
+    padding: 0.75rem 2rem;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .btn-secondary:hover {
+    background-color: var(--electric-teal);
+    color: white;
+  }
+  
+  /* Professional card styles */
+  .card-enterprise {
+    @apply bg-white rounded-lg border border-gray-200/60 shadow-sm hover:shadow-lg transition-all duration-300;
+    backdrop-filter: blur(8px);
+  }
+  
+  .card-enterprise:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Refined animations */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  
+  .animate-gradient {
+    background-size: 200% auto;
+    animation: gradient 3s ease infinite;
+  }
+  
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+  
+  .delay-1000 {
+    animation-delay: 1000ms;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes gradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out forwards;
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* IBM-inspired gradient backgrounds */
+  .bg-gradient-enterprise {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  }
+  
+  .bg-gradient-hero {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+  }
+  
+  .bg-gradient-section {
+    background: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
+  }
+  
+  /* IBM-style card elevations */
+  .card-elevated {
+    background: white;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+  }
+  
+  .card-elevated:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+  }
+  
+  /* IBM-style grid system */
+  .section-padding {
+    padding: 4rem 0;
+  }
+  
+  .section-padding-lg {
+    padding: 6rem 0;
+  }
+  
+  .section-padding-xl {
+    padding: 8rem 0;
+  }
+  
+  /* Enhanced focus states for accessibility */
+  .focus-enterprise:focus-visible {
+    outline: 2px solid var(--electric-teal);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.1);
+  }
+  
+  /* Professional image treatments */
+  .img-enterprise {
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  }
+  
+  .img-enterprise:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+  }
+  
+  .text-slate-gray {
+    color: var(--slate-gray);
+  }
+  
+  .text-electric-teal {
+    color: var(--electric-teal);
+  }
+  
+  .bg-forillon-navy {
+    background-color: var(--forillon-navy);
+  }
+  
+  .bg-slate-gray {
+    background-color: var(--slate-gray);
+  }
+  
+  .bg-silver-mist {
+    background-color: var(--silver-mist);
+  }
+  
+  .bg-electric-teal {
+    background-color: var(--electric-teal);
+  }
+  
+  .bg-ice-white {
+    background-color: var(--ice-white);
+  }
+  
+  .bg-jet-black {
+    background-color: var(--jet-black);
+  }
+  
+  .text-ice-white {
+    color: var(--ice-white);
+  }
+  
+  .text-jet-black {
+    color: var(--jet-black);
+  }
+  
+  .border-forillon-navy {
+    border-color: var(--forillon-navy);
+  }
+  
+  .border-silver-mist {
+    border-color: var(--silver-mist);
+  }
+  
+  .border-electric-teal {
+    border-color: var(--electric-teal);
+  }
+  
+  .bg-electric-teal {
+    background-color: var(--electric-teal);
+  }
+  
+  .bg-ice-white {
+    background-color: var(--ice-white);
+  }
+  
+  .border-electric-teal {
+    border-color: var(--electric-teal);
+  }
+  
+  .hover\:bg-electric-teal:hover {
+    background-color: var(--electric-teal);
+  }
+  
+  .hover\:text-electric-teal:hover {
+    color: var(--electric-teal);
+  }
+  
+  .hover\:text-forillon-navy:hover {
+    color: var(--forillon-navy);
+  }
+
+  /* Custom animations for hero banner */
+  @keyframes gridMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(60px, 60px); }
+  }
+
+  @keyframes spin-slow {
+    0% { transform: rotate(45deg); }
+    100% { transform: rotate(405deg); }
+  }
+
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(12deg); }
+    50% { transform: translateY(-15px) rotate(12deg); }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 15s linear infinite;
+  }
+
+  .animate-bounce-slow {
+    animation: bounce-slow 3s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+}
