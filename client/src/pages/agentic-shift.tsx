@@ -9,7 +9,7 @@ import {
 // ─── CONFIGURATION ────────────────────────────────────────
 const SESSION_DATE     = new Date("2026-05-23T18:00:00+04:00");
 // Replace with real Stripe payment links:
-const STRIPE_EXEC_URL  = "#register";  // https://buy.stripe.com/EXEC_LINK
+const STRIPE_EXEC_URL  = "https://buy.stripe.com/test_bJe8wO39WarYc63a1GbZe00";
 const STRIPE_LEAD_URL  = "#register";  // https://buy.stripe.com/LEAD_LINK
 const SESSION_CAPACITY = 10;
 
