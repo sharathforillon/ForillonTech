@@ -270,8 +270,11 @@ function RegistrationModal({ tier, onClose, isMobile }: RegModalProps) {
     }).catch(() => { /* non-blocking */ });
 
     // Redirect to Stripe immediately without waiting for API
+    // Append prefilled_email so Stripe pre-populates the email field
     if (cfg.stripeUrl && !cfg.stripeUrl.startsWith("#")) {
-      window.location.href = cfg.stripeUrl;
+      const stripeUrl = new URL(cfg.stripeUrl);
+      stripeUrl.searchParams.set("prefilled_email", email.trim());
+      window.location.href = stripeUrl.toString();
     } else {
       setLoading(false);
       onClose();
