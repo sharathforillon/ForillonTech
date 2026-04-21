@@ -246,7 +246,7 @@ function RegistrationModal({ tier, onClose, isMobile }: RegModalProps) {
     c.code.includes(codeSearch)
   );
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !email.trim() || !phoneLocal.trim()) {
       setError("Please fill in all required fields.");
@@ -255,19 +255,21 @@ function RegistrationModal({ tier, onClose, isMobile }: RegModalProps) {
     const fullPhone = `${dialCode} ${phoneLocal.trim()}`;
     setLoading(true);
     setError("");
-    try {
-      await fetch("/api/session-registration", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: name.trim(), email: email.trim(), phone: fullPhone,
-          country, tier, amount: cfg.price,
-          sessionName: "The Agentic Shift",
-          sessionDate: "23 May 2026",
-          sessionVenue: "Virtual",
-        }),
-      });
-    } catch (_) { /* non-blocking */ }
+
+    // Fire-and-forget: save lead data in background, don't block Stripe redirect
+    fetch("/api/session-registration", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: name.trim(), email: email.trim(), phone: fullPhone,
+        country, tier, amount: cfg.price,
+        sessionName: "The Agentic Shift",
+        sessionDate: "23 May 2026",
+        sessionVenue: "Virtual",
+      }),
+    }).catch(() => { /* non-blocking */ });
+
+    // Redirect to Stripe immediately without waiting for API
     if (cfg.stripeUrl && !cfg.stripeUrl.startsWith("#")) {
       window.location.href = cfg.stripeUrl;
     } else {
