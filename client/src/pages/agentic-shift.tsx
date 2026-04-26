@@ -22,7 +22,7 @@ const TIER_CONFIG = {
     price:    249,
     aed:      "AED 914",
     stripeUrl: STRIPE_EXEC_URL,
-    badge:    "Live Virtual · Most Popular",
+    badge:    "Limited to 10 Seats · Executive Session",
     perks: [
       "Priority access link and calendar invite confirmed instantly",
       "90-minute core session with a 35-minute live Q&A",
@@ -40,7 +40,7 @@ const TIER_CONFIG = {
     price:    99,
     aed:      "AED 363",
     stripeUrl: STRIPE_LEAD_URL,
-    badge:    "Live Virtual",
+    badge:    "Limited to 10 Seats · Leadership Session",
     perks: [
       "Live virtual attendance link and full recording access",
       "90-minute core session with a 35-minute live Q&A",
@@ -56,58 +56,58 @@ const TIER_CONFIG = {
 // ─── TIER-SPECIFIC PAGE COPY ──────────────────────────────
 const TIER_PAGE_CONTENT = {
   executive: {
-    pageTitle:      "The Agentic Shift: Executive Session | ForillonTech",
-    heroSubtitle:   "The blueprint every MENA executive needs to move AI from pilot to P&L.",
-    heroDesc:       "A closed-door 90-minute session with the USPTO-patented inventor of the human-bot orchestration layer. You will leave with the exact operating model MENA enterprises need to win with AI in the next 18 months. Not a framework deck. A working system.",
+    pageTitle:      "Agentic AI in Banking: MENA Executive Session | ForillonTech",
+    heroSubtitle:   "Agentic AI in Banking: How MENA Executives Govern the Shift Without Losing Control.",
+    heroDesc:       "A closed-door 90-minute session with a USPTO patent holder and active AI Product Owner inside a major MENA bank. Leave with the exact governance framework MENA banking executives need to move from stalled pilots to real P&L — not a slide deck, a working system.",
     heroBullets: [
-      "A named framework you can present at your exec committee next Monday",
-      "A readiness scorecard benchmarked against MENA peers. Runnable within one week.",
-      "A 90-day execution plan with named owners and clear kill criteria",
-      "10 professional artifacts in your inbox within 24 hours",
+      "A named AI governance framework you can present at your exec committee on Monday",
+      "A readiness scorecard benchmarked against MENA banking peers — runnable in one week",
+      "A 90-day execution roadmap with named owners, budget lines, and clear kill criteria",
+      "10 professional artifacts in your inbox within 24 hours of the session",
     ],
-    problemSectionLabel: "The State of Enterprise AI · 2026",
-    problemHeadline: "Your board is asking about agents. Your team is still running pilots that go nowhere.",
-    problemDesc:     "These numbers never appear in the keynotes. They are the entire reason this session was built.",
+    problemSectionLabel: "The State of Banking AI · MENA 2026",
+    problemHeadline: "Your board is asking about agents. Your compliance team is nervous. Your pilots are still in a sandbox.",
+    problemDesc:     "These numbers never appear in the vendor pitch. They are the entire reason this session was built for banking leaders specifically.",
     quotes: [
-      "\"We hired a Chief AI Officer who inherited twelve pilots and no operating model.\"",
-      "\"Our CFO is asking for ROI on AI and we don't have a defensible answer.\"",
-      "\"Our board is asking about agents, and we're still debating ChatGPT licences.\"",
+      "\"We hired a Chief AI Officer who inherited twelve pilots, no governance model, and a compliance team asking hard questions.\"",
+      "\"Our CFO is asking for ROI on AI and we don't have a defensible answer for the board.\"",
+      "\"Our regulators want an AI framework. Our team is still debating which LLM to use.\"",
     ],
-    quotesAttribution: "MENA executive, 2025",
-    quotesConclusion:  "If your exec committee has said any of these in the past six months, you are not alone. This session addresses all three. Head on.",
-    trapsIntro:      "Real companies. Real consequences. These exact patterns are playing out in MENA boardrooms right now.",
-    trapsSubLabel:   "Act II · The Four Traps",
-    playbookIntro:   "\"If anyone tells you this takes longer, what they are really telling you is that they don't want to move.\"",
-    ctaCloser:       "Air Canada and DBS had access to the same models.",
-    ctaCloserGold:   "The difference was the operating model.",
-    ctaSeatsLine:    (remaining: number) => `Now it is yours. ${remaining} seats remain in this cohort.`,
+    quotesAttribution: "MENA banking executive, 2025",
+    quotesConclusion:  "If your exec committee has said any of these in the past six months, you are not alone. This session was built for exactly this moment. Head on.",
+    trapsIntro:      "Real banks. Real consequences. These exact patterns are playing out in MENA boardrooms and risk committees right now.",
+    trapsSubLabel:   "Act II · The Four Governance Traps",
+    playbookIntro:   "\"If anyone tells you responsible AI governance takes longer, what they are really telling you is that they don't want to move.\"",
+    ctaCloser:       "DBS governed 800+ AI models with zero material incidents. The same discipline is being built inside MENA's leading banks right now.",
+    ctaCloserGold:   "The difference was always the operating model.",
+    ctaSeatsLine:    (remaining: number) => `Now it is yours. ${remaining} seats remain — limited by design.`,
   },
   leadership: {
-    pageTitle:      "The Agentic Shift: Leadership Session | ForillonTech",
-    heroSubtitle:   "The execution playbook every MENA director needs to build AI that actually ships.",
-    heroDesc:       "A closed-door 90-minute session that gives you the operating model, the implementation framework, and the tools to deliver the AI results your leadership expects. Built by the USPTO-patented inventor of the human-bot orchestration layer. Not a strategy deck — a working system you can run from Monday.",
+    pageTitle:      "Agentic AI in Banking: MENA Leadership Session | ForillonTech",
+    heroSubtitle:   "Agentic AI in Banking: The Execution Playbook MENA Directors Need to Ship AI That Actually Delivers.",
+    heroDesc:       "A closed-door 90-minute session that gives banking directors the operating model to deliver the AI results their C-suite demands. Built by a USPTO patent holder and active AI Product Owner inside a major MENA bank. Not a strategy deck — a working system you run from Monday.",
     heroBullets: [
-      "A framework to structure your AI roadmap and defend it in any room",
-      "Clear criteria for which pilots to kill, which to scale, and in what order",
+      "A banking-specific AI roadmap framework you can defend in any steering committee",
+      "Clear criteria for which pilots to kill, which to scale, and in what sequence",
       "A readiness scorecard your team can run in under a week — no consultants needed",
       "10 professional artifacts to help you deliver results, not just plan them",
     ],
-    problemSectionLabel: "The Director's Reality · 2026",
-    problemHeadline: "Your leadership handed you an AI mandate. Your team is stuck between pilots that never ship and vendors who overpromise.",
-    problemDesc:     "These numbers explain why you feel the pressure you do — and why most directors in your position are operating without a real playbook.",
+    problemSectionLabel: "The Director's Reality · MENA Banking 2026",
+    problemHeadline: "Your leadership handed you an AI mandate. Your vendors overpromise. Your compliance team slows everything down.",
+    problemDesc:     "These numbers explain why you feel the pressure you do — and why most directors in MENA banking are operating without a real execution playbook.",
     quotes: [
       "\"I've been given an AI roadmap with no budget line, no team capacity, and a steering committee presentation in 60 days.\"",
-      "\"Every vendor says their platform will solve it. I'm still fixing the same data pipeline from six months ago.\"",
+      "\"Every vendor says their platform is bank-grade. I'm still fixing the same data pipeline from six months ago.\"",
       "\"My CXO wants to announce an AI win at the next all-hands. I need to figure out what 'done' actually looks like first.\"",
     ],
-    quotesAttribution: "MENA director, 2025",
-    quotesConclusion:  "If you have felt any of these in the past six months, you are not alone. This session was built specifically for the leader who has to make the strategy real. Head on.",
-    trapsIntro:      "Real companies. Real consequences. These patterns play out in delivery teams across MENA right now — and when they fail, it is the director who carries the accountability.",
+    quotesAttribution: "MENA banking director, 2025",
+    quotesConclusion:  "If you have felt any of these in the past six months, you are not alone. This session was built for the director who has to make the strategy real — in a regulated, risk-conscious environment. Head on.",
+    trapsIntro:      "Real banks. Real consequences. These patterns play out in delivery teams across MENA right now — and when they fail, it is the director who carries the accountability.",
     trapsSubLabel:   "Act II · The Four Execution Traps",
-    playbookIntro:   "\"The difference between a director who delivers and one who doesn't is almost never the strategy. It is always the operating model.\"",
+    playbookIntro:   "\"The difference between a director who ships AI and one who doesn't is almost never the strategy. It is always the operating model.\"",
     ctaCloser:       "DBS built 800+ AI models with zero material incidents.",
     ctaCloserGold:   "The difference was the operating model. Now it is yours.",
-    ctaSeatsLine:    (remaining: number) => `${remaining} seats remain. Join the directors who will leave with a real execution system.`,
+    ctaSeatsLine:    (remaining: number) => `${remaining} seats remain. Join the directors leaving with a real execution system.`,
   },
 };
 
@@ -663,15 +663,15 @@ export default function AgenticShiftPage({ tier = "executive" }: AgenticShiftPag
 
       {/* ── TRUST BAND ────────────────────────────────────── */}
       <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: isMobile ? "16px 20px" : "20px 24px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", gap: isMobile ? "12px 24px" : "16px 48px", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", gap: isMobile ? "12px 20px" : "16px 40px", alignItems: "center", justifyContent: "center" }}>
           {[
-            { label: "IBM Inventor",            sub: "12 Years Enterprise AI" },
-            { label: "USPTO Patent 11,509,770", sub: "Human-Bot Orchestration" },
-            { label: "USPTO Patent 11,074,484", sub: "Self-Improving Bot Protocols" },
-            { label: "10,000+",                 sub: "MENA Executive Relationships" },
-            { label: "100% Virtual",              sub: "Live Online · 23 May 2026" },
+            { label: "USPTO Patent Holder",         sub: "Human-Bot Orchestration Layer" },
+            { label: "Ex-IBM Inventor",              sub: "12 Years Enterprise AI" },
+            { label: "AI Product Owner",             sub: "Major MENA Bank · UAE" },
+            { label: "2 MENA AI Sessions",           sub: "Sold-Out · Banking & Finance" },
+            { label: "100% Virtual · Live",          sub: "23 May 2026 · 6 PM GST" },
           ].map(({ label, sub }) => (
-            <div key={label} style={{ textAlign: "center" }}>
+            <div key={label} style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
               <div style={{ fontSize: isMobile ? 12 : 13, fontWeight: 700, color: C.navy }}>{label}</div>
               <div style={{ fontSize: 10, color: C.textMuted, marginTop: 2 }}>{sub}</div>
             </div>
